@@ -1,0 +1,32 @@
+import { AppCode } from '@/components/doc/app.code';
+import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
+import { Component } from '@angular/core';
+import { ChartModule } from '@bdspark/sparkng/chart';
+
+@Component({
+    selector: 'temperature-gauge-doc',
+    standalone: true,
+    imports: [AppCode, AppDocSectionText, ChartModule],
+    template: `
+        <app-docsectiontext>
+            <p>Thermostat dial gauge measuring ambient temperature in degrees Celsius.</p>
+        </app-docsectiontext>
+        <div class="card">
+            <p-chart [options]="options" />
+        </div>
+        <app-code></app-code>
+    `
+})
+export class TemperatureGaugeDoc {
+    options = {
+        series: [
+            {
+                type: 'gauge',
+                min: -20,
+                max: 60,
+                detail: { formatter: '{value} °C' },
+                data: [{ value: 24, name: 'ROOM' }]
+            }
+        ]
+    };
+}

@@ -133,7 +133,36 @@ export class AppCode {
                 this.resolvedService.set(this.mergeServices(codeServices, routeServices));
             } else if (selector && isLoaded) {
                 // Priority 2: Look up from JSON
-                const demo = this.demoCodeService.getCode(selector);
+                let demo = this.demoCodeService.getCode(selector);
+                if (!demo) {
+                    const candidateKeys: string[] = [];
+                    if (selector.startsWith('line-')) {
+                        candidateKeys.push(selector.replace(/^line-/, 'linecharts-'));
+                    } else if (selector.startsWith('linecharts-')) {
+                        candidateKeys.push(selector.replace(/^linecharts-/, 'line-'));
+                    }
+
+                    const match = selector.match(/^[a-z0-9]+-(.+)-demo$/);
+                    if (match) {
+                        const sec = match[1];
+                        candidateKeys.push(`chart-${sec}-demo`);
+                        candidateKeys.push(`${sec}-${sec}-demo`);
+                        if (['horizontalbar', 'stackedbar', 'combo'].includes(sec)) {
+                            candidateKeys.push(`bar-${sec}-demo`);
+                        }
+                        if (['doughnut'].includes(sec)) {
+                            candidateKeys.push(`pie-${sec}-demo`);
+                        }
+                        if (['linearea'].includes(sec)) {
+                            candidateKeys.push(`line-${sec}-demo`);
+                        }
+                    }
+
+                    for (const candidate of candidateKeys) {
+                        demo = this.demoCodeService.getCode(candidate);
+                        if (demo) break;
+                    }
+                }
                 if (demo) {
                     this.resolvedCode.set(demo.code);
                     // Merge extFiles from input with those from demos.json

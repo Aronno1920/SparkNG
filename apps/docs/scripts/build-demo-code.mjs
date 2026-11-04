@@ -145,6 +145,11 @@ const SELECTOR_TO_MODULE = {
     'p-sankeychart': 'ChartModule',
     'p-funnelchart': 'ChartModule',
     'p-gaugechart': 'ChartModule',
+    'p-boxplotchart': 'ChartModule',
+    'p-heatmapchart': 'ChartModule',
+    'p-treemapchart': 'ChartModule',
+    'p-richtextchart': 'ChartModule',
+    'p-datasetchart': 'ChartModule',
     'p-checkbox': 'CheckboxModule',
     'p-chip': 'ChipModule',
     'p-colorpicker': 'ColorPickerModule',
@@ -269,6 +274,93 @@ function extractInterfaceDefinitions(content) {
     return interfaces;
 }
 
+// Check whether brackets, braces, parentheses and quotes are balanced in a code snippet
+function isStructureComplete(str) {
+    let bracketCount = 0;
+    let braceCount = 0;
+    let parenCount = 0;
+    let inSingleQuote = false;
+    let inDoubleQuote = false;
+    let inBacktick = false;
+    let inLineComment = false;
+    let inBlockComment = false;
+
+    for (let j = 0; j < str.length; j++) {
+        const char = str[j];
+        const next = str[j + 1];
+
+        if (inLineComment) {
+            if (char === '\n') inLineComment = false;
+            continue;
+        }
+        if (inBlockComment) {
+            if (char === '*' && next === '/') {
+                inBlockComment = false;
+                j++;
+            }
+            continue;
+        }
+
+        if (inSingleQuote) {
+            if (char === '\\') {
+                j++;
+            } else if (char === "'") {
+                inSingleQuote = false;
+            }
+            continue;
+        }
+        if (inDoubleQuote) {
+            if (char === '\\') {
+                j++;
+            } else if (char === '"') {
+                inDoubleQuote = false;
+            }
+            continue;
+        }
+        if (inBacktick) {
+            if (char === '\\') {
+                j++;
+            } else if (char === '`') {
+                inBacktick = false;
+            }
+            continue;
+        }
+
+        if (char === '/' && next === '/') {
+            inLineComment = true;
+            j++;
+            continue;
+        }
+        if (char === '/' && next === '*') {
+            inBlockComment = true;
+            j++;
+            continue;
+        }
+
+        if (char === "'") {
+            inSingleQuote = true;
+            continue;
+        }
+        if (char === '"') {
+            inDoubleQuote = true;
+            continue;
+        }
+        if (char === '`') {
+            inBacktick = true;
+            continue;
+        }
+
+        if (char === '[') bracketCount++;
+        else if (char === ']') bracketCount--;
+        else if (char === '{') braceCount++;
+        else if (char === '}') braceCount--;
+        else if (char === '(') parenCount++;
+        else if (char === ')') parenCount--;
+    }
+
+    return bracketCount <= 0 && braceCount <= 0 && parenCount <= 0 && !inSingleQuote && !inDoubleQuote && !inBacktick && !inBlockComment;
+}
+
 // Extract class properties (excluding code, extFiles, routeFiles, and doc-specific ones)
 function extractClassProperties(content) {
     // Find the class declaration start
@@ -298,7 +390,8 @@ function extractClassProperties(content) {
     // Match property declarations at class level (4 spaces indentation)
     const lines = propertiesSection.split('\n');
 
-    for (const line of lines) {
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
         // Match lines that start with exactly 4 spaces and a word character (property declaration)
         // Pattern 1: With type annotation - name: Type = value;
         let propMatch = line.match(/^    ([\w]+)([!?]?):\s*([A-Za-z][\w<>\[\]|, ]*(?:\s*\|\s*[\w\[\]]+)*)(?:\s*=\s*(.+))?;?\s*$/);
@@ -365,23 +458,22 @@ function extractClassProperties(content) {
 
         // Clean up default value - handle multiline arrays/objects and trailing semicolons
         if (defaultValue) {
+            // Consume subsequent lines if multiline array/object/expression
+            while (i + 1 < lines.length && !isStructureComplete(defaultValue)) {
+                i++;
+                defaultValue += '\n' + lines[i];
+            }
+
             // Remove trailing semicolon from default value
-            defaultValue = defaultValue.replace(/;$/, '');
-            // Handle multiline arrays (incomplete)
+            defaultValue = defaultValue.trim().replace(/;$/, '');
+
+            // Fallback safety check: if still incomplete, set undefined
             if (defaultValue.startsWith('[') && !defaultValue.endsWith(']')) {
                 defaultValue = undefined;
-            }
-            // Handle multiline objects (incomplete - only has opening brace)
-            if (defaultValue && (defaultValue === '{' || (defaultValue.startsWith('{') && !defaultValue.endsWith('}')))) {
+            } else if (defaultValue.startsWith('{') && !defaultValue.endsWith('}')) {
                 defaultValue = undefined;
-            }
-            // Handle multiline function calls (incomplete - has unmatched parentheses)
-            if (defaultValue) {
-                const openParens = (defaultValue.match(/\(/g) || []).length;
-                const closeParens = (defaultValue.match(/\)/g) || []).length;
-                if (openParens !== closeParens) {
-                    defaultValue = undefined;
-                }
+            } else if (!isStructureComplete(defaultValue)) {
+                defaultValue = undefined;
             }
         }
 
@@ -1334,14 +1426,14 @@ async function main() {
         const docFiles = glob.sync('**/*doc.ts', { cwd: componentPath });
 
         // Files that are documentation, not demos
-        const SKIP_FILES = ['accessibilitydoc', 'styledoc', 'methodsdoc', 'eventsdoc', 'themedoc', 'propsdoc', 'importdoc', 'usagedoc'];
+        const SKIP_SECTIONS = ['accessibility', 'style', 'methods', 'events', 'theme', 'props', 'import', 'usage', 'pt'];
 
         for (const docFile of docFiles) {
             const fileName = path.basename(docFile, '.ts').toLowerCase();
-            const cleanFileName = fileName.replace(/-/g, '');
+            const sectionName = fileName.replace(/-?doc$/, '');
 
             // Skip non-demo documentation files
-            if (SKIP_FILES.some((skip) => cleanFileName.includes(skip))) {
+            if (SKIP_SECTIONS.includes(sectionName)) {
                 continue;
             }
 
@@ -1352,6 +1444,36 @@ async function main() {
                 if (demo && demo.key) {
                     demos[demo.key] = demo;
                     processedCount++;
+
+                    // Register aliases for line charts and chart subpages
+                    if (componentDir === 'linecharts') {
+                        const lineKey = `line-${demo.section}-demo`;
+                        demos[lineKey] = { ...demo, key: lineKey, selector: lineKey };
+                    } else if (componentDir === 'chart') {
+                        // Check if file is inside a subfolder, e.g. bar/axis-align-with-tick-doc.ts
+                        const subDir = path.dirname(docFile).replace(/\\/g, '/');
+                        if (subDir && subDir !== '.') {
+                            const subDirKey = `${subDir}-${demo.section}-demo`;
+                            demos[subDirKey] = { ...demo, key: subDirKey, selector: subDirKey };
+                        }
+
+                        const directKey = `${demo.section}-${demo.section}-demo`;
+                        if (!demos[directKey]) {
+                            demos[directKey] = { ...demo, key: directKey, selector: directKey };
+                        }
+
+                        const subpageAliases = {
+                            horizontalbar: 'bar-horizontalbar-demo',
+                            stackedbar: 'bar-stackedbar-demo',
+                            combo: 'bar-combo-demo',
+                            doughnut: 'pie-doughnut-demo',
+                            linearea: 'line-linearea-demo'
+                        };
+                        if (subpageAliases[demo.section]) {
+                            const aliasKey = subpageAliases[demo.section];
+                            demos[aliasKey] = { ...demo, key: aliasKey, selector: aliasKey };
+                        }
+                    }
                 }
             } catch (error) {
                 console.error(`Error processing ${filePath}:`, error.message);
@@ -1364,7 +1486,7 @@ async function main() {
     const output = {
         version: '1.0.0',
         generatedAt: new Date().toISOString(),
-        totalDemos: processedCount,
+        totalDemos: Object.keys(demos).length,
         demos
     };
 

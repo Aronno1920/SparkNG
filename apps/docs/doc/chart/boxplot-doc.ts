@@ -12,7 +12,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
             <p>Boxplot (box-and-whisker plot) displays data distribution based on a five-number summary: minimum, first quartile, median, third quartile, and maximum.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-chart [options]="options" />
+            <p-boxplotchart [options]="options" />
         </div>
         <app-code></app-code>
     `

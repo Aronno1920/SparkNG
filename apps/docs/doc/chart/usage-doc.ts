@@ -14,10 +14,11 @@ import { Component } from '@angular/core';
 })
 export class UsageDoc {
     importCode: Code = {
-        typescript: `import { ChartModule } from '@bdspark/sparkng/chart';`
+        typescript: `// Import specific chart components or the full module
+import { LineChart, BarChart, PieChart, ChartModule } from '@bdspark/sparkng/chart';`
     };
 
     usageCode: Code = {
-        html: `<p-linechart [data]="sales" />`
+        html: `<p-linechart [data]="sales" [xAxis]="{ type: 'category', data: months }" />`
     };
 }

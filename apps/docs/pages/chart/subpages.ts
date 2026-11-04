@@ -1,25 +1,9 @@
 import { AppDoc } from '@/components/doc/app.doc';
 import { AccessibilityDoc } from '@/doc/chart/accessibility-doc';
-import { BarDoc } from '@/doc/chart/bar-doc';
-import { BoxplotDoc } from '@/doc/chart/boxplot-doc';
-import { CandlestickDoc } from '@/doc/chart/candlestick-doc';
-import { DatasetDoc } from '@/doc/chart/dataset-doc';
-import { DoughnutDoc } from '@/doc/chart/doughnut-doc';
-import { FunnelDoc } from '@/doc/chart/funnel-doc';
-import { GaugeDoc } from '@/doc/chart/gauge-doc';
 import { GraphDoc } from '@/doc/chart/graph-doc';
 import { HeatmapDoc } from '@/doc/chart/heatmap-doc';
-import { HorizontalBarDoc } from '@/doc/chart/horizontalbar-doc';
-import { MapDoc } from '@/doc/chart/map-doc';
-import { PieDoc } from '@/doc/chart/pie-doc';
-import { RadarDoc } from '@/doc/chart/radar-doc';
 import { RichTextDoc } from '@/doc/chart/richtext-doc';
-import { SankeyDoc } from '@/doc/chart/sankey-doc';
-import { ScatterDoc } from '@/doc/chart/scatter-doc';
-import { StackedBarDoc } from '@/doc/chart/stackedbar-doc';
-import { SunburstDoc } from '@/doc/chart/sunburst-doc';
 import { TreeDoc } from '@/doc/chart/tree-doc';
-import { TreemapDoc } from '@/doc/chart/treemap-doc';
 import {
     BarUsageDoc,
     BoxplotUsageDoc,
@@ -39,6 +23,152 @@ import {
     TreeUsageDoc,
     TreemapUsageDoc
 } from '@/doc/chart/usage-docs';
+
+// Bar docs
+import { AnimationDelayDoc } from '@/doc/chart/bar/animation-delay-doc';
+import { AxisAlignWithTickDoc } from '@/doc/chart/bar/axis-align-with-tick-doc';
+import { BarAxisBreaksDoc } from '@/doc/chart/bar/bar-axis-breaks-doc';
+import { BarLabelRotationDoc } from '@/doc/chart/bar/bar-label-rotation-doc';
+import { BarNegativeValueDoc } from '@/doc/chart/bar/bar-negative-value-doc';
+import { BarPolarDoc } from '@/doc/chart/bar/bar-polar-doc';
+import { BarRaceDoc } from '@/doc/chart/bar/bar-race-doc';
+import { BarWithBackgroundDoc } from '@/doc/chart/bar/bar-with-background-doc';
+import { BasicBarDoc } from '@/doc/chart/bar/basic-bar-doc';
+import { BrushSelectColumnDoc } from '@/doc/chart/bar/brush-select-column-doc';
+import { ClickableColumnGradientDoc } from '@/doc/chart/bar/clickable-column-gradient-doc';
+import { DynamicDataDoc } from '@/doc/chart/bar/dynamic-data-doc';
+import { MixedLineAndBarDoc } from '@/doc/chart/bar/mixed-line-and-bar-doc';
+import { MultipleYAxesDoc } from '@/doc/chart/bar/multiple-y-axes-doc';
+import { PolarEndAngleDoc } from '@/doc/chart/bar/polar-end-angle-doc';
+import { RadialPolarBarLabelDoc } from '@/doc/chart/bar/radial-polar-bar-label-doc';
+import { RainfallAndEvaporationDoc } from '@/doc/chart/bar/rainfall-and-evaporation-doc';
+import { RoundedBarPolarDoc } from '@/doc/chart/bar/rounded-bar-polar-doc';
+import { SetStyleOfSingleBarDoc } from '@/doc/chart/bar/set-style-of-single-bar-doc';
+import { SortDataBarDoc } from '@/doc/chart/bar/sort-data-bar-doc';
+import { StackedBarBorderRadiusDoc } from '@/doc/chart/bar/stacked-bar-border-radius-doc';
+import { StackedBarNormalizationDoc } from '@/doc/chart/bar/stacked-bar-normalization-doc';
+import { StackedBarPolarDoc } from '@/doc/chart/bar/stacked-bar-polar-doc';
+import { StackedColumnDoc } from '@/doc/chart/bar/stacked-column-doc';
+import { StackedHorizontalBarDoc } from '@/doc/chart/bar/stacked-horizontal-bar-doc';
+import { TangentialPolarBarLabelDoc } from '@/doc/chart/bar/tangential-polar-bar-label-doc';
+import { WaterfallBarDoc } from '@/doc/chart/bar/waterfall-bar-doc';
+import { WeatherStatisticsDoc } from '@/doc/chart/bar/weather-statistics-doc';
+import { WorldPopulationDoc } from '@/doc/chart/bar/world-population-doc';
+
+// Pie docs
+import { CalendarPieDoc } from '@/doc/chart/pie/calendar-pie-doc';
+import { CustomizedPieDoc } from '@/doc/chart/pie/customized-pie-doc';
+import { DoughnutChartDoc } from '@/doc/chart/pie/doughnut-chart-doc';
+import { DoughnutRoundedDoc } from '@/doc/chart/pie/doughnut-rounded-doc';
+import { HalfDoughnutDoc } from '@/doc/chart/pie/half-doughnut-doc';
+import { LabelLineAdjustDoc } from '@/doc/chart/pie/label-line-adjust-doc';
+import { NestedPiesDoc } from '@/doc/chart/pie/nested-pies-doc';
+import { NightingaleChartDoc } from '@/doc/chart/pie/nightingale-chart-doc';
+import { PartitionDataPiesDoc } from '@/doc/chart/pie/partition-data-pies-doc';
+import { PieLabelAlignDoc } from '@/doc/chart/pie/pie-label-align-doc';
+import { PiePadAngleDoc } from '@/doc/chart/pie/pie-pad-angle-doc';
+import { PieScrollableLegendDoc } from '@/doc/chart/pie/pie-scrollable-legend-doc';
+import { PieSpecialLabelDoc } from '@/doc/chart/pie/pie-special-label-doc';
+import { RefererWebsiteDoc } from '@/doc/chart/pie/referer-website-doc';
+import { TexturePieDoc } from '@/doc/chart/pie/texture-pie-doc';
+
+// Scatter docs
+import { AnscombQuartetDoc } from '@/doc/chart/scatter/anscomb-quartet-doc';
+import { BasicScatterDoc } from '@/doc/chart/scatter/basic-scatter-doc';
+import { BubbleChartDoc } from '@/doc/chart/scatter/bubble-chart-doc';
+import { EffectScatterDoc } from '@/doc/chart/scatter/effect-scatter-doc';
+import { HeightWeightDistributionDoc } from '@/doc/chart/scatter/height-weight-distribution-doc';
+import { LifeExpectancyGdpDoc } from '@/doc/chart/scatter/life-expectancy-gdp-doc';
+import { ScatterAqiColorDoc } from '@/doc/chart/scatter/scatter-aqi-color-doc';
+import { ScatterMatrixDoc } from '@/doc/chart/scatter/scatter-matrix-doc';
+import { ScatterNutrientsDoc } from '@/doc/chart/scatter/scatter-nutrients-doc';
+import { ScatterSingleAxisDoc } from '@/doc/chart/scatter/scatter-single-axis-doc';
+
+// GEO/Map docs
+import { GeoChoroplethScatterDoc } from '@/doc/chart/map/geo-choropleth-scatter-doc';
+import { GeoGraphDoc } from '@/doc/chart/map/geo-graph-doc';
+import { PopulationDensityHkDoc } from '@/doc/chart/map/population-density-hk-doc';
+import { UsaChoroplethProjectionDoc } from '@/doc/chart/map/usa-choropleth-projection-doc';
+import { UsaPopulationEstimatesDoc } from '@/doc/chart/map/usa-population-estimates-doc';
+
+// Candlestick docs
+import { AxisPointerLinkDoc } from '@/doc/chart/candlestick/axis-pointer-link-doc';
+import { BasicCandlestickDoc } from '@/doc/chart/candlestick/basic-candlestick-doc';
+import { CandlestickBrushDoc } from '@/doc/chart/candlestick/candlestick-brush-doc';
+import { LargeScaleCandlestickDoc } from '@/doc/chart/candlestick/large-scale-candlestick-doc';
+import { OhlcChartDoc } from '@/doc/chart/candlestick/ohlc-chart-doc';
+import { ShanghaiIndexDoc } from '@/doc/chart/candlestick/shanghai-index-doc';
+
+// Radar docs
+import { AqiRadarDoc } from '@/doc/chart/radar/aqi-radar-doc';
+import { BasicRadarDoc } from '@/doc/chart/radar/basic-radar-doc';
+import { BrowserProportionRadarDoc } from '@/doc/chart/radar/browser-proportion-radar-doc';
+import { CustomizedRadarDoc } from '@/doc/chart/radar/customized-radar-doc';
+import { MultipleRadarDoc } from '@/doc/chart/radar/multiple-radar-doc';
+
+// Boxplot docs
+import { BoxplotLightVelocityDoc } from '@/doc/chart/boxplot/boxplot-light-velocity-doc';
+import { BoxplotLightVelocity2Doc } from '@/doc/chart/boxplot/boxplot-light-velocity2-doc';
+import { DataTransformAggregateDoc } from '@/doc/chart/boxplot/data-transform-aggregate-doc';
+import { MultipleCategoriesBoxplotDoc } from '@/doc/chart/boxplot/multiple-categories-boxplot-doc';
+
+// Treemap docs
+import { BasicTreemapDoc } from '@/doc/chart/treemap/basic-treemap-doc';
+import { DiskUsageDoc } from '@/doc/chart/treemap/disk-usage-doc';
+import { GradientMappingTreemapDoc } from '@/doc/chart/treemap/gradient-mapping-treemap-doc';
+import { HowTrillionSpentDoc } from '@/doc/chart/treemap/how-trillion-spent-doc';
+import { ShowParentLabelsDoc } from '@/doc/chart/treemap/show-parent-labels-doc';
+import { TransitionTreemapSunburstDoc } from '@/doc/chart/treemap/transition-treemap-sunburst-doc';
+
+// Sunburst docs
+import { BasicSunburstDoc } from '@/doc/chart/sunburst/basic-sunburst-doc';
+import { BookRecordsDoc } from '@/doc/chart/sunburst/book-records-doc';
+import { DrinkFlavorsDoc } from '@/doc/chart/sunburst/drink-flavors-doc';
+import { MonochromeSunburstDoc } from '@/doc/chart/sunburst/monochrome-sunburst-doc';
+import { SunburstLabelRotateDoc } from '@/doc/chart/sunburst/sunburst-label-rotate-doc';
+import { SunburstRoundedCornerDoc } from '@/doc/chart/sunburst/sunburst-rounded-corner-doc';
+import { SunburstVisualmapDoc } from '@/doc/chart/sunburst/sunburst-visualmap-doc';
+
+// Sankey docs
+import { BasicSankeyDoc } from '@/doc/chart/sankey/basic-sankey-doc';
+import { GradientEdgeSankeyDoc } from '@/doc/chart/sankey/gradient-edge-sankey-doc';
+import { ItemstyleEachNodeSankeyDoc } from '@/doc/chart/sankey/itemstyle-each-node-sankey-doc';
+import { NodeAlignLeftSankeyDoc } from '@/doc/chart/sankey/node-align-left-sankey-doc';
+import { NodeAlignRightSankeyDoc } from '@/doc/chart/sankey/node-align-right-sankey-doc';
+import { SankeyLevelsSettingDoc } from '@/doc/chart/sankey/sankey-levels-setting-doc';
+import { SankeyOrientVerticalDoc } from '@/doc/chart/sankey/sankey-orient-vertical-doc';
+
+// Funnel docs
+import { BasicFunnelDoc } from '@/doc/chart/funnel/basic-funnel-doc';
+import { CustomizedFunnelDoc } from '@/doc/chart/funnel/customized-funnel-doc';
+import { FunnelCompareDoc } from '@/doc/chart/funnel/funnel-compare-doc';
+import { MultipleFunnelsDoc } from '@/doc/chart/funnel/multiple-funnels-doc';
+
+// Gauge docs
+import { ClockGaugeDoc } from '@/doc/chart/gauge/clock-gauge-doc';
+import { GaugeBasicDoc } from '@/doc/chart/gauge/gauge-basic-doc';
+import { GaugeCarDoc } from '@/doc/chart/gauge/gauge-car-doc';
+import { GradeGaugeDoc } from '@/doc/chart/gauge/grade-gauge-doc';
+import { MultiTitleGaugeDoc } from '@/doc/chart/gauge/multi-title-gauge-doc';
+import { ProgressGaugeDoc } from '@/doc/chart/gauge/progress-gauge-doc';
+import { RingGaugeDoc } from '@/doc/chart/gauge/ring-gauge-doc';
+import { SimpleGaugeDoc } from '@/doc/chart/gauge/simple-gauge-doc';
+import { SpeedGaugeDoc } from '@/doc/chart/gauge/speed-gauge-doc';
+import { StageSpeedGaugeDoc } from '@/doc/chart/gauge/stage-speed-gauge-doc';
+import { TemperatureGaugeDoc } from '@/doc/chart/gauge/temperature-gauge-doc';
+
+// Dataset docs
+import { DatasetObjectArrayDoc } from '@/doc/chart/dataset/dataset-object-array-doc';
+import { EncodeAndMatrixDoc } from '@/doc/chart/dataset/encode-and-matrix-doc';
+import { GanttAirportFlightsDoc } from '@/doc/chart/dataset/gantt-airport-flights-doc';
+import { LargeScaleAreaChartDoc } from '@/doc/chart/dataset/large-scale-area-chart-doc';
+import { SeriesLayoutColumnRowDoc } from '@/doc/chart/dataset/series-layout-column-row-doc';
+import { ShareDatasetDoc } from '@/doc/chart/dataset/share-dataset-doc';
+import { SimpleDatasetDoc } from '@/doc/chart/dataset/simple-dataset-doc';
+import { SimpleEncodeDoc } from '@/doc/chart/dataset/simple-encode-doc';
+import { TooltipDatazoomMobileDoc } from '@/doc/chart/dataset/tooltip-datazoom-mobile-doc';
+import { WindBarbDoc } from '@/doc/chart/dataset/wind-barb-doc';
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -51,9 +181,35 @@ import { Component } from '@angular/core';
 export class BarChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: BarUsageDoc },
-        { id: 'basic', label: 'Basic Bar', component: BarDoc },
-        { id: 'horizontal', label: 'Horizontal Bar', component: HorizontalBarDoc },
-        { id: 'stacked', label: 'Stacked Bar', component: StackedBarDoc },
+        { id: 'basic', label: 'Basic Bar', component: BasicBarDoc },
+        { id: 'axis-align-with-tick', label: 'Axis Align with Tick', component: AxisAlignWithTickDoc },
+        { id: 'bar-with-background', label: 'Bar with Background', component: BarWithBackgroundDoc },
+        { id: 'set-style-of-single-bar', label: 'Set Style of Single Bar', component: SetStyleOfSingleBarDoc },
+        { id: 'waterfall-bar', label: 'Waterfall Chart', component: WaterfallBarDoc },
+        { id: 'bar-negative-value', label: 'Bar Chart with Negative Value', component: BarNegativeValueDoc },
+        { id: 'radial-polar-bar-label', label: 'Radial Polar Bar Label Position', component: RadialPolarBarLabelDoc },
+        { id: 'tangential-polar-bar-label', label: 'Tangential Polar Bar Label Position', component: TangentialPolarBarLabelDoc },
+        { id: 'world-population', label: 'World Population', component: WorldPopulationDoc },
+        { id: 'polar-end-angle', label: 'Polar endAngle', component: PolarEndAngleDoc },
+        { id: 'bar-axis-breaks', label: 'Bar Chart with Axis Breaks', component: BarAxisBreaksDoc },
+        { id: 'clickable-column-gradient', label: 'Clickable Column Chart with Gradient', component: ClickableColumnGradientDoc },
+        { id: 'bar-label-rotation', label: 'Bar Label Rotation', component: BarLabelRotationDoc },
+        { id: 'stacked-column', label: 'Stacked Column Chart', component: StackedColumnDoc },
+        { id: 'stacked-bar-border-radius', label: 'Stacked Bar with borderRadius', component: StackedBarBorderRadiusDoc },
+        { id: 'stacked-bar-normalization', label: 'Stacked Bar Normalization', component: StackedBarNormalizationDoc },
+        { id: 'stacked-horizontal-bar', label: 'Stacked Horizontal Bar', component: StackedHorizontalBarDoc },
+        { id: 'brush-select-column', label: 'Brush Select on Column Chart', component: BrushSelectColumnDoc },
+        { id: 'rainfall-and-evaporation', label: 'Rainfall and Evaporation', component: RainfallAndEvaporationDoc },
+        { id: 'mixed-line-and-bar', label: 'Mixed Line and Bar', component: MixedLineAndBarDoc },
+        { id: 'multiple-y-axes', label: 'Multiple Y Axes', component: MultipleYAxesDoc },
+        { id: 'animation-delay', label: 'Animation Delay', component: AnimationDelayDoc },
+        { id: 'bar-race', label: 'Bar Race', component: BarRaceDoc },
+        { id: 'weather-statistics', label: 'Weather Statistics', component: WeatherStatisticsDoc },
+        { id: 'dynamic-data', label: 'Dynamic Data', component: DynamicDataDoc },
+        { id: 'bar-polar', label: 'Bar Chart on Polar', component: BarPolarDoc },
+        { id: 'stacked-bar-polar', label: 'Stacked Bar Chart on Polar', component: StackedBarPolarDoc },
+        { id: 'rounded-bar-polar', label: 'Rounded Bar on Polar', component: RoundedBarPolarDoc },
+        { id: 'sort-data-bar', label: 'Sort Data in Bar Chart', component: SortDataBarDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -68,8 +224,21 @@ export class BarChartDemo {
 export class PieChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: PieUsageDoc },
-        { id: 'basic', label: 'Basic Pie', component: PieDoc },
-        { id: 'doughnut', label: 'Doughnut', component: DoughnutDoc },
+        { id: 'referer-website', label: 'Referer of a Website', component: RefererWebsiteDoc },
+        { id: 'doughnut-rounded', label: 'Doughnut Chart with Rounded Corner', component: DoughnutRoundedDoc },
+        { id: 'doughnut-chart', label: 'Doughnut Chart', component: DoughnutChartDoc },
+        { id: 'half-doughnut', label: 'Half Doughnut Chart', component: HalfDoughnutDoc },
+        { id: 'pie-pad-angle', label: 'Pie with padAngle', component: PiePadAngleDoc },
+        { id: 'customized-pie', label: 'Customized Pie', component: CustomizedPieDoc },
+        { id: 'texture-pie', label: 'Texture on Pie Chart', component: TexturePieDoc },
+        { id: 'nightingale-chart', label: 'Nightingale Chart', component: NightingaleChartDoc },
+        { id: 'pie-label-align', label: 'Pie Label Align', component: PieLabelAlignDoc },
+        { id: 'label-line-adjust', label: 'Label Line Adjust', component: LabelLineAdjustDoc },
+        { id: 'pie-scrollable-legend', label: 'Pie with Scrollable Legend', component: PieScrollableLegendDoc },
+        { id: 'pie-special-label', label: 'Pie Special Label', component: PieSpecialLabelDoc },
+        { id: 'nested-pies', label: 'Nested Pies', component: NestedPiesDoc },
+        { id: 'partition-data-pies', label: 'Partition Data to Pies', component: PartitionDataPiesDoc },
+        { id: 'calendar-pie', label: 'Calendar Pie', component: CalendarPieDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -90,7 +259,16 @@ export class PieChartDemo {
 export class ScatterChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: ScatterUsageDoc },
-        { id: 'basic', label: 'Scatter', component: ScatterDoc },
+        { id: 'basic-scatter', label: 'Basic Scatter Chart', component: BasicScatterDoc },
+        { id: 'anscomb-quartet', label: "Anscomb's quartet", component: AnscombQuartetDoc },
+        { id: 'effect-scatter', label: 'Effect Scatter Chart', component: EffectScatterDoc },
+        { id: 'scatter-single-axis', label: 'Scatter on Single Axis', component: ScatterSingleAxisDoc },
+        { id: 'height-weight-distribution', label: 'Distribution of Height and Weight', component: HeightWeightDistributionDoc },
+        { id: 'bubble-chart', label: 'Bubble Chart', component: BubbleChartDoc },
+        { id: 'scatter-aqi-color', label: 'Scatter Aqi Color', component: ScatterAqiColorDoc },
+        { id: 'scatter-nutrients', label: 'Scatter Nutrients', component: ScatterNutrientsDoc },
+        { id: 'life-expectancy-gdp', label: 'Life Expectancy and GDP', component: LifeExpectancyGdpDoc },
+        { id: 'scatter-matrix', label: 'Scatter Matrix', component: ScatterMatrixDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -103,7 +281,11 @@ export class ScatterChartDemo {
 export class MapChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: MapUsageDoc },
-        { id: 'basic', label: 'Map', component: MapDoc },
+        { id: 'geo-graph', label: 'Geo Graph', component: GeoGraphDoc },
+        { id: 'geo-choropleth-scatter', label: 'Geo Choropleth and Scatter', component: GeoChoroplethScatterDoc },
+        { id: 'population-density-hk', label: 'Population Density of HongKong (2011)', component: PopulationDensityHkDoc },
+        { id: 'usa-population-estimates', label: 'USA Population Estimates (2012)', component: UsaPopulationEstimatesDoc },
+        { id: 'usa-choropleth-projection', label: 'USA Choropleth Map with Projection', component: UsaChoroplethProjectionDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -124,7 +306,12 @@ export class MapChartDemo {
 export class CandlestickChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: CandlestickUsageDoc },
-        { id: 'basic', label: 'Candlestick', component: CandlestickDoc },
+        { id: 'basic-candlestick', label: 'Basic Candlestick', component: BasicCandlestickDoc },
+        { id: 'ohlc-chart', label: 'OHLC Chart', component: OhlcChartDoc },
+        { id: 'shanghai-index', label: 'ShangHai Index', component: ShanghaiIndexDoc },
+        { id: 'large-scale-candlestick', label: 'Large Scale Candlestick', component: LargeScaleCandlestickDoc },
+        { id: 'axis-pointer-link', label: 'Axis Pointer Link and Touch', component: AxisPointerLinkDoc },
+        { id: 'candlestick-brush', label: 'Candlestick Brush', component: CandlestickBrushDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -145,7 +332,11 @@ export class CandlestickChartDemo {
 export class RadarChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: RadarUsageDoc },
-        { id: 'basic', label: 'Radar', component: RadarDoc },
+        { id: 'basic-radar', label: 'Basic Radar Chart', component: BasicRadarDoc },
+        { id: 'aqi-radar', label: 'AQI - Radar Chart', component: AqiRadarDoc },
+        { id: 'customized-radar', label: 'Customized Radar Chart', component: CustomizedRadarDoc },
+        { id: 'browser-proportion-radar', label: 'Proportion of Browsers', component: BrowserProportionRadarDoc },
+        { id: 'multiple-radar', label: 'Multiple Radar', component: MultipleRadarDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -153,12 +344,17 @@ export class RadarChartDemo {
 @Component({
     standalone: true,
     imports: [AppDoc],
-    template: ` <app-doc docTitle="Angular Boxplot Chart Component - SparkNG" header="Boxplot" description="Boxplot visualizes statistical distributions through quartiles, medians, and outliers." [docs]="docs" [apiDocs]="['Chart']"></app-doc> `
+    template: `
+        <app-doc docTitle="Angular Boxplot Chart Component - SparkNG" header="Boxplot" description="Boxplot visualizes statistical distributions through quartiles, medians, and outliers." [docs]="docs" [apiDocs]="['BoxplotChart']"></app-doc>
+    `
 })
 export class BoxplotChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: BoxplotUsageDoc },
-        { id: 'basic', label: 'Boxplot', component: BoxplotDoc },
+        { id: 'data-transform-aggregate', label: 'Data Transform Simple Aggregate', component: DataTransformAggregateDoc },
+        { id: 'boxplot-light-velocity', label: 'Boxplot Light Velocity', component: BoxplotLightVelocityDoc },
+        { id: 'boxplot-light-velocity2', label: 'Boxplot Light Velocity2', component: BoxplotLightVelocity2Doc },
+        { id: 'multiple-categories-boxplot', label: 'Multiple Categories', component: MultipleCategoriesBoxplotDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -166,7 +362,7 @@ export class BoxplotChartDemo {
 @Component({
     standalone: true,
     imports: [AppDoc],
-    template: ` <app-doc docTitle="Angular Heatmap Chart Component - SparkNG" header="Heatmap" description="Heatmap charts visualize values in a matrix as color gradations." [docs]="docs" [apiDocs]="['Chart']"></app-doc> `
+    template: ` <app-doc docTitle="Angular Heatmap Chart Component - SparkNG" header="Heatmap" description="Heatmap charts visualize values in a matrix as color gradations." [docs]="docs" [apiDocs]="['HeatmapChart']"></app-doc> `
 })
 export class HeatmapChartDemo {
     docs = [
@@ -214,13 +410,18 @@ export class TreeChartDemo {
     standalone: true,
     imports: [AppDoc],
     template: `
-        <app-doc docTitle="Angular Treemap Chart Component - SparkNG" header="Treemap" description="Treemap charts display hierarchical data as a set of nested, proportionally-sized rectangles." [docs]="docs" [apiDocs]="['Chart']"></app-doc>
+        <app-doc docTitle="Angular Treemap Chart Component - SparkNG" header="Treemap" description="Treemap charts display hierarchical data as a set of nested, proportionally-sized rectangles." [docs]="docs" [apiDocs]="['TreemapChart']"></app-doc>
     `
 })
 export class TreemapChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: TreemapUsageDoc },
-        { id: 'basic', label: 'Treemap', component: TreemapDoc },
+        { id: 'basic-treemap', label: 'Basic Treemap', component: BasicTreemapDoc },
+        { id: 'disk-usage', label: 'Disk Usage', component: DiskUsageDoc },
+        { id: 'show-parent-labels', label: 'Show Parent Labels', component: ShowParentLabelsDoc },
+        { id: 'gradient-mapping-treemap', label: 'Gradient Mapping', component: GradientMappingTreemapDoc },
+        { id: 'how-trillion-spent', label: 'How $3.7 Trillion is Spent', component: HowTrillionSpentDoc },
+        { id: 'transition-treemap-sunburst', label: 'Transition between Treemap and Sunburst', component: TransitionTreemapSunburstDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -233,7 +434,13 @@ export class TreemapChartDemo {
 export class SunburstChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: SunburstUsageDoc },
-        { id: 'basic', label: 'Sunburst', component: SunburstDoc },
+        { id: 'basic-sunburst', label: 'Basic Sunburst', component: BasicSunburstDoc },
+        { id: 'sunburst-rounded-corner', label: 'Sunburst with Rounded Corner', component: SunburstRoundedCornerDoc },
+        { id: 'sunburst-label-rotate', label: 'Sunburst Label Rotate', component: SunburstLabelRotateDoc },
+        { id: 'monochrome-sunburst', label: 'Monochrome Sunburst', component: MonochromeSunburstDoc },
+        { id: 'sunburst-visualmap', label: 'Sunburst VisualMap', component: SunburstVisualmapDoc },
+        { id: 'drink-flavors', label: 'Drink Flavors', component: DrinkFlavorsDoc },
+        { id: 'book-records', label: 'Book Records', component: BookRecordsDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -246,7 +453,13 @@ export class SunburstChartDemo {
 export class SankeyChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: SankeyUsageDoc },
-        { id: 'basic', label: 'Sankey', component: SankeyDoc },
+        { id: 'basic-sankey', label: 'Basic Sankey', component: BasicSankeyDoc },
+        { id: 'sankey-orient-vertical', label: 'Sankey Orient Vertical', component: SankeyOrientVerticalDoc },
+        { id: 'itemstyle-each-node-sankey', label: 'Specify ItemStyle for Each Node in Sankey', component: ItemstyleEachNodeSankeyDoc },
+        { id: 'sankey-levels-setting', label: 'Sankey with Levels Setting', component: SankeyLevelsSettingDoc },
+        { id: 'gradient-edge-sankey', label: 'Gradient Edge', component: GradientEdgeSankeyDoc },
+        { id: 'node-align-left-sankey', label: 'Node Align Left in Sankey', component: NodeAlignLeftSankeyDoc },
+        { id: 'node-align-right-sankey', label: 'Node Align Right in Sankey', component: NodeAlignRightSankeyDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -261,7 +474,10 @@ export class SankeyChartDemo {
 export class FunnelChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: FunnelUsageDoc },
-        { id: 'basic', label: 'Funnel', component: FunnelDoc },
+        { id: 'basic-funnel', label: 'Funnel Chart', component: BasicFunnelDoc },
+        { id: 'funnel-compare', label: 'Funnel Compare', component: FunnelCompareDoc },
+        { id: 'customized-funnel', label: 'Customized Funnel', component: CustomizedFunnelDoc },
+        { id: 'multiple-funnels', label: 'Multiple Funnels', component: MultipleFunnelsDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -274,7 +490,17 @@ export class FunnelChartDemo {
 export class GaugeChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: GaugeUsageDoc },
-        { id: 'basic', label: 'Gauge', component: GaugeDoc },
+        { id: 'gauge-basic', label: 'Gauge Basic chart', component: GaugeBasicDoc },
+        { id: 'simple-gauge', label: 'Simple Gauge', component: SimpleGaugeDoc },
+        { id: 'speed-gauge', label: 'Speed Gauge', component: SpeedGaugeDoc },
+        { id: 'progress-gauge', label: 'Progress Gauge', component: ProgressGaugeDoc },
+        { id: 'stage-speed-gauge', label: 'Stage Speed Gauge', component: StageSpeedGaugeDoc },
+        { id: 'grade-gauge', label: 'Grade Gauge', component: GradeGaugeDoc },
+        { id: 'multi-title-gauge', label: 'Multi Title Gauge', component: MultiTitleGaugeDoc },
+        { id: 'temperature-gauge', label: 'Temperature Gauge chart', component: TemperatureGaugeDoc },
+        { id: 'ring-gauge', label: 'Ring Gauge', component: RingGaugeDoc },
+        { id: 'clock-gauge', label: 'Clock', component: ClockGaugeDoc },
+        { id: 'gauge-car', label: 'Gauge Car', component: GaugeCarDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -287,7 +513,16 @@ export class GaugeChartDemo {
 export class DatasetChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: DatasetUsageDoc },
-        { id: 'basic', label: 'Dataset', component: DatasetDoc },
+        { id: 'simple-dataset', label: 'Simple Example of Dataset', component: SimpleDatasetDoc },
+        { id: 'dataset-object-array', label: 'Dataset in Object Array', component: DatasetObjectArrayDoc },
+        { id: 'series-layout-column-row', label: 'Series Layout By Column or Row', component: SeriesLayoutColumnRowDoc },
+        { id: 'simple-encode', label: 'Simple Encode', component: SimpleEncodeDoc },
+        { id: 'share-dataset', label: 'Share Dataset', component: ShareDatasetDoc },
+        { id: 'encode-and-matrix', label: 'Encode and Matrix', component: EncodeAndMatrixDoc },
+        { id: 'tooltip-datazoom-mobile', label: 'Tooltip and DataZoom on Mobile', component: TooltipDatazoomMobileDoc },
+        { id: 'large-scale-area-chart', label: 'Large scale area chart', component: LargeScaleAreaChartDoc },
+        { id: 'gantt-airport-flights', label: 'Gantt Chart of Airport Flights', component: GanttAirportFlightsDoc },
+        { id: 'wind-barb', label: 'Wind Barb', component: WindBarbDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }

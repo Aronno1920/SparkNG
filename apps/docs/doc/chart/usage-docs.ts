@@ -14,7 +14,11 @@ import { Component } from '@angular/core';
 })
 export class BarUsageDoc {
     importCode: Code = {
-        typescript: `import { BarChart } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { BarChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
         html: `<p-barchart [series]="series" [xAxis]="{ type: 'category', data: categories }" />`
@@ -33,7 +37,11 @@ export class BarUsageDoc {
 })
 export class PieUsageDoc {
     importCode: Code = {
-        typescript: `import { PieChart } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { PieChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
         html: `<p-piechart [data]="data" />`
@@ -52,7 +60,11 @@ export class PieUsageDoc {
 })
 export class ScatterUsageDoc {
     importCode: Code = {
-        typescript: `import { ScatterChart } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { ScatterChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
         html: `<p-scatterchart [series]="series" />`
@@ -71,10 +83,14 @@ export class ScatterUsageDoc {
 })
 export class MapUsageDoc {
     importCode: Code = {
-        typescript: `import { MapChart, registerMap } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component & Map Registry
+import { MapChart, registerMap } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
-        html: `<p-mapchart [data]="data" map="USA" />`
+        html: `<p-mapchart [data]="data" map="world" />`
     };
 }
 
@@ -90,7 +106,11 @@ export class MapUsageDoc {
 })
 export class CandlestickUsageDoc {
     importCode: Code = {
-        typescript: `import { CandlestickChart } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { CandlestickChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
         html: `<p-candlestickchart [data]="data" [xAxis]="{ type: 'category', data: dates }" />`
@@ -109,7 +129,11 @@ export class CandlestickUsageDoc {
 })
 export class RadarUsageDoc {
     importCode: Code = {
-        typescript: `import { RadarChart } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { RadarChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
         html: `<p-radarchart [indicator]="indicators" [data]="data" />`
@@ -128,10 +152,14 @@ export class RadarUsageDoc {
 })
 export class BoxplotUsageDoc {
     importCode: Code = {
-        typescript: `import { ChartModule } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { BoxplotChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
-        html: `<p-chart [options]="options" />`
+        html: `<p-boxplotchart [options]="options" />`
     };
 }
 
@@ -147,10 +175,14 @@ export class BoxplotUsageDoc {
 })
 export class HeatmapUsageDoc {
     importCode: Code = {
-        typescript: `import { ChartModule } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { HeatmapChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
-        html: `<p-chart [options]="options" />`
+        html: `<p-heatmapchart [options]="options" />`
     };
 }
 
@@ -166,7 +198,11 @@ export class HeatmapUsageDoc {
 })
 export class GraphUsageDoc {
     importCode: Code = {
-        typescript: `import { GraphChart } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { GraphChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
         html: `<p-graphchart [nodes]="nodes" [links]="links" />`
@@ -185,7 +221,11 @@ export class GraphUsageDoc {
 })
 export class TreeUsageDoc {
     importCode: Code = {
-        typescript: `import { TreeChart } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { TreeChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
         html: `<p-treechart [data]="data" />`
@@ -204,10 +244,14 @@ export class TreeUsageDoc {
 })
 export class TreemapUsageDoc {
     importCode: Code = {
-        typescript: `import { ChartModule } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { TreemapChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
-        html: `<p-chart [options]="options" />`
+        html: `<p-treemapchart [options]="options" />`
     };
 }
 
@@ -223,7 +267,11 @@ export class TreemapUsageDoc {
 })
 export class SunburstUsageDoc {
     importCode: Code = {
-        typescript: `import { SunburstChart } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { SunburstChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
         html: `<p-sunburstchart [data]="data" />`
@@ -242,7 +290,11 @@ export class SunburstUsageDoc {
 })
 export class SankeyUsageDoc {
     importCode: Code = {
-        typescript: `import { SankeyChart } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { SankeyChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
         html: `<p-sankeychart [data]="data" [links]="links" />`
@@ -261,7 +313,11 @@ export class SankeyUsageDoc {
 })
 export class FunnelUsageDoc {
     importCode: Code = {
-        typescript: `import { FunnelChart } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { FunnelChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
         html: `<p-funnelchart [data]="data" />`
@@ -280,7 +336,11 @@ export class FunnelUsageDoc {
 })
 export class GaugeUsageDoc {
     importCode: Code = {
-        typescript: `import { GaugeChart } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { GaugeChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
         html: `<p-gaugechart [value]="value" />`
@@ -299,10 +359,14 @@ export class GaugeUsageDoc {
 })
 export class DatasetUsageDoc {
     importCode: Code = {
-        typescript: `import { ChartModule } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { BarChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
-        html: `<p-chart [options]="options" />`
+        html: `<p-barchart [dataset]="dataset" [series]="series" [xAxis]="{ type: 'category' }" [yAxis]="{ type: 'value' }" />`
     };
 }
 
@@ -318,9 +382,13 @@ export class DatasetUsageDoc {
 })
 export class RichTextUsageDoc {
     importCode: Code = {
-        typescript: `import { ChartModule } from '@bdspark/sparkng/chart';`
+        typescript: `// Standalone Component
+import { GaugeChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
-        html: `<p-chart [options]="options" />`
+        html: `<p-gaugechart [value]="72" [options]="options" />`
     };
 }

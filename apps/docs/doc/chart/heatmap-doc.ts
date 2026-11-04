@@ -12,7 +12,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
             <p>Heatmap charts visualize tabular 2D data where individual values are represented as colors via a <i>visualMap</i> component.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-chart [options]="options" />
+            <p-heatmapchart [options]="options" />
         </div>
         <app-code></app-code>
     `
