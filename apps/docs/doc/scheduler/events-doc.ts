@@ -11,19 +11,12 @@ import type { EventCategory, SchedulerEvent } from '@bdspark/sparkng/types/sched
     template: `
         <app-docsectiontext>
             <p>
-                Configure rich event planning capabilities: <strong>Metadata & Categories</strong>, <strong>All-Day & Multi-Day Spanning Events</strong>,
-                <strong>Recurring Events</strong> (using RFC 5545 RRULE syntax), <strong>Custom Styling & Color Badges</strong>,
-                <strong>Quick Info</strong> dialogs, and <strong>More Popover</strong> overlays for high-density dates.
+                Configure rich event planning capabilities: <strong>Metadata & Categories</strong>, <strong>All-Day & Multi-Day Spanning Events</strong>, <strong>Recurring Events</strong> (using RFC 5545 RRULE syntax),
+                <strong>Custom Styling & Color Badges</strong>, <strong>Quick Info</strong> dialogs, and <strong>More Popover</strong> overlays for high-density dates.
             </p>
         </app-docsectiontext>
         <div class="card">
-            <p-scheduler-root
-                [events]="events()"
-                [categories]="categories()"
-                [(activeCategoryIds)]="activeCategoryIds"
-                [view]="'month'"
-                [maxEventsVisible]="2"
-            >
+            <p-scheduler-root [events]="events()" [categories]="categories()" [(activeCategoryIds)]="activeCategoryIds" [view]="'month'" [maxEventsVisible]="2">
                 <p-scheduler-header>
                     <p-scheduler-navigation></p-scheduler-navigation>
                     <p-scheduler-title></p-scheduler-title>

@@ -34,7 +34,7 @@ export class NgAddDoc {
     };
 
     flagsCode: Code = {
-        command: `# Choose the preset without the prompt — Aura, Lara, Material or Nora
+        command: `# Choose the preset without the prompt — Aura, Lara, Material, Nora or Shadcn
 ng add @bdspark/sparkng --theme=Lara
 
 # Wire everything up but do not run the package install

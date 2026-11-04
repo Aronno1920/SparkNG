@@ -351,7 +351,7 @@ import { OverviewApp } from './samples/overviewapp.component';
                                         <div class="font-medium text-color p-2">Product Usage</div>
                                     </div>
                                     <div class="flex-1 mt-2 py-4 rounded-lg bg-surface-0 dark:bg-surface-900 shadow-sm">
-                                        <p-chart type="line" [data]="lineChartData" [options]="lineChartOptions" styleClass="min-h-44 w-full" width="100%" height="11rem" />
+                                        <p-chart [options]="lineChartOptions" class="min-h-44 w-full" height="11rem" />
                                     </div>
                                 </div>
                                 <div class="w-full h-full flex flex-col p-3 rounded-xl bg-emphasis">
@@ -364,7 +364,7 @@ import { OverviewApp } from './samples/overviewapp.component';
                             <div class="mt-4 w-full flex flex-col p-3 rounded-xl bg-emphasis">
                                 <div class="font-medium text-color p-2">Total Purchases</div>
                                 <div class="flex-1 py-4 px-2 w-full mt-2 flex items-center justify-center rounded-lg bg-surface-0 dark:bg-surface-900 shadow-sm">
-                                    <p-chart type="bar" [data]="chartData2" [options]="chartOptions2" height="15rem" class="w-full" />
+                                    <p-chart [options]="chartOptions2" height="15rem" class="w-full" />
                                 </div>
                             </div>
                         </div>
@@ -401,10 +401,6 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
 
     dashboardSidebarVisible: boolean = false;
 
-    chartData: any;
-
-    chartOptions: any;
-
     selectButtonValue: SelectItem;
 
     selectButtonOptions: SelectItem[];
@@ -425,13 +421,9 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
 
     churnRisk: number = 24;
 
-    lineChartData: any = {};
-
     lineChartOptions: any = {};
 
     customerSatisfaction: number = 56;
-
-    chartData2: any = {};
 
     chartOptions2: any = {};
 
@@ -680,10 +672,8 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
         ];
 
         if (isPlatformBrowser(this.platformId)) {
-            this.chartData2 = this.setChartData();
-            this.chartOptions2 = this.setChartOptions();
-            this.lineChartData = this.setLineChartData();
-            this.lineChartOptions = this.setLineChartOptions();
+            this.setChartData();
+            this.setLineChartData();
         }
     }
 
@@ -692,334 +682,77 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
         const borderColor = documentStyle.getPropertyValue('--p-content-border-color');
         const hoverBackgroundColor = documentStyle.getPropertyValue('--p-primary-color');
 
-        return {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            datasets: [
+        this.chartOptions2 = {
+            grid: { left: 8, right: 8, top: 24, bottom: 0, containLabel: true },
+            tooltip: { trigger: 'axis' },
+            xAxis: {
+                type: 'category',
+                data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                axisTick: { show: false },
+                axisLine: { show: false }
+            },
+            yAxis: { type: 'value', splitLine: { show: false } },
+            series: [
                 {
                     type: 'bar',
-                    label: 'Investment Wallet',
-                    backgroundColor: borderColor,
-                    data: [100, 201, 404, 300, 140, 220, 314, 520, 145, 234, 325, 147],
-                    borderRadius: {
-                        topLeft: 4,
-                        topRight: 4
-                    },
-                    borderSkipped: true,
-                    barThickness: 20,
-                    hoverBackgroundColor: hoverBackgroundColor,
-                    hoverTransition: '1s ease all'
+                    name: 'Investment Wallet',
+                    itemStyle: { color: borderColor, borderRadius: [4, 4, 0, 0] },
+                    emphasis: { itemStyle: { color: hoverBackgroundColor } },
+                    barWidth: 20,
+                    data: [100, 201, 404, 300, 140, 220, 314, 520, 145, 234, 325, 147]
                 }
             ]
         };
     }
 
     setChartOptions() {
-        const documentStyle = getComputedStyle(document.documentElement);
-        const backgroundColor = documentStyle.getPropertyValue('--p-content-background');
-        const textColor = documentStyle.getPropertyValue('--p-text-color');
-        const borderColor = documentStyle.getPropertyValue('--p-content-border-color');
-        const textMutedColor = documentStyle.getPropertyValue('--p-text-muted-color');
-
-        const getOrCreateTooltip = (chart) => {
-            let tooltipEl = chart.canvas.parentNode.querySelector('div.chartjs-tooltip');
-
-            if (!tooltipEl) {
-                tooltipEl = document.createElement('div');
-                tooltipEl.classList.add('chartjs-tooltip');
-                tooltipEl.style.backgroundColor = backgroundColor;
-                tooltipEl.style.boxShadow =
-                    ' 0px 33.12px 9.399px 0px rgba(0, 0, 0, 0.00), 0px 21.036px 8.504px 0px rgba(0, 0, 0, 0.01), 0px 12.084px 7.161px 0px rgba(0, 0, 0, 0.05), 0px 5.371px 5.371px 0px rgba(0, 0, 0, 0.09), 0px 1.343px 2.685px 0px rgba(0, 0, 0, 0.10)';
-                tooltipEl.style.borderRadius = '7px';
-                tooltipEl.style.color = textColor;
-                tooltipEl.style.opacity = 1;
-                tooltipEl.style.padding = '14.5px';
-                tooltipEl.style.pointerEvents = 'none';
-                tooltipEl.style.position = 'absolute';
-                tooltipEl.style.transform = 'translate(-50%, 0)';
-                tooltipEl.style.transition = 'all .2s ease';
-                chart.canvas.parentNode.appendChild(tooltipEl);
-            }
-
-            return tooltipEl;
-        };
-
-        return {
-            maintainAspectRatio: false,
-            aspectRatio: 0.8,
-            plugins: {
-                chartAreaBorder: {
-                    borderColor: 'red',
-                    borderWidth: 2,
-                    borderDash: [5, 5],
-                    borderDashOffset: 2
-                },
-                tooltip: {
-                    enabled: false,
-                    padding: 5,
-                    position: 'nearest',
-                    external: function (context) {
-                        // Tooltip Element
-                        const { chart, tooltip } = context;
-                        const tooltipEl = getOrCreateTooltip(chart);
-
-                        // Hide if no tooltip
-                        if (tooltip.opacity === 0) {
-                            tooltipEl.style.opacity = 0;
-
-                            return;
-                        }
-
-                        if (tooltip.body) {
-                            const bodyLines = tooltip.body.map((b) => {
-                                const strArr = b.lines[0].split(':');
-                                const data = {
-                                    text: strArr[0].trim(),
-                                    value: strArr[1].trim()
-                                };
-
-                                return data;
-                            });
-
-                            // Clear old content
-                            tooltipEl.innerHTML = '';
-                            bodyLines.forEach((body, i) => {
-                                const text = document.createElement('div');
-
-                                text.appendChild(document.createTextNode('$' + body.value + 'K'));
-                                text.style.fontWeight = '500';
-                                text.style.lineHeight = '21px';
-                                text.style.fontSize = '14px';
-                                tooltipEl.appendChild(text);
-                            });
-                        }
-
-                        const { offsetLeft: positionX, offsetTop: positionY } = chart.canvas;
-
-                        // Display, position, and set styles for font
-                        tooltipEl.style.opacity = 1;
-                        tooltipEl.style.left = positionX + tooltip.caretX + 'px';
-                        tooltipEl.style.top = positionY + tooltip.caretY + 'px';
-                        tooltipEl.style.font = tooltip.options.bodyFont.string;
-                        tooltipEl.style.padding = tooltip.options.padding + 'px ' + tooltip.options.padding + 'px';
-                    }
-                },
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                x: {
-                    stacked: true,
-                    ticks: {
-                        color: textMutedColor
-                    },
-                    grid: {
-                        color: 'transparent',
-                        borderColor: 'transparent'
-                    }
-                },
-                y: {
-                    border: {
-                        display: false
-                    },
-                    stacked: true,
-                    ticks: {
-                        color: textMutedColor
-                    },
-                    grid: {
-                        color: borderColor,
-                        borderColor: 'transparent'
-                    }
-                }
-            }
-        };
+        // Chart theming is derived from the active SparkNG preset automatically.
     }
 
     setLineChartData() {
         const { darkTheme } = this.configService.appState();
 
-        return {
-            labels: ['31', '1', '2', '3', '4', '5', '6', '7', '8'],
-            datasets: [
+        this.lineChartOptions = {
+            grid: { left: 8, right: 8, top: 8, bottom: 0, containLabel: true },
+            tooltip: { trigger: 'axis' },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['31', '1', '2', '3', '4', '5', '6', '7', '8'],
+                axisTick: { show: false },
+                axisLine: { show: false }
+            },
+            yAxis: { type: 'value', splitLine: { show: false } },
+            series: [
                 {
-                    label: 'My First Dataset',
-                    data: [60, 64, 57, 52, 58, 70, 75, 70, 60],
-                    fill: true,
-                    borderColor: '#16A34A',
-                    tension: 0.4,
-                    borderWidth: 1.5,
-                    pointBackgroundColor: '#16A34A',
-                    pointBorderColor: darkTheme ? '#09090B' : '#FFF',
-                    pointBorderWidth: 3,
-
-                    hideInLegendAndTooltip: false,
-                    pointStyle: function (context) {
-                        let index = context.dataIndex;
-
-                        if (index == 6) {
-                            return 'circle';
-                        } else {
-                            return 'line';
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'circle',
+                    symbolSize: 8,
+                    showSymbol: false,
+                    lineStyle: { width: 1.5, color: '#16A34A' },
+                    itemStyle: { color: '#16A34A', borderColor: darkTheme ? '#09090B' : '#FFF', borderWidth: 3 },
+                    areaStyle: {
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [
+                                { offset: 0, color: 'rgba(22,163,74,0.16)' },
+                                { offset: 1, color: 'rgba(22,163,74,0)' }
+                            ]
                         }
                     },
-                    pointRadius: function (context) {
-                        let index = context.dataIndex;
-
-                        if (index == 6) {
-                            return 6;
-                        } else {
-                            return 0.1;
-                        }
-                    },
-                    backgroundColor: (context) => {
-                        const bgColor = ['rgba(22,163,74,0.16)', 'rgba(22,163,74,0)'];
-
-                        if (!context.chart.chartArea) {
-                            return;
-                        }
-
-                        const {
-                            ctx,
-                            data,
-                            chartArea: { top, bottom }
-                        } = context.chart;
-                        const gradientBg = ctx.createLinearGradient(0, top, 0, bottom);
-                        const colorTranches = 1 / (bgColor.length - 1);
-
-                        for (let i = 0; i < bgColor.length; i++) {
-                            gradientBg.addColorStop(0 + i * colorTranches, bgColor[i]);
-                        }
-
-                        return gradientBg;
-                    }
+                    data: [60, 64, 57, 52, 58, 70, 75, 70, 60]
                 }
-            ],
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top'
-                    },
-                    title: {
-                        display: true,
-                        text: 'Chart.js Line Chart'
-                    }
-                }
-            }
+            ]
         };
     }
 
     setLineChartOptions() {
-        const documentStyle = getComputedStyle(document.documentElement);
-        const backgroundColor = documentStyle.getPropertyValue('--p-content-background');
-        const textColor = documentStyle.getPropertyValue('--p-text-color');
-        const borderColor = documentStyle.getPropertyValue('--p-content-border-color');
-        const textMutedColor = documentStyle.getPropertyValue('--p-text-muted-color');
-
-        const getOrCreateTooltip = (chart) => {
-            let tooltipEl = chart.canvas.parentNode.querySelector('div.chartjs-tooltip');
-
-            if (!tooltipEl) {
-                tooltipEl = document.createElement('div');
-                tooltipEl.classList.add('chartjs-tooltip');
-                tooltipEl.style.backgroundColor = backgroundColor;
-                tooltipEl.style.boxShadow =
-                    ' 0px 33.12px 9.399px 0px rgba(0, 0, 0, 0.00), 0px 21.036px 8.504px 0px rgba(0, 0, 0, 0.01), 0px 12.084px 7.161px 0px rgba(0, 0, 0, 0.05), 0px 5.371px 5.371px 0px rgba(0, 0, 0, 0.09), 0px 1.343px 2.685px 0px rgba(0, 0, 0, 0.10)';
-                tooltipEl.style.borderRadius = '7px';
-                tooltipEl.style.color = textColor;
-                tooltipEl.style.opacity = 1;
-                tooltipEl.style.padding = '2px';
-                tooltipEl.style.pointerEvents = 'none';
-                tooltipEl.style.position = 'absolute';
-                tooltipEl.style.transform = 'translate(-50%, 0)';
-                tooltipEl.style.transition = 'all .2s ease';
-                chart.canvas.parentNode.appendChild(tooltipEl);
-            }
-
-            return tooltipEl;
-        };
-
-        return {
-            maintainAspectRatio: false,
-            aspectRatio: 0.8,
-            plugins: {
-                chartAreaBorder: {
-                    borderColor: 'red',
-                    borderWidth: 2,
-                    borderDash: [5, 5],
-                    borderDashOffset: 2
-                },
-                tooltip: {
-                    enabled: false,
-                    padding: 8,
-                    position: 'nearest',
-                    external: function (context) {
-                        // Tooltip Element
-                        const { chart, tooltip } = context;
-                        const tooltipEl = getOrCreateTooltip(chart);
-
-                        // Hide if no tooltip
-                        if (tooltip.opacity === 0) {
-                            tooltipEl.style.opacity = 0;
-
-                            return;
-                        }
-
-                        if (tooltip.body) {
-                            const bodyLines = tooltip.body.map((b) => {
-                                const strArr = b.lines[0].split(':');
-                                const data = {
-                                    text: strArr[0].trim(),
-                                    value: strArr[1].trim()
-                                };
-
-                                return data;
-                            });
-
-                            // Clear old content
-                            tooltipEl.innerHTML = '';
-                            bodyLines.forEach((body, i) => {
-                                const text = document.createElement('div');
-
-                                text.appendChild(document.createTextNode(body.value + '.000'));
-                                text.style.fontWeight = '500';
-                                text.style.lineHeight = '21px';
-                                text.style.fontSize = '14px';
-                                tooltipEl.appendChild(text);
-                            });
-                        }
-
-                        const { offsetLeft: positionX, offsetTop: positionY } = chart.canvas;
-
-                        // Display, position, and set styles for font
-                        tooltipEl.style.opacity = 1;
-                        tooltipEl.style.left = positionX + tooltip.caretX + 'px';
-                        tooltipEl.style.top = positionY + tooltip.caretY - 40 + 'px';
-                        tooltipEl.style.font = tooltip.options.bodyFont.string;
-                        tooltipEl.style.padding = tooltip.options.padding + 'px ' + tooltip.options.padding + 'px';
-                    }
-                },
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                x: {
-                    stacked: true,
-                    ticks: {
-                        color: textMutedColor
-                    },
-                    grid: {
-                        color: 'transparent',
-                        borderColor: 'transparent'
-                    }
-                },
-                y: {
-                    display: false,
-                    grace: 14
-                }
-            }
-        };
+        // Chart theming is derived from the active SparkNG preset automatically.
     }
 
     setSelectedSampleAppsSidebarNav(title) {

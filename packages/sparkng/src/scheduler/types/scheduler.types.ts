@@ -3,20 +3,7 @@
  * Core Type Definitions for Scheduler
  */
 
-export type SchedulerViewType =
-    | 'month'
-    | 'week'
-    | 'day'
-    | 'agenda'
-    | 'year'
-    | 'timeline'
-    | 'resourceTimeline'
-    | 'resourceDay'
-    | 'resourceWeek'
-    | 'resourceMonth'
-    | 'dateDay'
-    | 'dateWeek'
-    | 'dateMonth';
+export type SchedulerViewType = 'month' | 'week' | 'day' | 'agenda' | 'year' | 'timeline' | 'resourceTimeline' | 'resourceDay' | 'resourceWeek' | 'resourceMonth' | 'dateDay' | 'dateWeek' | 'dateMonth';
 
 export type DensityMode = 'minimal' | 'compact' | 'standard' | 'comfortable';
 
@@ -32,8 +19,8 @@ export interface RRuleOptions {
 
 export interface BusinessHours {
     daysOfWeek?: number[]; // [0..6], default [1, 2, 3, 4, 5] (Mon-Fri)
-    startTime?: string;    // '09:00' or '09:00:00'
-    endTime?: string;      // '17:00' or '17:00:00'
+    startTime?: string; // '09:00' or '09:00:00'
+    endTime?: string; // '17:00' or '17:00:00'
     resourceId?: string | number;
 }
 

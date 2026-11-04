@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
     imports: [RouterModule, AppDocSectionText, AppCode],
     template: `
         <app-docsectiontext>
-            <p>SparkNG provides 4 predefined themes out of the box; Aura, Material, Lara and Nora. See the <a routerLink="/theming">theming</a> documentation for details.</p>
+            <p>SparkNG provides 5 predefined themes out of the box; Aura, Material, Lara, Nora and Shadcn. See the <a routerLink="/theming">theming</a> documentation for details.</p>
         </app-docsectiontext>
         <app-code [code]="code" [hideToggleCode]="true"></app-code>
     `

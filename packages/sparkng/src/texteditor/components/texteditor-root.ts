@@ -115,11 +115,7 @@ interface UploadConfig {
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        TextEditorStyle,
-        { provide: TEXTEDITOR_CONTEXT, useExisting: forwardRef(() => TextEditorRoot) },
-        { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => TextEditorRoot), multi: true }
-    ],
+    providers: [TextEditorStyle, { provide: TEXTEDITOR_CONTEXT, useExisting: forwardRef(() => TextEditorRoot) }, { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => TextEditorRoot), multi: true }],
     host: {
         class: 'p-texteditor p-component',
         '[attr.data-scope]': '"texteditor"',

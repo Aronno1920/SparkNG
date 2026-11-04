@@ -159,7 +159,16 @@ export class TextEditorTableControls {
     providers: [{ provide: TABLECOLUMNMENU_CONTEXT, useExisting: forwardRef(() => TextEditorTableColumnMenu) }],
     template: `
         @if (request(); as req) {
-            <div class="p-texteditor-popover-menu p-texteditor-table-column-menu" role="menu" aria-label="Column options" [attr.data-scope]="'texteditor'" [attr.data-part]="'table-column-menu'" [style.top.px]="req.top - 8" [style.left.px]="req.left" (click)="$event.stopPropagation()">
+            <div
+                class="p-texteditor-popover-menu p-texteditor-table-column-menu"
+                role="menu"
+                aria-label="Column options"
+                [attr.data-scope]="'texteditor'"
+                [attr.data-part]="'table-column-menu'"
+                [style.top.px]="req.top - 8"
+                [style.left.px]="req.left"
+                (click)="$event.stopPropagation()"
+            >
                 @if (slotContext(); as ctx) {
                     <ng-container *ngTemplateOutlet="template()!; context: ctx" />
                 }
@@ -228,7 +237,16 @@ export class TextEditorTableColumnMenu {
     providers: [{ provide: TABLEROWMENU_CONTEXT, useExisting: forwardRef(() => TextEditorTableRowMenu) }],
     template: `
         @if (request(); as req) {
-            <div class="p-texteditor-popover-menu p-texteditor-table-row-menu" role="menu" aria-label="Row options" [attr.data-scope]="'texteditor'" [attr.data-part]="'table-row-menu'" [style.top.px]="req.top" [style.left.px]="req.left - 8" (click)="$event.stopPropagation()">
+            <div
+                class="p-texteditor-popover-menu p-texteditor-table-row-menu"
+                role="menu"
+                aria-label="Row options"
+                [attr.data-scope]="'texteditor'"
+                [attr.data-part]="'table-row-menu'"
+                [style.top.px]="req.top"
+                [style.left.px]="req.left - 8"
+                (click)="$event.stopPropagation()"
+            >
                 @if (slotContext(); as ctx) {
                     <ng-container *ngTemplateOutlet="template()!; context: ctx" />
                 }
@@ -298,7 +316,16 @@ export class TextEditorTableRowMenu {
     providers: [{ provide: TABLECELLMENU_CONTEXT, useExisting: forwardRef(() => TextEditorTableCellMenu) }],
     template: `
         @if (request(); as req) {
-            <div class="p-texteditor-popover-menu p-texteditor-table-cell-menu" role="menu" aria-label="Cell options" [attr.data-scope]="'texteditor'" [attr.data-part]="'table-cell-menu'" [style.top.px]="req.top" [style.left.px]="req.left" (click)="$event.stopPropagation()">
+            <div
+                class="p-texteditor-popover-menu p-texteditor-table-cell-menu"
+                role="menu"
+                aria-label="Cell options"
+                [attr.data-scope]="'texteditor'"
+                [attr.data-part]="'table-cell-menu'"
+                [style.top.px]="req.top"
+                [style.left.px]="req.left"
+                (click)="$event.stopPropagation()"
+            >
                 @if (slotContext(); as ctx) {
                     <ng-container *ngTemplateOutlet="template()!; context: ctx" />
                 }

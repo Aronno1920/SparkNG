@@ -73,13 +73,13 @@ import { TooltipModule } from '@bdspark/sparkng/tooltip';
                     <div class="flex items-center gap-6 mb-6">
                         <div class="flex-1 text-color font-semibold leading-6">Crypto Analytics</div>
                         <div class="flex items-center gap-5">
-                            <div *ngFor="let item of chartData?.datasets" class="flex items-center gap-2">
-                                <div class="w-3 h-3 rounded-full" [style.backgroundColor]="item.backgroundColor"></div>
-                                <span class="font-medium text-color leading-6">{{ item.label }}</span>
+                            <div *ngFor="let item of chartSeries" class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full" [style.backgroundColor]="item.itemStyle.color"></div>
+                                <span class="font-medium text-color leading-6">{{ item.name }}</span>
                             </div>
                         </div>
                     </div>
-                    <p-chart type="bar" [data]="chartData" [options]="chartOptions" [height]="'20rem'" />
+                    <p-barchart [series]="chartSeries" [xAxis]="{ type: 'category', data: chartLabels }" [tooltip]="{ trigger: 'axis' }" height="20rem" />
                 </div>
                 <div class="flex gap-6 xl:flex-row flex-col">
                     <div class="flex-1 border border-surface rounded-2xl py-5 px-7">
@@ -182,9 +182,9 @@ import { TooltipModule } from '@bdspark/sparkng/tooltip';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OverviewApp {
-    chartData: any;
+    chartLabels: any;
 
-    chartOptions: any;
+    chartSeries: any;
 
     dates: Date[] | undefined = [];
 
@@ -333,8 +333,7 @@ export class OverviewApp {
 
     initChart() {
         if (isPlatformBrowser(this.platformId)) {
-            this.chartData = this.setChartData(this.selectedTime);
-            this.chartOptions = this.setChartOptions();
+            this.setChartData(this.selectedTime);
             this.cd.markForCheck();
         }
     }
@@ -347,181 +346,40 @@ export class OverviewApp {
         const primary400 = documentStyle.getPropertyValue('--p-primary-400');
         const primary500 = documentStyle.getPropertyValue('--p-primary-500');
         const primary600 = documentStyle.getPropertyValue('--p-primary-600');
-        return {
-            labels: datasets.labels,
-            datasets: [
-                {
-                    type: 'bar',
-                    label: 'Personal Wallet',
-                    backgroundColor: primary400,
-                    hoverBackgroundColor: primary600,
-                    data: datasets.data[0],
-                    barThickness: 32
-                },
-                {
-                    type: 'bar',
-                    label: 'Corporate Wallet',
-                    backgroundColor: primary300,
-                    hoverBackgroundColor: primary500,
-                    data: datasets.data[1],
-                    barThickness: 32
-                },
-                {
-                    type: 'bar',
-                    label: 'Investment Wallet',
-                    backgroundColor: primary200,
-                    hoverBackgroundColor: primary400,
-                    data: datasets.data[2],
-                    borderRadius: {
-                        topLeft: 8,
-                        topRight: 8
-                    },
-                    borderSkipped: false,
-                    barThickness: 32
-                }
-            ]
-        };
+        this.chartLabels = datasets.labels;
+        this.chartSeries = [
+            {
+                name: 'Personal Wallet',
+                type: 'bar',
+                stack: 'total',
+                itemStyle: { color: primary400, borderRadius: [6, 6, 0, 0] },
+                emphasis: { itemStyle: { color: primary600 } },
+                barWidth: 32,
+                data: datasets.data[0]
+            },
+            {
+                name: 'Corporate Wallet',
+                type: 'bar',
+                stack: 'total',
+                itemStyle: { color: primary300 },
+                emphasis: { itemStyle: { color: primary500 } },
+                barWidth: 32,
+                data: datasets.data[1]
+            },
+            {
+                name: 'Investment Wallet',
+                type: 'bar',
+                stack: 'total',
+                itemStyle: { color: primary200 },
+                emphasis: { itemStyle: { color: primary400 } },
+                barWidth: 32,
+                data: datasets.data[2]
+            }
+        ];
     }
 
     setChartOptions() {
-        const { darkTheme } = this.configService.appState();
-        const documentStyle = getComputedStyle(document.documentElement);
-        const surface100 = documentStyle.getPropertyValue('--p-surface-100');
-        const surface900 = documentStyle.getPropertyValue('--p-surface-900');
-        const surface400 = documentStyle.getPropertyValue('--p-surface-400');
-        const surface500 = documentStyle.getPropertyValue('--p-surface-500');
-
-        return {
-            maintainAspectRatio: false,
-            aspectRatio: 0.8,
-            plugins: {
-                tooltip: {
-                    enabled: false,
-                    position: 'nearest',
-                    external: function (context) {
-                        const { chart, tooltip } = context;
-                        let tooltipEl = chart.canvas.parentNode.querySelector('div.chartjs-tooltip');
-
-                        if (!tooltipEl) {
-                            tooltipEl = document.createElement('div');
-                            tooltipEl.classList.add(
-                                'chartjs-tooltip',
-                                'dark:bg-surface-950',
-                                'bg-surface-0',
-                                'p-3',
-                                'rounded-[8px]',
-                                'overflow-hidden',
-                                'opacity-100',
-                                'absolute',
-                                'transition-all',
-                                'duration-[0.1s]',
-                                'pointer-events-none',
-                                'shadow-[0px_25px_20px_-5px_rgba(0,0,0,0.10),0px_10px_8px_-6px_rgba(0,0,0,0.10)]'
-                            );
-                            chart.canvas.parentNode.appendChild(tooltipEl);
-                        }
-
-                        if (tooltip.opacity === 0) {
-                            tooltipEl.style.opacity = 0;
-
-                            return;
-                        }
-
-                        const datasetPointsX = tooltip.dataPoints.map((dp) => dp.element.x);
-                        const avgX = datasetPointsX.reduce((a, b) => a + b, 0) / datasetPointsX.length;
-                        const avgY = tooltip.dataPoints[0].element.y;
-
-                        if (tooltip.body) {
-                            tooltipEl.innerHTML = '';
-                            const tooltipBody = document.createElement('div');
-
-                            tooltipBody.classList.add('flex', 'flex-col', 'gap-4', 'px-3', 'py-3', 'min-w-[18rem]');
-                            tooltip.dataPoints.reverse().forEach((body, i) => {
-                                const row = document.createElement('div');
-
-                                row.classList.add('flex', 'items-center', 'gap-2', 'w-full');
-                                const point = document.createElement('div');
-
-                                point.classList.add('w-2.5', 'h-2.5', 'rounded-full');
-                                point.style.backgroundColor = body.dataset.backgroundColor;
-                                row.appendChild(point);
-                                const label = document.createElement('span');
-
-                                label.appendChild(document.createTextNode(body.dataset.label));
-                                label.classList.add('text-base', 'font-medium', 'text-color', 'flex-1', 'text-left', 'capitalize');
-                                row.appendChild(label);
-                                const value = document.createElement('span');
-
-                                value.appendChild(document.createTextNode(body.formattedValue));
-                                value.classList.add('text-base', 'font-medium', 'text-color', 'text-right');
-                                row.appendChild(value);
-                                tooltipBody.appendChild(row);
-                            });
-                            tooltipEl.appendChild(tooltipBody);
-                        }
-
-                        const { offsetLeft: positionX, offsetTop: positionY } = chart.canvas;
-
-                        tooltipEl.style.opacity = 1;
-                        tooltipEl.style.font = tooltip.options.bodyFont.string;
-                        tooltipEl.style.padding = 0;
-                        const chartWidth = chart.width;
-                        const tooltipWidth = tooltipEl.offsetWidth;
-                        const chartHeight = chart.height;
-                        const tooltipHeight = tooltipEl.offsetHeight;
-
-                        let tooltipX = positionX + avgX + 24;
-                        let tooltipY = avgY;
-
-                        if (tooltipX + tooltipWidth > chartWidth) {
-                            tooltipX = positionX + avgX - tooltipWidth - 20;
-                        }
-
-                        if (tooltipY < 0) {
-                            tooltipY = 0;
-                        } else if (tooltipY + tooltipHeight > chartHeight) {
-                            tooltipY = chartHeight - tooltipHeight;
-                        }
-
-                        tooltipEl.style.left = tooltipX + 'px';
-                        tooltipEl.style.top = tooltipY + 'px';
-                    }
-                },
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                x: {
-                    stacked: true,
-                    ticks: {
-                        color: darkTheme ? surface500 : surface400
-                    },
-                    grid: {
-                        display: false,
-                        borderColor: 'transparent'
-                    },
-                    border: {
-                        display: false
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-                    stacked: true,
-                    ticks: {
-                        color: darkTheme ? surface500 : surface400
-                    },
-                    grid: {
-                        display: true,
-                        color: darkTheme ? surface900 : surface100,
-                        borderColor: 'transparent'
-                    },
-                    border: {
-                        display: false
-                    }
-                }
-            }
-        };
+        // Charts follow the active SparkNG theme automatically; nothing to configure.
     }
 
     createDatasets(val: string) {
@@ -557,7 +415,6 @@ export class OverviewApp {
     }
 
     changeSelect() {
-        this.chartData = this.setChartData(this.selectedTime);
-        this.chartOptions = this.setChartOptions();
+        this.setChartData(this.selectedTime);
     }
 }

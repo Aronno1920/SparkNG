@@ -9,7 +9,7 @@ This package contains a collection of professionally designed themes and presets
 
 ## Features
 
-- **Standard Presets**: Built-in presets including Aura, Lara, Nora, and Material.
+- **Standard Presets**: Built-in presets including Aura, Lara, Nora, Material, and Shadcn.
 - **Design Tokens**: Comprehensive set of tokens for colors, spacing, typography, and more.
 - **Component Themes**: Fine-grained styling for over 80+ SparkNG components.
 - **Extensible**: Easily extend or customize existing presets to match your brand.
@@ -29,8 +29,30 @@ SparkNG Themes comes with several curated presets:
 - **Lara**: A versatile and clean aesthetic, suitable for a wide range of applications.
 - **Nora**: A distinct look with unique design choices for modern interfaces.
 - **Material**: Follows Material Design principles for a familiar and functional UI.
+- **Shadcn**: The minimal design language of [shadcn/ui](https://ui.shadcn.com/) — neutral palette, near-black primary in light mode (near-white in dark mode), subtle borders, soft shadows, and a radius scale derived from a single base. Complete light and dark mode support.
 
 ## Usage
+
+### Shadcn Quick Start
+
+```typescript
+import { provideSpark } from '@bdspark/sparkng/config';
+import Shadcn from '@bdspark/sparkng-themes/shadcn';
+
+bootstrapApplication(AppComponent, {
+    providers: [
+        provideSpark({
+            theme: {
+                preset: Shadcn,
+                options: {
+                    // shadcn convention is a `.dark` class; any selector works
+                    darkModeSelector: '.dark'
+                }
+            }
+        })
+    ]
+});
+```
 
 ### Using a Preset
 

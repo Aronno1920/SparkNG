@@ -11,9 +11,8 @@ import type { DateClickPayload, DateSelectPayload, SchedulerEvent } from '@bdspa
     template: `
         <app-docsectiontext>
             <p>
-                Scheduling features include <strong>Date Selection</strong> (click-and-drag cell selection emitting <code>(dateSelect)</code>),
-                <strong>Add & Edit Events</strong> (fast event generation and updating), and <strong>Controlled State</strong> with two-way binding on
-                <code>[(date)]</code> and <code>[(view)]</code> alongside programmatic methods like <code>next()</code>, <code>prev()</code>, and <code>today()</code>.
+                Scheduling features include <strong>Date Selection</strong> (click-and-drag cell selection emitting <code>(dateSelect)</code>), <strong>Add & Edit Events</strong> (fast event generation and updating), and
+                <strong>Controlled State</strong> with two-way binding on <code>[(date)]</code> and <code>[(view)]</code> alongside programmatic methods like <code>next()</code>, <code>prev()</code>, and <code>today()</code>.
             </p>
         </app-docsectiontext>
         <div class="card">
@@ -30,14 +29,7 @@ import type { DateClickPayload, DateSelectPayload, SchedulerEvent } from '@bdspa
                 <button type="button" class="p-button p-button-sm p-button-success" (click)="onAddNewEvent()">+ Add Quick Event</button>
             </div>
 
-            <p-scheduler-root
-                #scheduler="pScheduler"
-                [events]="events()"
-                [(view)]="activeView"
-                [(date)]="activeDate"
-                (dateClick)="onDateClick($event)"
-                (dateSelect)="onDateSelect($event)"
-            >
+            <p-scheduler-root #scheduler="pScheduler" [events]="events()" [(view)]="activeView" [(date)]="activeDate" (dateClick)="onDateClick($event)" (dateSelect)="onDateSelect($event)">
                 <p-scheduler-header>
                     <p-scheduler-navigation></p-scheduler-navigation>
                     <p-scheduler-title></p-scheduler-title>

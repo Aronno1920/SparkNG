@@ -38,6 +38,7 @@
         "packageGroup": [
             "@bdspark/sparkng-icons",
             "@bdspark/sparkng",
+            "@bdspark/sparkng-charts",
             "@bdspark/sparkng-locale",
             "@bdspark/sparkng-motion",
             "@bdspark/sparkng-styled",
@@ -88,7 +89,6 @@
         "@angular/forms": "catalog:angular22",
         "@angular/platform-browser": "catalog:angular22",
         "@angular/router": "catalog:angular22",
-        "chart.js": "^4.0.0",
         "prosemirror-commands": "^1.7.0",
         "prosemirror-history": "^1.5.0",
         "prosemirror-inputrules": "^1.5.0",
@@ -105,11 +105,7 @@
         "@bdspark/sparkng-motion": "workspace:*",
         "@bdspark/sparkng-styled": "workspace:*",
         "@bdspark/sparkng-styles": "workspace:*",
-        "@bdspark/sparkng-utils": "workspace:*"
-    },
-    "peerDependenciesMeta": {
-        "chart.js": {
-            "optional": true
-        }
+        "@bdspark/sparkng-utils": "workspace:*",
+        "@bdspark/sparkng-charts": "workspace:*"
     }
 }

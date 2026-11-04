@@ -11,9 +11,9 @@ import type { EventDropPayload, EventResizePayload, SchedulerEvent } from '@bdsp
     template: `
         <app-docsectiontext>
             <p>
-                Experience interactive desktop & touch workflows: <strong>Drag and Drop</strong> (relocate events between time slots or days),
-                <strong>Event Resizing</strong> (drag top/bottom handles to adjust duration), <strong>Multi-Event Selection</strong> (hold <code>Ctrl</code>/<code>Cmd</code> to select multiple items),
-                <strong>Keyboard Navigation</strong>, and <strong>Context Menu</strong> (right-click on events or open slots for quick operations).
+                Experience interactive desktop & touch workflows: <strong>Drag and Drop</strong> (relocate events between time slots or days), <strong>Event Resizing</strong> (drag top/bottom handles to adjust duration),
+                <strong>Multi-Event Selection</strong> (hold <code>Ctrl</code>/<code>Cmd</code> to select multiple items), <strong>Keyboard Navigation</strong>, and <strong>Context Menu</strong> (right-click on events or open slots for quick
+                operations).
             </p>
         </app-docsectiontext>
         <div class="card">
@@ -23,14 +23,7 @@ import type { EventDropPayload, EventResizePayload, SchedulerEvent } from '@bdsp
                 </div>
             }
 
-            <p-scheduler-root
-                [events]="events()"
-                [editable]="true"
-                [eventDurationEditable]="true"
-                [view]="'week'"
-                (eventDrop)="onEventDrop($event)"
-                (eventResize)="onEventResize($event)"
-            >
+            <p-scheduler-root [events]="events()" [editable]="true" [eventDurationEditable]="true" [view]="'week'" (eventDrop)="onEventDrop($event)" (eventResize)="onEventResize($event)">
                 <p-scheduler-header>
                     <p-scheduler-navigation></p-scheduler-navigation>
                     <p-scheduler-title></p-scheduler-title>

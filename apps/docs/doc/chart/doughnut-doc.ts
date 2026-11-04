@@ -1,8 +1,6 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { AppConfigService } from '@/service/appconfigservice';
-import { isPlatformBrowser } from '@angular/common';
-import { ChangeDetectorRef, Component, effect, inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component } from '@angular/core';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
@@ -11,62 +9,20 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>A doughnut chart is a variant of the pie chart, with a blank center allowing for additional information about the data as a whole to be included.</p>
+            <p>A doughnut is a pie variant with an empty center; enable it with the <i>donut</i> property or provide a custom <i>radius</i> pair.</p>
         </app-docsectiontext>
-        <div class="card flex justify-center">
-            <p-chart type="doughnut" [data]="data" [options]="options" class="w-full md:w-[30rem]" />
+        <div class="card">
+            <p-piechart [data]="data" donut />
         </div>
         <app-code></app-code>
     `
 })
-export class DoughnutDoc implements OnInit {
-    data: any;
-
-    options: any;
-
-    platformId = inject(PLATFORM_ID);
-
-    configService = inject(AppConfigService);
-
-    constructor(private cd: ChangeDetectorRef) {}
-
-    themeEffect = effect(() => {
-        if (this.configService.transitionComplete()) {
-            this.initChart();
-        }
-    });
-
-    ngOnInit() {
-        this.initChart();
-    }
-
-    initChart() {
-        if (isPlatformBrowser(this.platformId)) {
-            const documentStyle = getComputedStyle(document.documentElement);
-            const textColor = documentStyle.getPropertyValue('--p-text-color');
-
-            this.data = {
-                labels: ['A', 'B', 'C'],
-                datasets: [
-                    {
-                        data: [300, 50, 100],
-                        backgroundColor: [documentStyle.getPropertyValue('--p-cyan-500'), documentStyle.getPropertyValue('--p-orange-500'), documentStyle.getPropertyValue('--p-gray-500')],
-                        hoverBackgroundColor: [documentStyle.getPropertyValue('--p-cyan-400'), documentStyle.getPropertyValue('--p-orange-400'), documentStyle.getPropertyValue('--p-gray-400')]
-                    }
-                ]
-            };
-
-            this.options = {
-                cutout: '60%',
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: textColor
-                        }
-                    }
-                }
-            };
-            this.cd.markForCheck();
-        }
-    }
+export class DoughnutDoc {
+    data = [
+        { value: 1048, name: 'Search Engine' },
+        { value: 735, name: 'Direct' },
+        { value: 580, name: 'Email' },
+        { value: 484, name: 'Union Ads' },
+        { value: 300, name: 'Video Ads' }
+    ];
 }

@@ -92,8 +92,8 @@ export class CounterDisplay {
         <app-docsectiontext>
             <p>
                 A plugin namespaces imperative commands onto <code>pluginCommands[name]</code> with <code>defineTextEditorPlugin(name, install, options?)</code>. Pass definitions — or <code>[plugin, options]</code> tuples — to the
-                <code>[plugins]</code> input; the set is frozen once the editor state is created. The install context exposes <code>getSelectedText</code>, <code>replaceSelection</code>, <code>getView</code>, <code>registerProseMirrorPlugin</code>
-                and <code>onUnmounted</code>; the third argument can contribute schema nodes/marks and ProseMirror plugins before the first render.
+                <code>[plugins]</code> input; the set is frozen once the editor state is created. The install context exposes <code>getSelectedText</code>, <code>replaceSelection</code>, <code>getView</code>,
+                <code>registerProseMirrorPlugin</code> and <code>onUnmounted</code>; the third argument can contribute schema nodes/marks and ProseMirror plugins before the first render.
             </p>
         </app-docsectiontext>
         <div class="card">

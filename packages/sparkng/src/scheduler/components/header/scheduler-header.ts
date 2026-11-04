@@ -86,9 +86,7 @@ export class SchedulerNavigation {
     selector: 'p-scheduler-title',
     standalone: true,
     imports: [CommonModule],
-    template: `
-        <h2 class="p-scheduler-title-text">{{ root.headerTitle() }}</h2>
-    `,
+    template: ` <h2 class="p-scheduler-title-text">{{ root.headerTitle() }}</h2> `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
@@ -107,12 +105,7 @@ export class SchedulerTitle {
     template: `
         <div class="p-scheduler-view-buttons">
             @for (v of availableViews(); track v) {
-                <button
-                    type="button"
-                    class="p-scheduler-btn p-scheduler-view-btn"
-                    [class.p-scheduler-btn-active]="root.currentView() === v"
-                    (click)="root.changeView(v)"
-                >
+                <button type="button" class="p-scheduler-btn p-scheduler-view-btn" [class.p-scheduler-btn-active]="root.currentView() === v" (click)="root.changeView(v)">
                     {{ getViewLabel(v) }}
                 </button>
             }

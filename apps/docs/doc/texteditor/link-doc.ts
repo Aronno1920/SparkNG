@@ -11,9 +11,9 @@ import type { TextEditorCommands } from '@bdspark/sparkng/types/texteditor';
     template: `
         <app-docsectiontext>
             <p>
-                Links are managed with three commands. <code>insertLink(url, text?)</code> wraps the selection — or inserts <code>text</code> when the selection is collapsed. <code>updateLink(url)</code> and <code>removeLink()</code> detect
-                the link boundaries around the cursor, so the selection does not have to cover the whole link. <code>state.link</code> and <code>state.linkUrl</code> report the active link. Only <code>http</code>, <code>https</code>,
-                <code>mailto</code>, <code>tel</code>, <code>ftp</code> and relative URLs pass sanitization; unsafe schemes drop the link mark but keep the text.
+                Links are managed with three commands. <code>insertLink(url, text?)</code> wraps the selection — or inserts <code>text</code> when the selection is collapsed. <code>updateLink(url)</code> and <code>removeLink()</code> detect the link
+                boundaries around the cursor, so the selection does not have to cover the whole link. <code>state.link</code> and <code>state.linkUrl</code> report the active link. Only <code>http</code>, <code>https</code>, <code>mailto</code>,
+                <code>tel</code>, <code>ftp</code> and relative URLs pass sanitization; unsafe schemes drop the link mark but keep the text.
             </p>
         </app-docsectiontext>
         <div class="card">

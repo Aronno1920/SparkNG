@@ -1,20 +1,44 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
 import { Component, signal } from '@angular/core';
-import { TEXTEDITOR_FILE_SIZE, TextEditorContent, TextEditorImageUpload, TextEditorImageUploadDropzone, TextEditorImageUploadDropzoneDef, TextEditorImageUploadProgress, TextEditorImageUploadProgressDef, TextEditorRoot, TextEditorToolbar, TextEditorToolbarDef } from '@bdspark/sparkng/texteditor';
+import {
+    TEXTEDITOR_FILE_SIZE,
+    TextEditorContent,
+    TextEditorImageUpload,
+    TextEditorImageUploadDropzone,
+    TextEditorImageUploadDropzoneDef,
+    TextEditorImageUploadProgress,
+    TextEditorImageUploadProgressDef,
+    TextEditorRoot,
+    TextEditorToolbar,
+    TextEditorToolbarDef
+} from '@bdspark/sparkng/texteditor';
 import type { TextEditorFileRejectEvent } from '@bdspark/sparkng/types/texteditor';
 import { TeIcon } from './demo/texteditor-demo-toolbar';
 
 @Component({
     selector: 'image-doc',
     standalone: true,
-    imports: [AppDocSectionText, TextEditorRoot, TextEditorToolbar, TextEditorContent, TextEditorImageUpload, TextEditorImageUploadDropzone, TextEditorImageUploadProgress, AppCode, TextEditorToolbarDef, TextEditorImageUploadDropzoneDef, TextEditorImageUploadProgressDef, TeIcon],
+    imports: [
+        AppDocSectionText,
+        TextEditorRoot,
+        TextEditorToolbar,
+        TextEditorContent,
+        TextEditorImageUpload,
+        TextEditorImageUploadDropzone,
+        TextEditorImageUploadProgress,
+        AppCode,
+        TextEditorToolbarDef,
+        TextEditorImageUploadDropzoneDef,
+        TextEditorImageUploadProgressDef,
+        TeIcon
+    ],
     template: `
         <app-docsectiontext>
             <p>
-                Images enter the document two ways: <code>commands.insertImage(src)</code> inserts directly from a URL, while <code>commands.uploadImages()</code> — or dropping an image on the content — opens the upload surface. The
-                handler contract is <code>(file, {{ '{' }}onProgress, signal{{ '}' }}) =&gt; Promise&lt;url&gt;</code>; forward the <code>AbortSignal</code> to <code>fetch</code> so dismissing cancels the in-flight request. Validation
-                (<code>maxFileCount</code>, <code>maxFileSize</code>, <code>allowedTypes</code>) is a UX guard — the server must re-validate. Data URLs accept raster images but never SVG.
+                Images enter the document two ways: <code>commands.insertImage(src)</code> inserts directly from a URL, while <code>commands.uploadImages()</code> — or dropping an image on the content — opens the upload surface. The handler contract
+                is <code>(file, {{ '{' }}onProgress, signal{{ '}' }}) =&gt; Promise&lt;url&gt;</code>; forward the <code>AbortSignal</code> to <code>fetch</code> so dismissing cancels the in-flight request. Validation (<code>maxFileCount</code>,
+                <code>maxFileSize</code>, <code>allowedTypes</code>) is a UX guard — the server must re-validate. Data URLs accept raster images but never SVG.
             </p>
         </app-docsectiontext>
         <div class="card">

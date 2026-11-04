@@ -6,11 +6,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, signal, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {
-    injectSchedulerRoot,
-    SCHEDULER_MORE_POPOVER_CONTEXT_TOKEN,
-    SCHEDULER_QUICK_INFO_CONTEXT_TOKEN
-} from '../../context/scheduler.context';
+import { injectSchedulerRoot, SCHEDULER_MORE_POPOVER_CONTEXT_TOKEN, SCHEDULER_QUICK_INFO_CONTEXT_TOKEN } from '../../context/scheduler.context';
 import { formatDate, formatTime } from '../../engine/date-utils';
 import type { ProcessedEvent, SchedulerEvent } from '../../types/scheduler.types';
 
@@ -112,12 +108,7 @@ export class SchedulerQuickInfo {
 
                 <div class="p-scheduler-more-event-list">
                     @for (event of state().events; track event.id) {
-                        <div
-                            class="p-scheduler-event-pill"
-                            [style.backgroundColor]="event.color || 'var(--p-primary-500, #3b82f6)'"
-                            [style.color]="event.textColor || '#fff'"
-                            (click)="onEventClick(event, $event)"
-                        >
+                        <div class="p-scheduler-event-pill" [style.backgroundColor]="event.color || 'var(--p-primary-500, #3b82f6)'" [style.color]="event.textColor || '#fff'" (click)="onEventClick(event, $event)">
                             <span class="p-scheduler-event-pill-time">{{ formatTime(event.startDate) }}</span>
                             <span class="p-scheduler-event-pill-title">{{ event.title }}</span>
                         </div>
@@ -206,19 +197,11 @@ export class SchedulerPopover {
                 <div class="p-scheduler-context-menu-list">
                     <ng-content></ng-content>
                     @if (state().event) {
-                        <button type="button" class="p-scheduler-menu-item" (click)="onEditEvent()">
-                            <span>✏️</span> <span>Edit Event</span>
-                        </button>
-                        <button type="button" class="p-scheduler-menu-item" (click)="onDuplicateEvent()">
-                            <span>📋</span> <span>Duplicate</span>
-                        </button>
-                        <button type="button" class="p-scheduler-menu-item p-scheduler-menu-item-danger" (click)="onDeleteEvent()">
-                            <span>🗑️</span> <span>Delete</span>
-                        </button>
+                        <button type="button" class="p-scheduler-menu-item" (click)="onEditEvent()"><span>✏️</span> <span>Edit Event</span></button>
+                        <button type="button" class="p-scheduler-menu-item" (click)="onDuplicateEvent()"><span>📋</span> <span>Duplicate</span></button>
+                        <button type="button" class="p-scheduler-menu-item p-scheduler-menu-item-danger" (click)="onDeleteEvent()"><span>🗑️</span> <span>Delete</span></button>
                     } @else {
-                        <button type="button" class="p-scheduler-menu-item" (click)="onAddEvent()">
-                            <span>➕</span> <span>New Event Here</span>
-                        </button>
+                        <button type="button" class="p-scheduler-menu-item" (click)="onAddEvent()"><span>➕</span> <span>New Event Here</span></button>
                     }
                 </div>
             </div>

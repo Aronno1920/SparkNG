@@ -10,8 +10,8 @@ import { TextEditorContent, TextEditorContextToolbar, TextEditorContextToolbarDe
     template: `
         <app-docsectiontext>
             <p>
-                The context toolbar floats over the selection. It opens on double-click or text selection, owns click-outside dismissal, and ships an overflow sub-part. Mounting <code>p-texteditor-context-toolbar</code> enables the
-                feature — without it, selections never trigger the request.
+                The context toolbar floats over the selection. It opens on double-click or text selection, owns click-outside dismissal, and ships an overflow sub-part. Mounting <code>p-texteditor-context-toolbar</code> enables the feature — without
+                it, selections never trigger the request.
             </p>
         </app-docsectiontext>
         <div class="card">

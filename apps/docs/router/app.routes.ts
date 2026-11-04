@@ -21,7 +21,6 @@ export const routes: Routes = [
             },
             { path: 'philosophy', loadChildren: () => import('@/pages/philosophy/routes') },
             { path: 'faq', loadChildren: () => import('@/pages/faq/routes') },
-            { path: 'playground', loadChildren: () => import('@/pages/playground/routes') },
             { path: 'roadmap', loadChildren: () => import('@/pages/roadmap/routes') },
             { path: 'templates', loadChildren: () => import('@/pages/templates/routes') },
             {
@@ -52,6 +51,9 @@ export const routes: Routes = [
             },
             { path: 'carousel', loadChildren: () => import('@/pages/carousel/routes') },
             { path: 'chart', loadChildren: () => import('@/pages/chart/routes') },
+            { path: 'charts', redirectTo: 'chart/line', pathMatch: 'full' },
+            { path: 'line', redirectTo: 'chart/line', pathMatch: 'full' },
+            { path: 'linecharts', redirectTo: 'chart/line', pathMatch: 'full' },
             { path: 'checkbox', loadChildren: () => import('@/pages/checkbox/routes') },
             { path: 'chip', loadChildren: () => import('@/pages/chip/routes') },
             {

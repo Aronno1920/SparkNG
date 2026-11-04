@@ -10,8 +10,8 @@ import { TextEditorContent, TextEditorNavigator, TextEditorNavigatorMenu, TextEd
     template: `
         <app-docsectiontext>
             <p>
-                The navigator is a heading-outline minimap built from three parts. Mounting <code>p-texteditor-navigator</code> enables heading tracking (it renders nothing); the trigger is a focusable rail opening on hover, focus, Enter,
-                Space or ArrowDown; the menu lists the outline with <code>scrollTo(pos)</code> navigation and highlights the active heading while the document scrolls.
+                The navigator is a heading-outline minimap built from three parts. Mounting <code>p-texteditor-navigator</code> enables heading tracking (it renders nothing); the trigger is a focusable rail opening on hover, focus, Enter, Space or
+                ArrowDown; the menu lists the outline with <code>scrollTo(pos)</code> navigation and highlights the active heading while the document scrolls.
             </p>
         </app-docsectiontext>
         <div class="card">

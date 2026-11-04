@@ -1,12 +1,44 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
 import { Component, signal } from '@angular/core';
-import { TextEditorContent, TextEditorRoot, TextEditorTableCellMenu, TextEditorTableCellMenuDef, TextEditorTableCellSubmenu, TextEditorTableColumnMenu, TextEditorTableColumnMenuDef, TextEditorTableColumnSubmenu, TextEditorTableColumnSubmenuDef, TextEditorTableControls, TextEditorTableRowMenu, TextEditorTableRowMenuDef, TextEditorTableRowSubmenu, TextEditorToolbar, TextEditorToolbarDef } from '@bdspark/sparkng/texteditor';
+import {
+    TextEditorContent,
+    TextEditorRoot,
+    TextEditorTableCellMenu,
+    TextEditorTableCellMenuDef,
+    TextEditorTableCellSubmenu,
+    TextEditorTableColumnMenu,
+    TextEditorTableColumnMenuDef,
+    TextEditorTableColumnSubmenu,
+    TextEditorTableColumnSubmenuDef,
+    TextEditorTableControls,
+    TextEditorTableRowMenu,
+    TextEditorTableRowMenuDef,
+    TextEditorTableRowSubmenu,
+    TextEditorToolbar,
+    TextEditorToolbarDef
+} from '@bdspark/sparkng/texteditor';
 
 @Component({
     selector: 'table-doc',
     standalone: true,
-    imports: [AppDocSectionText, TextEditorRoot, TextEditorToolbar, TextEditorContent, TextEditorTableControls, TextEditorTableColumnMenu, TextEditorTableColumnSubmenu, TextEditorTableRowMenu, TextEditorTableCellMenu, AppCode, TextEditorToolbarDef, TextEditorTableColumnMenuDef, TextEditorTableColumnSubmenuDef, TextEditorTableRowMenuDef, TextEditorTableCellMenuDef],
+    imports: [
+        AppDocSectionText,
+        TextEditorRoot,
+        TextEditorToolbar,
+        TextEditorContent,
+        TextEditorTableControls,
+        TextEditorTableColumnMenu,
+        TextEditorTableColumnSubmenu,
+        TextEditorTableRowMenu,
+        TextEditorTableCellMenu,
+        AppCode,
+        TextEditorToolbarDef,
+        TextEditorTableColumnMenuDef,
+        TextEditorTableColumnSubmenuDef,
+        TextEditorTableRowMenuDef,
+        TextEditorTableCellMenuDef
+    ],
     template: `
         <app-docsectiontext>
             <p>

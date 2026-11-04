@@ -10,11 +10,7 @@ import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
         <app-docsectiontext>
             <div class="doc-section-description">
                 <h3>Screen Reader</h3>
-                <p>
-                    Chart components internally use <i>canvas</i> element, refer to the
-                    <a class="text-primary font-medium hover:underline" href="https://www.chartjs.org/docs/latest/general/accessibility.html">Chart.js accessibility</a>
-                    guide for more information.
-                </p>
+                <p>Charts render an accessible container with <i>role="img"</i>; describe the visualization for screen readers using the <i>ariaLabel</i> or <i>ariaLabelledBy</i> properties.</p>
             </div>
         </app-docsectiontext>
         <app-code [hideToggleCode]="true"></app-code>

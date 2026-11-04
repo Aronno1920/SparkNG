@@ -1,11 +1,5 @@
 import { NgModule } from '@angular/core';
-import {
-    SchedulerCategoryLegend,
-    SchedulerContent,
-    SchedulerFooter,
-    SchedulerLoading,
-    SchedulerSelectionToolbar
-} from '../components/content/scheduler-content';
+import { SchedulerCategoryLegend, SchedulerContent, SchedulerFooter, SchedulerLoading, SchedulerSelectionToolbar } from '../components/content/scheduler-content';
 import {
     SchedulerAgendaDateHeader,
     SchedulerAgendaDateHeaderDef,
@@ -76,22 +70,8 @@ import {
     SchedulerResourceTimelineScope,
     SchedulerResourceWeekScope
 } from '../components/scopes/scheduler-resource-views';
-import {
-    SchedulerAgendaScope,
-    SchedulerDayScope,
-    SchedulerMonthScope,
-    SchedulerTimelineScope,
-    SchedulerWeekScope,
-    SchedulerYearScope
-} from '../components/scopes/scheduler-views';
-import {
-    SchedulerAgendaEventUI,
-    SchedulerAllDayEventUI,
-    SchedulerMonthEventUI,
-    SchedulerTimeGridEventUI,
-    SchedulerTimelineEventUI,
-    SchedulerToolbarUI
-} from '../components/ui/scheduler-ui';
+import { SchedulerAgendaScope, SchedulerDayScope, SchedulerMonthScope, SchedulerTimelineScope, SchedulerWeekScope, SchedulerYearScope } from '../components/scopes/scheduler-views';
+import { SchedulerAgendaEventUI, SchedulerAllDayEventUI, SchedulerMonthEventUI, SchedulerTimeGridEventUI, SchedulerTimelineEventUI, SchedulerToolbarUI } from '../components/ui/scheduler-ui';
 
 const SCHEDULER_COMPONENTS = [
     SchedulerRoot,

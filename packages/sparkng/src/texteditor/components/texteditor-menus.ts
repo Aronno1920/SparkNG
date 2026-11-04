@@ -55,7 +55,16 @@ export class TextEditorMentionMenuDef {
     providers: [{ provide: SLASHMENU_CONTEXT, useExisting: forwardRef(() => TextEditorSlashMenu) }],
     template: `
         @if (request(); as req) {
-            <div class="p-texteditor-popover-menu p-texteditor-slash-menu" role="listbox" aria-label="Slash commands" [attr.data-scope]="'texteditor'" [attr.data-part]="'slash-menu'" [style.top.px]="req.top + 4" [style.left.px]="req.left" (click)="$event.stopPropagation()">
+            <div
+                class="p-texteditor-popover-menu p-texteditor-slash-menu"
+                role="listbox"
+                aria-label="Slash commands"
+                [attr.data-scope]="'texteditor'"
+                [attr.data-part]="'slash-menu'"
+                [style.top.px]="req.top + 4"
+                [style.left.px]="req.left"
+                (click)="$event.stopPropagation()"
+            >
                 @if (slotContext(); as ctx) {
                     <ng-container *ngTemplateOutlet="template()!; context: filteredContext(ctx)" />
                 }
@@ -89,7 +98,14 @@ export class TextEditorSlashMenu implements OnDestroy {
         this.editor.registerPart('slashMenu');
         effect(() => {
             if (this.request()) {
-                this.editor.registerTypeahead({ onArrow: (dir) => this.moveFocus(dir), onEnter: () => this.selectFocused(), onEscape: () => { this.dismiss(); return true; } });
+                this.editor.registerTypeahead({
+                    onArrow: (dir) => this.moveFocus(dir),
+                    onEnter: () => this.selectFocused(),
+                    onEscape: () => {
+                        this.dismiss();
+                        return true;
+                    }
+                });
             }
         });
     }
@@ -162,7 +178,16 @@ export class TextEditorSlashMenu implements OnDestroy {
     providers: [{ provide: MENTIONMENU_CONTEXT, useExisting: forwardRef(() => TextEditorMentionMenu) }],
     template: `
         @if (request(); as req) {
-            <div class="p-texteditor-popover-menu p-texteditor-mention-menu" role="listbox" aria-label="Mentions" [attr.data-scope]="'texteditor'" [attr.data-part]="'mention-menu'" [style.top.px]="req.top + 4" [style.left.px]="req.left" (click)="$event.stopPropagation()">
+            <div
+                class="p-texteditor-popover-menu p-texteditor-mention-menu"
+                role="listbox"
+                aria-label="Mentions"
+                [attr.data-scope]="'texteditor'"
+                [attr.data-part]="'mention-menu'"
+                [style.top.px]="req.top + 4"
+                [style.left.px]="req.left"
+                (click)="$event.stopPropagation()"
+            >
                 @if (slotContext(); as ctx) {
                     <ng-container *ngTemplateOutlet="template()!; context: ctx" />
                 }
@@ -211,7 +236,14 @@ export class TextEditorMentionMenu implements OnDestroy {
         });
         effect(() => {
             if (this.request()) {
-                this.editor.registerTypeahead({ onArrow: (dir) => this.moveFocus(dir), onEnter: () => this.selectFocused(), onEscape: () => { this.dismiss(); return true; } });
+                this.editor.registerTypeahead({
+                    onArrow: (dir) => this.moveFocus(dir),
+                    onEnter: () => this.selectFocused(),
+                    onEscape: () => {
+                        this.dismiss();
+                        return true;
+                    }
+                });
             }
         });
     }

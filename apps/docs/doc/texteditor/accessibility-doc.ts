@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
         <app-docsectiontext>
             <h3>Screen Reader</h3>
             <p>
-                The editing region is a ProseMirror <code>contenteditable</code> exposed as <code>role="textbox"</code> with <code>aria-multiline="true"</code>. An accessible name is required (WCAG 4.1.2) — provide
-                <code>ariaLabel</code> or <code>ariaLabelledby</code> on the root; the default label is <code>"Rich text editor"</code>. <code>readonly</code> and <code>disabled</code> both set <code>aria-readonly="true"</code>.
+                The editing region is a ProseMirror <code>contenteditable</code> exposed as <code>role="textbox"</code> with <code>aria-multiline="true"</code>. An accessible name is required (WCAG 4.1.2) — provide <code>ariaLabel</code> or
+                <code>ariaLabelledby</code> on the root; the default label is <code>"Rich text editor"</code>. <code>readonly</code> and <code>disabled</code> both set <code>aria-readonly="true"</code>.
             </p>
             <p>
                 Toolbars render <code>role="toolbar"</code> with <code>aria-orientation</code> and an <code>aria-label</code>. Icon-only buttons carry <code>aria-label</code>, toggles carry <code>aria-pressed</code>. While a slash or mention
@@ -45,7 +45,7 @@ import { Component } from '@angular/core';
                         </tr>
                         <tr>
                             <td><i>Arrow Keys</i></td>
-                        <td>Move the caret; navigate type-ahead and menu entries; move between table cells at boundaries.</td>
+                            <td>Move the caret; navigate type-ahead and menu entries; move between table cells at boundaries.</td>
                         </tr>
                         <tr>
                             <td><i>Ctrl/Cmd + B / I / U</i></td>

@@ -157,7 +157,16 @@ export class TextEditorBlockControls {
     providers: [{ provide: BLOCKMENU_CONTEXT, useExisting: forwardRef(() => TextEditorBlockMenu) }],
     template: `
         @if (request(); as req) {
-            <div class="p-texteditor-popover-menu p-texteditor-block-menu" role="menu" aria-label="Block options" [attr.data-scope]="'texteditor'" [attr.data-part]="'block-menu'" [style.top.px]="req.top" [style.left.px]="req.left" (click)="$event.stopPropagation()">
+            <div
+                class="p-texteditor-popover-menu p-texteditor-block-menu"
+                role="menu"
+                aria-label="Block options"
+                [attr.data-scope]="'texteditor'"
+                [attr.data-part]="'block-menu'"
+                [style.top.px]="req.top"
+                [style.left.px]="req.left"
+                (click)="$event.stopPropagation()"
+            >
                 @if (slotContext(); as ctx) {
                     <ng-container *ngTemplateOutlet="template()!; context: ctx" />
                 }

@@ -384,7 +384,7 @@ export function docToHtml(schema: Schema, doc: PMNode): string {
         return wrapper.innerHTML;
     }
     const dom = serializer.serializeNode(doc);
-    return dom.nodeType === 1 ? (dom as HTMLElement).outerHTML : dom.textContent ?? '';
+    return dom.nodeType === 1 ? (dom as HTMLElement).outerHTML : (dom.textContent ?? '');
 }
 
 export { PARAGRAPH_LIKE_DOM };

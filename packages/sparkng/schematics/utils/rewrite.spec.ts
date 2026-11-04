@@ -19,9 +19,9 @@ describe('rewriteSource — module specifiers', () => {
     });
 
     it('preserves quote style and leaves unrelated modules untouched', () => {
-        const { text } = rw(`import { X } from "primeng/table";\nimport 'chart.js';\n`);
+        const { text } = rw(`import { X } from "primeng/table";\nimport 'lodash';\n`);
         expect(text).toContain(`from "@bdspark/sparkng/table"`);
-        expect(text).toContain(`import 'chart.js';`);
+        expect(text).toContain(`import 'lodash';`);
     });
 
     it('rewrites the primeicons stylesheet import to the renamed file', () => {

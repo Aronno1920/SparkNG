@@ -4,26 +4,9 @@
  */
 
 import { CommonModule } from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    ContentChild,
-    inject,
-    signal,
-    ViewEncapsulation
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, ContentChild, inject, signal, ViewEncapsulation } from '@angular/core';
 import { injectSchedulerRoot, SCHEDULER_EVENT_CONTEXT_TOKEN, SchedulerEventContext } from '../../context/scheduler.context';
-import {
-    diffInMinutes,
-    formatDate,
-    formatTime,
-    generateMonthGrid,
-    generateTimeSlots,
-    generateWeekDays,
-    isSameDay,
-    MonthGridDay
-} from '../../engine/date-utils';
+import { diffInMinutes, formatDate, formatTime, generateMonthGrid, generateTimeSlots, generateWeekDays, isSameDay, MonthGridDay } from '../../engine/date-utils';
 import { computeTimeGridEventPositions } from '../../engine/event-layout';
 import type { AppointmentSlot, BlockedInterval, ProcessedEvent, SchedulerEvent } from '../../types/scheduler.types';
 import {
@@ -86,9 +69,7 @@ import {
                                         (contextmenu)="onEventContextMenu(event, day.date, $event)"
                                     >
                                         @if (monthEventDef?.template || globalEventDef?.template) {
-                                            <ng-container
-                                                *ngTemplateOutlet="monthEventDef?.template || globalEventDef?.template; context: { $implicit: getEventContext(event) }"
-                                            ></ng-container>
+                                            <ng-container *ngTemplateOutlet="monthEventDef?.template || globalEventDef?.template; context: { $implicit: getEventContext(event) }"></ng-container>
                                         } @else {
                                             <div
                                                 class="p-scheduler-event-pill"
@@ -104,13 +85,7 @@ import {
                                 }
 
                                 @if (getEventsForDay(day.date).length > root.maxEventsVisible()) {
-                                    <button
-                                        type="button"
-                                        class="p-scheduler-more-link"
-                                        (click)="onMoreClick(day.date, getEventsForDay(day.date), $event)"
-                                    >
-                                        +{{ getEventsForDay(day.date).length - root.maxEventsVisible() }} more
-                                    </button>
+                                    <button type="button" class="p-scheduler-more-link" (click)="onMoreClick(day.date, getEventsForDay(day.date), $event)">+{{ getEventsForDay(day.date).length - root.maxEventsVisible() }} more</button>
                                 }
                             </div>
                         </div>
@@ -263,10 +238,7 @@ export class SchedulerMonthScope {
                     <div class="p-scheduler-time-gutter-header"></div>
                     <div class="p-scheduler-time-grid-header-days">
                         @for (day of weekDays(); track day.getTime()) {
-                            <div
-                                class="p-scheduler-time-grid-header-day"
-                                [class.p-scheduler-non-working-day]="isNonWorkingDay(day)"
-                            >
+                            <div class="p-scheduler-time-grid-header-day" [class.p-scheduler-non-working-day]="isNonWorkingDay(day)">
                                 <span class="p-scheduler-weekday-name">{{ formatWeekday(day) }}</span>
                                 <span class="p-scheduler-day-badge" [class.p-scheduler-today]="isToday(day)">
                                     {{ day.getDate() }}
@@ -290,29 +262,15 @@ export class SchedulerMonthScope {
                     <!-- Columns -->
                     <div class="p-scheduler-columns-container">
                         @for (day of weekDays(); track day.getTime()) {
-                            <div
-                                class="p-scheduler-day-column"
-                                [class.p-scheduler-non-working-day]="isNonWorkingDay(day)"
-                                (click)="onColumnClick(day, $event)"
-                                (dragover)="onDragOver($event)"
-                                (drop)="onColumnDrop(day, $event)"
-                            >
+                            <div class="p-scheduler-day-column" [class.p-scheduler-non-working-day]="isNonWorkingDay(day)" (click)="onColumnClick(day, $event)" (dragover)="onDragOver($event)" (drop)="onColumnDrop(day, $event)">
                                 <!-- Slots with Business Hours styling -->
                                 @for (slot of timeSlots(); track slot.timeString) {
-                                    <div
-                                        class="p-scheduler-grid-slot"
-                                        [class.p-scheduler-business-hour]="isBusinessHour(slot.hour, day)"
-                                        [class.p-scheduler-off-hour]="!isBusinessHour(slot.hour, day)"
-                                    ></div>
+                                    <div class="p-scheduler-grid-slot" [class.p-scheduler-business-hour]="isBusinessHour(slot.hour, day)" [class.p-scheduler-off-hour]="!isBusinessHour(slot.hour, day)"></div>
                                 }
 
                                 <!-- Blocked Intervals -->
                                 @for (blocked of getBlockedIntervalsForDay(day); track $index) {
-                                    <div
-                                        class="p-scheduler-blocked-interval"
-                                        [style.top.%]="calcBlockedTop(blocked)"
-                                        [style.height.%]="calcBlockedHeight(blocked)"
-                                    >
+                                    <div class="p-scheduler-blocked-interval" [style.top.%]="calcBlockedTop(blocked)" [style.height.%]="calcBlockedHeight(blocked)">
                                         <span class="p-scheduler-lock-icon">🔒</span>
                                         <span class="p-scheduler-blocked-title">{{ blocked.title || 'Blocked' }}</span>
                                     </div>
@@ -320,12 +278,7 @@ export class SchedulerMonthScope {
 
                                 <!-- Appointment Slots -->
                                 @for (slot of getAppointmentSlotsForDay(day); track slot.id) {
-                                    <div
-                                        class="p-scheduler-appointment-slot"
-                                        [class.p-scheduler-slot-booked]="slot.status === 'booked'"
-                                        [style.top.%]="calcSlotTop(slot)"
-                                        [style.height.%]="calcSlotHeight(slot)"
-                                    >
+                                    <div class="p-scheduler-appointment-slot" [class.p-scheduler-slot-booked]="slot.status === 'booked'" [style.top.%]="calcSlotTop(slot)" [style.height.%]="calcSlotHeight(slot)">
                                         <div class="p-scheduler-slot-info">
                                             <span>{{ slot.title || 'Available Slot' }}</span>
                                             @if (slot.price) {
@@ -333,13 +286,7 @@ export class SchedulerMonthScope {
                                             }
                                         </div>
                                         @if (slot.status !== 'booked') {
-                                            <button
-                                                type="button"
-                                                class="p-scheduler-slot-book-btn"
-                                                (click)="onBookSlot(slot, day, $event)"
-                                            >
-                                                Book
-                                            </button>
+                                            <button type="button" class="p-scheduler-slot-book-btn" (click)="onBookSlot(slot, day, $event)">Book</button>
                                         }
                                     </div>
                                 }
@@ -366,9 +313,7 @@ export class SchedulerMonthScope {
                                         (contextmenu)="onEventContextMenu(event, day, $event)"
                                     >
                                         @if (timeGridEventDef?.template || globalEventDef?.template) {
-                                            <ng-container
-                                                *ngTemplateOutlet="timeGridEventDef?.template || globalEventDef?.template; context: { $implicit: getEventContext(event) }"
-                                            ></ng-container>
+                                            <ng-container *ngTemplateOutlet="timeGridEventDef?.template || globalEventDef?.template; context: { $implicit: getEventContext(event) }"></ng-container>
                                         } @else {
                                             <div
                                                 class="p-scheduler-timed-event-card"
@@ -599,20 +544,12 @@ export class SchedulerWeekScope {
                     <div class="p-scheduler-columns-container">
                         <div class="p-scheduler-day-column" (click)="onDayClick($event)">
                             @for (slot of timeSlots(); track slot.timeString) {
-                                <div
-                                    class="p-scheduler-grid-slot"
-                                    [class.p-scheduler-business-hour]="isBusinessHour(slot.hour)"
-                                    [class.p-scheduler-off-hour]="!isBusinessHour(slot.hour)"
-                                ></div>
+                                <div class="p-scheduler-grid-slot" [class.p-scheduler-business-hour]="isBusinessHour(slot.hour)" [class.p-scheduler-off-hour]="!isBusinessHour(slot.hour)"></div>
                             }
 
                             <!-- Blocked Intervals -->
                             @for (blocked of blockedIntervals(); track $index) {
-                                <div
-                                    class="p-scheduler-blocked-interval"
-                                    [style.top.%]="calcBlockedTop(blocked)"
-                                    [style.height.%]="calcBlockedHeight(blocked)"
-                                >
+                                <div class="p-scheduler-blocked-interval" [style.top.%]="calcBlockedTop(blocked)" [style.height.%]="calcBlockedHeight(blocked)">
                                     <span class="p-scheduler-lock-icon">🔒</span>
                                     <span>{{ blocked.title || 'Blocked' }}</span>
                                 </div>
@@ -620,12 +557,7 @@ export class SchedulerWeekScope {
 
                             <!-- Appointment Slots -->
                             @for (slot of appointmentSlots(); track slot.id) {
-                                <div
-                                    class="p-scheduler-appointment-slot"
-                                    [class.p-scheduler-slot-booked]="slot.status === 'booked'"
-                                    [style.top.%]="calcSlotTop(slot)"
-                                    [style.height.%]="calcSlotHeight(slot)"
-                                >
+                                <div class="p-scheduler-appointment-slot" [class.p-scheduler-slot-booked]="slot.status === 'booked'" [style.top.%]="calcSlotTop(slot)" [style.height.%]="calcSlotHeight(slot)">
                                     <div class="p-scheduler-slot-info">
                                         <span>{{ slot.title || 'Available Slot' }}</span>
                                         @if (slot.price) {
@@ -633,13 +565,7 @@ export class SchedulerWeekScope {
                                         }
                                     </div>
                                     @if (slot.status !== 'booked') {
-                                        <button
-                                            type="button"
-                                            class="p-scheduler-slot-book-btn"
-                                            (click)="onBookSlot(slot, currentDate(), $event)"
-                                        >
-                                            Book
-                                        </button>
+                                        <button type="button" class="p-scheduler-slot-book-btn" (click)="onBookSlot(slot, currentDate(), $event)">Book</button>
                                     }
                                 </div>
                             }
@@ -663,9 +589,7 @@ export class SchedulerWeekScope {
                                     (contextmenu)="onEventContextMenu(event, $event)"
                                 >
                                     @if (timeGridEventDef?.template || globalEventDef?.template) {
-                                        <ng-container
-                                            *ngTemplateOutlet="timeGridEventDef?.template || globalEventDef?.template; context: { $implicit: getEventContext(event) }"
-                                        ></ng-container>
+                                        <ng-container *ngTemplateOutlet="timeGridEventDef?.template || globalEventDef?.template; context: { $implicit: getEventContext(event) }"></ng-container>
                                     } @else {
                                         <div
                                             class="p-scheduler-timed-event-card"
@@ -844,15 +768,9 @@ export class SchedulerDayScope {
                             @for (event of group.events; track event.id) {
                                 <div class="p-scheduler-agenda-item" (click)="onEventClick(event, $event)">
                                     @if (agendaEventDef?.template || globalEventDef?.template) {
-                                        <ng-container
-                                            *ngTemplateOutlet="agendaEventDef?.template || globalEventDef?.template; context: { $implicit: getEventContext(event) }"
-                                        ></ng-container>
+                                        <ng-container *ngTemplateOutlet="agendaEventDef?.template || globalEventDef?.template; context: { $implicit: getEventContext(event) }"></ng-container>
                                     } @else {
-                                        <div
-                                            class="p-scheduler-agenda-card"
-                                            [class.p-scheduler-event-selected]="isSelected(event.id)"
-                                            [style.borderLeftColor]="event.color || 'var(--p-primary-500, #3b82f6)'"
-                                        >
+                                        <div class="p-scheduler-agenda-card" [class.p-scheduler-event-selected]="isSelected(event.id)" [style.borderLeftColor]="event.color || 'var(--p-primary-500, #3b82f6)'">
                                             <div class="p-scheduler-agenda-time">{{ formatEventTime(event) }}</div>
                                             <div class="p-scheduler-agenda-info">
                                                 <div class="p-scheduler-agenda-title">{{ event.title }}</div>

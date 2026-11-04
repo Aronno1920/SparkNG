@@ -47,7 +47,6 @@
                             "./node_modules/prismjs/components/prism-bash.js"
                         ],
                         "allowedCommonJsDependencies": [
-                            "chart.js",
                             "quill",
                             "quill-delta",
                             "core-js",

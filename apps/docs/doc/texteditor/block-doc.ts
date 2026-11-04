@@ -1,18 +1,42 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
 import { Component, signal } from '@angular/core';
-import { TextEditorBlockControls, TextEditorBlockControlsDef, TextEditorBlockMenu, TextEditorBlockMenuDef, TextEditorBlockSubmenu, TextEditorBlockSubmenuDef, TextEditorContent, TextEditorRoot, TextEditorSlashMenu, TextEditorSlashMenuDef } from '@bdspark/sparkng/texteditor';
+import {
+    TextEditorBlockControls,
+    TextEditorBlockControlsDef,
+    TextEditorBlockMenu,
+    TextEditorBlockMenuDef,
+    TextEditorBlockSubmenu,
+    TextEditorBlockSubmenuDef,
+    TextEditorContent,
+    TextEditorRoot,
+    TextEditorSlashMenu,
+    TextEditorSlashMenuDef
+} from '@bdspark/sparkng/texteditor';
 
 @Component({
     selector: 'block-doc',
     standalone: true,
-    imports: [AppDocSectionText, TextEditorRoot, TextEditorBlockControls, TextEditorBlockMenu, TextEditorBlockSubmenu, TextEditorSlashMenu, TextEditorContent, AppCode, TextEditorBlockControlsDef, TextEditorBlockMenuDef, TextEditorBlockSubmenuDef, TextEditorSlashMenuDef],
+    imports: [
+        AppDocSectionText,
+        TextEditorRoot,
+        TextEditorBlockControls,
+        TextEditorBlockMenu,
+        TextEditorBlockSubmenu,
+        TextEditorSlashMenu,
+        TextEditorContent,
+        AppCode,
+        TextEditorBlockControlsDef,
+        TextEditorBlockMenuDef,
+        TextEditorBlockSubmenuDef,
+        TextEditorSlashMenuDef
+    ],
     template: `
         <app-docsectiontext>
             <p>
-                <code>mode="block"</code> switches the value to <code>string[]</code> — one HTML string per block. The runtime owns drag reordering, the hover bar and slash detection. Mount <code>p-texteditor-block-controls</code> for the
-                add/drag handles, <code>p-texteditor-block-menu</code> for per-block options (with a Turn into submenu), and <code>p-texteditor-slash-menu</code> to enable the <code>/</code> command palette — it is an ARIA combobox whose
-                entries render as <code>role="option"</code> buttons.
+                <code>mode="block"</code> switches the value to <code>string[]</code> — one HTML string per block. The runtime owns drag reordering, the hover bar and slash detection. Mount <code>p-texteditor-block-controls</code> for the add/drag
+                handles, <code>p-texteditor-block-menu</code> for per-block options (with a Turn into submenu), and <code>p-texteditor-slash-menu</code> to enable the <code>/</code> command palette — it is an ARIA combobox whose entries render as
+                <code>role="option"</code> buttons.
             </p>
         </app-docsectiontext>
         <div class="card">

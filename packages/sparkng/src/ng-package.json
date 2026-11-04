@@ -5,5 +5,5 @@
     "lib": {
         "entryFile": "public_api.ts"
     },
-    "allowedNonPeerDependencies": ["@bdspark/sparkng-styled", "@bdspark/sparkng-utils", "@bdspark/sparkng-styles", "@bdspark/sparkng-motion"]
+    "allowedNonPeerDependencies": ["@bdspark/sparkng-styled", "@bdspark/sparkng-utils", "@bdspark/sparkng-styles", "@bdspark/sparkng-motion", "@bdspark/sparkng-charts"]
 }

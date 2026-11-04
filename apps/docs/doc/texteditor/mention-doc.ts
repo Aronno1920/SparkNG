@@ -28,8 +28,8 @@ const USERS: MentionUser[] = [
     template: `
         <app-docsectiontext>
             <p>
-                Mounting <code>p-texteditor-mention-menu</code> enables the <code>@</code> type-ahead in the runtime. The <code>handler</code> resolves candidates for the current query (sync or async), <code>filterField</code> drives
-                substring filtering, and <code>template</code> renders the inserted chip. Keyboard support follows the ARIA combobox pattern: arrows move, Enter accepts, Escape dismisses.
+                Mounting <code>p-texteditor-mention-menu</code> enables the <code>@</code> type-ahead in the runtime. The <code>handler</code> resolves candidates for the current query (sync or async), <code>filterField</code> drives substring
+                filtering, and <code>template</code> renders the inserted chip. Keyboard support follows the ARIA combobox pattern: arrows move, Enter accepts, Escape dismisses.
             </p>
         </app-docsectiontext>
         <div class="card">

@@ -12,8 +12,8 @@ import type { TextEditorCommands } from '@bdspark/sparkng/types/texteditor';
         <app-docsectiontext>
             <h3>Headings &amp; Blocks</h3>
             <p>
-                <code>commands.heading(level)</code> converts the block; calling it with the active level toggles back to a paragraph. <code>commands.blockquote()</code> and <code>commands.codeBlock()</code> toggle their block types — a
-                code block holds plain text and accepts no inline marks. <code>commands.insertHorizontalRule()</code> has no state flag.
+                <code>commands.heading(level)</code> converts the block; calling it with the active level toggles back to a paragraph. <code>commands.blockquote()</code> and <code>commands.codeBlock()</code> toggle their block types — a code block
+                holds plain text and accepts no inline marks. <code>commands.insertHorizontalRule()</code> has no state flag.
             </p>
             <h3>Lists</h3>
             <p>

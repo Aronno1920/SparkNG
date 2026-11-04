@@ -55,7 +55,7 @@ function hasAncestor(state: EditorState, name: string): boolean {
 function findLinkMark(state: EditorState, type: MarkType): Mark | null {
     const { $from, from, to, empty } = state.selection as any;
     if (empty) {
-        return (((($from.marks() as Mark[]) || []).find((m) => m.type === type)) ?? null) as Mark | null;
+        return ((($from.marks() as Mark[]) || []).find((m) => m.type === type) ?? null) as Mark | null;
     }
     let found: Mark | null = null;
     state.doc.nodesBetween(from, to, (node: PMNode) => {

@@ -237,6 +237,9 @@ importers:
       '@bdspark/sparkng':
         specifier: 22.0.5
         version: 22.0.5(dec1265c73ec73f59ef0b03ab7d4636d)
+      '@bdspark/sparkng-charts':
+        specifier: workspace:22.0.6
+        version: link:../../packages/sparkng-charts
       '@bdspark/sparkng-icons':
         specifier: 22.0.5
         version: 22.0.5
@@ -255,9 +258,6 @@ importers:
       '@types/node':
         specifier: ^26.2.0
         version: 26.6.4
-      chart.js:
-        specifier: 4.5.1
-        version: 4.5.1
       express:
         specifier: ^5.2.1
         version: 5.2.1
@@ -330,6 +330,9 @@ importers:
       '@angular/router':
         specifier: catalog:angular22
         version: 22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(@angular/platform-browser@22.2.2(@angular/animations@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2)))(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2)))(rxjs@7.8.2)
+      '@bdspark/sparkng-charts':
+        specifier: workspace:*
+        version: link:../sparkng-charts
       '@bdspark/sparkng-motion':
         specifier: workspace:*
         version: link:../sparkng-motion
@@ -342,9 +345,6 @@ importers:
       '@bdspark/sparkng-utils':
         specifier: workspace:*
         version: link:../sparkng-utils
-      chart.js:
-        specifier: ^4.0.0
-        version: 4.5.1
       rxjs:
         specifier: ^6.0.0 || ^7.8.1
         version: 7.8.2
@@ -407,6 +407,27 @@ importers:
         specifier: ^4.1.11
         version: 4.1.11(@types/node@26.6.4)(@vitest/browser-playwright@4.1.11)(@vitest/coverage-v8@4.1.11)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.1)(sass-embedded@1.104.1)(sass@1.104.1)(terser@5.51.2)(yaml@2.9.1))
     publishDirectory: dist
+
+  packages/sparkng-charts:
+    devDependencies:
+      '@types/node':
+        specifier: ^26.2.0
+        version: 26.6.4
+      cross-env:
+        specifier: ^10.1.0
+        version: 10.1.0
+      fs-extra:
+        specifier: ^11.4.0
+        version: 11.4.1
+      tsdown:
+        specifier: ^0.22.9
+        version: 0.22.14(typescript@6.0.3)
+      typescript:
+        specifier: catalog:angular22
+        version: 6.0.3
+      zrender:
+        specifier: 6.1.0
+        version: 6.1.0
 
   packages/sparkng-icons: {}
 
@@ -6370,6 +6391,9 @@ packages:
   tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
 
+  tslib@2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
+
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
@@ -6790,6 +6814,9 @@ packages:
 
   zod@4.6.5:
     resolution: {integrity: sha512-v5l/aFXZQeai4awLbOpSoHecE9UiMrnfx75tEXLjNonXVARxQ5mOeipTjROUchszUNCqnE+hqAMujRsRHsut2Q==}
+
+  zrender@6.1.0:
+    resolution: {integrity: sha512-oEGMDB6pOP2S6OwRR4PdVv610zrjnA3Bh+JnSG12fYJlBKjtNAoEb5fSUoCOOINlH96I2fU38/A2UpRKs67xYQ==}
 
 snapshots:
 
@@ -8705,7 +8732,8 @@ snapshots:
       '@jsonjoy.com/codegen': 17.67.0(tslib@2.8.1)
       tslib: 2.8.1
 
-  '@kurkle/color@0.3.4': {}
+  '@kurkle/color@0.3.4':
+    optional: true
 
   '@leichtgewicht/ip-codec@2.0.5': {}
 
@@ -10093,6 +10121,7 @@ snapshots:
   chart.js@4.5.1:
     dependencies:
       '@kurkle/color': 0.3.4
+    optional: true
 
   chokidar@3.6.0:
     dependencies:
@@ -13032,6 +13061,8 @@ snapshots:
 
   tslib@1.14.1: {}
 
+  tslib@2.3.0: {}
+
   tslib@2.8.1: {}
 
   tsyringe@4.10.0:
@@ -13615,3 +13646,7 @@ snapshots:
       '@yuku-parser/binding-win32-x64': 0.8.7
 
   zod@4.6.5: {}
+
+  zrender@6.1.0:
+    dependencies:
+      tslib: 2.3.0

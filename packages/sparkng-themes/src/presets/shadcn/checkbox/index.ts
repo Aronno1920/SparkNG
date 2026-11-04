@@ -1,0 +1,56 @@
+import type { CheckboxDesignTokens, CheckboxTokenSections } from '@bdspark/sparkng-themes/types/checkbox';
+
+export const root: CheckboxTokenSections.Root = {
+    borderRadius: '{border.radius.xs}',
+    width: '1rem',
+    height: '1rem',
+    background: '{form.field.background}',
+    checkedBackground: '{primary.color}',
+    checkedHoverBackground: '{primary.hover.color}',
+    disabledBackground: '{form.field.disabled.background}',
+    filledBackground: '{form.field.filled.background}',
+    borderColor: '{form.field.border.color}',
+    hoverBorderColor: '{form.field.hover.border.color}',
+    focusBorderColor: '{form.field.focus.border.color}',
+    checkedBorderColor: '{primary.color}',
+    checkedHoverBorderColor: '{primary.hover.color}',
+    checkedFocusBorderColor: '{primary.color}',
+    checkedDisabledBorderColor: '{form.field.border.color}',
+    invalidBorderColor: '{form.field.invalid.border.color}',
+    shadow: 'none',
+    focusRing: {
+        width: '{focus.ring.width}',
+        style: '{focus.ring.style}',
+        color: '{focus.ring.color}',
+        offset: '{focus.ring.offset}',
+        shadow: '{focus.ring.shadow}'
+    },
+    transitionDuration: '{form.field.transition.duration}',
+    sm: {
+        width: '0.875rem',
+        height: '0.875rem'
+    },
+    lg: {
+        width: '1.25rem',
+        height: '1.25rem'
+    }
+};
+
+export const icon: CheckboxTokenSections.Icon = {
+    size: '0.75rem',
+    color: '{form.field.color}',
+    checkedColor: '{primary.contrast.color}',
+    checkedHoverColor: '{primary.contrast.color}',
+    disabledColor: '{form.field.disabled.color}',
+    sm: {
+        size: '0.625rem'
+    },
+    lg: {
+        size: '0.875rem'
+    }
+};
+
+export default {
+    root,
+    icon
+} satisfies CheckboxDesignTokens;

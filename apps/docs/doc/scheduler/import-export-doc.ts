@@ -18,15 +18,9 @@ import type { SchedulerEvent } from '@bdspark/sparkng/types/scheduler';
         <div class="card">
             <!-- Export / Import Control Toolbar -->
             <div class="flex flex-wrap items-center gap-3 mb-4 p-3 bg-surface-50 dark:bg-surface-800 rounded-lg">
-                <button type="button" class="p-button p-button-sm p-button-primary" (click)="onExportIcs()">
-                    📥 Export to iCal (.ics)
-                </button>
-                <button type="button" class="p-button p-button-sm p-button-outlined" (click)="onExportJson()">
-                    📋 Export to JSON
-                </button>
-                <button type="button" class="p-button p-button-sm p-button-success" (click)="onImportSample()">
-                    ➕ Import Sample Events
-                </button>
+                <button type="button" class="p-button p-button-sm p-button-primary" (click)="onExportIcs()">📥 Export to iCal (.ics)</button>
+                <button type="button" class="p-button p-button-sm p-button-outlined" (click)="onExportJson()">📋 Export to JSON</button>
+                <button type="button" class="p-button p-button-sm p-button-success" (click)="onImportSample()">➕ Import Sample Events</button>
             </div>
 
             @if (exportedJson()) {

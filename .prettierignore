@@ -14,3 +14,7 @@ node_modules
 *.json
 packages/sparkng-themes/tokens
 packages/sparkng-themes/umd
+
+# Vendored Apache ECharts engine source (kept in upstream formatting for mergeability)
+packages/sparkng-charts/src/**
+packages/sparkng-charts/types/**

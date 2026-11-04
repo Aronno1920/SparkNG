@@ -9,9 +9,7 @@ import { Component, signal } from '@angular/core';
     imports: [CommonModule, AppDocSectionText, AppCode],
     template: `
         <app-docsectiontext>
-            <p>
-                Generated reference for Angular Scheduler inputs, outputs, methods, definitions, and types as specified in the PrimeUI Pro / SparkNG API specifications.
-            </p>
+            <p>Generated reference for Angular Scheduler inputs, outputs, methods, definitions, and types as specified in the PrimeUI Pro / SparkNG API specifications.</p>
         </app-docsectiontext>
 
         <!-- Import Section -->
@@ -34,9 +32,15 @@ import { Component, signal } from '@angular/core';
                 <tbody>
                     @for (prop of inputs; track prop.name) {
                         <tr>
-                            <td><span class="doc-prop-name font-semibold text-primary">{{ prop.name }}</span></td>
-                            <td><code class="doc-type">{{ prop.type }}</code></td>
-                            <td><code>{{ prop.default }}</code></td>
+                            <td>
+                                <span class="doc-prop-name font-semibold text-primary">{{ prop.name }}</span>
+                            </td>
+                            <td>
+                                <code class="doc-type">{{ prop.type }}</code>
+                            </td>
+                            <td>
+                                <code>{{ prop.default }}</code>
+                            </td>
                             <td>{{ prop.description }}</td>
                         </tr>
                     }
@@ -59,7 +63,9 @@ import { Component, signal } from '@angular/core';
                 <tbody>
                     @for (emit of emits; track emit.name) {
                         <tr>
-                            <td><span class="doc-prop-name font-semibold text-primary">{{ emit.name }}</span></td>
+                            <td>
+                                <span class="doc-prop-name font-semibold text-primary">{{ emit.name }}</span>
+                            </td>
                             <td>
                                 @for (p of emit.parameters; track p.name) {
                                     <code>{{ p.name }}: {{ p.type }}</code>
@@ -88,7 +94,9 @@ import { Component, signal } from '@angular/core';
                 <tbody>
                     @for (m of methods; track m.name) {
                         <tr>
-                            <td><span class="doc-prop-name font-semibold text-primary">{{ m.name }}</span></td>
+                            <td>
+                                <span class="doc-prop-name font-semibold text-primary">{{ m.name }}</span>
+                            </td>
                             <td>
                                 @if (m.parameters.length === 0) {
                                     <span>-</span>
@@ -98,7 +106,9 @@ import { Component, signal } from '@angular/core';
                                     }
                                 }
                             </td>
-                            <td><code>{{ m.return }}</code></td>
+                            <td>
+                                <code>{{ m.return }}</code>
+                            </td>
                             <td>{{ m.description }}</td>
                         </tr>
                     }
@@ -120,7 +130,9 @@ import { Component, signal } from '@angular/core';
                 <tbody>
                     @for (iface of interfaces; track iface.name) {
                         <tr>
-                            <td><span class="doc-prop-name font-semibold text-primary">{{ iface.name }}</span></td>
+                            <td>
+                                <span class="doc-prop-name font-semibold text-primary">{{ iface.name }}</span>
+                            </td>
                             <td>{{ iface.description }}</td>
                         </tr>
                     }
@@ -143,8 +155,12 @@ import { Component, signal } from '@angular/core';
                 <tbody>
                     @for (t of types; track t.name) {
                         <tr>
-                            <td><span class="doc-prop-name font-semibold text-primary">{{ t.name }}</span></td>
-                            <td><code class="doc-type">{{ t.value }}</code></td>
+                            <td>
+                                <span class="doc-prop-name font-semibold text-primary">{{ t.name }}</span>
+                            </td>
+                            <td>
+                                <code class="doc-type">{{ t.value }}</code>
+                            </td>
                             <td>{{ t.description }}</td>
                         </tr>
                     }

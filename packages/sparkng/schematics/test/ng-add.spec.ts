@@ -33,7 +33,8 @@ describe('ng-add', () => {
     it.each([
         ['Lara', 'lara'],
         ['Material', 'material'],
-        ['Nora', 'nora']
+        ['Nora', 'nora'],
+        ['Shadcn', 'shadcn']
     ] as const)('fresh standalone project with --theme %s: wires the chosen preset', async (theme, module) => {
         const runner = createRunner();
         const appTree = await createRealAppTree(runner, { standalone: true });

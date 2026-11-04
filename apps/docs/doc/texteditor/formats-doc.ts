@@ -16,8 +16,8 @@ import { TextEditorContent, TextEditorRoot, TextEditorToolbar, TextEditorToolbar
             </p>
             <h3>Font &amp; Colors</h3>
             <p>
-                <code>commands.fontFamily(value)</code>, <code>commands.fontSize(value)</code>, <code>commands.foregroundColor(color)</code> and <code>commands.backgroundColor(color)</code> apply value marks. When the selection spans more
-                than one value the state reports <code>null</code>, so a select reads as cleared instead of guessing the first value.
+                <code>commands.fontFamily(value)</code>, <code>commands.fontSize(value)</code>, <code>commands.foregroundColor(color)</code> and <code>commands.backgroundColor(color)</code> apply value marks. When the selection spans more than one
+                value the state reports <code>null</code>, so a select reads as cleared instead of guessing the first value.
             </p>
         </app-docsectiontext>
         <div class="card">

@@ -11,9 +11,8 @@ import type { AppointmentSlot, BlockedInterval, SchedulerEvent, SlotBookPayload 
     template: `
         <app-docsectiontext>
             <p>
-                Manage schedule constraints with availability rules: <strong>Business Hours</strong> (highlighting operational windows),
-                <strong>Working Days</strong> (dimming weekends or days off with hatched patterns), <strong>Blocked Intervals</strong> (locking out reservations
-                with lock badges), and <strong>Appointment Slots</strong> (interactive bookable slots with capacity indicators).
+                Manage schedule constraints with availability rules: <strong>Business Hours</strong> (highlighting operational windows), <strong>Working Days</strong> (dimming weekends or days off with hatched patterns),
+                <strong>Blocked Intervals</strong> (locking out reservations with lock badges), and <strong>Appointment Slots</strong> (interactive bookable slots with capacity indicators).
             </p>
         </app-docsectiontext>
         <div class="card">
@@ -23,15 +22,7 @@ import type { AppointmentSlot, BlockedInterval, SchedulerEvent, SlotBookPayload 
                 </div>
             }
 
-            <p-scheduler-root
-                [events]="events()"
-                [businessHours]="businessHours"
-                [workingDays]="workingDays"
-                [blockedIntervals]="blockedIntervals()"
-                [appointmentSlots]="appointmentSlots()"
-                [view]="'week'"
-                (slotBook)="onSlotBook($event)"
-            >
+            <p-scheduler-root [events]="events()" [businessHours]="businessHours" [workingDays]="workingDays" [blockedIntervals]="blockedIntervals()" [appointmentSlots]="appointmentSlots()" [view]="'week'" (slotBook)="onSlotBook($event)">
                 <p-scheduler-header>
                     <p-scheduler-navigation></p-scheduler-navigation>
                     <p-scheduler-title></p-scheduler-title>

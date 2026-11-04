@@ -5,7 +5,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AvatarModule } from '@bdspark/sparkng/avatar';
 import { ButtonModule } from '@bdspark/sparkng/button';
-import { ChartModule } from '@bdspark/sparkng/chart';
 import { DividerModule } from '@bdspark/sparkng/divider';
 import { DrawerModule } from '@bdspark/sparkng/drawer';
 import { IconField } from '@bdspark/sparkng/iconfield';
@@ -21,25 +20,7 @@ import { TooltipModule } from '@bdspark/sparkng/tooltip';
 @Component({
     selector: 'customers-app',
     standalone: true,
-    imports: [
-        CommonModule,
-        RouterModule,
-        ChartModule,
-        FormsModule,
-        DividerModule,
-        AvatarModule,
-        TooltipModule,
-        IconField,
-        InputIcon,
-        ButtonModule,
-        TableModule,
-        InputTextModule,
-        Tag,
-        OverlayBadgeModule,
-        DrawerModule,
-        ToggleSwitchModule,
-        PopoverModule
-    ],
+    imports: [CommonModule, RouterModule, FormsModule, DividerModule, AvatarModule, TooltipModule, IconField, InputIcon, ButtonModule, TableModule, InputTextModule, Tag, OverlayBadgeModule, DrawerModule, ToggleSwitchModule, PopoverModule],
     template: `
         <div class="flex items-start gap-2 justify-between">
             <div>

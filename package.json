@@ -20,7 +20,7 @@
         "build": "cross-env NODE_ENV=production pnpm run build:check && pnpm run build:packages",
         "build:check": "pnpm run format:check && pnpm run security:check",
         "build:packages": "pnpm run build:sparkng && pnpm run build:lib && pnpm run build:themes && pnpm run build:docs:content && pnpm run build:docs",
-        "build:sparkng": "pnpm --filter './packages/sparkng-*' build",
+        "build:sparkng": "pnpm --filter \"@bdspark/sparkng-*\" build",
         "build:lib": "pnpm --filter @bdspark/sparkng build",
         "build:themes": "pnpm --filter @bdspark/sparkng-themes build",
         "build:docs": "pnpm --filter docs build",

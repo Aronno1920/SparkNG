@@ -61,7 +61,12 @@ abstract class UploadPartBase {
     }
     readonly kind: 'image' | 'document';
 
-    protected abstract uploadConfig(): { handler?: ((file: File, options: { onProgress: (percent: number) => void; signal: AbortSignal }) => Promise<string>) | null; maxFileCount?: number | null; maxFileSize?: number | null; allowedTypes?: string | null };
+    protected abstract uploadConfig(): {
+        handler?: ((file: File, options: { onProgress: (percent: number) => void; signal: AbortSignal }) => Promise<string>) | null;
+        maxFileCount?: number | null;
+        maxFileSize?: number | null;
+        allowedTypes?: string | null;
+    };
     protected abstract emitReject(event: TextEditorFileRejectEvent): void;
 
     constructor(kind: 'image' | 'document') {

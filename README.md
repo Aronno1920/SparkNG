@@ -39,7 +39,13 @@ import { Button } from '@bdspark/sparkng/button';
 <p-button label="Check" />
 ```
 
-Full setup, including the manual path and icons, is in the [getting started guide](https://sparkng.bdspark.com/installation).
+Full setup, including the manual path, charts, and icons, is in the [getting started guide](https://sparkng.bdspark.com/installation).
+
+To use chart components, install the charting engine:
+
+```bash
+npm install @bdspark/sparkng-charts
+```
 
 ## Migrating from PrimeNG
 

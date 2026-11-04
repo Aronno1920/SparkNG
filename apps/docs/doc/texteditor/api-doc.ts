@@ -25,7 +25,9 @@ import { Component, inject } from '@angular/core';
                 <tbody>
                     @for (part of parts; track part.selector) {
                         <tr>
-                            <td><code>{{ part.selector }}</code></td>
+                            <td>
+                                <code>{{ part.selector }}</code>
+                            </td>
                             <td>{{ part.purpose }}</td>
                         </tr>
                     }
@@ -35,9 +37,7 @@ import { Component, inject } from '@angular/core';
 
         <!-- Context Tokens -->
         <h3 class="doc-section-label !mt-6">Context Tokens ({{ tokens.length }})<a class="cursor-pointer" id="api.context-tokens" (click)="onAnchor($event, 'api.context-tokens')">#</a></h3>
-        <p>
-            Injection tokens published by the compound parts. Projected widgets inject a token with <code>inject(...)</code> to reach the live editor signals — commands, state, menu commands and part actions — without template plumbing.
-        </p>
+        <p>Injection tokens published by the compound parts. Projected widgets inject a token with <code>inject(...)</code> to reach the live editor signals — commands, state, menu commands and part actions — without template plumbing.</p>
         <div class="doc-tablewrapper">
             <table class="doc-table">
                 <thead>
@@ -50,8 +50,12 @@ import { Component, inject } from '@angular/core';
                 <tbody>
                     @for (token of tokens; track token.name) {
                         <tr>
-                            <td><span class="doc-prop-name font-semibold text-primary">{{ token.name }}</span></td>
-                            <td><code>{{ token.type }}</code></td>
+                            <td>
+                                <span class="doc-prop-name font-semibold text-primary">{{ token.name }}</span>
+                            </td>
+                            <td>
+                                <code>{{ token.type }}</code>
+                            </td>
                             <td>{{ token.surface }}</td>
                         </tr>
                     }
@@ -75,9 +79,15 @@ import { Component, inject } from '@angular/core';
                 <tbody>
                     @for (prop of inputs; track prop.name) {
                         <tr>
-                            <td><span class="doc-prop-name font-semibold text-primary">{{ prop.name }}</span></td>
-                            <td><code class="doc-type">{{ prop.type }}</code></td>
-                            <td><code>{{ prop.default }}</code></td>
+                            <td>
+                                <span class="doc-prop-name font-semibold text-primary">{{ prop.name }}</span>
+                            </td>
+                            <td>
+                                <code class="doc-type">{{ prop.type }}</code>
+                            </td>
+                            <td>
+                                <code>{{ prop.default }}</code>
+                            </td>
                             <td>{{ prop.description }}</td>
                         </tr>
                     }
@@ -100,8 +110,12 @@ import { Component, inject } from '@angular/core';
                 <tbody>
                     @for (emit of emits; track emit.name) {
                         <tr>
-                            <td><span class="doc-prop-name font-semibold text-primary">{{ emit.name }}</span></td>
-                            <td><code>{{ emit.parameters }}</code></td>
+                            <td>
+                                <span class="doc-prop-name font-semibold text-primary">{{ emit.name }}</span>
+                            </td>
+                            <td>
+                                <code>{{ emit.parameters }}</code>
+                            </td>
                             <td>{{ emit.description }}</td>
                         </tr>
                     }
@@ -125,9 +139,15 @@ import { Component, inject } from '@angular/core';
                 <tbody>
                     @for (m of methods; track m.name) {
                         <tr>
-                            <td><span class="doc-prop-name font-semibold text-primary">{{ m.name }}</span></td>
-                            <td><code>{{ m.parameters || '-' }}</code></td>
-                            <td><code>{{ m.return }}</code></td>
+                            <td>
+                                <span class="doc-prop-name font-semibold text-primary">{{ m.name }}</span>
+                            </td>
+                            <td>
+                                <code>{{ m.parameters || '-' }}</code>
+                            </td>
+                            <td>
+                                <code>{{ m.return }}</code>
+                            </td>
                             <td>{{ m.description }}</td>
                         </tr>
                     }
@@ -149,7 +169,9 @@ import { Component, inject } from '@angular/core';
                 <tbody>
                     @for (iface of interfaces; track iface.name) {
                         <tr>
-                            <td><span class="doc-prop-name font-semibold text-primary">{{ iface.name }}</span></td>
+                            <td>
+                                <span class="doc-prop-name font-semibold text-primary">{{ iface.name }}</span>
+                            </td>
                             <td>{{ iface.description }}</td>
                         </tr>
                     }
@@ -172,8 +194,12 @@ import { Component, inject } from '@angular/core';
                 <tbody>
                     @for (t of types; track t.name) {
                         <tr>
-                            <td><span class="doc-prop-name font-semibold text-primary">{{ t.name }}</span></td>
-                            <td><code>{{ t.value }}</code></td>
+                            <td>
+                                <span class="doc-prop-name font-semibold text-primary">{{ t.name }}</span>
+                            </td>
+                            <td>
+                                <code>{{ t.value }}</code>
+                            </td>
                             <td>{{ t.description }}</td>
                         </tr>
                     }
@@ -184,7 +210,8 @@ import { Component, inject } from '@angular/core';
         <!-- Style Classes -->
         <h3 class="doc-section-label !mt-6">Style Classes ({{ styleClasses.length }})<a class="cursor-pointer" id="api.style-classes" (click)="onAnchor($event, 'api.style-classes')">#</a></h3>
         <p>
-            Structural classes applied by the parts. Each part root also carries <code>data-scope="texteditor"</code> and a <code>data-part</code> attribute for targeted CSS; visual theming goes through the <code>--p-texteditor-*</code> design tokens which fall back to the global <code>--p-*</code> theme variables.
+            Structural classes applied by the parts. Each part root also carries <code>data-scope="texteditor"</code> and a <code>data-part</code> attribute for targeted CSS; visual theming goes through the <code>--p-texteditor-*</code> design tokens
+            which fall back to the global <code>--p-*</code> theme variables.
         </p>
         <div class="doc-tablewrapper">
             <table class="doc-table">
@@ -197,7 +224,9 @@ import { Component, inject } from '@angular/core';
                 <tbody>
                     @for (cls of styleClasses; track cls.name) {
                         <tr>
-                            <td><code>{{ cls.name }}</code></td>
+                            <td>
+                                <code>{{ cls.name }}</code>
+                            </td>
                             <td>{{ cls.element }}</td>
                         </tr>
                     }
@@ -247,7 +276,11 @@ import '@bdspark/sparkng-styles/texteditor';`
     ];
 
     readonly tokens: any[] = [
-        { name: 'TEXTEDITOR_CONTEXT', type: 'TextEditorRootContext', surface: 'p-texteditor-root — commands(), state(), pluginCommands(), headings(), registerPart(), rootElement(), upload/mention/navigator signals. Every other part and projected widget re-uses it.' },
+        {
+            name: 'TEXTEDITOR_CONTEXT',
+            type: 'TextEditorRootContext',
+            surface: 'p-texteditor-root — commands(), state(), pluginCommands(), headings(), registerPart(), rootElement(), upload/mention/navigator signals. Every other part and projected widget re-uses it.'
+        },
         { name: 'CONTEXTTOOLBAR_CONTEXT', type: 'ContextToolbarContextValue', surface: 'p-texteditor-context-toolbar — request position, moreActive, toggleMore(), dismiss().' },
         { name: 'BLOCKCONTROLS_CONTEXT', type: 'BlockControlsContextValue', surface: 'p-texteditor-block-controls — hovered block, drag lifecycle, add-block and menu triggers (block mode).' },
         { name: 'BLOCKMENU_CONTEXT', type: 'BlockMenuContextValue', surface: 'p-texteditor-block-menu — open request, submenu anchors, commands() (duplicate, turn-into, delete, move).' },
@@ -274,7 +307,12 @@ import '@bdspark/sparkng-styles/texteditor';`
         { name: 'allowedDocumentTypes', type: 'string', default: "'.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv,.zip'", description: 'Accepted file types for document uploads.' },
         { name: 'imageMaxFileCount / documentMaxFileCount', type: 'number | null', default: 'null', description: 'Maximum files per upload selection.' },
         { name: 'imageMaxFileSize / documentMaxFileSize', type: 'number | null', default: 'null', description: 'Maximum file size in bytes; see TEXTEDITOR_FILE_SIZE.' },
-        { name: 'imageUploadHandler / documentUploadHandler / uploadHandler', type: 'TextEditorUploadHandler', default: 'null', description: 'Upload transports (file, { onProgress, signal }) => Promise<url>; kind-specific handlers take precedence.' },
+        {
+            name: 'imageUploadHandler / documentUploadHandler / uploadHandler',
+            type: 'TextEditorUploadHandler',
+            default: 'null',
+            description: 'Upload transports (file, { onProgress, signal }) => Promise<url>; kind-specific handlers take precedence.'
+        },
         { name: 'mentionHandler', type: '(query: string) => unknown[] | Promise<unknown[]>', default: 'null', description: 'Resolves mention suggestions for the current query.' },
         { name: 'mentionFilterField', type: 'string | null', default: 'null', description: 'Field name used to filter mention items.' },
         { name: 'mentionTemplate', type: '(data: any) => string', default: 'null', description: 'Renders the inserted mention chip text.' },
@@ -340,7 +378,11 @@ import '@bdspark/sparkng-styles/texteditor';`
     ];
 
     readonly interfaces: any[] = [
-        { name: 'TextEditorCommands', description: 'The imperative editing command surface: marks (bold…code), styles (fontFamily, fontSize, foregroundColor, backgroundColor, clearFormatting), blocks (heading 1-6, paragraph, blockquote, codeBlock), lists (bullet, ordered, check, indent, outdent), alignment (textAlign left/center/right/justify), inserts (link, image, rule, table), history (undo/redo) and print.' },
+        {
+            name: 'TextEditorCommands',
+            description:
+                'The imperative editing command surface: marks (bold…code), styles (fontFamily, fontSize, foregroundColor, backgroundColor, clearFormatting), blocks (heading 1-6, paragraph, blockquote, codeBlock), lists (bullet, ordered, check, indent, outdent), alignment (textAlign left/center/right/justify), inserts (link, image, rule, table), history (undo/redo) and print.'
+        },
         { name: 'TextEditorFormatState', description: 'Snapshot of the active marks, block type, lists, alignment, colors, font family/size and history flags at the current selection; mixed selections report null for value inputs.' },
         { name: 'TextEditorToolbarState', description: 'Toolbar binding slice of the format state (heading, marks, lists, align, colors, canUndo/canRedo).' },
         { name: 'TextEditorContextValue', description: 'The TEXTEDITOR_CONTEXT surface implemented by the root: commands(), state(), pluginCommands(), headings() signals plus registration hooks.' },
@@ -349,7 +391,10 @@ import '@bdspark/sparkng-styles/texteditor';`
         { name: 'UploadContextValue', description: 'Context of the upload overlays: kind ("image" | "document"), entries signal, start/dismiss actions.' },
         { name: 'TableControlsContextValue / TableColumnMenuContextValue / TableRowMenuContextValue / TableCellMenuContextValue', description: 'Contexts of the table part family: overlay geometry plus per-axis command sets.' },
         { name: 'NavigatorContextValue', description: 'Context of the navigator minimap: headings(), activeIndex(), scrollTo().' },
-        { name: 'TextEditor*SlotContext', description: 'Unwrapped slot props handed to the *Def template directives (Toolbar, Root, ContextToolbar(+More), BlockControls, BlockMenu(+Submenu), SlashMenu, MentionMenu, Table*, UploadDropzone/Progress, Navigator).' },
+        {
+            name: 'TextEditor*SlotContext',
+            description: 'Unwrapped slot props handed to the *Def template directives (Toolbar, Root, ContextToolbar(+More), BlockControls, BlockMenu(+Submenu), SlashMenu, MentionMenu, Table*, UploadDropzone/Progress, Navigator).'
+        },
         { name: 'TextEditorPluginDefinition / TextEditorPluginContext', description: 'Plugin system contracts for defineTextEditorPlugin().' },
         { name: 'TextEditorTableColumnCommands / TableRowCommands / TableCellCommands', description: 'Per-axis table command groups (insert/delete/align/width, merge/split, header toggle, cell background).' },
         { name: 'TextEditorBlockMenuCommands / TextEditorSlashMenuCommands / TextEditorMentionCommands / TextEditorSubmenu', description: 'Command groups surfaced by the block menu, slash palette and mention menu.' },

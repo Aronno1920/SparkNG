@@ -12,31 +12,9 @@
  */
 
 import { CommonModule } from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    ContentChild,
-    inject,
-    signal,
-    ViewEncapsulation
-} from '@angular/core';
-import {
-    injectSchedulerRoot,
-    SCHEDULER_EVENT_CONTEXT_TOKEN,
-    SchedulerEventContext,
-    SchedulerResourceContext
-} from '../../context/scheduler.context';
-import {
-    diffInMinutes,
-    formatDate,
-    formatTime,
-    generateMonthGrid,
-    generateTimeSlots,
-    generateWeekDays,
-    isSameDay,
-    MonthGridDay
-} from '../../engine/date-utils';
+import { ChangeDetectionStrategy, Component, computed, ContentChild, inject, signal, ViewEncapsulation } from '@angular/core';
+import { injectSchedulerRoot, SCHEDULER_EVENT_CONTEXT_TOKEN, SchedulerEventContext, SchedulerResourceContext } from '../../context/scheduler.context';
+import { diffInMinutes, formatDate, formatTime, generateMonthGrid, generateTimeSlots, generateWeekDays, isSameDay, MonthGridDay } from '../../engine/date-utils';
 import { computeTimeGridEventPositions } from '../../engine/event-layout';
 import type { ProcessedEvent, SchedulerEvent, SchedulerResource } from '../../types/scheduler.types';
 import {
@@ -88,27 +66,16 @@ import {
                     @for (res of flatResources(); track res.id) {
                         <div class="p-scheduler-resource-timeline-row">
                             <!-- Left Resource Label Cell -->
-                            <div
-                                class="p-scheduler-resource-cell"
-                                [style.width.px]="resourceAreaWidth()"
-                                [style.paddingLeft.px]="(res.depth || 0) * 16 + 12"
-                            >
+                            <div class="p-scheduler-resource-cell" [style.width.px]="resourceAreaWidth()" [style.paddingLeft.px]="(res.depth || 0) * 16 + 12">
                                 @if (res.children && res.children.length > 0) {
-                                    <button
-                                        type="button"
-                                        class="p-scheduler-tree-toggle"
-                                        (click)="toggleResource(res.id)"
-                                    >
+                                    <button type="button" class="p-scheduler-tree-toggle" (click)="toggleResource(res.id)">
                                         {{ isExpanded(res.id) ? '▼' : '▶' }}
                                     </button>
                                 }
                                 @if (res.avatar) {
                                     <img [src]="res.avatar" class="p-scheduler-resource-avatar" alt="" />
                                 } @else {
-                                    <span
-                                        class="p-scheduler-resource-dot"
-                                        [style.backgroundColor]="res.eventColor || res.color || '#3b82f6'"
-                                    ></span>
+                                    <span class="p-scheduler-resource-dot" [style.backgroundColor]="res.eventColor || res.color || '#3b82f6'"></span>
                                 }
                                 <span class="p-scheduler-resource-title">{{ res.title }}</span>
                                 <span class="p-scheduler-resource-badge">
@@ -203,9 +170,7 @@ export class SchedulerResourceTimelineScope {
 
     getEventsForResource(resId: string | number): ProcessedEvent[] {
         if (resId === 'all') return this.root.processedEvents();
-        return this.root.processedEvents().filter(
-            (e) => e.resourceId === resId || (e.resourceIds && e.resourceIds.includes(resId))
-        );
+        return this.root.processedEvents().filter((e) => e.resourceId === resId || (e.resourceIds && e.resourceIds.includes(resId)));
     }
 
     calcEventLeft(event: ProcessedEvent): number {
@@ -253,11 +218,7 @@ export class SchedulerResourceTimelineScope {
                 @if (isMobileAdaptive()) {
                     <div class="p-scheduler-adaptive-bar">
                         <label class="p-scheduler-adaptive-label">Resource:</label>
-                        <select
-                            class="p-scheduler-adaptive-select"
-                            [value]="activeResourceId()"
-                            (change)="onAdaptiveSelect($any($event.target).value)"
-                        >
+                        <select class="p-scheduler-adaptive-select" [value]="activeResourceId()" (change)="onAdaptiveSelect($any($event.target).value)">
                             @for (res of resources(); track res.id) {
                                 <option [value]="res.id">{{ res.title }}</option>
                             }
@@ -310,10 +271,7 @@ export class SchedulerResourceTimelineScope {
                                             [style.width.%]="event.widthPercent"
                                             (click)="onEventClick(event, $event)"
                                         >
-                                            <div
-                                                class="p-scheduler-timed-event-card"
-                                                [style.backgroundColor]="event.color || res.eventColor || '#3b82f6'"
-                                            >
+                                            <div class="p-scheduler-timed-event-card" [style.backgroundColor]="event.color || res.eventColor || '#3b82f6'">
                                                 <div class="p-scheduler-timed-event-title">{{ event.title }}</div>
                                                 <div class="p-scheduler-timed-event-time">{{ formatEventTime(event) }}</div>
                                             </div>
@@ -368,9 +326,7 @@ export class SchedulerResourceDayScope {
     }
 
     getTimedEventsForResource(resId: string | number): ProcessedEvent[] {
-        const events = this.root.processedEvents().filter(
-            (e) => isSameDay(e.startDate, this.currentDate()) && !e.allDay && (e.resourceId === resId || (e.resourceIds && e.resourceIds.includes(resId)))
-        );
+        const events = this.root.processedEvents().filter((e) => isSameDay(e.startDate, this.currentDate()) && !e.allDay && (e.resourceId === resId || (e.resourceIds && e.resourceIds.includes(resId))));
         return computeTimeGridEventPositions(events, 0, 24);
     }
 
@@ -441,10 +397,7 @@ export class SchedulerResourceDayScope {
                                             [style.width.%]="event.widthPercent"
                                             (click)="onEventClick(event, $event)"
                                         >
-                                            <div
-                                                class="p-scheduler-timed-event-card"
-                                                [style.backgroundColor]="event.color || '#3b82f6'"
-                                            >
+                                            <div class="p-scheduler-timed-event-card" [style.backgroundColor]="event.color || '#3b82f6'">
                                                 <div class="p-scheduler-timed-event-title">{{ event.title }}</div>
                                                 <div class="p-scheduler-timed-event-time">{{ formatEventTime(event) }}</div>
                                             </div>
@@ -518,12 +471,7 @@ export class SchedulerResourceWeekScope {
 
                 <div class="p-scheduler-month-grid">
                     @for (day of gridDays(); track day.date.getTime()) {
-                        <div
-                            class="p-scheduler-month-day"
-                            [class.p-scheduler-today]="day.isToday"
-                            [class.p-scheduler-other-month]="!day.isCurrentMonth"
-                            (click)="onDateClick(day.date, $event)"
-                        >
+                        <div class="p-scheduler-month-day" [class.p-scheduler-today]="day.isToday" [class.p-scheduler-other-month]="!day.isCurrentMonth" (click)="onDateClick(day.date, $event)">
                             <div class="p-scheduler-day-top">
                                 <span class="p-scheduler-day-number">{{ day.dayNumber }}</span>
                             </div>
@@ -531,10 +479,7 @@ export class SchedulerResourceWeekScope {
                             <div class="p-scheduler-day-events">
                                 @for (event of getEventsForDay(day.date).slice(0, root.maxEventsVisible()); track event.id) {
                                     <div class="p-scheduler-event-container" (click)="onEventClick(event, $event)">
-                                        <div
-                                            class="p-scheduler-event-pill"
-                                            [style.backgroundColor]="event.color || '#3b82f6'"
-                                        >
+                                        <div class="p-scheduler-event-pill" [style.backgroundColor]="event.color || '#3b82f6'">
                                             <span class="p-scheduler-event-pill-title">{{ event.title }}</span>
                                         </div>
                                     </div>

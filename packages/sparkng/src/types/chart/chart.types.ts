@@ -17,9 +17,9 @@ export interface ChartPassThroughOptions<I = unknown> {
      */
     root?: PassThroughOption<HTMLElement, I>;
     /**
-     * Used to pass attributes to the canvas DOM element.
+     * Used to pass attributes to the chart container element that the chart engine mounts on.
      */
-    canvas?: PassThroughOption<HTMLCanvasElement, I>;
+    container?: PassThroughOption<HTMLDivElement, I>;
 }
 
 /**

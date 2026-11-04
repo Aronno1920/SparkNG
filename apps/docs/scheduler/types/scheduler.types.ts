@@ -1,19 +1,6 @@
 import type { PassThrough, PassThroughOption } from '@bdspark/sparkng/api';
 
-export type SchedulerViewType =
-    | 'month'
-    | 'week'
-    | 'day'
-    | 'agenda'
-    | 'year'
-    | 'timeline'
-    | 'resourceTimeline'
-    | 'resourceDay'
-    | 'resourceWeek'
-    | 'resourceMonth'
-    | 'dateDay'
-    | 'dateWeek'
-    | 'dateMonth';
+export type SchedulerViewType = 'month' | 'week' | 'day' | 'agenda' | 'year' | 'timeline' | 'resourceTimeline' | 'resourceDay' | 'resourceWeek' | 'resourceMonth' | 'dateDay' | 'dateWeek' | 'dateMonth';
 
 export type DensityMode = 'minimal' | 'compact' | 'standard' | 'comfortable';
 

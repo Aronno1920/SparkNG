@@ -14,12 +14,12 @@
         "theme": {
             "type": "string",
             "description": "The theme preset to configure.",
-            "enum": ["Aura", "Lara", "Material", "Nora"],
+            "enum": ["Aura", "Lara", "Material", "Nora", "Shadcn"],
             "default": "Aura",
             "x-prompt": {
                 "message": "Which theme preset would you like to use?",
                 "type": "list",
-                "items": ["Aura", "Lara", "Material", "Nora"]
+                "items": ["Aura", "Lara", "Material", "Nora", "Shadcn"]
             }
         },
         "skipInstall": {

@@ -29,6 +29,7 @@
         // "rootDir": "./",                                  /* Specify the root folder within your source files. */
         "moduleResolution": "bundler",                       /* (UPDATED) Specify how TypeScript looks up a file from a given module specifier. */
         "paths": {                                           /* (UPDATED) Specify a set of entries that re-map imports to additional lookup locations. */
+            "@bdspark/sparkng-charts": ["./packages/sparkng-charts/types/index.d.ts"],
             "@bdspark/sparkng/types/*": ["./packages/sparkng/src/types/*/public_api"],
             "@bdspark/sparkng/*": ["./packages/sparkng/src/*/public_api"],
             "@primeng/themes/*": ["./packages/themes/src/presets/*/index"],

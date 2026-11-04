@@ -18,6 +18,6 @@ export class UsageDoc {
     };
 
     usageCode: Code = {
-        html: `<p-chart />`
+        html: `<p-linechart [data]="sales" />`
     };
 }

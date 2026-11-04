@@ -9,7 +9,10 @@ import { Component } from '@angular/core';
     imports: [AppDocSectionText, AppCode],
     template: `
         <app-docsectiontext>
-            <p>Add <i>provideSpark</i> to the list of providers in your <i>app.config.ts</i> and use the <i>theme</i> property to configure a theme such as Aura.</p>
+            <p>
+                Add <i>provideSpark</i> to the list of providers in your <i>app.config.ts</i> and use the <i>theme</i> property to configure a theme such as Aura. Any built-in preset can be swapped the same way, for example the minimal
+                <i>shadcn</i> theme is available as <i>&#64;bdspark/sparkng-themes/shadcn</i>.
+            </p>
             <app-code [code]="code" [hideToggleCode]="true"></app-code>
         </app-docsectiontext>
     `

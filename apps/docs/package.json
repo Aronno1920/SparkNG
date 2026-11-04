@@ -42,7 +42,7 @@
         "@stackblitz/sdk": "1.11.1",
         "@types/express": "^5.0.6",
         "@types/node": "^26.2.0",
-        "chart.js": "4.5.1",
+        "@bdspark/sparkng-charts": "22.0.5",
         "express": "^5.2.1",
         "glob": "^13.0.6",
         "prismjs": "^1.29.0",
@@ -59,7 +59,8 @@
         "quill": "2.0.3",
         "rxjs": "~7.8.2",
         "tslib": "^2.8.1",
-        "typedoc": "0.28.20"
+        "typedoc": "0.28.20",
+        "@bdspark/sparkng-charts": "workspace:22.0.6"
     },
     "dependencies": {
         "@bdspark/sparkng-tailwindcss": "22.0.5",

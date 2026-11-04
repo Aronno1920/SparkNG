@@ -4,20 +4,7 @@
  */
 
 import { CommonModule } from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    ElementRef,
-    HostBinding,
-    inject,
-    input,
-    model,
-    OnInit,
-    output,
-    signal,
-    ViewEncapsulation
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, ElementRef, HostBinding, inject, input, model, OnInit, output, signal, ViewEncapsulation } from '@angular/core';
 import { SchedulerStyle } from '../../style/schedulerstyle';
 import { SCHEDULER_ROOT_TOKEN, SchedulerRootInstance } from '../../context/scheduler.context';
 import { addDays, addMonths, addYears, endOfDay, endOfWeek, getViewTitle, startOfDay, startOfWeek, toDate } from '../../engine/date-utils';
@@ -444,8 +431,7 @@ export class SchedulerRoot implements SchedulerRootInstance, OnInit {
     exportToIcs(): string {
         const events = this.processedEvents();
         const pad = (n: number) => (n < 10 ? '0' + n : '' + n);
-        const formatIcsDate = (d: Date) =>
-            `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}T${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}${pad(d.getUTCSeconds())}Z`;
+        const formatIcsDate = (d: Date) => `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}T${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}${pad(d.getUTCSeconds())}Z`;
 
         let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//SparkNG//Scheduler//EN\r\nCALSCALE:GREGORIAN\r\n';
         for (const ev of events) {

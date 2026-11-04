@@ -1,0 +1,66 @@
+{
+    "name": "@bdspark/sparkng-charts",
+    "version": "22.0.6",
+    "author": "bdSpark",
+    "description": "The charting engine of the SparkNG ecosystem — every chart type and component registered, bundled with zero runtime dependencies. Maintained by bdSpark.",
+    "homepage": "https://bdspark.com/",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Aronno1920/SparkNG.git",
+        "directory": "packages/sparkng-charts"
+    },
+    "bugs": {
+        "url": "https://github.com/Aronno1920/SparkNG/issues"
+    },
+    "keywords": [
+        "Spark",
+        "sparkng",
+        "sparkng-charts",
+        "charts",
+        "data visualization",
+        "canvas",
+        "svg"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "type": "module",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./types/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./types/index.d.ts",
+            "import": "./dist/index.js",
+            "default": "./dist/index.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "dist",
+        "types",
+        "LICENSE",
+        "NOTICE",
+        "README.md"
+    ],
+    "scripts": {
+        "build": "cross-env NODE_ENV=production INPUT_DIR=src/ OUTPUT_DIR=dist/ pnpm run build:package",
+        "build:dev": "cross-env NODE_ENV=development INPUT_DIR=src/ OUTPUT_DIR=dist/ pnpm run build:dev:package",
+        "build:package": "pnpm run build:prebuild && tsdown",
+        "build:dev:package": "pnpm run build:prebuild && tsdown --watch",
+        "build:prebuild": "node ./scripts/prebuild.mjs",
+        "dev:link": "pnpm link --global && npm link"
+    },
+    "engines": {
+        "node": ">=20"
+    },
+    "devDependencies": {
+        "@types/node": "^26.2.0",
+        "cross-env": "^10.1.0",
+        "fs-extra": "^11.4.0",
+        "tsdown": "^0.22.9",
+        "typescript": "catalog:angular22",
+        "zrender": "6.1.0"
+    }
+}

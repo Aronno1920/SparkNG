@@ -19,6 +19,7 @@ import { PrimaryDoc } from '@/doc/theming/styled/primary-doc';
 import { ResetDoc } from '@/doc/theming/styled/reset-doc';
 import { ScaleDoc } from '@/doc/theming/styled/scale-doc';
 import { ScopedTokensDoc } from '@/doc/theming/styled/scopedtokens-doc';
+import { ShadcnDoc } from '@/doc/theming/styled/shadcn-doc';
 import { SpecificityDoc } from '@/doc/theming/styled/specificity-doc';
 import { SurfaceDoc } from '@/doc/theming/styled/surface-doc';
 import { ThemeDoc } from '@/doc/theming/styled/theme-doc';
@@ -60,6 +61,11 @@ export class ThemingStyledDemo {
             id: 'presets',
             label: 'Presets',
             component: PresetsDoc
+        },
+        {
+            id: 'shadcn',
+            label: 'Shadcn',
+            component: ShadcnDoc
         },
         {
             id: 'reserved',

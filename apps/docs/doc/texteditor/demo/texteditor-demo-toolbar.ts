@@ -193,7 +193,9 @@ export class TeIcon {
                 </span>
                 <button type="button" (click)="commands.undo()" [disabled]="!state.canUndo" aria-label="Undo"><te-icon name="undo" /></button>
                 <button type="button" (click)="commands.redo()" [disabled]="!state.canRedo" aria-label="Redo"><te-icon name="redo" /></button>
-                <button type="button" (click)="commands.clearFormatting()" aria-label="Clear formatting" title="Clear formatting"><span class="te-tx">T<span>x</span></span></button>
+                <button type="button" (click)="commands.clearFormatting()" aria-label="Clear formatting" title="Clear formatting">
+                    <span class="te-tx">T<span>x</span></span>
+                </button>
                 <button type="button" (click)="commands.bulletList()" [attr.aria-pressed]="state.bulletList" aria-label="Bullet list"><te-icon name="list" /></button>
                 <button type="button" (click)="commands.orderedList()" [attr.aria-pressed]="state.orderedList" aria-label="Ordered list"><te-icon name="list-ordered" /></button>
                 <button type="button" (click)="commands.checkList()" [attr.aria-pressed]="state.checkList" aria-label="Checklist"><te-icon name="list-checks" /></button>
@@ -205,7 +207,13 @@ export class TeIcon {
                     @if (alignOpen()) {
                         <div class="te-dd-menu" role="menu" aria-label="Align options">
                             @for (option of alignOptions; track option.value) {
-                                <button type="button" role="menuitemradio" [attr.aria-checked]="(state.textAlign ?? 'left') === option.value" [class.te-dd-active]="(state.textAlign ?? 'left') === option.value" (click)="commands.textAlign(option.value); alignOpen.set(false)">
+                                <button
+                                    type="button"
+                                    role="menuitemradio"
+                                    [attr.aria-checked]="(state.textAlign ?? 'left') === option.value"
+                                    [class.te-dd-active]="(state.textAlign ?? 'left') === option.value"
+                                    (click)="commands.textAlign(option.value); alignOpen.set(false)"
+                                >
                                     <te-icon [name]="'align-' + option.value" />
                                     <span>{{ option.label }}</span>
                                 </button>
@@ -222,7 +230,9 @@ export class TeIcon {
                 <button type="button" (click)="commands.table(3, 3)" aria-label="Insert table"><te-icon name="table" /></button>
                 <button type="button" (click)="commands.outdent()" aria-label="Outdent"><te-icon name="outdent" /></button>
                 <button type="button" (click)="commands.indent()" aria-label="Indent"><te-icon name="indent" /></button>
-                <button type="button" (click)="commands.codeBlock()" [attr.aria-pressed]="state.codeBlock" aria-label="Code block"><span class="te-mono">{{ '{ }' }}</span></button>
+                <button type="button" (click)="commands.codeBlock()" [attr.aria-pressed]="state.codeBlock" aria-label="Code block">
+                    <span class="te-mono">{{ '{ }' }}</span>
+                </button>
             </ng-template>
         </p-texteditor-toolbar>
     `,

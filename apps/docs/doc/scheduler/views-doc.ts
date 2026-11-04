@@ -11,8 +11,8 @@ import type { SchedulerEvent, SchedulerResource, SchedulerViewType } from '@bdsp
     template: `
         <app-docsectiontext>
             <p>
-                Scheduler supports standard view modes: <code>Month</code>, <code>Week</code>, <code>Day</code>, <code>Agenda</code>, and <code>Timeline</code>.
-                Switch views in real time using the right-hand view switcher buttons in the single-line header toolbar or programmatically with <code>[(view)]</code>.
+                Scheduler supports standard view modes: <code>Month</code>, <code>Week</code>, <code>Day</code>, <code>Agenda</code>, and <code>Timeline</code>. Switch views in real time using the right-hand view switcher buttons in the single-line
+                header toolbar or programmatically with <code>[(view)]</code>.
             </p>
         </app-docsectiontext>
         <div class="card">

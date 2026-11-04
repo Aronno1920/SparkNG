@@ -15,10 +15,6 @@
                 {
                     "name": "Configuration",
                     "routerLink": "/configuration"
-                },
-                {
-                    "name": "Playground",
-                    "routerLink": "/playground"
                 }
             ]
         },
@@ -366,11 +362,79 @@
                     ]
                 },
                 {
-                    "name": "Chart",
+                    "name": "Charts",
                     "children": [
                         {
-                            "name": "Chart.js",
-                            "routerLink": "/chart"
+                            "name": "Line",
+                            "routerLink": "/chart/line"
+                        },
+                        {
+                            "name": "Bar",
+                            "routerLink": "/chart/bar"
+                        },
+                        {
+                            "name": "Pie",
+                            "routerLink": "/chart/pie"
+                        },
+                        {
+                            "name": "Scatter",
+                            "routerLink": "/chart/scatter"
+                        },
+                        {
+                            "name": "GEO/Map",
+                            "routerLink": "/chart/map"
+                        },
+                        {
+                            "name": "Candlestick",
+                            "routerLink": "/chart/candlestick"
+                        },
+                        {
+                            "name": "Radar",
+                            "routerLink": "/chart/radar"
+                        },
+                        {
+                            "name": "Boxplot",
+                            "routerLink": "/chart/boxplot"
+                        },
+                        {
+                            "name": "Heatmap",
+                            "routerLink": "/chart/heatmap"
+                        },
+                        {
+                            "name": "Graph",
+                            "routerLink": "/chart/graph"
+                        },
+                        {
+                            "name": "Tree",
+                            "routerLink": "/chart/tree"
+                        },
+                        {
+                            "name": "Treemap",
+                            "routerLink": "/chart/treemap"
+                        },
+                        {
+                            "name": "Sunburst",
+                            "routerLink": "/chart/sunburst"
+                        },
+                        {
+                            "name": "Sankey",
+                            "routerLink": "/chart/sankey"
+                        },
+                        {
+                            "name": "Funnel",
+                            "routerLink": "/chart/funnel"
+                        },
+                        {
+                            "name": "Gauge",
+                            "routerLink": "/chart/gauge"
+                        },
+                        {
+                            "name": "Dataset",
+                            "routerLink": "/chart/dataset"
+                        },
+                        {
+                            "name": "Rich Text",
+                            "routerLink": "/chart/richtext"
                         }
                     ]
                 },

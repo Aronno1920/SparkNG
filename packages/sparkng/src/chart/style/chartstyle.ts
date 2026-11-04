@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { BaseStyle } from '@bdspark/sparkng/base';
 
 const inlineStyles = {
-    root: ({ instance }) => ({ display: 'block', position: 'relative', width: instance.width, height: instance.height })
+    root: ({ instance }) => ({ display: 'block', position: 'relative', width: instance.width || '100%', height: instance.height || '24rem' }),
+    container: () => ({ width: '100%', height: '100%' })
 };
 
 const classes = {
-    root: 'p-chart'
+    root: ({ instance }) => ['p-chart', `p-chart-${instance.chartType}`],
+    container: 'p-chart-container'
 };
 
 @Injectable()
@@ -31,7 +33,11 @@ export enum ChartClasses {
     /**
      * Class name of the root element
      */
-    root = 'p-chart'
+    root = 'p-chart',
+    /**
+     * Class name of the chart container element
+     */
+    container = 'p-chart-container'
 }
 
 export interface ChartStyle extends BaseStyle {}

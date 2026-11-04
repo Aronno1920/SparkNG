@@ -1,6 +1,6 @@
 ## SparkNG Docs
 
-Source of [sparkng.bdspark.com](https://sparkng.bdspark.com/) — the SparkNG documentation site: landing page, installation/theming guides, per-component demo pages with live previews and StackBlitz editing, a searchable playground, LLM-friendly docs endpoints, and a prerendered + SSR Angular application.
+Source of [sparkng.bdspark.com](https://sparkng.bdspark.com/) — the SparkNG documentation site: landing page, installation/theming guides, per-component demo pages with live previews and StackBlitz editing, LLM-friendly docs endpoints, and a prerendered + SSR Angular application.
 
 ## Local development
 

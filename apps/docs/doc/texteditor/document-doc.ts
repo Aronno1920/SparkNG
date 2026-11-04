@@ -1,13 +1,37 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
 import { Component, signal } from '@angular/core';
-import { TEXTEDITOR_FILE_SIZE, TextEditorContent, TextEditorDocumentUpload, TextEditorDocumentUploadDropzone, TextEditorDocumentUploadDropzoneDef, TextEditorDocumentUploadProgress, TextEditorDocumentUploadProgressDef, TextEditorRoot, TextEditorToolbar, TextEditorToolbarDef } from '@bdspark/sparkng/texteditor';
+import {
+    TEXTEDITOR_FILE_SIZE,
+    TextEditorContent,
+    TextEditorDocumentUpload,
+    TextEditorDocumentUploadDropzone,
+    TextEditorDocumentUploadDropzoneDef,
+    TextEditorDocumentUploadProgress,
+    TextEditorDocumentUploadProgressDef,
+    TextEditorRoot,
+    TextEditorToolbar,
+    TextEditorToolbarDef
+} from '@bdspark/sparkng/texteditor';
 import { TeIcon } from './demo/texteditor-demo-toolbar';
 
 @Component({
     selector: 'document-doc',
     standalone: true,
-    imports: [AppDocSectionText, TextEditorRoot, TextEditorToolbar, TextEditorContent, TextEditorDocumentUpload, TextEditorDocumentUploadDropzone, TextEditorDocumentUploadProgress, AppCode, TextEditorToolbarDef, TextEditorDocumentUploadDropzoneDef, TextEditorDocumentUploadProgressDef, TeIcon],
+    imports: [
+        AppDocSectionText,
+        TextEditorRoot,
+        TextEditorToolbar,
+        TextEditorContent,
+        TextEditorDocumentUpload,
+        TextEditorDocumentUploadDropzone,
+        TextEditorDocumentUploadProgress,
+        AppCode,
+        TextEditorToolbarDef,
+        TextEditorDocumentUploadDropzoneDef,
+        TextEditorDocumentUploadProgressDef,
+        TeIcon
+    ],
     template: `
         <app-docsectiontext>
             <p>

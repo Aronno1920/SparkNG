@@ -1,21 +1,33 @@
 import { AppDoc } from '@/components/doc/app.doc';
 import { AccessibilityDoc } from '@/doc/chart/accessibility-doc';
+import { BarDoc } from '@/doc/chart/bar-doc';
 import { BasicDoc } from '@/doc/chart/basic-doc';
-import { ChartjsDoc } from '@/doc/chart/chartjs-doc';
+import { BoxplotDoc } from '@/doc/chart/boxplot-doc';
+import { CandlestickDoc } from '@/doc/chart/candlestick-doc';
 import { ComboDoc } from '@/doc/chart/combo-doc';
+import { DatasetDoc } from '@/doc/chart/dataset-doc';
 import { DoughnutDoc } from '@/doc/chart/doughnut-doc';
+import { FunnelDoc } from '@/doc/chart/funnel-doc';
+import { GaugeDoc } from '@/doc/chart/gauge-doc';
+import { GraphDoc } from '@/doc/chart/graph-doc';
+import { HeatmapDoc } from '@/doc/chart/heatmap-doc';
 import { HorizontalBarDoc } from '@/doc/chart/horizontalbar-doc';
-import { UsageDoc } from '@/doc/chart/usage-doc';
-import { LineDoc } from '@/doc/chart/line-doc';
-import { LineStyleDoc } from '@/doc/chart/linestyle-doc';
-import { MultiAxisDoc } from '@/doc/chart/multiaxis-doc';
+import { InstallationDoc } from '@/doc/chart/installation-doc';
+import { LineAreaDoc } from '@/doc/chart/linearea-doc';
+import { MapDoc } from '@/doc/chart/map-doc';
 import { PieDoc } from '@/doc/chart/pie-doc';
-import { PolarAreaDoc } from '@/doc/chart/polararea-doc';
 import { PTComponent } from '@/doc/chart/pt/PTComponent';
 import { RadarDoc } from '@/doc/chart/radar-doc';
+import { RichTextDoc } from '@/doc/chart/richtext-doc';
+import { SankeyDoc } from '@/doc/chart/sankey-doc';
+import { ScatterDoc } from '@/doc/chart/scatter-doc';
 import { StackedBarDoc } from '@/doc/chart/stackedbar-doc';
-import { VerticalBarDoc } from '@/doc/chart/verticalbar-doc';
+import { SunburstDoc } from '@/doc/chart/sunburst-doc';
+import { TreeDoc } from '@/doc/chart/tree-doc';
+import { TreemapDoc } from '@/doc/chart/treemap-doc';
+import { UsageDoc } from '@/doc/chart/usage-doc';
 import { Component } from '@angular/core';
+
 @Component({
     standalone: true,
     imports: [AppDoc],
@@ -23,9 +35,27 @@ import { Component } from '@angular/core';
         <app-doc
             docTitle="Angular Chart Component - SparkNG"
             header="Charts"
-            description="Chart components are based on Charts.js 3.3.2+, an open source HTML5 based charting library."
+            description="Chart components are powered by the SparkNG Charts engine, with theming that follows the active SparkNG preset."
             [docs]="docs"
-            [apiDocs]="['Chart']"
+            [apiDocs]="[
+                'Chart',
+                'LineChart',
+                'BarChart',
+                'PieChart',
+                'ScatterChart',
+                'MapChart',
+                'CandlestickChart',
+                'RadarChart',
+                'BoxplotChart',
+                'HeatmapChart',
+                'GraphChart',
+                'TreeChart',
+                'TreemapChart',
+                'SunburstChart',
+                'SankeyChart',
+                'FunnelChart',
+                'GaugeChart'
+            ]"
             themeDocs="chart"
             [ptDocs]="ptComponent"
         ></app-doc>
@@ -41,9 +71,9 @@ export class ChartDemo {
             component: UsageDoc
         },
         {
-            id: 'chartjs',
-            label: 'Chart.js',
-            component: ChartjsDoc
+            id: 'installation',
+            label: 'Installation',
+            component: InstallationDoc
         },
         {
             id: 'basic',
@@ -51,19 +81,14 @@ export class ChartDemo {
             component: BasicDoc
         },
         {
-            id: 'pie',
-            label: 'Pie',
-            component: PieDoc
+            id: 'linearea',
+            label: 'Line Styles',
+            component: LineAreaDoc
         },
         {
-            id: 'doughnut',
-            label: 'Doughnut',
-            component: DoughnutDoc
-        },
-        {
-            id: 'verticalbar',
-            label: 'Vertical Bar',
-            component: VerticalBarDoc
+            id: 'bar',
+            label: 'Bar',
+            component: BarDoc
         },
         {
             id: 'horizontalbar',
@@ -76,29 +101,89 @@ export class ChartDemo {
             component: StackedBarDoc
         },
         {
-            id: 'line',
-            label: 'Line',
-            component: LineDoc
+            id: 'pie',
+            label: 'Pie',
+            component: PieDoc
         },
         {
-            id: 'multiaxis',
-            label: 'MultiAxis',
-            component: MultiAxisDoc
+            id: 'doughnut',
+            label: 'Doughnut',
+            component: DoughnutDoc
         },
         {
-            id: 'linestyles',
-            label: 'Line Styles',
-            component: LineStyleDoc
+            id: 'scatter',
+            label: 'Scatter',
+            component: ScatterDoc
         },
         {
-            id: 'polararea',
-            label: 'Polar Area',
-            component: PolarAreaDoc
+            id: 'candlestick',
+            label: 'Candlestick',
+            component: CandlestickDoc
         },
         {
-            id: 'Radar',
+            id: 'radar',
             label: 'Radar',
             component: RadarDoc
+        },
+        {
+            id: 'boxplot',
+            label: 'Boxplot',
+            component: BoxplotDoc
+        },
+        {
+            id: 'heatmap',
+            label: 'Heatmap',
+            component: HeatmapDoc
+        },
+        {
+            id: 'map',
+            label: 'Geo / Map',
+            component: MapDoc
+        },
+        {
+            id: 'graph',
+            label: 'Graph',
+            component: GraphDoc
+        },
+        {
+            id: 'tree',
+            label: 'Tree',
+            component: TreeDoc
+        },
+        {
+            id: 'treemap',
+            label: 'Treemap',
+            component: TreemapDoc
+        },
+        {
+            id: 'sunburst',
+            label: 'Sunburst',
+            component: SunburstDoc
+        },
+        {
+            id: 'sankey',
+            label: 'Sankey',
+            component: SankeyDoc
+        },
+        {
+            id: 'funnel',
+            label: 'Funnel',
+            component: FunnelDoc
+        },
+        {
+            id: 'gauge',
+            label: 'Gauge',
+            component: GaugeDoc
+        },
+        {
+            id: 'dataset',
+            label: 'Dataset',
+            component: DatasetDoc
+        },
+        {
+            id: 'richtext',
+            label: 'Rich Text',
+            component: RichTextDoc
         },
         {
             id: 'combo',

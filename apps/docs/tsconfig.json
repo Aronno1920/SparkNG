@@ -15,7 +15,14 @@
         "paths": {
             "@/*": ["./*"],
             "@bdspark/sparkng/types/scheduler": ["./scheduler/types/public_api"],
-            "@bdspark/sparkng/scheduler": ["./scheduler/public_api"]
+            "@bdspark/sparkng/scheduler": ["./scheduler/public_api"],
+            "@bdspark/sparkng/types/chart": ["./chart-types/public_api"],
+            "@bdspark/sparkng/chart": ["./chart/public_api"],
+            "@bdspark/sparkng-charts": ["../../packages/sparkng-charts/types/index.d.ts"],
+            "@bdspark/sparkng/texteditor": ["./texteditor/public_api"],
+            "@bdspark/sparkng/types/texteditor": ["./texteditor-types/public_api"],
+            "@bdspark/sparkng-themes/shadcn": ["../../packages/sparkng-themes/src/presets/shadcn/index"],
+            "@bdspark/sparkng-themes/shadcn/*": ["../../packages/sparkng-themes/src/presets/shadcn/*"]
         }
     },
     "exclude": ["node_modules", "**/node_modules", "**/*.spec.ts", "**/*.test.ts"],

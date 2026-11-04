@@ -7,6 +7,7 @@ import Aura from '@bdspark/sparkng-themes/aura';
 import Lara from '@bdspark/sparkng-themes/lara';
 import Material from '@bdspark/sparkng-themes/material';
 import Nora from '@bdspark/sparkng-themes/nora';
+import Shadcn from '@bdspark/sparkng-themes/shadcn';
 import { ButtonModule } from '@bdspark/sparkng/button';
 import { Spark } from '@bdspark/sparkng/config';
 import { RadioButtonModule } from '@bdspark/sparkng/radiobutton';
@@ -17,7 +18,8 @@ const presets = {
     Aura,
     Material,
     Lara,
-    Nora
+    Nora,
+    Shadcn
 };
 
 export type ColorPalette = Record<string, string>;
@@ -346,7 +348,43 @@ export class AppConfiguratorComponent {
                 }
             };
         } else {
-            if (this.configService.appState().preset === 'Nora') {
+            if (this.configService.appState().preset === 'Shadcn') {
+                return {
+                    semantic: {
+                        primary: color.palette,
+                        colorScheme: {
+                            light: {
+                                primary: {
+                                    color: '{primary.700}',
+                                    contrastColor: '#ffffff',
+                                    hoverColor: '{primary.800}',
+                                    activeColor: '{primary.900}'
+                                },
+                                highlight: {
+                                    background: 'color-mix(in srgb, {primary.color}, transparent 92%)',
+                                    focusBackground: 'color-mix(in srgb, {primary.color}, transparent 86%)',
+                                    color: '{primary.950}',
+                                    focusColor: '{primary.950}'
+                                }
+                            },
+                            dark: {
+                                primary: {
+                                    color: '{primary.500}',
+                                    contrastColor: '{surface.950}',
+                                    hoverColor: '{primary.400}',
+                                    activeColor: '{primary.300}'
+                                },
+                                highlight: {
+                                    background: 'color-mix(in srgb, {primary.500}, transparent 88%)',
+                                    focusBackground: 'color-mix(in srgb, {primary.500}, transparent 80%)',
+                                    color: '{surface.0}',
+                                    focusColor: '{surface.0}'
+                                }
+                            }
+                        }
+                    }
+                };
+            } else if (this.configService.appState().preset === 'Nora') {
                 return {
                     semantic: {
                         primary: color.palette,

@@ -15,6 +15,10 @@ import { Component } from '@angular/core';
             </p>
         </app-docsectiontext>
         <app-code [code]="code" [hideToggleCode]="true"></app-code>
+        <app-docsectiontext>
+            <p>To use SparkNG chart components, install the charting engine package <i>@bdspark/sparkng-charts</i>:</p>
+        </app-docsectiontext>
+        <app-code [code]="chartsCode" [hideToggleCode]="true"></app-code>
     `
 })
 export class DownloadDoc {
@@ -27,5 +31,16 @@ yarn add @bdspark/sparkng @bdspark/sparkng-themes
 
 # Using pnpm
 pnpm add @bdspark/sparkng @bdspark/sparkng-themes`
+    };
+
+    chartsCode: Code = {
+        command: `# Using npm
+npm install @bdspark/sparkng-charts
+
+# Using yarn
+yarn add @bdspark/sparkng-charts
+
+# Using pnpm
+pnpm add @bdspark/sparkng-charts`
     };
 }

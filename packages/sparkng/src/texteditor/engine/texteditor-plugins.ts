@@ -76,11 +76,7 @@ function detectTrigger(state: EditorState, char: '/' | '@'): TypeaheadRange | nu
  * Tracks `/` and `@` trigger ranges before the caret and reports changes
  * through a callback; the root keeps the latest ranges and drives the menus.
  */
-export function typeaheadPlugin(options: {
-    slashEnabled: () => boolean;
-    mentionEnabled: () => boolean;
-    onChange: (update: { slash: TypeaheadRange | null; mention: TypeaheadRange | null; view: EditorView }) => void;
-}): Plugin {
+export function typeaheadPlugin(options: { slashEnabled: () => boolean; mentionEnabled: () => boolean; onChange: (update: { slash: TypeaheadRange | null; mention: TypeaheadRange | null; view: EditorView }) => void }): Plugin {
     return new Plugin({
         view(editorView: EditorView) {
             let last = 'init';

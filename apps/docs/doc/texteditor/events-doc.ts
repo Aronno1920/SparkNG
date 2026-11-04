@@ -10,8 +10,8 @@ import { TextEditorContent, TextEditorRoot, TextEditorToolbar, TextEditorToolbar
     template: `
         <app-docsectiontext>
             <p>
-                Document edits flow through <code>[(value)]</code> / <code>valueChange</code>. <code>selectionUpdate</code> makes caret movement observable without polling, <code>editorCreate</code> fires once when the view is ready,
-                and <code>editorFocus</code> / <code>editorBlur</code> track focus. <code>valueChangeDebounce</code> coalesces value emissions (150-300ms for large documents).
+                Document edits flow through <code>[(value)]</code> / <code>valueChange</code>. <code>selectionUpdate</code> makes caret movement observable without polling, <code>editorCreate</code> fires once when the view is ready, and
+                <code>editorFocus</code> / <code>editorBlur</code> track focus. <code>valueChangeDebounce</code> coalesces value emissions (150-300ms for large documents).
             </p>
         </app-docsectiontext>
         <div class="card" style="display: flex; gap: 1rem; align-items: flex-start;">

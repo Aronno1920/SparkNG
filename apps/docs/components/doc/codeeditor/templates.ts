@@ -22,7 +22,7 @@ const dependencies = {
     '@angular/platform-browser-dynamic': '^22.0.0',
     '@angular/router': '^22.0.0',
     '@bdspark/sparkng-themes': `${version}`,
-    'chart.js': '4.4.2',
+    '@bdspark/sparkng-charts': `${version}`,
     '@bdspark/icons': '^1.0.0',
     '@bdspark/sparkng': `${version}`,
     quill: '2.0.2',

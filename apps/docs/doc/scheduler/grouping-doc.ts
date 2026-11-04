@@ -11,9 +11,8 @@ import type { SchedulerEvent, SchedulerResource, SchedulerViewType } from '@bdsp
     template: `
         <app-docsectiontext>
             <p>
-                Scheduler offers multi-dimensional grouping modes: <strong>Resources</strong> (hierarchical tree swimlanes and columns),
-                <strong>Horizontal Resources</strong>, <strong>Date Grouping</strong> (dates as primary columns with resource sub-lanes), and
-                <strong>Adaptive Grouping</strong> (automatically switching to a compact dropdown switcher when screen width drops below the <code>[adaptiveBreakpoint]</code>).
+                Scheduler offers multi-dimensional grouping modes: <strong>Resources</strong> (hierarchical tree swimlanes and columns), <strong>Horizontal Resources</strong>, <strong>Date Grouping</strong> (dates as primary columns with resource
+                sub-lanes), and <strong>Adaptive Grouping</strong> (automatically switching to a compact dropdown switcher when screen width drops below the <code>[adaptiveBreakpoint]</code>).
             </p>
         </app-docsectiontext>
         <div class="card">
