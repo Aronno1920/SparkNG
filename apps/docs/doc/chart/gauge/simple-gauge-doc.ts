@@ -9,7 +9,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Minimalist circular progress ring with centered percentage readout.</p>
+            <p>A basic gauge with a visible progress arc and an animated numeric label.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -19,17 +19,26 @@ import { ChartModule } from '@bdspark/sparkng/chart';
 })
 export class SimpleGaugeDoc {
     options = {
+        tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+        },
         series: [
             {
+                name: 'Pressure',
                 type: 'gauge',
-                progress: { show: true, width: 8 },
-                axisLine: { lineStyle: { width: 8 } },
-                pointer: { show: false },
-                axisTick: { show: false },
-                splitLine: { show: false },
-                axisLabel: { show: false },
-                detail: { valueAnimation: true, fontSize: 32, offsetCenter: [0, 0], formatter: '{value}%' },
-                data: [{ value: 78 }]
+                progress: {
+                    show: true
+                },
+                detail: {
+                    valueAnimation: true,
+                    formatter: '{value}'
+                },
+                data: [
+                    {
+                        value: 50,
+                        name: 'SCORE'
+                    }
+                ]
             }
         ]
     };

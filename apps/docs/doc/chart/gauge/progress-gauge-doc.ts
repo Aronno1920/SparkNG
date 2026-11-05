@@ -9,7 +9,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Multi-tone circular progress bar with accent progress fill.</p>
+            <p>A gauge with a visible progress arc, anchor pin and a large animated value readout at 70.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -22,15 +22,51 @@ export class ProgressGaugeDoc {
         series: [
             {
                 type: 'gauge',
-                startAngle: 180,
-                endAngle: 0,
-                min: 0,
-                max: 100,
-                splitNumber: 5,
-                itemStyle: { color: '#6366f1' },
-                progress: { show: true, width: 18 },
-                pointer: { show: false },
-                data: [{ value: 84, name: 'Completion' }]
+                progress: {
+                    show: true,
+                    width: 18
+                },
+                axisLine: {
+                    lineStyle: {
+                        width: 18
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                splitLine: {
+                    length: 15,
+                    lineStyle: {
+                        width: 2,
+                        color: '#999'
+                    }
+                },
+                axisLabel: {
+                    distance: 25,
+                    color: '#999',
+                    fontSize: 20
+                },
+                anchor: {
+                    show: true,
+                    showAbove: true,
+                    size: 25,
+                    itemStyle: {
+                        borderWidth: 10
+                    }
+                },
+                title: {
+                    show: false
+                },
+                detail: {
+                    valueAnimation: true,
+                    fontSize: 80,
+                    offsetCenter: [0, '70%']
+                },
+                data: [
+                    {
+                        value: 70
+                    }
+                ]
             }
         ]
     };
