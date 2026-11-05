@@ -50,6 +50,21 @@ export class RadarChart extends BaseChart<ChartPassThrough> {
     @Input() radar: RadarComponentOption | undefined;
 
     /**
+     * Indicator axes of the radar: `[{ name: 'Sales', max: 6500 }, ...]`.
+     * Shorthand for `radar = { indicator }`; ignored when `radar` is provided.
+     * @group Props
+     */
+    @Input() get indicator(): RadarComponentOption['indicator'] | undefined {
+        return this._indicator;
+    }
+    set indicator(val: RadarComponentOption['indicator'] | undefined) {
+        this._indicator = val;
+        this.scheduleUpdate();
+    }
+
+    _indicator: RadarComponentOption['indicator'] | undefined;
+
+    /**
      * Observations of the series: `{ value: number[], name?: string }` items.
      * Ignored when `series` is provided.
      * @group Props
@@ -86,10 +101,11 @@ export class RadarChart extends BaseChart<ChartPassThrough> {
     _series: RadarSeriesOption[] | undefined;
 
     protected getComponentOptions(): Record<string, any> | null {
-        if (this.radar === undefined) {
+        if (this.radar === undefined && this.indicator === undefined) {
             return null;
         }
-        return { radar: this.radar };
+        const radar = this.radar ?? { indicator: this.indicator };
+        return { radar };
     }
 
     protected getSeriesOptions(): SparkChartsOption['series'] {
