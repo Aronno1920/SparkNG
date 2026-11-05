@@ -521,10 +521,16 @@ describe('Chart Components', () => {
             expect(mixColors([0, 0, 0], [255, 255, 255], 0.5)).toBe('#808080');
         });
 
-        it('should derive a six color palette from the primary', () => {
+        it('should derive a vibrant categorical palette from the primary', () => {
             const palette = buildChartPalette('#3498db');
-            expect(palette.length).toBe(6);
+            expect(palette.length).toBeGreaterThanOrEqual(6);
             expect(palette[0]).toBe('#3498db');
+        });
+
+        it('should return a default vibrant palette when no primary color is given', () => {
+            const palette = buildChartPalette();
+            expect(palette.length).toBeGreaterThanOrEqual(6);
+            expect(typeof palette[0]).toBe('string');
         });
 
         it('should return empty tokens without a document', () => {

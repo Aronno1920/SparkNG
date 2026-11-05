@@ -415,3 +415,49 @@ import { ChartModule } from '@bdspark/sparkng/chart';`
         html: `<p-gaugechart [value]="72" [options]="options" />`
     };
 }
+
+@Component({
+    selector: 'calendar-usage-doc',
+    standalone: true,
+    imports: [AppCode],
+    template: `
+        <app-code [code]="importCode" [hideToggleCode]="true"></app-code>
+        <br />
+        <app-code [code]="usageCode" [hideToggleCode]="true"></app-code>
+    `
+})
+export class CalendarUsageDoc {
+    importCode: Code = {
+        typescript: `// Standalone Component
+import { UIChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
+    };
+    usageCode: Code = {
+        html: `<p-chart [options]="options" />`
+    };
+}
+
+@Component({
+    selector: 'datazoom-usage-doc',
+    standalone: true,
+    imports: [AppCode],
+    template: `
+        <app-code [code]="importCode" [hideToggleCode]="true"></app-code>
+        <br />
+        <app-code [code]="usageCode" [hideToggleCode]="true"></app-code>
+    `
+})
+export class DataZoomUsageDoc {
+    importCode: Code = {
+        typescript: `// Standalone Component
+import { UIChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
+    };
+    usageCode: Code = {
+        html: `<p-chart [options]="options" />`
+    };
+}

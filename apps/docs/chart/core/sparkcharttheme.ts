@@ -74,11 +74,26 @@ function getCanvasContext(): CanvasRenderingContext2D | null {
  */
 export function parseColor(color: string): RGB | null {
     if (!color) return null;
+    const trimmed = color.trim();
+    if (trimmed.startsWith('#')) {
+        const hex = trimmed.slice(1);
+        if (hex.length === 3) {
+            return [parseInt(hex[0] + hex[0], 16), parseInt(hex[1] + hex[1], 16), parseInt(hex[2] + hex[2], 16)];
+        }
+        if (hex.length === 6 || hex.length === 8) {
+            return [parseInt(hex.slice(0, 2), 16), parseInt(hex.slice(2, 4), 16), parseInt(hex.slice(4, 6), 16)];
+        }
+        return null;
+    }
+    const match = trimmed.match(/^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
+    if (match) {
+        return [parseFloat(match[1]), parseFloat(match[2]), parseFloat(match[3])];
+    }
     const ctx = getCanvasContext();
     if (!ctx) return null;
     try {
         ctx.fillStyle = '#000000';
-        ctx.fillStyle = color;
+        ctx.fillStyle = trimmed;
         const normalized = ctx.fillStyle as string;
         if (normalized.startsWith('#')) {
             const hex = normalized.slice(1);
@@ -90,9 +105,9 @@ export function parseColor(color: string): RGB | null {
             }
             return null;
         }
-        const match = normalized.match(/rgba?\(([^)]+)\)/i);
-        if (match) {
-            const parts = match[1].split(',').map((part) => parseFloat(part));
+        const rgbaMatch = normalized.match(/rgba?\(([^)]+)\)/i);
+        if (rgbaMatch) {
+            const parts = rgbaMatch[1].split(',').map((part) => parseFloat(part));
             if (parts.length >= 3) {
                 return [parts[0], parts[1], parts[2]];
             }
@@ -123,19 +138,59 @@ export function mixColors(a: RGB, b: RGB, weight: number): string {
     return toHex([a[0] + (b[0] - a[0]) * w, a[1] + (b[1] - a[1]) * w, a[2] + (b[2] - a[2]) * w]);
 }
 
-const WHITE: RGB = [255, 255, 255];
-const BLACK: RGB = [17, 24, 39];
+/**
+ * Curated pool of vibrant, distinct categorical hues for data visualization
+ * across the color spectrum (Blue, Orange, Emerald, Violet, Amber, Cyan, Rose, Lime, Indigo, Pink, Teal, Slate).
+ */
+export const VIBRANT_CHART_PALETTE: string[] = [
+    '#3b82f6', // Blue
+    '#f97316', // Orange
+    '#10b981', // Emerald
+    '#8b5cf6', // Violet
+    '#f59e0b', // Amber
+    '#06b6d4', // Cyan
+    '#f43f5e', // Rose
+    '#84cc16', // Lime
+    '#6366f1', // Indigo
+    '#ec4899', // Pink
+    '#14b8a6', // Teal
+    '#64748b' // Slate
+];
+
+function colorDistance(a: RGB, b: RGB): number {
+    const dr = a[0] - b[0];
+    const dg = a[1] - b[1];
+    const db = a[2] - b[2];
+    return Math.sqrt(2 * dr * dr + 4 * dg * dg + 3 * db * db);
+}
 
 /**
- * Derives a six color categorical palette from a single primary color by
- * mixing it with white and a near-black tone, keeping every chart on brand.
- * @param primary - The primary color to derive from.
- * @returns Six hex colors, starting with the primary itself.
+ * Builds a vibrant multi-color categorical palette for charts.
+ * When a primary color is provided, it anchors the first series/slice to the active
+ * preset and fills subsequent positions with distinct, high-contrast hues across
+ * the color spectrum.
+ *
+ * @param primary - Optional primary color to anchor the palette to.
+ * @returns An array of distinct hex color strings.
  */
-export function buildChartPalette(primary: string): string[] {
-    const rgb = parseColor(primary);
-    if (!rgb) return [];
-    return [mixColors(rgb, rgb, 0), mixColors(rgb, WHITE, 0.55), mixColors(rgb, WHITE, 0.3), mixColors(rgb, BLACK, 0.25), mixColors(rgb, WHITE, 0.75), mixColors(rgb, BLACK, 0.45)];
+export function buildChartPalette(primary?: string | null): string[] {
+    const primaryRgb = primary ? parseColor(primary) : null;
+    if (!primaryRgb) {
+        return [...VIBRANT_CHART_PALETTE.slice(0, 10)];
+    }
+
+    const primaryHex = toHex(primaryRgb);
+    const result: string[] = [primaryHex];
+
+    for (const hex of VIBRANT_CHART_PALETTE) {
+        if (result.length >= 10) break;
+        const rgb = parseColor(hex);
+        if (rgb && colorDistance(primaryRgb, rgb) >= 80) {
+            result.push(hex);
+        }
+    }
+
+    return result;
 }
 
 /**
@@ -183,10 +238,8 @@ export function buildSparkChartTheme(document?: Document | null): SparkChartThem
         theme.textStyle = textStyle;
     }
 
-    if (tokens.primary) {
-        const palette = buildChartPalette(tokens.primary);
-        if (palette.length) theme.color = palette;
-    }
+    const palette = buildChartPalette(tokens.primary);
+    if (palette.length) theme.color = palette;
 
     if (tokens.textColor) {
         theme.title = { textStyle: { color: tokens.textColor }, subtextStyle: { color: tokens.mutedColor || tokens.textColor } };

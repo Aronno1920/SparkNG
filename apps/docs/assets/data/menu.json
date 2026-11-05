@@ -437,6 +437,14 @@
                             "routerLink": "/chart/dataset"
                         },
                         {
+                            "name": "DataZoom",
+                            "routerLink": "/chart/datazoom"
+                        },
+                        {
+                            "name": "Calendar",
+                            "routerLink": "/chart/calendar"
+                        },
+                        {
                             "name": "Rich Text",
                             "routerLink": "/chart/richtext"
                         }

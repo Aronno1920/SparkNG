@@ -2,8 +2,10 @@ import { ChartDemo } from './';
 import {
     BarChartDemo,
     BoxplotChartDemo,
+    CalendarChartDemo,
     CandlestickChartDemo,
     DatasetChartDemo,
+    DataZoomChartDemo,
     FunnelChartDemo,
     GaugeChartDemo,
     GraphChartDemo,
@@ -96,6 +98,14 @@ export default [
     {
         path: 'dataset',
         component: DatasetChartDemo
+    },
+    {
+        path: 'datazoom',
+        component: DataZoomChartDemo
+    },
+    {
+        path: 'calendar',
+        component: CalendarChartDemo
     },
     {
         path: 'richtext',

@@ -4,8 +4,10 @@ import { Component } from '@angular/core';
 import {
     BarUsageDoc,
     BoxplotUsageDoc,
+    CalendarUsageDoc,
     CandlestickUsageDoc,
     DatasetUsageDoc,
+    DataZoomUsageDoc,
     FunnelUsageDoc,
     GaugeUsageDoc,
     GraphUsageDoc,
@@ -105,13 +107,18 @@ import { LogarithmicRegressionDoc } from '@/doc/chart/scatter/logarithmic-regres
 import { CalendarChartsDoc } from '@/doc/chart/scatter/calendar-charts-doc';
 import { GeoGraphDoc } from '@/doc/chart/map/geo-graph-doc';
 import { GeoChoroplethScatterDoc } from '@/doc/chart/map/geo-choropleth-scatter-doc';
+import { PieOnGeoMapDoc } from '@/doc/chart/map/pie-on-geo-map-doc';
 import { PopulationDensityHkDoc } from '@/doc/chart/map/population-density-hk-doc';
 import { UsaPopulationEstimatesDoc } from '@/doc/chart/map/usa-population-estimates-doc';
 import { UsaChoroplethProjectionDoc } from '@/doc/chart/map/usa-choropleth-projection-doc';
 import { GeoBeefCutsDoc } from '@/doc/chart/map/geo-beef-cuts-doc';
+import { OrganDataSvgDoc } from '@/doc/chart/map/organ-data-svg-doc';
 import { FlightSeatmapDoc } from '@/doc/chart/map/flight-seatmap-doc';
 import { GeoSvgLinesDoc } from '@/doc/chart/map/geo-svg-lines-doc';
+import { GeoSvgMapDoc } from '@/doc/chart/map/geo-svg-map-doc';
+import { GeoSvgScatterDoc } from '@/doc/chart/map/geo-svg-scatter-doc';
 import { GeoSvgTrafficDoc } from '@/doc/chart/map/geo-svg-traffic-doc';
+import { NyStreetsLinesDoc } from '@/doc/chart/map/ny-streets-lines-doc';
 import { MorphingMapBarDoc } from '@/doc/chart/map/morphing-map-bar-doc';
 import { HexagonalBinningDoc } from '@/doc/chart/map/hexagonal-binning-doc';
 import { BasicCandlestickDoc } from '@/doc/chart/candlestick/basic-candlestick-doc';
@@ -154,6 +161,7 @@ import { ShowParentLabelsDoc } from '@/doc/chart/treemap/show-parent-labels-doc'
 import { GradientMappingTreemapDoc } from '@/doc/chart/treemap/gradient-mapping-treemap-doc';
 import { HowTrillionSpentDoc } from '@/doc/chart/treemap/how-trillion-spent-doc';
 import { TransitionTreemapSunburstDoc } from '@/doc/chart/treemap/transition-treemap-sunburst-doc';
+import { OptionQueryTreemapDoc } from '@/doc/chart/treemap/option-query-treemap-doc';
 import { BasicSunburstDoc } from '@/doc/chart/sunburst/basic-sunburst-doc';
 import { SunburstRoundedCornerDoc } from '@/doc/chart/sunburst/sunburst-rounded-corner-doc';
 import { SunburstLabelRotateDoc } from '@/doc/chart/sunburst/sunburst-label-rotate-doc';
@@ -228,10 +236,10 @@ export class BarChartDemo {
         { id: 'stacked-bar-border-radius', label: 'Stacked Bar with borderRadius', component: StackedBarBorderRadiusDoc },
         { id: 'stacked-bar-normalization', label: 'Stacked Bar Normalization', component: StackedBarNormalizationDoc },
         { id: 'stacked-bar-normalization-variation', label: 'Stacked Bar Normalization and Variation', component: StackedBarNormalizationVariationDoc },
-        { id: 'waterfall-bar2', label: 'Waterfall Chart', component: WaterfallBar2Doc },
+        { id: 'waterfall-bar2', label: 'Accumulated Waterfall Chart', component: WaterfallBar2Doc },
         { id: 'stacked-horizontal-bar', label: 'Stacked Horizontal Bar', component: StackedHorizontalBarDoc },
         { id: 'brush-select-column', label: 'Brush Select on Column Chart', component: BrushSelectColumnDoc },
-        { id: 'bar-negative-value2', label: 'Bar Chart with Negative Value', component: BarNegativeValue2Doc },
+        { id: 'bar-negative-value2', label: 'Stacked Negative Bar', component: BarNegativeValue2Doc },
         { id: 'rainfall-and-evaporation', label: 'Rainfall and Evaporation', component: RainfallAndEvaporationDoc },
         { id: 'mixed-line-and-bar', label: 'Mixed Line and Bar', component: MixedLineAndBarDoc },
         { id: 'mix-zoom-on-value', label: 'Mix Zoom On Value', component: MixZoomOnValueDoc },
@@ -251,10 +259,6 @@ export class BarChartDemo {
         { id: 'rounded-bar-polar', label: 'Rounded Bar on Polar', component: RoundedBarPolarDoc },
         { id: 'bar-axis-breaks-brush', label: 'Bar Chart with Axis Breaks (Brush-enabled)', component: BarAxisBreaksBrushDoc },
         { id: 'sort-data-bar', label: 'Sort Data in Bar Chart', component: SortDataBarDoc },
-        { id: 'simple-encode', label: 'Simple Encode', component: SimpleEncodeDoc },
-        { id: 'series-layout-column-row', label: 'Series Layout By Column or Row', component: SeriesLayoutColumnRowDoc },
-        { id: 'simple-dataset', label: 'Simple Example of Dataset', component: SimpleDatasetDoc },
-        { id: 'dataset-object-array', label: 'Dataset in Object Array', component: DatasetObjectArrayDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -345,10 +349,15 @@ export class MapChartDemo {
         { id: 'usage', label: 'Usage', component: MapUsageDoc },
         { id: 'geo-graph', label: 'Geo Graph', component: GeoGraphDoc },
         { id: 'geo-choropleth-scatter', label: 'Geo Choropleth and Scatter', component: GeoChoroplethScatterDoc },
+        { id: 'pie-on-geo-map', label: 'Pie Charts on GEO Map', component: PieOnGeoMapDoc },
         { id: 'geo-beef-cuts', label: 'GEO Beef Cuts', component: GeoBeefCutsDoc },
+        { id: 'organ-data-svg', label: 'Organ Data with SVG', component: OrganDataSvgDoc },
         { id: 'flight-seatmap', label: 'Flight Seatmap with SVG', component: FlightSeatmapDoc },
         { id: 'geo-svg-lines', label: 'GEO SVG Lines', component: GeoSvgLinesDoc },
+        { id: 'geo-svg-map', label: 'GEO SVG Map', component: GeoSvgMapDoc },
+        { id: 'geo-svg-scatter', label: 'GEO SVG Scatter', component: GeoSvgScatterDoc },
         { id: 'geo-svg-traffic', label: 'GEO SVG Traffic', component: GeoSvgTrafficDoc },
+        { id: 'ny-streets-lines', label: 'Use Lines to Draw 1 Million New York Streets', component: NyStreetsLinesDoc },
         { id: 'morphing-map-bar', label: 'Morphing between Map and Bar', component: MorphingMapBarDoc },
         { id: 'population-density-hk', label: 'Population Density of HongKong (2011)', component: PopulationDensityHkDoc },
         { id: 'usa-population-estimates', label: 'USA Population Estimates (2012)', component: UsaPopulationEstimatesDoc },
@@ -500,6 +509,7 @@ export class TreemapChartDemo {
         { id: 'usage', label: 'Usage', component: TreemapUsageDoc },
         { id: 'basic-treemap', label: 'Basic Treemap', component: BasicTreemapDoc },
         { id: 'disk-usage', label: 'Disk Usage', component: DiskUsageDoc },
+        { id: 'echarts-option-query', label: 'ECharts Option Query', component: OptionQueryTreemapDoc },
         { id: 'show-parent-labels', label: 'Show Parent Labels', component: ShowParentLabelsDoc },
         { id: 'gradient-mapping-treemap', label: 'Gradient Mapping', component: GradientMappingTreemapDoc },
         { id: 'how-trillion-spent', label: 'How $3.7 Trillion is Spent', component: HowTrillionSpentDoc },
@@ -569,6 +579,7 @@ export class ParallelChartDemo {
         { id: 'basic-parallel', label: 'Basic Parallel', component: BasicParallelDoc },
         { id: 'parallel-aqi', label: 'Parallel Aqi', component: ParallelAqiDoc },
         { id: 'parallel-nutrients', label: 'Parallel Nutrients', component: ParallelNutrientsDoc },
+        { id: 'scatter-matrix', label: 'Scatter Matrix', component: ScatterMatrixDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -623,17 +634,53 @@ export class GaugeChartDemo {
 export class DatasetChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: DatasetUsageDoc },
+        { id: 'simple-encode', label: 'Simple Encode', component: SimpleEncodeDoc },
+        { id: 'series-layout-column-row', label: 'Series Layout By Column or Row', component: SeriesLayoutColumnRowDoc },
         { id: 'simple-dataset', label: 'Simple Example of Dataset', component: SimpleDatasetDoc },
         { id: 'dataset-object-array', label: 'Dataset in Object Array', component: DatasetObjectArrayDoc },
-        { id: 'series-layout-column-row', label: 'Series Layout By Column or Row', component: SeriesLayoutColumnRowDoc },
-        { id: 'simple-encode', label: 'Simple Encode', component: SimpleEncodeDoc },
+        { id: 'referer-website', label: 'Referer of a Website', component: RefererWebsiteDoc },
         { id: 'share-dataset', label: 'Share Dataset', component: ShareDatasetDoc },
         { id: 'encode-and-matrix', label: 'Encode and Matrix', component: EncodeAndMatrixDoc },
-        { id: 'tooltip-datazoom-mobile', label: 'Tooltip and DataZoom on Mobile', component: TooltipDatazoomMobileDoc },
-        { id: 'large-scale-area-chart', label: 'Large scale area chart', component: LargeScaleAreaChartDoc },
+        { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
+    ];
+}
+
+@Component({
+    standalone: true,
+    imports: [AppDoc],
+    template: `
+        <app-doc
+            docTitle="Angular DataZoom Chart Component - SparkNG"
+            header="DataZoom"
+            description="DataZoom components enable interactive panning, brushing, timeline slider and value zooming across dense datasets."
+            [docs]="docs"
+            [apiDocs]="['Chart']"
+        ></app-doc>
+    `
+})
+export class DataZoomChartDemo {
+    docs = [
+        { id: 'usage', label: 'Usage', component: DataZoomUsageDoc },
+        { id: 'error-scatter-cartesian', label: 'Error Scatter on Cartesian', component: ErrorScatterCartesianDoc },
+        { id: 'large-scale-area-chart', label: 'Large Scale Area Chart', component: LargeScaleAreaChartDoc },
         { id: 'gantt-airport-flights', label: 'Gantt Chart of Airport Flights', component: GanttAirportFlightsDoc },
         { id: 'wind-barb', label: 'Wind Barb', component: WindBarbDoc },
-        { id: 'error-scatter-cartesian', label: 'Error Scatter on Cartesian', component: ErrorScatterCartesianDoc },
+        { id: 'tooltip-datazoom-mobile', label: 'Tooltip and DataZoom on Mobile', component: TooltipDatazoomMobileDoc },
+        { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
+    ];
+}
+
+@Component({
+    standalone: true,
+    imports: [AppDoc],
+    template: `
+        <app-doc docTitle="Angular Calendar Chart Component - SparkNG" header="Calendar" description="Calendar coordinate systems lay out time-series observations on a year/month/day calendar grid." [docs]="docs" [apiDocs]="['Chart']"></app-doc>
+    `
+})
+export class CalendarChartDemo {
+    docs = [
+        { id: 'usage', label: 'Usage', component: CalendarUsageDoc },
+        { id: 'calendar-charts', label: 'Calendar Charts', component: CalendarChartsDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }

@@ -3,13 +3,28 @@ import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
 import { Component } from '@angular/core';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
+function getVirtualData(year: string) {
+    const date = +new Date(year + '-01-01');
+    const end = +new Date(+year + 1 + '-01-01');
+    const dayTime = 3600 * 24 * 1000;
+    const data: [string, number][] = [];
+    for (let time = date; time < end; time += dayTime) {
+        const d = new Date(time);
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        data.push([`${y}-${m}-${day}`, Math.floor(Math.random() * 10000)]);
+    }
+    return data;
+}
+
 @Component({
     selector: 'calendar-charts-doc',
     standalone: true,
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>A calendar coordinate system with scattered events: each point is plotted on its date, and the <i>visualMap</i> encodes the event size by color.</p>
+            <p>Daily step count mapped onto a 2016 calendar coordinate system: a piecewise visualMap colors and symbolSize scales each day's scatter marker.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" height="22rem" />
@@ -18,47 +33,39 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     `
 })
 export class CalendarChartsDoc {
-    private events: [string, number][] = [];
-
-    options: any;
-
-    constructor() {
-        const start = +new Date(2025, 0, 1);
-        const day = 24 * 3600 * 1000;
-        for (let i = 0; i < 130; i++) {
-            const date = new Date(start + Math.floor(Math.random() * 180) * day);
-            const key = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(date.getDate()).padStart(2, '0');
-            this.events.push([key, Math.round(20 + Math.random() * 240)]);
+    options = {
+        title: {
+            top: 30,
+            left: 'center',
+            text: 'Daily Step Count'
+        },
+        tooltip: {},
+        visualMap: {
+            min: 0,
+            max: 10000,
+            type: 'piecewise',
+            orient: 'horizontal',
+            left: 'center',
+            top: 65
+        },
+        calendar: {
+            top: 120,
+            left: 30,
+            right: 30,
+            cellSize: ['auto', 13],
+            range: '2016',
+            itemStyle: {
+                borderWidth: 0.5
+            },
+            yearLabel: { show: false }
+        },
+        series: {
+            type: 'scatter',
+            coordinateSystem: 'calendar',
+            data: getVirtualData('2016'),
+            symbolSize: function (val: any[]) {
+                return val[1] / 500;
+            }
         }
-        this.options = {
-            tooltip: { trigger: 'item' },
-            visualMap: {
-                min: 0,
-                max: 260,
-                orient: 'horizontal',
-                left: 'center',
-                top: 12,
-                inRange: { color: ['#37A2FF', '#91cc75', '#fac858', '#ee6666'] }
-            },
-            calendar: {
-                top: 72,
-                left: 48,
-                right: 24,
-                cellSize: ['auto', 16],
-                range: '2025',
-                itemStyle: { borderWidth: 2, borderColor: 'rgba(0,0,0,0.06)' },
-                yearLabel: { show: false },
-                dayLabel: { fontSize: 10 },
-                monthLabel: { fontSize: 11 }
-            },
-            series: [
-                {
-                    type: 'scatter',
-                    coordinateSystem: 'calendar',
-                    symbolSize: (value: number[]) => Math.max(4, value[1] / 14),
-                    data: this.events
-                }
-            ]
-        };
-    }
+    };
 }
