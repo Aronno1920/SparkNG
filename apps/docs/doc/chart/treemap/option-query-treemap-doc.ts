@@ -4,11 +4,10 @@ import { Component, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
-type RawNode = {
-    [key: string]: RawNode;
-} & {
-    $count: number;
-};
+interface RawNode {
+    [key: string]: any;
+    $count?: number;
+}
 
 interface TreeNode {
     name: string;

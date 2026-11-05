@@ -1,14 +1,52 @@
 {
 	"publishedPackages": [
 		{
-			"id": "@bdspark/sparkng-icons@22.0.5",
+			"id": "@bdspark/sparkng-charts@22.1.1",
+			"name": "@bdspark/sparkng-charts",
+			"version": "22.1.1",
+			"size": 2457353,
+			"unpackedSize": 9715398,
+			"shasum": "16837fe1fd0f6161838af0c2362dd9ed53a37e0f",
+			"integrity": "sha512-hKbyiV5GnLvL7HBAYLGJeBmSPzrxA8m3rglZGozoak+a1ssDVZwmK9OS0oFODghKfW0DZv9xAiQ3XnU7i23Jxw==",
+			"filename": "bdspark-sparkng-charts-22.1.1.tgz",
+			"files": [
+				{
+					"path": "dist/index.js"
+				},
+				{
+					"path": "dist/index.js.map"
+				},
+				{
+					"path": "LICENSE"
+				},
+				{
+					"path": "NOTICE"
+				},
+				{
+					"path": "package.json"
+				},
+				{
+					"path": "README.md"
+				},
+				{
+					"path": "types/index.d.cts"
+				},
+				{
+					"path": "types/index.d.ts"
+				}
+			],
+			"entryCount": 8,
+			"bundled": []
+		},
+		{
+			"id": "@bdspark/sparkng-icons@22.1.1",
 			"name": "@bdspark/sparkng-icons",
-			"version": "22.0.5",
-			"size": 339746,
-			"unpackedSize": 884353,
-			"shasum": "331ca6cf219c33b09c8b3d9b339bda661b3f526e",
-			"integrity": "sha512-X9UL1J3Q/BgdTmZYqdwrnE1/cD5Ry4EtfyBCvR7+XilQ+U0in/ZuiyMcnGPJ2eAd3RdSRowerkKntYi2Fsps3w==",
-			"filename": "bdspark-sparkng-icons-22.0.5.tgz",
+			"version": "22.1.1",
+			"size": 339745,
+			"unpackedSize": 884303,
+			"shasum": "20557023b97780998666b16f41d5d40ff5957230",
+			"integrity": "sha512-ryDuDWQm+fwpgK+7LF35EghaKa9Xo9+mgGVbuhvP4EJII0rVLYMC4ShEGM1jZrtqV6X/juHxpAfIziPTew3YuA==",
+			"filename": "bdspark-sparkng-icons-22.1.1.tgz",
 			"files": [
 				{
 					"path": "CHANGELOG.md"
@@ -984,14 +1022,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-locale@22.0.5",
+			"id": "@bdspark/sparkng-locale@22.1.1",
 			"name": "@bdspark/sparkng-locale",
-			"version": "22.0.5",
-			"size": 180252,
-			"unpackedSize": 1158268,
-			"shasum": "82e629ca589aca7e8da774c99b8bbfe3fe6c2080",
-			"integrity": "sha512-ucyNywFBvjJRm49BmkC9CpA441nh7P/QiX3Vizs+5ykbq2ZnPW2ZXqHKBl776hdRJf8tOxU4Zvte8k+5MMz77A==",
-			"filename": "bdspark-sparkng-locale-22.0.5.tgz",
+			"version": "22.1.1",
+			"size": 180249,
+			"unpackedSize": 1158256,
+			"shasum": "576bcae7ce55d0c125b0a6b5a89eaea1d3a5cf54",
+			"integrity": "sha512-uJj0yWw/Yu4WVAq7nUeHT8saxPxvuQhTsONGdQUYlTNHYLBMzaTiGqdMLsrag62OD8UB1FQs2bWcl02QcFk1hg==",
+			"filename": "bdspark-sparkng-locale-22.1.1.tgz",
 			"files": [
 				{
 					"path": "ar-TN.json"
@@ -1955,14 +1993,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-tailwindcss@22.0.5",
+			"id": "@bdspark/sparkng-tailwindcss@22.1.1",
 			"name": "@bdspark/sparkng-tailwindcss",
-			"version": "22.0.5",
-			"size": 14690,
-			"unpackedSize": 142565,
-			"shasum": "ab67a78b84504ad120c33648ab64df199cda57c2",
-			"integrity": "sha512-0DdKzwgmBRI6Q3P6yb3v2XNy4fo95s+rTymgh1Ets1sKJfTyiL+e76cZOpQ5fa15BQE7gPJpUzengsgNQmxKOA==",
-			"filename": "bdspark-sparkng-tailwindcss-22.0.5.tgz",
+			"version": "22.1.1",
+			"size": 14676,
+			"unpackedSize": 142541,
+			"shasum": "cd63386d8c21009897b5906a18d0f74870642f8a",
+			"integrity": "sha512-s94VR3LVYFNXa0PAydnxE07qUFg64XH4+/va68ntKKP7tMdxy76f4BMBYqAwzTbPFDgR1pyIO8owD3Xc8+8KoA==",
+			"filename": "bdspark-sparkng-tailwindcss-22.1.1.tgz",
 			"files": [
 				{
 					"path": "LICENSE"
@@ -2044,14 +2082,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-utils@22.0.5",
+			"id": "@bdspark/sparkng-utils@22.1.1",
 			"name": "@bdspark/sparkng-utils",
-			"version": "22.0.5",
-			"size": 47102,
-			"unpackedSize": 178766,
-			"shasum": "e86e04b7798a3abf6a9b2f28ad5b057120aab3c0",
-			"integrity": "sha512-BCAl46don1E9rDeZGn1+qxGdgk3h6kcMAeuADFUbqo9VnG0NqwVjrs7AyhMLhxBThwarouW/43aPuIAVGsb6Zw==",
-			"filename": "bdspark-sparkng-utils-22.0.5.tgz",
+			"version": "22.1.1",
+			"size": 47098,
+			"unpackedSize": 178754,
+			"shasum": "9aff80ad6a5425680f1fe162b60c784dc3eb3ee1",
+			"integrity": "sha512-hewIw9CQNTc422LwUsyuN2NB8A5dMiCgHiuGJxm7KV598Ggn8Xlyzjur7DauFX0fpQyRsL+pd13bAK0wcdkFlg==",
+			"filename": "bdspark-sparkng-utils-22.1.1.tgz",
 			"files": [
 				{
 					"path": "dist/classnames/index.d.mts"
@@ -2139,14 +2177,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-motion@22.0.5",
+			"id": "@bdspark/sparkng-motion@22.1.1",
 			"name": "@bdspark/sparkng-motion",
-			"version": "22.0.5",
-			"size": 10454,
-			"unpackedSize": 34498,
-			"shasum": "ffef3c47622fc928ec11491e579369cf5ff01fc1",
-			"integrity": "sha512-3NQFDd0ty4Y3iw5LXjO60MHUQ2brt/xXOm+XAFA4KgZQ1uOEMex1qi4mTcqwJgPhxESaLsU7DE6PhJ3KwGcDAA==",
-			"filename": "bdspark-sparkng-motion-22.0.5.tgz",
+			"version": "22.1.1",
+			"size": 10449,
+			"unpackedSize": 34480,
+			"shasum": "0ce5f19a21e6a93319aae326c8ff1a5b44b4524d",
+			"integrity": "sha512-5kCDXM4tjR1RnE9skJjsvS7yw0LRa+3N3zZHhjk0HG3/VOnCWXJ+mQgS+9fI4P4AsGoy2caZI/6Wa3yVTAW3lw==",
+			"filename": "bdspark-sparkng-motion-22.1.1.tgz",
 			"files": [
 				{
 					"path": "dist/index.d.mts"
@@ -2171,14 +2209,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-styled@22.0.5",
+			"id": "@bdspark/sparkng-styled@22.1.1",
 			"name": "@bdspark/sparkng-styled",
-			"version": "22.0.5",
-			"size": 27659,
-			"unpackedSize": 99133,
-			"shasum": "924338507da7398726a1926f2851e0106fb3610b",
-			"integrity": "sha512-MKjJ4ilRy1pAEmJWsOsnU7FZTvXNd4XpMAuSWsEvlzEmV3yAj9Pf1NRxDUM7CKh1rSPqgH+W5rWpfIflBHgzAg==",
-			"filename": "bdspark-sparkng-styled-22.0.5.tgz",
+			"version": "22.1.1",
+			"size": 27645,
+			"unpackedSize": 99115,
+			"shasum": "69f9d10540cf3ad1744eea72f94ee438f689b43c",
+			"integrity": "sha512-/7jBBwUf3M20GUzO4g6Xp/KTjeiCUARG3sWtJChH5j4V2CF4HI1Fz0VPMNCjVd0PsLn42auAFUbVO/b5meviEA==",
+			"filename": "bdspark-sparkng-styled-22.1.1.tgz",
 			"files": [
 				{
 					"path": "dist/index.d.mts"
@@ -2203,14 +2241,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-styles@22.0.5",
+			"id": "@bdspark/sparkng-styles@22.1.1",
 			"name": "@bdspark/sparkng-styles",
-			"version": "22.0.5",
-			"size": 95949,
-			"unpackedSize": 823155,
-			"shasum": "60a2a1ab127dfe0336cacd46089d1b6a9cd75ffc",
-			"integrity": "sha512-gtlOgdwVrHpUW60IYNCE8HjC0SGIRRckyV0pX+5fKLKLcgVXSZiquGKu7p6b83t+tcI0MF5hb3Rssoo8nYhEIg==",
-			"filename": "bdspark-sparkng-styles-22.0.5.tgz",
+			"version": "22.1.1",
+			"size": 112025,
+			"unpackedSize": 920702,
+			"shasum": "da460f80096fc38b01ce3fc210e85b7f507d9228",
+			"integrity": "sha512-DD24uFXE5CIqwmR9t2S+QdSc6wMyyehP1XmbDO6OHi8hrH0EsaSPH+UJvZjg2TY83+9HfNK2Sm+l48b6rdSAew==",
+			"filename": "bdspark-sparkng-styles-22.1.1.tgz",
 			"files": [
 				{
 					"path": "dist/accordion/index.mjs"
@@ -2609,6 +2647,12 @@
 					"path": "dist/ripple/index.mjs.map"
 				},
 				{
+					"path": "dist/scheduler/index.mjs"
+				},
+				{
+					"path": "dist/scheduler/index.mjs.map"
+				},
+				{
 					"path": "dist/scrollpanel/index.mjs"
 				},
 				{
@@ -2711,6 +2755,12 @@
 					"path": "dist/textarea/index.mjs.map"
 				},
 				{
+					"path": "dist/texteditor/index.mjs"
+				},
+				{
+					"path": "dist/texteditor/index.mjs.map"
+				},
+				{
 					"path": "dist/tieredmenu/index.mjs"
 				},
 				{
@@ -2792,18 +2842,18 @@
 					"path": "README.md"
 				}
 			],
-			"entryCount": 193,
+			"entryCount": 197,
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-themes@22.0.5",
+			"id": "@bdspark/sparkng-themes@22.1.1",
 			"name": "@bdspark/sparkng-themes",
-			"version": "22.0.5",
-			"size": 450424,
-			"unpackedSize": 3984204,
-			"shasum": "1bc496259afd420484d6531385c4ef0888e9b75d",
-			"integrity": "sha512-nM7sM+agt2Q5FCvVFlvCUxxFMH1VQ2ZmTLdvDq3i/slgFSOrkGq/CzPx8kQR0WHr/kROCSgIs0P9ch7f+YkLow==",
-			"filename": "bdspark-sparkng-themes-22.0.5.tgz",
+			"version": "22.1.1",
+			"size": 528185,
+			"unpackedSize": 4567929,
+			"shasum": "acfc6603e97a0f9bb8abbc350cef3d99abf872f2",
+			"integrity": "sha512-xYs7yNwpkW1bD34/r59iea20w9FaGnKsuGv+/5QPDTru9EJENLqjPeoiU+PI6iPXQkVOz3lPjwrxNERD+KopJw==",
+			"filename": "bdspark-sparkng-themes-22.1.1.tgz",
 			"files": [
 				{
 					"path": "dist/aura/accordion/index.d.ts"
@@ -6064,6 +6114,825 @@
 					"path": "dist/nora/virtualscroller/index.mjs.map"
 				},
 				{
+					"path": "dist/shadcn/accordion/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/accordion/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/accordion/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/autocomplete/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/autocomplete/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/autocomplete/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/avatar/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/avatar/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/avatar/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/badge/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/badge/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/badge/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/base/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/base/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/base/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/blockui/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/blockui/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/blockui/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/breadcrumb/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/breadcrumb/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/breadcrumb/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/button/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/button/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/button/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/card/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/card/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/card/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/carousel/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/carousel/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/carousel/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/cascadeselect/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/cascadeselect/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/cascadeselect/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/checkbox/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/checkbox/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/checkbox/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/chip/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/chip/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/chip/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/colorpicker/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/colorpicker/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/colorpicker/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/confirmdialog/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/confirmdialog/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/confirmdialog/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/confirmpopup/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/confirmpopup/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/confirmpopup/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/contextmenu/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/contextmenu/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/contextmenu/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/css/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/css/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/css/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/datatable/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/datatable/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/datatable/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/dataview/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/dataview/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/dataview/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/datepicker/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/datepicker/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/datepicker/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/dialog/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/dialog/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/dialog/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/divider/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/divider/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/divider/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/dock/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/dock/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/dock/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/drawer/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/drawer/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/drawer/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/editor/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/editor/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/editor/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/fieldset/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/fieldset/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/fieldset/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/fileupload/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/fileupload/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/fileupload/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/floatlabel/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/floatlabel/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/floatlabel/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/galleria/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/galleria/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/galleria/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/iconfield/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/iconfield/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/iconfield/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/iftalabel/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/iftalabel/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/iftalabel/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/image/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/image/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/image/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/imagecompare/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/imagecompare/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/imagecompare/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/inlinemessage/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/inlinemessage/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/inlinemessage/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/inplace/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/inplace/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/inplace/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/inputchips/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/inputchips/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/inputchips/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/inputgroup/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/inputgroup/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/inputgroup/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/inputnumber/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/inputnumber/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/inputnumber/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/inputotp/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/inputotp/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/inputotp/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/inputtext/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/inputtext/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/inputtext/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/knob/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/knob/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/knob/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/listbox/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/listbox/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/listbox/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/megamenu/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/megamenu/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/megamenu/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/menu/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/menu/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/menu/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/menubar/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/menubar/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/menubar/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/message/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/message/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/message/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/metergroup/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/metergroup/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/metergroup/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/multiselect/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/multiselect/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/multiselect/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/orderlist/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/orderlist/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/orderlist/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/organizationchart/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/organizationchart/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/organizationchart/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/overlaybadge/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/overlaybadge/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/overlaybadge/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/paginator/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/paginator/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/paginator/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/panel/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/panel/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/panel/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/panelmenu/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/panelmenu/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/panelmenu/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/password/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/password/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/password/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/picklist/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/picklist/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/picklist/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/popover/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/popover/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/popover/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/progressbar/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/progressbar/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/progressbar/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/progressspinner/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/progressspinner/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/progressspinner/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/radiobutton/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/radiobutton/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/radiobutton/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/rating/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/rating/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/rating/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/ripple/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/ripple/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/ripple/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/scrollpanel/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/scrollpanel/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/scrollpanel/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/select/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/select/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/select/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/selectbutton/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/selectbutton/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/selectbutton/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/skeleton/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/skeleton/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/skeleton/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/slider/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/slider/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/slider/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/speeddial/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/speeddial/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/speeddial/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/splitbutton/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/splitbutton/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/splitbutton/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/splitter/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/splitter/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/splitter/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/stepper/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/stepper/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/stepper/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/steps/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/steps/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/steps/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/tabmenu/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/tabmenu/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/tabmenu/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/tabs/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/tabs/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/tabs/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/tabview/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/tabview/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/tabview/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/tag/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/tag/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/tag/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/terminal/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/terminal/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/terminal/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/textarea/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/textarea/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/textarea/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/tieredmenu/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/tieredmenu/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/tieredmenu/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/timeline/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/timeline/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/timeline/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/toast/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/toast/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/toast/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/togglebutton/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/togglebutton/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/togglebutton/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/toggleswitch/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/toggleswitch/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/toggleswitch/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/toolbar/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/toolbar/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/toolbar/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/tooltip/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/tooltip/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/tooltip/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/tree/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/tree/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/tree/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/treeselect/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/treeselect/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/treeselect/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/treetable/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/treetable/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/treetable/index.mjs.map"
+				},
+				{
+					"path": "dist/shadcn/virtualscroller/index.d.ts"
+				},
+				{
+					"path": "dist/shadcn/virtualscroller/index.mjs"
+				},
+				{
+					"path": "dist/shadcn/virtualscroller/index.mjs.map"
+				},
+				{
 					"path": "LICENSE"
 				},
 				{
@@ -6359,20 +7228,23 @@
 				},
 				{
 					"path": "umd/nora.js"
+				},
+				{
+					"path": "umd/shadcn.js"
 				}
 			],
-			"entryCount": 1185,
+			"entryCount": 1459,
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng@22.0.5",
+			"id": "@bdspark/sparkng@22.1.1",
 			"name": "@bdspark/sparkng",
-			"version": "22.0.5",
-			"size": 1769210,
-			"unpackedSize": 10598663,
-			"shasum": "caf93565b8ff6946b8fa2762408dd5617c5ea0d0",
-			"integrity": "sha512-qh3CTslrYTkGxOY11OyMeq19zL1HAxq/K0uyW+KO2oUu0udghRCeD/LC0otnOV8kMeyf0KOghmiWFGa9ULguNw==",
-			"filename": "bdspark-sparkng-22.0.5.tgz",
+			"version": "22.1.1",
+			"size": 1957019,
+			"unpackedSize": 11977681,
+			"shasum": "ee73a8c4d56fd13047b03c8fb48fb65e43e3492e",
+			"integrity": "sha512-7X2TPazMOfYXlOZolaVolaOmb4588S3FTlvlenMwRUKsSOLwAbDiAvdslwKCo6zwiZA3WESNb40us2di+A6dYg==",
+			"filename": "bdspark-sparkng-22.1.1.tgz",
 			"files": [
 				{
 					"path": "fesm2022/bdspark-sparkng-accordion.mjs"
@@ -6499,12 +7371,6 @@
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-cascadeselect.mjs.map"
-				},
-				{
-					"path": "fesm2022/bdspark-sparkng-chart.mjs"
-				},
-				{
-					"path": "fesm2022/bdspark-sparkng-chart.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-checkbox.mjs"
@@ -7212,6 +8078,12 @@
 					"path": "fesm2022/bdspark-sparkng-ripple.mjs.map"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-scheduler.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-scheduler.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-scroller.mjs"
 				},
 				{
@@ -7320,6 +8192,12 @@
 					"path": "fesm2022/bdspark-sparkng-textarea.mjs.map"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-texteditor.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-texteditor.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-tieredmenu.mjs"
 				},
 				{
@@ -7386,274 +8264,553 @@
 					"path": "fesm2022/bdspark-sparkng-types-accordion.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-accordion.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-autocomplete.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-autocomplete.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-avatar.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-avatar.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-avatargroup.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-avatargroup.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-badge.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-badge.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-blockui.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-blockui.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-breadcrumb.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-breadcrumb.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-button.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-button.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-card.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-card.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-carousel.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-carousel.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-cascadeselect.mjs"
 				},
 				{
-					"path": "fesm2022/bdspark-sparkng-types-chart.mjs"
+					"path": "fesm2022/bdspark-sparkng-types-cascadeselect.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-checkbox.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-checkbox.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-chip.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-chip.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-colorpicker.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-colorpicker.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-confirmdialog.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-confirmdialog.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-confirmpopup.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-confirmpopup.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-contextmenu.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-contextmenu.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-dataview.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-dataview.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-datepicker.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-datepicker.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-dialog.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-dialog.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-divider.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-divider.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-dock.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-dock.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-drawer.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-drawer.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-editor.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-editor.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-fieldset.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-fieldset.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-fileupload.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-fileupload.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-floatlabel.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-floatlabel.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-fluid.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-fluid.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-galleria.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-galleria.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-iconfield.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-iconfield.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-iftalabel.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-iftalabel.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-image.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-image.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-imagecompare.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-imagecompare.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-inplace.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-inplace.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-inputgroup.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-inputgroup.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-inputgroupaddon.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-inputgroupaddon.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-inputicon.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-inputicon.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-inputmask.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-inputmask.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-inputnumber.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-inputnumber.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-inputotp.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-inputotp.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-inputtext.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-inputtext.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-knob.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-knob.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-listbox.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-listbox.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-megamenu.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-megamenu.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-menu.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-menu.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-menubar.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-menubar.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-message.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-message.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-metergroup.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-metergroup.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-motion.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-motion.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-multiselect.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-multiselect.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-orderlist.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-orderlist.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-organizationchart.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-organizationchart.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-overlay.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-overlay.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-overlaybadge.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-overlaybadge.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-paginator.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-paginator.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-panel.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-panel.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-panelmenu.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-panelmenu.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-password.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-password.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-picklist.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-picklist.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-popover.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-popover.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-progressbar.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-progressbar.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-progressspinner.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-progressspinner.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-radiobutton.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-radiobutton.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-rating.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-rating.mjs.map"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-scheduler.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-scheduler.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-scroller.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-scroller.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-scrollpanel.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-scrollpanel.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-scrolltop.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-scrolltop.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-select.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-select.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-selectbutton.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-selectbutton.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-skeleton.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-skeleton.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-slider.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-slider.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-speeddial.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-speeddial.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-splitbutton.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-splitbutton.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-splitter.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-splitter.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-stepper.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-stepper.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-table.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-table.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-tabs.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-tabs.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-tag.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-tag.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-terminal.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-terminal.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-textarea.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-textarea.mjs.map"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-texteditor.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-texteditor.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-tieredmenu.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-tieredmenu.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-timeline.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-timeline.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-toast.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-toast.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-togglebutton.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-togglebutton.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-toggleswitch.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-toggleswitch.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-toolbar.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-toolbar.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-tooltip.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-tooltip.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-types-tree.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-tree.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-treeselect.mjs"
 				},
 				{
+					"path": "fesm2022/bdspark-sparkng-types-treeselect.mjs.map"
+				},
+				{
 					"path": "fesm2022/bdspark-sparkng-types-treetable.mjs"
+				},
+				{
+					"path": "fesm2022/bdspark-sparkng-types-treetable.mjs.map"
 				},
 				{
 					"path": "fesm2022/bdspark-sparkng-usestyle.mjs"
@@ -7807,9 +8964,6 @@
 				},
 				{
 					"path": "types/bdspark-sparkng-cascadeselect.d.ts"
-				},
-				{
-					"path": "types/bdspark-sparkng-chart.d.ts"
 				},
 				{
 					"path": "types/bdspark-sparkng-checkbox.d.ts"
@@ -8166,6 +9320,9 @@
 					"path": "types/bdspark-sparkng-ripple.d.ts"
 				},
 				{
+					"path": "types/bdspark-sparkng-scheduler.d.ts"
+				},
+				{
 					"path": "types/bdspark-sparkng-scroller.d.ts"
 				},
 				{
@@ -8218,6 +9375,9 @@
 				},
 				{
 					"path": "types/bdspark-sparkng-textarea.d.ts"
+				},
+				{
+					"path": "types/bdspark-sparkng-texteditor.d.ts"
 				},
 				{
 					"path": "types/bdspark-sparkng-tieredmenu.d.ts"
@@ -8284,9 +9444,6 @@
 				},
 				{
 					"path": "types/bdspark-sparkng-types-cascadeselect.d.ts"
-				},
-				{
-					"path": "types/bdspark-sparkng-types-chart.d.ts"
 				},
 				{
 					"path": "types/bdspark-sparkng-types-checkbox.d.ts"
@@ -8448,6 +9605,9 @@
 					"path": "types/bdspark-sparkng-types-rating.d.ts"
 				},
 				{
+					"path": "types/bdspark-sparkng-types-scheduler.d.ts"
+				},
+				{
 					"path": "types/bdspark-sparkng-types-scroller.d.ts"
 				},
 				{
@@ -8496,6 +9656,9 @@
 					"path": "types/bdspark-sparkng-types-textarea.d.ts"
 				},
 				{
+					"path": "types/bdspark-sparkng-types-texteditor.d.ts"
+				},
+				{
 					"path": "types/bdspark-sparkng-types-tieredmenu.d.ts"
 				},
 				{
@@ -8535,7 +9698,7 @@
 					"path": "types/bdspark-sparkng.d.ts"
 				}
 			],
-			"entryCount": 720,
+			"entryCount": 817,
 			"bundled": []
 		}
 	]

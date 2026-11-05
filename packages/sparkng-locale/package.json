@@ -1,6 +1,6 @@
 {
     "name": "@bdspark/sparkng-locale",
-    "version": "22.0.6",
+    "version": "22.1.1",
     "author": "bdSpark",
     "description": "i18n and l7n locales for SparkNG components for Angular v22",
     "homepage": "https://sparkng.bdspark.com/",

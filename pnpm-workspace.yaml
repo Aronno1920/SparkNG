@@ -18,7 +18,7 @@ allowBuilds:
   msgpackr-extract: true
 
 catalog:
-  '@bdspark/sparkng-icons': ^22.0.5
+  '@bdspark/sparkng-icons': ^22.1.1
 
 catalogs:
   angular22:
@@ -46,7 +46,7 @@ catalogs:
 
 minimumReleaseAgeExclude:
   - pnpm@11.13.1
-  - '@bdspark/sparkng-icons@22.0.5'
+  - '@bdspark/sparkng-icons@22.0.5 || 22.1.1'
   - tsdown@0.22.9
   - '@angular/animations@22.1.4'
   - '@angular/common@22.1.4'
@@ -65,6 +65,7 @@ minimumReleaseAgeExclude:
   - '@bdspark/sparkng-themes@22.0.5'
   - '@bdspark/sparkng-utils@22.0.5'
   - '@bdspark/sparkng@22.0.5'
+  - '@bdspark/sparkng-charts@22.1.1'
 
 auditConfig:
   ignoreGhsas:

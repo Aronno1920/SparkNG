@@ -37,7 +37,7 @@ import type { TextEditorCommands } from '@bdspark/sparkng/types/texteditor';
                         <button type="button" (click)="commands.orderedList()" [attr.aria-pressed]="state.orderedList" aria-label="Ordered list">1. List</button>
                         <button type="button" (click)="commands.checkList()" [attr.aria-pressed]="state.checkList" aria-label="Checklist">☑ List</button>
                         <button type="button" (click)="commands.blockquote()" [attr.aria-pressed]="state.blockquote" aria-label="Blockquote">❝</button>
-                        <button type="button" (click)="commands.codeBlock()" [attr.aria-pressed]="state.codeBlock" aria-label="Code block">{{ '{ ' }}</button>
+                        <button type="button" (click)="commands.codeBlock()" [attr.aria-pressed]="state.codeBlock" aria-label="Code block">{{ '{ }' }}</button>
                         <button type="button" (click)="commands.insertHorizontalRule()" aria-label="Divider">—</button>
                         <button type="button" (click)="commands.textAlign('left')" [attr.aria-pressed]="state.textAlign === 'left'" aria-label="Align left">⇤</button>
                         <button type="button" (click)="commands.textAlign('center')" [attr.aria-pressed]="state.textAlign === 'center'" aria-label="Align center">⇆</button>

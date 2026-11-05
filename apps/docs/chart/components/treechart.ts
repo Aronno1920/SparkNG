@@ -75,6 +75,30 @@ export class TreeChart extends BaseChart<ChartPassThrough> {
     @Input() orient: TreeSeriesOption['orient'] | undefined;
 
     /**
+     * Layout of the tree: `'orthogonal'` (default) or `'radial'`.
+     * @group Props
+     */
+    @Input() layout: TreeSeriesOption['layout'] | undefined;
+
+    /**
+     * Edge shape of the tree: `'curve'` (default) or `'polyline'`.
+     * @group Props
+     */
+    @Input() edgeShape: TreeSeriesOption['edgeShape'] | undefined;
+
+    /**
+     * Edge fork position when edgeShape is polyline.
+     * @group Props
+     */
+    @Input() edgeForkPosition: TreeSeriesOption['edgeForkPosition'] | undefined;
+
+    /**
+     * Initial tree depth.
+     * @group Props
+     */
+    @Input() initialTreeDepth: TreeSeriesOption['initialTreeDepth'] | undefined;
+
+    /**
      * Symbol of the nodes, e.g. `'circle'`, `'rect'`, `'emptyCircle'`.
      * @group Props
      */
@@ -97,6 +121,10 @@ export class TreeChart extends BaseChart<ChartPassThrough> {
         const tree: TreeSeriesOption = { type: 'tree', data: this.asArray(this.data) };
         if (this.name) tree.name = this.name;
         if (this.orient !== undefined) tree.orient = this.orient;
+        if (this.layout !== undefined) tree.layout = this.layout;
+        if (this.edgeShape !== undefined) tree.edgeShape = this.edgeShape;
+        if (this.edgeForkPosition !== undefined) tree.edgeForkPosition = this.edgeForkPosition;
+        if (this.initialTreeDepth !== undefined) tree.initialTreeDepth = this.initialTreeDepth;
         if (this.symbol !== undefined) tree.symbol = this.symbol;
         return [tree];
     }

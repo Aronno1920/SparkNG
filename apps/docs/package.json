@@ -42,7 +42,7 @@
         "@stackblitz/sdk": "1.11.1",
         "@types/express": "^5.0.6",
         "@types/node": "^26.2.0",
-        "@bdspark/sparkng-charts": "workspace:22.0.6",
+        "@bdspark/sparkng-charts": "22.1.1",
         "express": "^5.2.1",
         "glob": "^13.0.6",
         "prismjs": "^1.29.0",

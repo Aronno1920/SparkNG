@@ -238,8 +238,8 @@ importers:
         specifier: 22.0.5
         version: 22.0.5(dec1265c73ec73f59ef0b03ab7d4636d)
       '@bdspark/sparkng-charts':
-        specifier: workspace:22.0.6
-        version: link:../../packages/sparkng-charts
+        specifier: 22.1.1
+        version: 22.1.1
       '@bdspark/sparkng-icons':
         specifier: 22.0.5
         version: 22.0.5
@@ -330,9 +330,6 @@ importers:
       '@angular/router':
         specifier: catalog:angular22
         version: 22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(@angular/platform-browser@22.2.2(@angular/animations@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2)))(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2)))(rxjs@7.8.2)
-      '@bdspark/sparkng-charts':
-        specifier: workspace:*
-        version: link:../sparkng-charts
       '@bdspark/sparkng-motion':
         specifier: workspace:*
         version: link:../sparkng-motion
@@ -1330,6 +1327,10 @@ packages:
   '@bcoe/v8-coverage@1.0.2':
     resolution: {integrity: sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA==}
     engines: {node: '>=18'}
+
+  '@bdspark/sparkng-charts@22.1.1':
+    resolution: {integrity: sha512-hKbyiV5GnLvL7HBAYLGJeBmSPzrxA8m3rglZGozoak+a1ssDVZwmK9OS0oFODghKfW0DZv9xAiQ3XnU7i23Jxw==}
+    engines: {node: '>=20'}
 
   '@bdspark/sparkng-icons@22.0.5':
     resolution: {integrity: sha512-X9UL1J3Q/BgdTmZYqdwrnE1/cD5Ry4EtfyBCvR7+XilQ+U0in/ZuiyMcnGPJ2eAd3RdSRowerkKntYi2Fsps3w==}
@@ -8113,6 +8114,8 @@ snapshots:
       '@babel/helper-validator-identifier': 8.0.6
 
   '@bcoe/v8-coverage@1.0.2': {}
+
+  '@bdspark/sparkng-charts@22.1.1': {}
 
   '@bdspark/sparkng-icons@22.0.5': {}
 

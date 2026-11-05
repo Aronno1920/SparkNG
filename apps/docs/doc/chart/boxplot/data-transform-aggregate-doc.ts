@@ -13,7 +13,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
             <p>Income since 1950: per-country income boxplots aggregated from the life-expectancy table, overlaid with a detail scatter of every record.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-chart [options]="options" (onChartInit)="onInit($event)" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" height="36rem" />
         </div>
         <app-code></app-code>
     `
@@ -23,19 +23,31 @@ export class DataTransformAggregateDoc {
 
     private chart: any;
 
+    private rawData: any;
+
     options: any = {};
 
     onInit(event: any): void {
         this.chart = event.chart;
-        if (this.chart && isPlatformBrowser(this.platformId)) {
-            this.chart.showLoading();
-            fetch('demo/chart/data/life-expectancy-table.json')
-                .then((response) => response.json())
-                .then((rawData) => {
-                    this.chart.hideLoading();
-                    this.chart.setOption(this.buildOption(rawData));
-                });
+        if (!this.chart || !isPlatformBrowser(this.platformId)) {
+            return;
         }
+        if (this.rawData) {
+            this.chart.setOption(this.buildOption(this.rawData));
+            return;
+        }
+        this.chart.showLoading();
+        fetch('demo/chart/data/life-expectancy-table.json')
+            .then((response) => response.json())
+            .then((rawData) => {
+                this.rawData = rawData;
+                this.chart.hideLoading();
+                this.options = this.buildOption(rawData);
+                this.chart.setOption(this.options);
+            })
+            .catch(() => {
+                this.chart.hideLoading();
+            });
     }
 
     private buildOption(rawData: any[]): any {
@@ -66,8 +78,12 @@ export class DataTransformAggregateDoc {
                 // computed in aggregateIncome() instead; the official built-in
                 // `sort` transform on Q3 is kept.
                 {
+                    id: 'income_aggregate_raw',
+                    source: this.aggregateIncome(rawData)
+                },
+                {
                     id: 'income_aggregate',
-                    source: this.aggregateIncome(rawData),
+                    fromDatasetId: 'income_aggregate_raw',
                     transform: {
                         type: 'sort',
                         config: {

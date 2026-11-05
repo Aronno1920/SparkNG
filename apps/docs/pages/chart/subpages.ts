@@ -156,6 +156,7 @@ import { LeftToRightTreeDoc } from '@/doc/chart/tree/left-to-right-tree-doc';
 import { TopToBottomTreeDoc } from '@/doc/chart/tree/top-to-bottom-tree-doc';
 import { RadialTreeDoc } from '@/doc/chart/tree/radial-tree-doc';
 import { MultipleTreesDoc } from '@/doc/chart/tree/multiple-trees-doc';
+import { TreeWithPolylineEdgeDoc } from '@/doc/chart/tree/tree-with-polyline-edge-doc';
 import { BasicTreemapDoc } from '@/doc/chart/treemap/basic-treemap-doc';
 import { DiskUsageDoc } from '@/doc/chart/treemap/disk-usage-doc';
 import { ShowParentLabelsDoc } from '@/doc/chart/treemap/show-parent-labels-doc';
@@ -200,6 +201,8 @@ import { SimpleDatasetDoc } from '@/doc/chart/dataset/simple-dataset-doc';
 import { DatasetObjectArrayDoc } from '@/doc/chart/dataset/dataset-object-array-doc';
 import { SeriesLayoutColumnRowDoc } from '@/doc/chart/dataset/series-layout-column-row-doc';
 import { SimpleEncodeDoc } from '@/doc/chart/dataset/simple-encode-doc';
+import { PartitionDataPiesDoc as DatasetPartitionDataPiesDoc } from '@/doc/chart/dataset/partition-data-pies-doc';
+import { DefaultArrangementDoc } from '@/doc/chart/dataset/default-arrangement-doc';
 import { ShareDatasetDoc } from '@/doc/chart/dataset/share-dataset-doc';
 import { EncodeAndMatrixDoc } from '@/doc/chart/dataset/encode-and-matrix-doc';
 import { TooltipDatazoomMobileDoc } from '@/doc/chart/dataset/tooltip-datazoom-mobile-doc';
@@ -207,10 +210,9 @@ import { LargeScaleAreaChartDoc } from '@/doc/chart/dataset/large-scale-area-cha
 import { GanttAirportFlightsDoc } from '@/doc/chart/dataset/gantt-airport-flights-doc';
 import { WindBarbDoc } from '@/doc/chart/dataset/wind-barb-doc';
 import { ErrorScatterCartesianDoc } from '@/doc/chart/dataset/error-scatter-cartesian-doc';
-import { BasicRichTextDoc } from '@/doc/chart/richtext/basic-richtext-doc';
-import { PieRichTextDoc } from '@/doc/chart/richtext/pie-richtext-doc';
-import { WeatherRichTextDoc } from '@/doc/chart/richtext/weather-richtext-doc';
-import { AxisRichTextDoc } from '@/doc/chart/richtext/axis-richtext-doc';
+import { PieSpecialLabelDoc as RichTextPieSpecialLabelDoc } from '@/doc/chart/richtext/pie-special-label-doc';
+import { NestedPiesDoc as RichTextNestedPiesDoc } from '@/doc/chart/richtext/nested-pies-doc';
+import { WeatherStatisticsDoc as RichTextWeatherStatisticsDoc } from '@/doc/chart/richtext/weather-statistics-doc';
 
 @Component({
     standalone: true,
@@ -489,6 +491,7 @@ export class TreeChartDemo {
         { id: 'top-to-bottom-tree', label: 'Top to Bottom Tree', component: TopToBottomTreeDoc },
         { id: 'radial-tree', label: 'Radial Tree', component: RadialTreeDoc },
         { id: 'multiple-trees', label: 'Multiple Trees', component: MultipleTreesDoc },
+        { id: 'tree-with-polyline-edge', label: 'Tree with Polyline Edge', component: TreeWithPolylineEdgeDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -640,7 +643,8 @@ export class DatasetChartDemo {
         { id: 'series-layout-column-row', label: 'Series Layout By Column or Row', component: SeriesLayoutColumnRowDoc },
         { id: 'simple-dataset', label: 'Simple Example of Dataset', component: SimpleDatasetDoc },
         { id: 'dataset-object-array', label: 'Dataset in Object Array', component: DatasetObjectArrayDoc },
-        { id: 'referer-website', label: 'Referer of a Website', component: RefererWebsiteDoc },
+        { id: 'partition-data-pies', label: 'Partition Data to Pies', component: DatasetPartitionDataPiesDoc },
+        { id: 'default-arrangement', label: 'Default arrangement', component: DefaultArrangementDoc },
         { id: 'share-dataset', label: 'Share Dataset', component: ShareDatasetDoc },
         { id: 'encode-and-matrix', label: 'Encode and Matrix', component: EncodeAndMatrixDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
@@ -697,10 +701,9 @@ export class CalendarChartDemo {
 export class RichTextChartDemo {
     docs = [
         { id: 'usage', label: 'Usage', component: RichTextUsageDoc },
-        { id: 'basic-richtext', label: 'Basic Rich Text', component: BasicRichTextDoc },
-        { id: 'pie-richtext', label: 'Pie Rich Text', component: PieRichTextDoc },
-        { id: 'weather-richtext', label: 'Weather Rich Text', component: WeatherRichTextDoc },
-        { id: 'axis-richtext', label: 'Axis Rich Text', component: AxisRichTextDoc },
+        { id: 'pie-special-label', label: 'Pie Special Label', component: RichTextPieSpecialLabelDoc },
+        { id: 'nested-pies', label: 'Nested Pies', component: RichTextNestedPiesDoc },
+        { id: 'weather-statistics', label: 'Weather Statistics', component: RichTextWeatherStatisticsDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }

@@ -1,6 +1,6 @@
 {
     "name": "@bdspark/sparkng-styled",
-    "version": "22.0.6",
+    "version": "22.1.1",
     "author": "bdSpark",
     "description": "Styled utilities for SparkNG Libraries for Angular v22",
     "keywords": ["styled", "css", "style utilities", "Spark", "angular"],

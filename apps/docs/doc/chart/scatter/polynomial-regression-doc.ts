@@ -1,7 +1,6 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component, OnDestroy, PLATFORM_ID, inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component } from '@angular/core';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 // prettier-ignore
@@ -26,33 +25,20 @@ const data = [
   [81.31, 108.68]
 ];
 
-function samplePoints(count, minX, maxX, fn) {
-    const points = [];
+function samplePoints(count: number, minX: number, maxX: number, fn: (x: number) => number, formula?: string) {
+    const points: (number | string)[][] = [];
     for (let i = 0; i <= count; i++) {
         const x = minX + ((maxX - minX) * i) / count;
-        points.push([+x.toFixed(4), +fn(x).toFixed(4)]);
+        const pt: (number | string)[] = [+x.toFixed(4), +fn(x).toFixed(4)];
+        if (formula) {
+            pt.push(formula);
+        }
+        points.push(pt);
     }
     return points;
 }
 
-function linearLeastSquares(data) {
-    let sumX = 0;
-    let sumY = 0;
-    let sumXY = 0;
-    let sumXX = 0;
-    const n = data.length;
-    data.forEach(([x, y]) => {
-        sumX += x;
-        sumY += y;
-        sumXY += x * y;
-        sumXX += x * x;
-    });
-    const beta1 = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
-    const beta0 = (sumY - beta1 * sumX) / n;
-    return { beta0, beta1 };
-}
-
-function polynomialFit(data, order) {
+function polynomialFit(data: number[][], order: number) {
     // Ordinary least squares via normal equations + Gaussian elimination,
     // matching the ecStat regression results.
     const size = order + 1;
@@ -94,7 +80,7 @@ function polynomialFit(data, order) {
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Net profit versus main business income of 18 companies fitted with a third-order polynomial regression curve.</p>
+            <p>Net profit versus main business income of 18 companies fitted with a third-order polynomial regression curve with its formula label on hover.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -109,15 +95,14 @@ export class PolynomialRegressionDoc {
         return this.coefficients.reduce((sum, c, i) => sum + c * Math.pow(x, i), 0);
     }
 
-    regressionPoints = samplePoints(100, Math.min(...data.map((d) => d[0])), Math.max(...data.map((d) => d[0])), (x) => this.polynomial(x)).map(([x, y]) => [
-        x,
-        y,
+    formula =
         'y = ' +
-            this.coefficients
-                .map((c, i) => (i === 0 ? c.toFixed(2) : c.toFixed(4) + 'x^' + i))
-                .reverse()
-                .join(' + ')
-    ]);
+        this.coefficients
+            .map((c, i) => (i === 0 ? c.toFixed(2) : c.toFixed(4) + 'x^' + i))
+            .reverse()
+            .join(' + ');
+
+    regressionPoints = samplePoints(100, Math.min(...data.map((d) => d[0])), Math.max(...data.map((d) => d[0])), (x) => this.polynomial(x), this.formula);
 
     options = {
         title: {
@@ -153,16 +138,34 @@ export class PolynomialRegressionDoc {
             {
                 name: 'scatter',
                 type: 'scatter',
-                data: data
+                data: data,
+                emphasis: {
+                    focus: 'series',
+                    label: {
+                        show: true,
+                        position: 'top'
+                    }
+                }
             },
             {
                 name: 'line',
                 type: 'line',
                 smooth: true,
-                datasetIndex: 1,
                 symbolSize: 0.1,
                 symbol: 'circle',
-                label: { show: true, fontSize: 16 },
+                label: {
+                    show: false,
+                    position: 'top'
+                },
+                emphasis: {
+                    focus: 'series',
+                    label: {
+                        show: true,
+                        fontSize: 16,
+                        position: 'top',
+                        formatter: this.formula
+                    }
+                },
                 labelLayout: { dx: -20 },
                 encode: { label: 2, tooltip: 1 },
                 data: this.regressionPoints

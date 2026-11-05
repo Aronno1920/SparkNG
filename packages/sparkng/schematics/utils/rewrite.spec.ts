@@ -13,9 +13,9 @@ describe('rewriteSource — module specifiers', () => {
     });
 
     it('rewrites export-from and dynamic import()', () => {
-        const { text } = rw(`export { ButtonModule } from 'primeng/button';\n` + `const mod = await import('primeng/chart');\n`);
+        const { text } = rw(`export { ButtonModule } from 'primeng/button';\n` + `const mod = await import('primeng/dialog');\n`);
         expect(text).toContain(`export { ButtonModule } from '@bdspark/sparkng/button'`);
-        expect(text).toContain(`import('@bdspark/sparkng/chart')`);
+        expect(text).toContain(`import('@bdspark/sparkng/dialog')`);
     });
 
     it('preserves quote style and leaves unrelated modules untouched', () => {

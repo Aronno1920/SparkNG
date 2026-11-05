@@ -26,16 +26,20 @@ const data = [
         [18, 79395.7]
 ];
 
-function samplePoints(count, minX, maxX, fn) {
-    const points = [];
+function samplePoints(count: number, minX: number, maxX: number, fn: (x: number) => number, formula?: string) {
+    const points: (number | string)[][] = [];
     for (let i = 0; i <= count; i++) {
         const x = minX + ((maxX - minX) * i) / count;
-        points.push([+x.toFixed(4), +fn(x).toFixed(4)]);
+        const pt: (number | string)[] = [+x.toFixed(4), +fn(x).toFixed(4)];
+        if (formula) {
+            pt.push(formula);
+        }
+        points.push(pt);
     }
     return points;
 }
 
-function linearLeastSquares(data) {
+function linearLeastSquares(data: [number, number][]) {
     let sumX = 0;
     let sumY = 0;
     let sumXY = 0;
@@ -52,49 +56,13 @@ function linearLeastSquares(data) {
     return { beta0, beta1 };
 }
 
-function polynomialFit(data, order) {
-    // Ordinary least squares via normal equations + Gaussian elimination,
-    // matching the ecStat regression results.
-    const size = order + 1;
-    const a = Array.from({ length: size }, () => new Array(size).fill(0));
-    const b = new Array(size).fill(0);
-    data.forEach(([x, y]) => {
-        for (let i = 0; i < size; i++) {
-            for (let j = 0; j < size; j++) {
-                a[i][j] += Math.pow(x, i + j);
-            }
-            b[i] += Math.pow(x, i) * y;
-        }
-    });
-    for (let i = 0; i < size; i++) {
-        let maxRow = i;
-        for (let k = i + 1; k < size; k++) {
-            if (Math.abs(a[k][i]) > Math.abs(a[maxRow][i])) maxRow = k;
-        }
-        [a[i], a[maxRow]] = [a[maxRow], a[i]];
-        [b[i], b[maxRow]] = [b[maxRow], b[i]];
-        for (let k = i + 1; k < size; k++) {
-            const factor = a[k][i] / a[i][i];
-            for (let j = i; j < size; j++) a[k][j] -= factor * a[i][j];
-            b[k] -= factor * b[i];
-        }
-    }
-    const coeffs = new Array(size).fill(0);
-    for (let i = size - 1; i >= 0; i--) {
-        let sum = b[i];
-        for (let j = i + 1; j < size; j++) sum -= a[i][j] * coeffs[j];
-        coeffs[i] = sum / a[i][i];
-    }
-    return coeffs;
-}
-
 @Component({
     selector: 'exponential-regression-doc',
     standalone: true,
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>GDP growth 1981-1998 fitted with an exponential regression: the curve is fitted on ln(y) and rendered smooth with its formula label.</p>
+            <p>GDP growth 1981-1998 fitted with an exponential regression: the curve is fitted on ln(y) and rendered smooth with its formula label on hover.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -109,7 +77,9 @@ export class ExponentialRegressionDoc {
 
     beta = this.fit.beta1;
 
-    regressionPoints = samplePoints(50, data[0][0], data[data.length - 1][0], (x) => this.alpha * Math.exp(this.beta * x)).map(([x, y]) => [x, y, 'y = ' + this.alpha.toFixed(4) + 'e^' + this.beta.toFixed(4) + 'x']);
+    formula = 'y = ' + this.alpha.toFixed(4) + 'e^' + this.beta.toFixed(4) + 'x';
+
+    regressionPoints = samplePoints(50, data[0][0], data[data.length - 1][0], (x) => this.alpha * Math.exp(this.beta * x), this.formula);
 
     options = {
         title: {
@@ -142,16 +112,34 @@ export class ExponentialRegressionDoc {
             {
                 name: 'scatter',
                 type: 'scatter',
-                data: data
+                data: data,
+                emphasis: {
+                    focus: 'series',
+                    label: {
+                        show: true,
+                        position: 'top'
+                    }
+                }
             },
             {
                 name: 'line',
                 type: 'line',
                 smooth: true,
-                datasetIndex: 1,
                 symbolSize: 0.1,
                 symbol: 'circle',
-                label: { show: true, fontSize: 16 },
+                label: {
+                    show: false,
+                    position: 'top'
+                },
+                emphasis: {
+                    focus: 'series',
+                    label: {
+                        show: true,
+                        fontSize: 16,
+                        position: 'top',
+                        formatter: this.formula
+                    }
+                },
                 labelLayout: { dx: -20 },
                 encode: { label: 2, tooltip: 1 },
                 data: this.regressionPoints

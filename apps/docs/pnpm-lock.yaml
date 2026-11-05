@@ -54,6 +54,9 @@ importers:
       '@bdspark/sparkng':
         specifier: 22.0.5
         version: 22.0.5(3bb0858f22502b9effaebe681b91b9c9)
+      '@bdspark/sparkng-charts':
+        specifier: 22.1.1
+        version: 22.1.1
       '@bdspark/sparkng-icons':
         specifier: 22.0.5
         version: 22.0.5
@@ -72,9 +75,6 @@ importers:
       '@types/node':
         specifier: ^26.2.0
         version: 26.6.4
-      chart.js:
-        specifier: 4.5.1
-        version: 4.5.1
       express:
         specifier: ^5.2.1
         version: 5.3.0
@@ -915,6 +915,10 @@ packages:
   '@babel/types@8.0.6':
     resolution: {integrity: sha512-c+xgSWboV2pdwXP67BUWDVRHi2BO5Q3KwxyFVs7taVTY+fsK47/L51ZXQoV9rozHJDNHvJ4v4WEsI/IlxV2l2A==}
     engines: {node: ^22.18.0 || >=24.11.0}
+
+  '@bdspark/sparkng-charts@22.1.1':
+    resolution: {integrity: sha512-hKbyiV5GnLvL7HBAYLGJeBmSPzrxA8m3rglZGozoak+a1ssDVZwmK9OS0oFODghKfW0DZv9xAiQ3XnU7i23Jxw==}
+    engines: {node: '>=20'}
 
   '@bdspark/sparkng-icons@22.0.5':
     resolution: {integrity: sha512-X9UL1J3Q/BgdTmZYqdwrnE1/cD5Ry4EtfyBCvR7+XilQ+U0in/ZuiyMcnGPJ2eAd3RdSRowerkKntYi2Fsps3w==}
@@ -5384,6 +5388,8 @@ snapshots:
       '@babel/helper-string-parser': 8.0.6
       '@babel/helper-validator-identifier': 8.0.6
 
+  '@bdspark/sparkng-charts@22.1.1': {}
+
   '@bdspark/sparkng-icons@22.0.5': {}
 
   '@bdspark/sparkng-motion@22.0.5':
@@ -5807,7 +5813,8 @@ snapshots:
       '@jsonjoy.com/codegen': 17.67.0(tslib@2.8.1)
       tslib: 2.8.1
 
-  '@kurkle/color@0.3.4': {}
+  '@kurkle/color@0.3.4':
+    optional: true
 
   '@leichtgewicht/ip-codec@2.0.5': {}
 
@@ -6596,6 +6603,7 @@ snapshots:
   chart.js@4.5.1:
     dependencies:
       '@kurkle/color': 0.3.4
+    optional: true
 
   chokidar@3.6.0:
     dependencies:

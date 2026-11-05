@@ -212,7 +212,7 @@ function samplePoints(count: number, minX: number, maxX: number, fn: (x: number)
     for (let i = 0; i <= count; i++) {
         const x = minX + ((maxX - minX) * i) / count;
         const pt: (number | string)[] = [+x.toFixed(4), +fn(x).toFixed(4)];
-        if (formula && i === count) {
+        if (formula) {
             pt.push(formula);
         }
         points.push(pt);
@@ -243,7 +243,7 @@ function linearLeastSquares(data: number[][]) {
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>A least squares linear regression over 100 samples: the fitted line is sampled from the computed coefficients and labeled with its formula.</p>
+            <p>A least squares linear regression over 100 samples: the fitted line is sampled from the computed coefficients and labeled with its formula on hover.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -254,7 +254,9 @@ function linearLeastSquares(data: number[][]) {
 export class LinearRegressionDoc {
     fit = linearLeastSquares(data);
 
-    regressionPoints = samplePoints(50, Math.min(...data.map((d) => d[0])), Math.max(...data.map((d) => d[0])), (x) => this.fit.beta0 + this.fit.beta1 * x, 'y = ' + this.fit.beta1.toFixed(4) + ' * x + ' + this.fit.beta0.toFixed(4));
+    formula = 'y = ' + this.fit.beta1.toFixed(4) + ' * x + ' + this.fit.beta0.toFixed(4);
+
+    regressionPoints = samplePoints(50, Math.min(...data.map((d) => d[0])), Math.max(...data.map((d) => d[0])), (x) => this.fit.beta0 + this.fit.beta1 * x, this.formula);
 
     options = {
         title: {
@@ -290,14 +292,33 @@ export class LinearRegressionDoc {
             {
                 name: 'scatter',
                 type: 'scatter',
-                data: data
+                data: data,
+                emphasis: {
+                    focus: 'series',
+                    label: {
+                        show: true,
+                        position: 'top'
+                    }
+                }
             },
             {
                 name: 'line',
                 type: 'line',
                 symbolSize: 0.1,
                 symbol: 'circle',
-                label: { show: true, fontSize: 16 },
+                label: {
+                    show: false,
+                    position: 'top'
+                },
+                emphasis: {
+                    focus: 'series',
+                    label: {
+                        show: true,
+                        fontSize: 16,
+                        position: 'top',
+                        formatter: this.formula
+                    }
+                },
                 labelLayout: { dx: -20 },
                 encode: { label: 2, tooltip: 1 },
                 data: this.regressionPoints

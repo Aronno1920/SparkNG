@@ -373,7 +373,8 @@ function extractClassProperties(content) {
     const constructorIndex = content.indexOf('constructor(', classStartIndex);
     const ngOnInitIndex = content.indexOf('ngOnInit(', classStartIndex);
     const loadDemoIndex = content.indexOf('loadDemoData(', classStartIndex);
-    const codeIndex = content.indexOf('code: Code', classStartIndex);
+    const codeMatch = content.slice(classStartIndex).match(/\bcode(?::\s*Code)?\s*=/);
+    const codeIndex = codeMatch ? classStartIndex + codeMatch.index : -1;
 
     // Find the earliest boundary
     let endBoundary = content.length;
@@ -588,7 +589,8 @@ function extractOtherMethods(content) {
     const classStartIndex = classMatch ? classMatch.index + classMatch[0].length : 0;
 
     // Look at the class definition before "code: Code" AND between code block end and extFiles
-    const codeIndex = content.indexOf('code: Code', classStartIndex);
+    const codeMatch = content.slice(classStartIndex).match(/\bcode(?::\s*Code)?\s*=/);
+    const codeIndex = codeMatch ? classStartIndex + codeMatch.index : -1;
     const extFilesIndex = content.indexOf('extFiles = ', classStartIndex);
 
     // Content before code block
@@ -914,8 +916,8 @@ function extractBasicCode(htmlContent) {
 
 // Extract existing code object from doc file using balanced brace matching
 function extractExistingCodeObject(content) {
-    // Find the start of code: Code = {
-    const codeStart = content.match(/code:\s*Code\s*=\s*\{/);
+    // Find the start of code: Code = { or code = {
+    const codeStart = content.match(/\bcode(?::\s*Code)?\s*=\s*\{/);
     if (!codeStart) return null;
 
     const startIndex = codeStart.index + codeStart[0].length;

@@ -1,6 +1,6 @@
 {
     "name": "@bdspark/sparkng-themes",
-    "version": "22.0.6",
+    "version": "22.1.1",
     "author": "bdSpark",
     "description": "Themes for SparkNG Libraries for Angular v22",
     "keywords": [
@@ -8,7 +8,8 @@
         "css",
         "style utilities",
         "sparkng",
-        "angular"
+        "angular",
+        "shadcn"
     ],
     "license": "MIT",
     "repository": {

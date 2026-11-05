@@ -63,7 +63,7 @@ See the [migration guide](https://sparkng.bdspark.com/migration/primeng) for pre
 | Package | What it is |
 | --- | --- |
 | [`@bdspark/sparkng`](packages/sparkng) | The components, directives and services. The only package most applications install directly. |
-| [`@bdspark/sparkng-themes`](packages/sparkng-themes) | Built-in theme presets — Aura, Material, Lara and Nora. |
+| [`@bdspark/sparkng-themes`](packages/sparkng-themes) | Built-in theme presets — Aura, Material, Lara, Nora, and Shadcn. |
 | [`@bdspark/sparkng-styled`](packages/sparkng-styled) | The styled-mode theming engine that turns presets into CSS variables. |
 | [`@bdspark/sparkng-styles`](packages/sparkng-styles) | Base styles shared by the components. |
 | [`@bdspark/sparkng-tailwindcss`](packages/sparkng-tailwindcss) | Tailwind CSS plugin, for both v3 and v4. |

@@ -18,3 +18,4 @@ minimumReleaseAgeExclude:
     - '@bdspark/sparkng-tailwindcss'
     - '@bdspark/sparkng-themes'
     - '@bdspark/sparkng-utils'
+    - '@bdspark/sparkng-charts'

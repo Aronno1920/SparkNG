@@ -406,13 +406,13 @@ import { ChartModule } from '@bdspark/sparkng/chart';`
 export class RichTextUsageDoc {
     importCode: Code = {
         typescript: `// Standalone Component
-import { GaugeChart } from '@bdspark/sparkng/chart';
+import { UIChart } from '@bdspark/sparkng/chart';
 
 // Or via full module
 import { ChartModule } from '@bdspark/sparkng/chart';`
     };
     usageCode: Code = {
-        html: `<p-gaugechart [value]="72" [options]="options" />`
+        html: `<p-chart [options]="options" />`
     };
 }
 
