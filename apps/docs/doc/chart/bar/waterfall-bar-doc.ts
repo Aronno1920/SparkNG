@@ -9,40 +9,71 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>A waterfall chart shows cumulative positive and negative running totals using stacked transparent bases.</p>
+            <p>Waterfall chart of living expenses in Shenzhen: a transparent placeholder stack lifts each <i>Life Cost</i> segment so the deltas float between subtotals.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-barchart [series]="series" [xAxis]="xAxis" />
+            <p-chart [options]="options" />
         </div>
         <app-code></app-code>
     `
 })
 export class WaterfallBarDoc {
-    xAxis = { type: 'category', data: ['Total', 'Rent', 'Utilities', 'Payroll', 'Marketing', 'Supplies'] };
-
-    series = [
-        {
-            name: 'Placeholder',
-            type: 'bar',
-            stack: 'Total',
-            itemStyle: {
-                borderColor: 'transparent',
-                color: 'transparent'
+    options = {
+        title: {
+            text: 'Waterfall Chart',
+            subtext: 'Living Expenses in Shenzhen'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
             },
-            emphasis: {
+            formatter: function (params: any) {
+                const tar = params[1];
+                return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            splitLine: { show: false },
+            data: ['Total', 'Rent', 'Utilities', 'Transportation', 'Meals', 'Other']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name: 'Placeholder',
+                type: 'bar',
+                stack: 'Total',
                 itemStyle: {
                     borderColor: 'transparent',
                     color: 'transparent'
-                }
+                },
+                emphasis: {
+                    itemStyle: {
+                        borderColor: 'transparent',
+                        color: 'transparent'
+                    }
+                },
+                data: [0, 1700, 1400, 1200, 300, 0]
             },
-            data: [0, 1700, 1400, 600, 200, 0]
-        },
-        {
-            name: 'Expenses',
-            type: 'bar',
-            stack: 'Total',
-            label: { show: true, position: 'inside' },
-            data: [2900, 1200, 300, 800, 400, 200]
-        }
-    ];
+            {
+                name: 'Life Cost',
+                type: 'bar',
+                stack: 'Total',
+                label: {
+                    show: true,
+                    position: 'inside'
+                },
+                data: [2900, 1200, 300, 200, 900, 300]
+            }
+        ]
+    };
 }

@@ -9,7 +9,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Polar bars constrained within a customized angle span arc.</p>
+            <p>Two polar coordinate systems limit their angle axes with <i>startAngle</i> and <i>endAngle</i>, one spanning the first quadrant and the other the third.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -19,9 +19,38 @@ import { ChartModule } from '@bdspark/sparkng/chart';
 })
 export class PolarEndAngleDoc {
     options = {
-        angleAxis: { max: 2, startAngle: 30, endAngle: 210 },
-        radiusAxis: { type: 'category', data: ['v', 'w', 'x', 'y', 'z'] },
-        polar: {},
-        series: [{ type: 'bar', data: [1.2, 1.8, 0.9, 1.5, 2.0], coordinateSystem: 'polar', name: 'A' }]
+        tooltip: {},
+        angleAxis: [
+            {
+                type: 'category',
+                polarIndex: 0,
+                startAngle: 90,
+                endAngle: 0,
+                data: ['S1', 'S2', 'S3']
+            },
+            {
+                type: 'category',
+                polarIndex: 1,
+                startAngle: -90,
+                endAngle: -180,
+                data: ['T1', 'T2', 'T3']
+            }
+        ],
+        radiusAxis: [{ polarIndex: 0 }, { polarIndex: 1 }],
+        polar: [{}, {}],
+        series: [
+            {
+                type: 'bar',
+                polarIndex: 0,
+                data: [1, 2, 3],
+                coordinateSystem: 'polar'
+            },
+            {
+                type: 'bar',
+                polarIndex: 1,
+                data: [1, 2, 3],
+                coordinateSystem: 'polar'
+            }
+        ]
     };
 }

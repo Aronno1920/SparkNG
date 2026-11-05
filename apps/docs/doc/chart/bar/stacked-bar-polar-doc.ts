@@ -9,7 +9,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Stacked concentric bars plotted in polar coordinate rings.</p>
+            <p>Stacked bars on a polar coordinate: the radius axis carries the categories and three series share the <i>a</i> stack around the circle.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -19,12 +19,48 @@ import { ChartModule } from '@bdspark/sparkng/chart';
 })
 export class StackedBarPolarDoc {
     options = {
+        angleAxis: {},
+        radiusAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu'],
+            z: 10
+        },
         polar: {},
-        angleAxis: { type: 'category', data: ['A', 'B', 'C', 'D'] },
-        radiusAxis: {},
         series: [
-            { type: 'bar', data: [1, 2, 3, 4], coordinateSystem: 'polar', stack: 'a' },
-            { type: 'bar', data: [2, 4, 6, 8], coordinateSystem: 'polar', stack: 'a' }
-        ]
+            {
+                type: 'bar',
+                data: [1, 2, 3, 4],
+                coordinateSystem: 'polar',
+                name: 'A',
+                stack: 'a',
+                emphasis: {
+                    focus: 'series'
+                }
+            },
+            {
+                type: 'bar',
+                data: [2, 4, 6, 8],
+                coordinateSystem: 'polar',
+                name: 'B',
+                stack: 'a',
+                emphasis: {
+                    focus: 'series'
+                }
+            },
+            {
+                type: 'bar',
+                data: [1, 2, 3, 4],
+                coordinateSystem: 'polar',
+                name: 'C',
+                stack: 'a',
+                emphasis: {
+                    focus: 'series'
+                }
+            }
+        ],
+        legend: {
+            show: true,
+            data: ['A', 'B', 'C']
+        }
     };
 }

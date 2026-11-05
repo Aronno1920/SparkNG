@@ -9,7 +9,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Polar bar series with rounded caps on radial bars.</p>
+            <p>Two identical polar bars compare <i>roundCap</i>: the red-bordered series has flat ends while the green-bordered one rounds its outer corners.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -19,17 +19,47 @@ import { ChartModule } from '@bdspark/sparkng/chart';
 })
 export class RoundedBarPolarDoc {
     options = {
-        polar: { radius: [30, '80%'] },
-        angleAxis: { max: 100, startAngle: 90 },
-        radiusAxis: { type: 'category', data: ['Score A', 'Score B', 'Score C'] },
+        angleAxis: {
+            max: 2,
+            startAngle: 30,
+            splitLine: {
+                show: false
+            }
+        },
+        radiusAxis: {
+            type: 'category',
+            data: ['v', 'w', 'x', 'y', 'z'],
+            z: 10
+        },
+        polar: {},
         series: [
             {
                 type: 'bar',
-                data: [65, 80, 95],
+                data: [4, 3, 2, 1, 0],
                 coordinateSystem: 'polar',
+                name: 'Without Round Cap',
+                itemStyle: {
+                    borderColor: 'red',
+                    opacity: 0.8,
+                    borderWidth: 1
+                }
+            },
+            {
+                type: 'bar',
+                data: [4, 3, 2, 1, 0],
+                coordinateSystem: 'polar',
+                name: 'With Round Cap',
                 roundCap: true,
-                itemStyle: { color: '#6366f1' }
+                itemStyle: {
+                    borderColor: 'green',
+                    opacity: 0.8,
+                    borderWidth: 1
+                }
             }
-        ]
+        ],
+        legend: {
+            show: true,
+            data: ['Without Round Cap', 'With Round Cap']
+        }
     };
 }

@@ -9,16 +9,18 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Assigns distinct color fills and border radii to individual bar items within a series.</p>
+            <p>A single data item is passed as an object with its own <i>itemStyle</i> to override the color of one bar.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-barchart [series]="series" [xAxis]="xAxis" />
+            <p-barchart [series]="series" [xAxis]="xAxis" [yAxis]="yAxis" />
         </div>
         <app-code></app-code>
     `
 })
 export class SetStyleOfSingleBarDoc {
     xAxis = { type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] };
+
+    yAxis = { type: 'value' };
 
     series = [
         {
@@ -27,7 +29,7 @@ export class SetStyleOfSingleBarDoc {
                 {
                     value: 200,
                     itemStyle: {
-                        color: '#a90000'
+                        color: '#505372'
                     }
                 },
                 150,

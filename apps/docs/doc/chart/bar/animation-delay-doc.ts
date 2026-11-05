@@ -9,7 +9,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Staggers bar entrance animations across index positions.</p>
+            <p>One hundred columns enter with a per-index <i>animationDelay</i> and an <i>elasticOut</i> easing; the second series trails the first by 100 ms.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -18,17 +18,73 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     `
 })
 export class AnimationDelayDoc {
-    options = {
-        xAxis: { type: 'category', data: ['1', '2', '3', '4', '5', '6', '7', '8'] },
-        yAxis: { type: 'value' },
-        series: [
-            {
-                name: 'Bar A',
-                type: 'bar',
-                data: [100, 140, 80, 120, 150, 110, 190, 130],
-                animationDelay: (idx: number) => idx * 100
+    xAxisData: string[] = [];
+    data1: number[] = [];
+    data2: number[] = [];
+
+    options: any;
+
+    constructor() {
+        for (let i = 0; i < 100; i++) {
+            this.xAxisData.push('A' + i);
+            this.data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
+            this.data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
+        }
+
+        this.options = {
+            title: {
+                text: 'Bar Animation Delay'
+            },
+            legend: {
+                data: ['bar', 'bar2']
+            },
+            toolbox: {
+                feature: {
+                    magicType: {
+                        type: ['stack']
+                    },
+                    dataView: {},
+                    saveAsImage: {
+                        pixelRatio: 2
+                    }
+                }
+            },
+            tooltip: {},
+            xAxis: {
+                data: this.xAxisData,
+                splitLine: {
+                    show: false
+                }
+            },
+            yAxis: {},
+            series: [
+                {
+                    name: 'bar',
+                    type: 'bar',
+                    data: this.data1,
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    animationDelay: function (idx: number) {
+                        return idx * 10;
+                    }
+                },
+                {
+                    name: 'bar2',
+                    type: 'bar',
+                    data: this.data2,
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    animationDelay: function (idx: number) {
+                        return idx * 10 + 100;
+                    }
+                }
+            ],
+            animationEasing: 'elasticOut',
+            animationDelayUpdate: function (idx: number) {
+                return idx * 5;
             }
-        ],
-        animationEasing: 'elasticOut'
-    };
+        };
+    }
 }

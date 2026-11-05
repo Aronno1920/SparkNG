@@ -9,26 +9,102 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Rotates categorical column labels to prevent overlapping in dense charts.</p>
+            <p>Series labels rotate 90 degrees with rich text formatting; the <i>label</i> config controls <i>rotate</i>, <i>align</i>, <i>verticalAlign</i>, <i>position</i> and <i>distance</i> at once.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-barchart [series]="series" [xAxis]="xAxis" />
+            <p-chart [options]="options" />
         </div>
         <app-code></app-code>
     `
 })
 export class BarLabelRotationDoc {
-    xAxis = {
-        type: 'category',
-        data: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums', 'Peaches', 'Cherries'],
-        axisLabel: { rotate: 45 }
+    labelOption = {
+        show: true,
+        position: 'insideBottom',
+        distance: 15,
+        align: 'left',
+        verticalAlign: 'middle',
+        rotate: 90,
+        formatter: '{c}  {name|{a}}',
+        fontSize: 16,
+        rich: {
+            name: {}
+        }
     };
 
-    series = [
-        {
-            name: 'Yield',
-            type: 'bar',
-            data: [320, 240, 190, 390, 210, 310, 280]
-        }
-    ];
+    options = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {
+            data: ['Forest', 'Steppe', 'Desert', 'Wetland']
+        },
+        toolbox: {
+            show: true,
+            orient: 'vertical',
+            left: 'right',
+            top: 'center',
+            feature: {
+                mark: { show: true },
+                dataView: { show: true, readOnly: false },
+                magicType: { show: true, type: ['line', 'bar', 'stack'] },
+                restore: { show: true },
+                saveAsImage: { show: true }
+            }
+        },
+        xAxis: [
+            {
+                type: 'category',
+                axisTick: { show: false },
+                data: ['2012', '2013', '2014', '2015', '2016']
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: 'Forest',
+                type: 'bar',
+                barGap: 0,
+                label: this.labelOption,
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [320, 332, 301, 334, 390]
+            },
+            {
+                name: 'Steppe',
+                type: 'bar',
+                label: this.labelOption,
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [220, 182, 191, 234, 290]
+            },
+            {
+                name: 'Desert',
+                type: 'bar',
+                label: this.labelOption,
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [150, 232, 201, 154, 190]
+            },
+            {
+                name: 'Wetland',
+                type: 'bar',
+                label: this.labelOption,
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [98, 77, 101, 99, 40]
+            }
+        ]
+    };
 }

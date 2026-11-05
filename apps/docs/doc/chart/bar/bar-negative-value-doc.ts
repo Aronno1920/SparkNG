@@ -9,39 +9,70 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Visualizes positive and negative deviations spanning above and below a central baseline.</p>
+            <p>Cost values are plotted as negative bars with the value axis on top; items marked with <i>labelRight</i> flip their labels to the right side.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-barchart [series]="series" [xAxis]="xAxis" />
+            <p-chart [options]="options" />
         </div>
         <app-code></app-code>
     `
 })
 export class BarNegativeValueDoc {
-    xAxis = {
-        type: 'category',
-        axisTick: { show: false },
-        data: ['Ten', 'Nine', 'Eight', 'Seven', 'Six', 'Five', 'Four', 'Three', 'Two', 'One']
-    };
+    labelRight = { position: 'right' };
 
-    series = [
-        {
-            name: 'Cost',
-            type: 'bar',
-            stack: 'Total',
-            label: { show: true },
-            data: [
-                { value: -0.07, label: { position: 'right' } },
-                { value: -0.09, label: { position: 'right' } },
-                0.2,
-                0.44,
-                { value: -0.23, label: { position: 'right' } },
-                0.08,
-                { value: -0.17, label: { position: 'right' } },
-                0.47,
-                { value: -0.36, label: { position: 'right' } },
-                0.18
-            ]
-        }
-    ];
+    options = {
+        title: {
+            text: 'Bar Chart with Negative Value'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        grid: {
+            top: 80,
+            bottom: 30
+        },
+        xAxis: {
+            type: 'value',
+            position: 'top',
+            splitLine: {
+                lineStyle: {
+                    type: 'dashed'
+                }
+            }
+        },
+        yAxis: {
+            type: 'category',
+            axisLine: { show: false },
+            axisLabel: { show: false },
+            axisTick: { show: false },
+            splitLine: { show: false },
+            data: ['ten', 'nine', 'eight', 'seven', 'six', 'five', 'four', 'three', 'two', 'one']
+        },
+        series: [
+            {
+                name: 'Cost',
+                type: 'bar',
+                stack: 'Total',
+                label: {
+                    show: true,
+                    formatter: '{b}'
+                },
+                data: [
+                    { value: -0.07, label: this.labelRight },
+                    { value: -0.09, label: this.labelRight },
+                    0.2,
+                    0.44,
+                    { value: -0.23, label: this.labelRight },
+                    0.08,
+                    { value: -0.17, label: this.labelRight },
+                    0.47,
+                    { value: -0.36, label: this.labelRight },
+                    0.18
+                ]
+            }
+        ]
+    };
 }

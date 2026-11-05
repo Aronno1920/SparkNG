@@ -36,6 +36,7 @@ import { BarLabelRotationDoc } from '@/doc/chart/bar/bar-label-rotation-doc';
 import { StackedColumnDoc } from '@/doc/chart/bar/stacked-column-doc';
 import { StackedBarBorderRadiusDoc } from '@/doc/chart/bar/stacked-bar-border-radius-doc';
 import { StackedBarNormalizationDoc } from '@/doc/chart/bar/stacked-bar-normalization-doc';
+import { StackedBarNormalizationVariationDoc } from '@/doc/chart/bar/stacked-bar-normalization-variation-doc';
 import { StackedHorizontalBarDoc } from '@/doc/chart/bar/stacked-horizontal-bar-doc';
 import { BrushSelectColumnDoc } from '@/doc/chart/bar/brush-select-column-doc';
 import { RainfallAndEvaporationDoc } from '@/doc/chart/bar/rainfall-and-evaporation-doc';
@@ -43,16 +44,20 @@ import { MixedLineAndBarDoc } from '@/doc/chart/bar/mixed-line-and-bar-doc';
 import { MultipleYAxesDoc } from '@/doc/chart/bar/multiple-y-axes-doc';
 import { AnimationDelayDoc } from '@/doc/chart/bar/animation-delay-doc';
 import { BarRaceDoc } from '@/doc/chart/bar/bar-race-doc';
+import { BarMultiDrilldownDoc } from '@/doc/chart/bar/bar-multi-drilldown-doc';
 import { WeatherStatisticsDoc } from '@/doc/chart/bar/weather-statistics-doc';
 import { DynamicDataDoc } from '@/doc/chart/bar/dynamic-data-doc';
 import { BarPolarDoc } from '@/doc/chart/bar/bar-polar-doc';
 import { StackedBarPolarDoc } from '@/doc/chart/bar/stacked-bar-polar-doc';
+import { StackedBarPolarRadialDoc } from '@/doc/chart/bar/stacked-bar-polar-radial-doc';
 import { RoundedBarPolarDoc } from '@/doc/chart/bar/rounded-bar-polar-doc';
+import { BarAxisBreaksBrushDoc } from '@/doc/chart/bar/bar-axis-breaks-brush-doc';
 import { SortDataBarDoc } from '@/doc/chart/bar/sort-data-bar-doc';
 import { MixZoomOnValueDoc } from '@/doc/chart/bar/mix-zoom-on-value-doc';
 import { LargeScaleBarDoc } from '@/doc/chart/bar/large-scale-bar-doc';
 import { BarDrilldownAnimationDoc } from '@/doc/chart/bar/bar-drilldown-animation-doc';
 import { FinanceIndicesDoc } from '@/doc/chart/bar/finance-indices-doc';
+import { WatermarkEchartsDownloadDoc } from '@/doc/chart/bar/watermark-echarts-download-doc';
 import { RefererWebsiteDoc } from '@/doc/chart/pie/referer-website-doc';
 import { DoughnutRoundedDoc } from '@/doc/chart/pie/doughnut-rounded-doc';
 import { DoughnutChartDoc } from '@/doc/chart/pie/doughnut-chart-doc';
@@ -214,6 +219,7 @@ export class BarChartDemo {
         { id: 'stacked-column', label: 'Stacked Column Chart', component: StackedColumnDoc },
         { id: 'stacked-bar-border-radius', label: 'Stacked Bar with borderRadius', component: StackedBarBorderRadiusDoc },
         { id: 'stacked-bar-normalization', label: 'Stacked Bar Normalization', component: StackedBarNormalizationDoc },
+        { id: 'stacked-bar-normalization-variation', label: 'Stacked Bar Normalization and Variation', component: StackedBarNormalizationVariationDoc },
         { id: 'stacked-horizontal-bar', label: 'Stacked Horizontal Bar', component: StackedHorizontalBarDoc },
         { id: 'brush-select-column', label: 'Brush Select on Column Chart', component: BrushSelectColumnDoc },
         { id: 'rainfall-and-evaporation', label: 'Rainfall and Evaporation', component: RainfallAndEvaporationDoc },
@@ -224,12 +230,16 @@ export class BarChartDemo {
         { id: 'large-scale-bar', label: 'Large Scale Bar Chart', component: LargeScaleBarDoc },
         { id: 'bar-drilldown-animation', label: 'Bar Chart Drilldown Animation', component: BarDrilldownAnimationDoc },
         { id: 'bar-race', label: 'Bar Race', component: BarRaceDoc },
+        { id: 'bar-multi-drilldown', label: 'Bar Chart Multi-level Drilldown Animation', component: BarMultiDrilldownDoc },
         { id: 'weather-statistics', label: 'Weather Statistics', component: WeatherStatisticsDoc },
         { id: 'dynamic-data', label: 'Dynamic Data', component: DynamicDataDoc },
         { id: 'finance-indices', label: 'Finance Indices 2002', component: FinanceIndicesDoc },
+        { id: 'watermark-echarts-download', label: 'Watermark - ECharts Download', component: WatermarkEchartsDownloadDoc },
         { id: 'bar-polar', label: 'Bar Chart on Polar', component: BarPolarDoc },
         { id: 'stacked-bar-polar', label: 'Stacked Bar Chart on Polar', component: StackedBarPolarDoc },
+        { id: 'stacked-bar-polar-radial', label: 'Stacked Bar Chart on Polar (Radial)', component: StackedBarPolarRadialDoc },
         { id: 'rounded-bar-polar', label: 'Rounded Bar on Polar', component: RoundedBarPolarDoc },
+        { id: 'bar-axis-breaks-brush', label: 'Bar Chart with Axis Breaks (Brush-enabled)', component: BarAxisBreaksBrushDoc },
         { id: 'sort-data-bar', label: 'Sort Data in Bar Chart', component: SortDataBarDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];

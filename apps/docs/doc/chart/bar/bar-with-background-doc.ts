@@ -9,16 +9,18 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Renders a full-height background track behind every bar column.</p>
+            <p>Each bar renders on top of a full-height <i>showBackground</i> strip styled through <i>backgroundStyle</i>.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-barchart [series]="series" [xAxis]="xAxis" />
+            <p-barchart [series]="series" [xAxis]="xAxis" [yAxis]="yAxis" />
         </div>
         <app-code></app-code>
     `
 })
 export class BarWithBackgroundDoc {
     xAxis = { type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] };
+
+    yAxis = { type: 'value' };
 
     series = [
         {

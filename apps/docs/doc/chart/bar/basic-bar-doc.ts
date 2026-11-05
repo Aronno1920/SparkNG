@@ -12,7 +12,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
             <p>A basic vertical bar chart comparing categorical values across distinct groups.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-barchart [series]="series" [xAxis]="xAxis" />
+            <p-barchart [series]="series" [xAxis]="xAxis" [yAxis]="yAxis" />
         </div>
         <app-code></app-code>
     `
@@ -20,11 +20,12 @@ import { ChartModule } from '@bdspark/sparkng/chart';
 export class BasicBarDoc {
     xAxis = { type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] };
 
+    yAxis = { type: 'value' };
+
     series = [
         {
-            name: 'Direct',
-            type: 'bar',
-            data: [320, 302, 301, 334, 390, 330, 320]
+            data: [120, 200, 150, 80, 70, 110, 130],
+            type: 'bar'
         }
     ];
 }

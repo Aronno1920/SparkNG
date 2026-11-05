@@ -9,19 +9,45 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Compares regional populations across multiple census years using horizontal bars.</p>
+            <p>World population per country for 2011 and 2012 as horizontal bars, from Brazil up to the world total.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-barchart [series]="series" [yAxis]="yAxis" horizontal />
+            <p-chart [options]="options" />
         </div>
         <app-code></app-code>
     `
 })
 export class WorldPopulationDoc {
-    yAxis = { type: 'category', data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'World'] };
-
-    series = [
-        { name: '1990', type: 'bar', data: [150, 181, 249, 870, 1135, 5280] },
-        { name: '2020', type: 'bar', data: [212, 273, 331, 1380, 1439, 7794] }
-    ];
+    options = {
+        title: {
+            text: 'World Population'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {},
+        xAxis: {
+            type: 'value',
+            boundaryGap: [0, 0.01]
+        },
+        yAxis: {
+            type: 'category',
+            data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'World']
+        },
+        series: [
+            {
+                name: '2011',
+                type: 'bar',
+                data: [18203, 23489, 29034, 104970, 131744, 630230]
+            },
+            {
+                name: '2012',
+                type: 'bar',
+                data: [19325, 23438, 31000, 121594, 134141, 681807]
+            }
+        ]
+    };
 }
