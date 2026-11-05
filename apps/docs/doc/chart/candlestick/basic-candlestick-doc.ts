@@ -9,21 +9,30 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Standard OHLC candlestick chart showing open, close, low, and high equity prices.</p>
+            <p>A basic candlestick chart showing open, close, lowest and highest values over four dates.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-candlestickchart [data]="data" [xAxis]="xAxis" />
+            <p-chart [options]="options" />
         </div>
         <app-code></app-code>
     `
 })
 export class BasicCandlestickDoc {
-    xAxis = { type: 'category', data: ['2025-01-02', '2025-01-03', '2025-01-04', '2025-01-05'] };
-
-    data = [
-        [20, 34, 10, 38],
-        [40, 35, 30, 50],
-        [31, 38, 33, 44],
-        [38, 15, 5, 42]
-    ];
+    options = {
+        xAxis: {
+            data: ['2017-10-24', '2017-10-25', '2017-10-26', '2017-10-27']
+        },
+        yAxis: {},
+        series: [
+            {
+                type: 'candlestick',
+                data: [
+                    [20, 34, 10, 38],
+                    [40, 35, 30, 50],
+                    [31, 38, 33, 44],
+                    [38, 15, 5, 42]
+                ]
+            }
+        ]
+    };
 }
