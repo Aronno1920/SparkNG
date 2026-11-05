@@ -9,7 +9,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Half a million bars render instantly with the <i>large</i> mode; inside and slider dataZoom navigate the one-second-resolution time axis.</p>
+            <p>Large scale bars render instantly with the <i>large</i> mode; inside and slider dataZoom navigate the one-second-resolution time axis.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -18,7 +18,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     `
 })
 export class LargeScaleBarDoc {
-    dataCount = 5e5;
+    dataCount = 5e4;
 
     options: any;
 
@@ -96,9 +96,12 @@ export class LargeScaleBarDoc {
 
         const categoryData: string[] = [];
         const valueData: string[] = [];
+        const date = new Date(time);
+        const pad = (n: number) => (n < 10 ? '0' + n : '' + n);
 
         for (let i = 0; i < count; i++) {
-            categoryData.push(this.formatTime('yyyy-MM-dd\nhh:mm:ss', time, false));
+            date.setTime(time);
+            categoryData.push(date.getFullYear() + '-' + pad(date.getMonth() + 1) + '-' + pad(date.getDate()) + '\n' + pad(date.getHours()) + ':' + pad(date.getMinutes()) + ':' + pad(date.getSeconds()));
             valueData.push(next(i).toFixed(2));
             time += 1000;
         }
@@ -107,20 +110,5 @@ export class LargeScaleBarDoc {
             categoryData: categoryData,
             valueData: valueData
         };
-    }
-
-    private formatTime(template: string, time: number | Date, isUTC: boolean): string {
-        const date = new Date(time);
-        const get = isUTC ? date.getUTCFullYear.bind(date) : date.getFullYear.bind(date);
-        const pad = (n: number) => (n < 10 ? '0' + n : '' + n);
-        const parts: Record<string, string> = {
-            yyyy: '' + get(),
-            MM: pad(isUTC ? date.getUTCMonth() + 1 : date.getMonth() + 1),
-            dd: pad(isUTC ? date.getUTCDate() : date.getDate()),
-            hh: pad(isUTC ? date.getUTCHours() : date.getHours()),
-            mm: pad(isUTC ? date.getUTCMinutes() : date.getMinutes()),
-            ss: pad(isUTC ? date.getUTCSeconds() : date.getSeconds())
-        };
-        return template.replace(/yyyy|MM|dd|hh|mm|ss/g, (key) => parts[key]);
     }
 }

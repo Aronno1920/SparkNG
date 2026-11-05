@@ -191,6 +191,8 @@ export abstract class BaseChart<PT = any> extends BaseComponent<PT> {
 
     private updateQueued: boolean = false;
 
+    private reinitScheduled: boolean = false;
+
     onChanges(): void {
         this.scheduleUpdate();
     }
@@ -233,7 +235,7 @@ export abstract class BaseChart<PT = any> extends BaseComponent<PT> {
         if (!this.themeChangeHandler) {
             this.themeChangeHandler = () => {
                 if (this.theme === undefined && this.initialized) {
-                    this.reinit();
+                    this.scheduleReinit();
                 }
             };
             ThemeService.on('theme:change', this.themeChangeHandler);
@@ -244,7 +246,7 @@ export abstract class BaseChart<PT = any> extends BaseComponent<PT> {
                 for (const m of mutations) {
                     if (m.type === 'attributes' && m.attributeName === 'class') {
                         if (this.theme === undefined && this.initialized) {
-                            this.reinit();
+                            this.scheduleReinit();
                         }
                         break;
                     }
@@ -262,6 +264,7 @@ export abstract class BaseChart<PT = any> extends BaseComponent<PT> {
      * Invoked automatically on component destruction.
      */
     destroyChart(): void {
+        this.reinitScheduled = false;
         this.resizeObserver?.disconnect();
         this.resizeObserver = null;
         this.docMutationObserver?.disconnect();
@@ -277,6 +280,23 @@ export abstract class BaseChart<PT = any> extends BaseComponent<PT> {
             this.chart = null;
         }
         this.initialized = false;
+    }
+
+    /**
+     * Schedules a chart re-initialization outside the current call stack,
+     * debouncing rapid theme or DOM changes to prevent UI freezing.
+     */
+    scheduleReinit(): void {
+        if (this.reinitScheduled || !this.initialized) {
+            return;
+        }
+        this.reinitScheduled = true;
+        queueMicrotask(() => {
+            this.reinitScheduled = false;
+            if (this.initialized) {
+                this.reinit();
+            }
+        });
     }
 
     /**

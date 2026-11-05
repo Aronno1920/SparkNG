@@ -16,7 +16,13 @@ import { AppDocSectionText } from './app.docsectiontext';
 
                     <ng-template ngFor [ngForOf]="doc.children" let-child>
                         <app-docsectiontext [title]="child.label" [id]="child.id" [level]="3" [description]="child?.description" />
-                        <ng-container *ngComponentOutlet="child.component"></ng-container>
+                        @defer (on viewport; prefetch on idle) {
+                            <ng-container *ngComponentOutlet="child.component"></ng-container>
+                        } @placeholder {
+                            <div class="h-96 min-h-[24rem] w-full rounded-border border border-surface-200 dark:border-surface-700 bg-surface-50/50 dark:bg-surface-800/20 flex items-center justify-center">
+                                <span class="text-surface-400 dark:text-surface-500 text-sm">Loading...</span>
+                            </div>
+                        }
                     </ng-template>
                 </ng-container>
 
@@ -26,7 +32,13 @@ import { AppDocSectionText } from './app.docsectiontext';
                         <app-docapitable [id]="doc.id" [data]="doc.data"></app-docapitable>
                     </ng-container>
                     <ng-container *ngIf="!doc.data">
-                        <ng-container *ngComponentOutlet="doc.component"></ng-container>
+                        @defer (on viewport; prefetch on idle) {
+                            <ng-container *ngComponentOutlet="doc.component"></ng-container>
+                        } @placeholder {
+                            <div class="h-96 min-h-[24rem] w-full rounded-border border border-surface-200 dark:border-surface-700 bg-surface-50/50 dark:bg-surface-800/20 flex items-center justify-center">
+                                <span class="text-surface-400 dark:text-surface-500 text-sm">Loading...</span>
+                            </div>
+                        }
                     </ng-container>
                 </ng-container>
             </section>
