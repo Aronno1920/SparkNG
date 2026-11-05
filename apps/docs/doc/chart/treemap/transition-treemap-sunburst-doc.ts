@@ -10,7 +10,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>ECharts package size hierarchy that animates between a treemap and a sunburst every 3 seconds via universal transition.</p>
+            <p>SCharts package size hierarchy that animates between a treemap and a sunburst every 3 seconds via universal transition.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" (onChartInit)="onInit($event)" />
@@ -30,14 +30,14 @@ export class TransitionTreemapSunburstDoc implements OnDestroy {
     onInit(event: any): void {
         this.chart = event.chart;
         if (this.chart && isPlatformBrowser(this.platformId)) {
-            fetch('demo/chart/data/echarts-package-size.json')
+            fetch('demo/chart/data/scharts-package-size.json')
                 .then((response) => response.json())
                 .then((data) => {
                     const treemapOption = {
                         series: [
                             {
                                 type: 'treemap',
-                                id: 'echarts-package-size',
+                                id: 'scharts-package-size',
                                 animationDurationUpdate: 1000,
                                 roam: false,
                                 nodeClick: undefined,
@@ -57,7 +57,7 @@ export class TransitionTreemapSunburstDoc implements OnDestroy {
                         series: [
                             {
                                 type: 'sunburst',
-                                id: 'echarts-package-size',
+                                id: 'scharts-package-size',
                                 radius: ['20%', '90%'],
                                 animationDurationUpdate: 1000,
                                 nodeClick: undefined,

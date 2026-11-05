@@ -509,7 +509,7 @@ export class TreemapChartDemo {
         { id: 'usage', label: 'Usage', component: TreemapUsageDoc },
         { id: 'basic-treemap', label: 'Basic Treemap', component: BasicTreemapDoc },
         { id: 'disk-usage', label: 'Disk Usage', component: DiskUsageDoc },
-        { id: 'echarts-option-query', label: 'ECharts Option Query', component: OptionQueryTreemapDoc },
+        { id: 'echarts-option-query', label: 'SCharts Option Query', component: OptionQueryTreemapDoc },
         { id: 'show-parent-labels', label: 'Show Parent Labels', component: ShowParentLabelsDoc },
         { id: 'gradient-mapping-treemap', label: 'Gradient Mapping', component: GradientMappingTreemapDoc },
         { id: 'how-trillion-spent', label: 'How $3.7 Trillion is Spent', component: HowTrillionSpentDoc },

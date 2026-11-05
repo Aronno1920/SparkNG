@@ -103,7 +103,7 @@ export class IntradayChartBreaksDoc {
     }
 
     /**
-     * Generate random data, not relevant to echarts API.
+     * Generate random data, not relevant to scharts API.
      */
     private generateData() {
         // Round a Date down to the start of its UTC day.

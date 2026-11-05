@@ -59,7 +59,7 @@ export class DataTransformAggregateDoc {
                     ]
                 },
                 // The official example aggregates with the external
-                // `ecSimpleTransform:aggregate` transform (echarts-simple-transform
+                // `ecSimpleTransform:aggregate` transform (scharts-simple-transform
                 // plugin), which is not bundled here. The same five-number summary
                 // (min, Q1, median, Q3, max of Income grouped by Country, using the
                 // plugin's linear-interpolation quantile H = (n - 1) * p + 1) is
@@ -185,7 +185,7 @@ export class DataTransformAggregateDoc {
         return aggregated;
     }
 
-    // Linear-interpolation quantile used by echarts-simple-transform.
+    // Linear-interpolation quantile used by scharts-simple-transform.
     private quantile(ascArr: number[], p: number): number {
         const H = (ascArr.length - 1) * p + 1;
         const h = Math.floor(H);

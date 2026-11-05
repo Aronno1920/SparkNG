@@ -1,10 +1,10 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
 import { Component } from '@angular/core';
-import * as echarts from '@bdspark/sparkng-charts';
+import * as scharts from '@bdspark/sparkng-charts';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
-// This example requires ECharts v5.4.0 or later
+// This example requires SCharts v5.4.0 or later
 @Component({
     selector: 'calendar-pie-doc',
     standalone: true,
@@ -41,7 +41,7 @@ export class CalendarPieDoc {
                 { name: 'Entertainment', value: Math.round(Math.random() * 24) },
                 { name: 'Sleep', value: Math.round(Math.random() * 24) }
             ]
-        } as echarts.PieSeriesOption;
+        } as scharts.PieSeriesOption;
     });
 
     options = {
@@ -78,7 +78,7 @@ export class CalendarPieDoc {
                 label: {
                     show: true,
                     formatter: function (params: any) {
-                        return echarts.time.format(params.value[0], '{dd}', false);
+                        return scharts.time.format(params.value[0], '{dd}', false);
                     },
                     offset: [-this.cellSize[0] / 2 + 10, -this.cellSize[1] / 2 + 10],
                     fontSize: 14
@@ -91,12 +91,12 @@ export class CalendarPieDoc {
 }
 
 function getVirtualData() {
-    const date = +echarts.time.parse('2017-02-01');
-    const end = +echarts.time.parse('2017-03-01');
+    const date = +scharts.time.parse('2017-02-01');
+    const end = +scharts.time.parse('2017-03-01');
     const dayTime = 3600 * 24 * 1000;
     const data: [string, number][] = [];
     for (let time = date; time < end; time += dayTime) {
-        data.push([echarts.time.format(time, '{yyyy}-{MM}-{dd}', false), Math.floor(Math.random() * 10000)]);
+        data.push([scharts.time.format(time, '{yyyy}-{MM}-{dd}', false), Math.floor(Math.random() * 10000)]);
     }
     return data;
 }

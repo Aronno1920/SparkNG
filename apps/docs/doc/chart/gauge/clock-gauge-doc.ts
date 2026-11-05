@@ -10,7 +10,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>An analog clock built from three gauges — hour, minute and second hands — around an ECharts logo anchor, ticking every second.</p>
+            <p>An analog clock built from three gauges — hour, minute and second hands — around an SCharts logo anchor, ticking every second.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" (onChartInit)="onInit($event)" />

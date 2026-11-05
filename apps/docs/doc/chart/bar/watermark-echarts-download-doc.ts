@@ -10,7 +10,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>ECharts download statistics over a rotated "ECHARTS" watermark: a canvas pattern fills the background behind stacked chart/component bars and two download pies.</p>
+            <p>SCharts download statistics over a rotated "SCHARTS" watermark: a canvas pattern fills the background behind stacked chart/component bars and two download pies.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" height="30rem" />
@@ -59,10 +59,10 @@ export class WatermarkEchartsDownloadDoc {
     };
 
     downloadJson: Record<string, number> = {
-        'echarts.min.js': 17365,
-        'echarts.simple.min.js': 4079,
-        'echarts.common.min.js': 6929,
-        'echarts.js': 14890
+        'scharts.min.js': 17365,
+        'scharts.simple.min.js': 4079,
+        'scharts.common.min.js': 6929,
+        'scharts.js': 14890
     };
 
     themeJson: Record<string, number> = {
@@ -74,7 +74,7 @@ export class WatermarkEchartsDownloadDoc {
         'vintage.js': 1982
     };
 
-    waterMarkText = 'ECHARTS';
+    waterMarkText = 'SCHARTS';
 
     options: any = {};
 

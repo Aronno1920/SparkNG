@@ -18,7 +18,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     `
 })
 export class BarMultiDrilldownDoc {
-    // This example requires ECharts v5.5.0 or later
+    // This example requires SCharts v5.5.0 or later
     // level 1 (root)
     data_things = [
         ['Animals', 3, 'things', 'animals'],

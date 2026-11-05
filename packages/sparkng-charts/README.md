@@ -1,6 +1,6 @@
-# @bdspark/sparkng-charts
+# SCharts (@bdspark/sparkng-charts)
 
-The charting engine of the [SparkNG](https://bdspark.com) ecosystem, maintained by **bdSpark**. Every chart type, renderer and component is registered and the rendering core is bundled — zero runtime dependencies.
+The SCharts charting engine of the [SparkNG](https://bdspark.com) ecosystem, maintained by **bdSpark**. Every chart type, renderer and component is registered and the rendering core is bundled — zero runtime dependencies.
 
 ## Installation
 
@@ -38,4 +38,4 @@ The SparkNG Angular chart components (`@bdspark/sparkng/chart`) are built on thi
 
 ## Attribution
 
-This package contains the source of Apache ECharts (v6.1.0), Copyright The Apache Software Foundation, licensed under the [Apache License 2.0](LICENSE). It is rebranded and redistributed as `@bdspark/sparkng-charts`; the original license and notices are preserved in [LICENSE](LICENSE) and [NOTICE](NOTICE). ECharts is not affiliated with, endorsed by, or sponsored by bdSpark.
+This package is powered by the open-source Apache ECharts (v6.1.0) core, Copyright The Apache Software Foundation, licensed under the [Apache License 2.0](LICENSE). It is rebranded and redistributed as SCharts (`@bdspark/sparkng-charts`); the original license and notices are preserved in [LICENSE](LICENSE) and [NOTICE](NOTICE). ECharts is a trademark of The Apache Software Foundation and is not affiliated with, endorsed by, or sponsored by bdSpark.

@@ -56,7 +56,7 @@ export function registerTheme(themeName: string, theme: SparkChartTheme): void {
  * {@link ChartInitEvent} payloads as members.
  * @param group - The chart instances to connect.
  */
-export function connectCharts(group: (SparkChartsLikeInstance | EChartsLikeInstance)[]): void {
+export function connectCharts(group: (SparkChartsLikeInstance | SChartsLikeInstance | EChartsLikeInstance)[]): void {
     charts.connect(group as any);
 }
 
@@ -64,7 +64,7 @@ export function connectCharts(group: (SparkChartsLikeInstance | EChartsLikeInsta
  * Disconnects previously connected charts.
  * @param group - The chart instances to disconnect.
  */
-export function disconnectCharts(group?: (SparkChartsLikeInstance | EChartsLikeInstance)[]): void {
+export function disconnectCharts(group?: (SparkChartsLikeInstance | SChartsLikeInstance | EChartsLikeInstance)[]): void {
     if (group) {
         charts.disconnect(group as any);
     }
@@ -80,7 +80,8 @@ export interface SparkChartsLikeInstance {
     readonly id: string;
 }
 
-export type EChartsLikeInstance = SparkChartsLikeInstance;
+export type SChartsLikeInstance = SparkChartsLikeInstance;
+export type EChartsLikeInstance = SChartsLikeInstance;
 
 /**
  * The the engine version the module was built against.

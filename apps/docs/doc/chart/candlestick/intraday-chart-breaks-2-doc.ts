@@ -100,7 +100,7 @@ export class IntradayChartBreaks2Doc {
     }
 
     /**
-     * Generate random data, not relevant to echarts API.
+     * Generate random data, not relevant to scharts API.
      */
     private generateData1() {
         var seriesData = [];

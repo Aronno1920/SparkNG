@@ -22,7 +22,7 @@ interface TreeNode {
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>April 2016 statistics of ECharts option usage, converted to a drill-down treemap with leafDepth 2.</p>
+            <p>April 2016 statistics of SCharts option usage, converted to a drill-down treemap with leafDepth 2.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" (onChartInit)="onInit($event)" />
@@ -78,7 +78,7 @@ export class OptionQueryTreemapDoc {
 
                     this.chart.setOption({
                         title: {
-                            text: 'ECharts Options',
+                            text: 'SCharts Options',
                             subtext: '2016/04',
                             left: 'leafDepth'
                         },

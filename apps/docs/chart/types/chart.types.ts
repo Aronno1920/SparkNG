@@ -12,6 +12,7 @@ import type {
     CandlestickSeriesOption,
     ECElementEvent,
     SparkChartsType,
+    SparkChartsOption,
     FunnelSeriesOption,
     GaugeSeriesOption,
     GraphSeriesOption,
@@ -70,6 +71,9 @@ export type {
  * @group Interface
  */
 export type SparkChartInstance = SparkChartsType;
+export type SChartInstance = SparkChartsType;
+export type SChartsOption = SparkChartsOption;
+export type SChartTheme = SparkChartTheme;
 
 /**
  * Chart theme object accepted by the `theme` property of the chart components.
