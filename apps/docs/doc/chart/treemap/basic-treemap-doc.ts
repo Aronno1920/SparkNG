@@ -9,10 +9,10 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Proportional nested rectangular tiling showing relative hierarchy weights.</p>
+            <p>Basic treemap with two trees, nodeA and nodeB, each nested with children leaves.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-treemapchart [options]="options" />
+            <p-chart [options]="options" />
         </div>
         <app-code></app-code>
     `
@@ -23,9 +23,36 @@ export class BasicTreemapDoc {
             {
                 type: 'treemap',
                 data: [
-                    { name: 'Node A', value: 10 },
-                    { name: 'Node B', value: 20 },
-                    { name: 'Node C', value: 30 }
+                    {
+                        name: 'nodeA', // First tree
+                        value: 10,
+                        children: [
+                            {
+                                name: 'nodeAa', // First leaf of first tree
+                                value: 4
+                            },
+                            {
+                                name: 'nodeAb', // Second leaf of first tree
+                                value: 6
+                            }
+                        ]
+                    },
+                    {
+                        name: 'nodeB', // Second tree
+                        value: 20,
+                        children: [
+                            {
+                                name: 'nodeBa', // Son of first tree
+                                value: 20,
+                                children: [
+                                    {
+                                        name: 'nodeBa1', // Granson of first tree
+                                        value: 20
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 ]
             }
         ]

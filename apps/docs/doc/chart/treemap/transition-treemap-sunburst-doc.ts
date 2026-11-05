@@ -1,6 +1,7 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
@@ -9,31 +10,85 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Morphs hierarchical nodes seamlessly between Cartesian treemaps and radial sunburst rings.</p>
+            <p>ECharts package size hierarchy that animates between a treemap and a sunburst every 3 seconds via universal transition.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-treemapchart [options]="options" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
-export class TransitionTreemapSunburstDoc {
-    options = {
-        series: [
-            {
-                type: 'treemap',
-                data: [
-                    {
-                        name: 'Alpha',
-                        value: 60,
-                        children: [
-                            { name: 'A1', value: 35 },
-                            { name: 'A2', value: 25 }
+export class TransitionTreemapSunburstDoc implements OnDestroy {
+    private platformId = inject(PLATFORM_ID);
+
+    private chart: any;
+
+    private intervalId: any;
+
+    options: any = {};
+
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            fetch('demo/chart/data/echarts-package-size.json')
+                .then((response) => response.json())
+                .then((data) => {
+                    const treemapOption = {
+                        series: [
+                            {
+                                type: 'treemap',
+                                id: 'echarts-package-size',
+                                animationDurationUpdate: 1000,
+                                roam: false,
+                                nodeClick: undefined,
+                                data: data.children,
+                                universalTransition: true,
+                                label: {
+                                    show: true
+                                },
+                                breadcrumb: {
+                                    show: false
+                                }
+                            }
                         ]
-                    },
-                    { name: 'Beta', value: 40 }
-                ]
-            }
-        ]
-    };
+                    };
+
+                    const sunburstOption = {
+                        series: [
+                            {
+                                type: 'sunburst',
+                                id: 'echarts-package-size',
+                                radius: ['20%', '90%'],
+                                animationDurationUpdate: 1000,
+                                nodeClick: undefined,
+                                data: data.children,
+                                universalTransition: true,
+                                itemStyle: {
+                                    borderWidth: 1,
+                                    borderColor: 'rgba(255,255,255,.5)'
+                                },
+                                label: {
+                                    show: false
+                                }
+                            }
+                        ]
+                    };
+
+                    let currentOption: any = treemapOption;
+
+                    this.chart.setOption(currentOption);
+
+                    this.intervalId = setInterval(() => {
+                        currentOption = currentOption === treemapOption ? sunburstOption : treemapOption;
+                        this.chart.setOption(currentOption);
+                    }, 3000);
+                });
+        }
+    }
+
+    ngOnDestroy(): void {
+        if (this.intervalId) {
+            clearInterval(this.intervalId);
+        }
+    }
 }
