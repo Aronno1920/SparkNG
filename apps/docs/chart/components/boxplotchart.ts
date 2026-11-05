@@ -63,6 +63,10 @@ export class BoxplotChart extends BaseChart<ChartPassThrough> {
         this.scheduleUpdate();
     }
 
+    _data: any[] | undefined;
+
+    _series: any[] | undefined;
+
     protected getSeriesOptions(): SparkChartsOption['series'] {
         if (this.series && this.series.length > 0) {
             return this.series.map((s) => ({ type: 'boxplot', ...s }));

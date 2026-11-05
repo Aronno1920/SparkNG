@@ -3,33 +3,130 @@ import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
 import { Component } from '@angular/core';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
+// Generate data.
+function makeData() {
+    let data = [];
+    for (let i = 0; i < 18; i++) {
+        let cate = [];
+        for (let j = 0; j < 100; j++) {
+            cate.push(Math.random() * 200);
+        }
+        data.push(cate);
+    }
+    return data;
+}
+const data0 = makeData();
+const data1 = makeData();
+const data2 = makeData();
+
 @Component({
     selector: 'multiple-categories-boxplot-doc',
     standalone: true,
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Grouped boxplots comparing distribution metrics across diverse product lines.</p>
+            <p>Multiple Categories: three 18-category boxplot series generated from random data via the boxplot transform, with inside and slider dataZoom.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-boxplotchart [options]="options" />
+            <p-chart [options]="options" />
         </div>
         <app-code></app-code>
     `
 })
 export class MultipleCategoriesBoxplotDoc {
-    options = {
-        xAxis: { type: 'category', data: ['Electronics', 'Home Goods', 'Apparel'] },
-        yAxis: { type: 'value' },
+    options: any = {
+        title: {
+            text: 'Multiple Categories',
+            left: 'center'
+        },
+        dataset: [
+            {
+                source: data0
+            },
+            {
+                source: data1
+            },
+            {
+                source: data2
+            },
+            {
+                fromDatasetIndex: 0,
+                transform: { type: 'boxplot' }
+            },
+            {
+                fromDatasetIndex: 1,
+                transform: { type: 'boxplot' }
+            },
+            {
+                fromDatasetIndex: 2,
+                transform: { type: 'boxplot' }
+            }
+        ],
+        legend: {
+            top: '10%'
+        },
+        tooltip: {
+            trigger: 'item',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        grid: {
+            left: '10%',
+            top: '20%',
+            right: '10%',
+            bottom: '15%'
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: true,
+            nameGap: 30,
+            splitArea: {
+                show: true
+            },
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
+            type: 'value',
+            name: 'Value',
+            min: -400,
+            max: 600,
+            splitArea: {
+                show: false
+            }
+        },
+        dataZoom: [
+            {
+                type: 'inside',
+                start: 0,
+                end: 20
+            },
+            {
+                show: true,
+                type: 'slider',
+                top: '90%',
+                xAxisIndex: [0],
+                start: 0,
+                end: 20
+            }
+        ],
         series: [
             {
-                name: 'Store 1',
+                name: 'category0',
                 type: 'boxplot',
-                data: [
-                    [120, 180, 220, 290, 350],
-                    [80, 120, 150, 190, 240],
-                    [40, 65, 85, 110, 140]
-                ]
+                datasetIndex: 3
+            },
+            {
+                name: 'category1',
+                type: 'boxplot',
+                datasetIndex: 4
+            },
+            {
+                name: 'category2',
+                type: 'boxplot',
+                datasetIndex: 5
             }
         ]
     };
