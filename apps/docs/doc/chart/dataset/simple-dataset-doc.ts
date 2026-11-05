@@ -9,7 +9,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>A central decoupled tabular dataset binding multiple chart series without data duplication.</p>
+            <p>The simplest dataset: three bar series are each mapped to a column of the same two-dimensional array source.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -32,6 +32,8 @@ export class SimpleDatasetDoc {
         },
         xAxis: { type: 'category' },
         yAxis: {},
+        // Declare several bar series, each will be mapped
+        // to a column of dataset.source by default.
         series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
     };
 }

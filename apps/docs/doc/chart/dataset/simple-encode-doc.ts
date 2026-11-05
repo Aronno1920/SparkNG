@@ -9,7 +9,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Explicit dimension mapping binding custom column names to X, Y, and tooltip properties.</p>
+            <p>Encode maps the <i>amount</i> column to the x axis and the <i>product</i> column to the y axis, while a horizontal visualMap colors bars by score.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -24,15 +24,39 @@ export class SimpleEncodeDoc {
                 ['score', 'amount', 'product'],
                 [89.3, 58212, 'Matcha Latte'],
                 [57.1, 78254, 'Milk Tea'],
-                [74.4, 41032, 'Cheese Cocoa']
+                [74.4, 41032, 'Cheese Cocoa'],
+                [50.1, 12755, 'Cheese Brownie'],
+                [89.7, 20145, 'Matcha Cocoa'],
+                [68.1, 79146, 'Tea'],
+                [19.6, 91852, 'Orange Juice'],
+                [10.6, 101852, 'Lemon Juice'],
+                [32.7, 20112, 'Walnut Brownie']
             ]
         },
+        grid: { containLabel: true },
         xAxis: { name: 'amount' },
         yAxis: { type: 'category' },
+        visualMap: {
+            orient: 'horizontal',
+            left: 'center',
+            min: 10,
+            max: 100,
+            text: ['High Score', 'Low Score'],
+            // Map the score column to color
+            dimension: 0,
+            inRange: {
+                color: ['#65B581', '#FFCE34', '#FD665F']
+            }
+        },
         series: [
             {
                 type: 'bar',
-                encode: { x: 'amount', y: 'product' }
+                encode: {
+                    // Map the "amount" column to X axis.
+                    x: 'amount',
+                    // Map the "product" column to Y axis
+                    y: 'product'
+                }
             }
         ]
     };

@@ -9,10 +9,10 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Toggles series layout projection between column-based and row-based orientations.</p>
+            <p>One dataset feeding two grids: the top bars are laid out by row while the bottom bars use the default column layout.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-chart [options]="options" />
+            <p-chart [options]="options" height="30rem" />
         </div>
         <app-code></app-code>
     `
@@ -23,16 +23,28 @@ export class SeriesLayoutColumnRowDoc {
         tooltip: {},
         dataset: {
             source: [
-                ['quarter', 'Q1', 'Q2', 'Q3', 'Q4'],
-                ['Alpha', 41.1, 30.4, 65.1, 53.3],
-                ['Beta', 86.5, 92.1, 85.7, 83.1]
+                ['product', '2012', '2013', '2014', '2015'],
+                ['Matcha Latte', 41.1, 30.4, 65.1, 53.3],
+                ['Milk Tea', 86.5, 92.1, 85.7, 83.1],
+                ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4]
             ]
         },
-        xAxis: { type: 'category' },
-        yAxis: {},
+        xAxis: [
+            { type: 'category', gridIndex: 0 },
+            { type: 'category', gridIndex: 1 }
+        ],
+        yAxis: [{ gridIndex: 0 }, { gridIndex: 1 }],
+        grid: [{ bottom: '55%' }, { top: '55%' }],
         series: [
+            // These series are in the first grid.
             { type: 'bar', seriesLayoutBy: 'row' },
-            { type: 'bar', seriesLayoutBy: 'row' }
+            { type: 'bar', seriesLayoutBy: 'row' },
+            { type: 'bar', seriesLayoutBy: 'row' },
+            // These series are in the second grid.
+            { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
+            { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
+            { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
+            { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 }
         ]
     };
 }
