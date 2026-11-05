@@ -1,6 +1,6 @@
 {
     "name": "@bdspark/sparkng-motion",
-    "version": "22.1.1",
+    "version": "22.26.3",
     "author": "bdSpark",
     "description": "Motion utilities for SparkNG Libraries for Angular v22",
     "keywords": ["motion", "animation", "transition", "composition utilities", "sparkng", "angular"],

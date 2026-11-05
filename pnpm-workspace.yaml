@@ -1,7 +1,7 @@
 packages:
-  - 'packages/*'
-  - 'apps/*'
-  - 'apps/tailwind-playgrounds/*'
+    - 'packages/*'
+    - 'apps/*'
+    - 'apps/tailwind-playgrounds/*'
 
 shamefullyHoist: true
 
@@ -10,63 +10,64 @@ shamefullyHoist: true
 linkWorkspacePackages: false
 
 allowBuilds:
-  '@parcel/watcher': true
-  core-js: true
-  esbuild: true
-  lefthook: true
-  lmdb: true
-  msgpackr-extract: true
+    '@parcel/watcher': true
+    core-js: true
+    esbuild: true
+    lefthook: true
+    lmdb: true
+    msgpackr-extract: true
 
 catalog:
-  '@bdspark/sparkng-icons': ^22.1.1
+    '@bdspark/sparkng-icons': ^22.26.3
 
 catalogs:
-  angular22:
-    "@angular-devkit/build-angular": ^22.1.6
-    "@angular/animations": ^22.1.4
-    "@angular/build": ^22.1.6
-    "@angular/cdk": ^22.1.4
-    "@angular/cli": ^22.1.6
-    "@angular/common": ^22.1.4
-    "@angular/compiler": ^22.1.4
-    "@angular/compiler-cli": ^22.1.4
-    "@angular/core": ^22.1.4
-    "@angular/forms": ^22.1.4
-    "@angular/platform-browser": ^22.1.4
-    "@angular/platform-browser-dynamic": ^22.1.4
-    "@angular/platform-server": ^22.1.4
-    "@angular/router": ^22.1.4
-    "@angular/ssr": ^22.1.6
-    "@angular-eslint/eslint-plugin": ^22.1.0
-    "@angular-eslint/eslint-plugin-template": ^22.1.0
-    "@angular-eslint/schematics": ^22.1.0
-    "@angular-eslint/template-parser": ^22.1.0
-    "ng-packagr": ^22.1.1
-    "typescript": ^6.0.0
+    angular22:
+        '@angular-devkit/build-angular': ^22.1.6
+        '@angular/animations': ^22.1.4
+        '@angular/build': ^22.1.6
+        '@angular/cdk': ^22.1.4
+        '@angular/cli': ^22.1.6
+        '@angular/common': ^22.1.4
+        '@angular/compiler': ^22.1.4
+        '@angular/compiler-cli': ^22.1.4
+        '@angular/core': ^22.1.4
+        '@angular/forms': ^22.1.4
+        '@angular/platform-browser': ^22.1.4
+        '@angular/platform-browser-dynamic': ^22.1.4
+        '@angular/platform-server': ^22.1.4
+        '@angular/router': ^22.1.4
+        '@angular/ssr': ^22.1.6
+        '@angular-eslint/eslint-plugin': ^22.1.0
+        '@angular-eslint/eslint-plugin-template': ^22.1.0
+        '@angular-eslint/schematics': ^22.1.0
+        '@angular-eslint/template-parser': ^22.1.0
+        'ng-packagr': ^22.1.1
+        'typescript': ^6.0.0
 
 minimumReleaseAgeExclude:
-  - pnpm@11.13.1
-  - '@bdspark/sparkng-icons@22.0.5 || 22.1.1'
-  - tsdown@0.22.9
-  - '@angular/animations@22.1.4'
-  - '@angular/common@22.1.4'
-  - '@angular/compiler-cli@22.1.4'
-  - '@angular/compiler@22.1.4'
-  - '@angular/core@22.1.4'
-  - '@angular/forms@22.1.4'
-  - '@angular/platform-browser-dynamic@22.1.4'
-  - '@angular/platform-browser@22.1.4'
-  - '@angular/platform-server@22.1.4'
-  - '@angular/router@22.1.4'
-  - '@bdspark/sparkng-motion@22.0.5'
-  - '@bdspark/sparkng-styled@22.0.5'
-  - '@bdspark/sparkng-styles@22.0.5'
-  - '@bdspark/sparkng-tailwindcss@22.0.5'
-  - '@bdspark/sparkng-themes@22.0.5'
-  - '@bdspark/sparkng-utils@22.0.5'
-  - '@bdspark/sparkng@22.0.5'
-  - '@bdspark/sparkng-charts@22.1.1'
+    - '@bdspark/sparkng-icons@22.26.3'
+    - pnpm@11.13.1
+    - '@bdspark/sparkng-icons@22.0.5 || 22.1.1'
+    - tsdown@0.22.9
+    - '@angular/animations@22.1.4'
+    - '@angular/common@22.1.4'
+    - '@angular/compiler-cli@22.1.4'
+    - '@angular/compiler@22.1.4'
+    - '@angular/core@22.1.4'
+    - '@angular/forms@22.1.4'
+    - '@angular/platform-browser-dynamic@22.1.4'
+    - '@angular/platform-browser@22.1.4'
+    - '@angular/platform-server@22.1.4'
+    - '@angular/router@22.1.4'
+    - '@bdspark/sparkng-motion@22.0.5'
+    - '@bdspark/sparkng-styled@22.0.5'
+    - '@bdspark/sparkng-styles@22.0.5'
+    - '@bdspark/sparkng-tailwindcss@22.0.5'
+    - '@bdspark/sparkng-themes@22.0.5'
+    - '@bdspark/sparkng-utils@22.0.5'
+    - '@bdspark/sparkng@22.0.5'
+    - '@bdspark/sparkng-charts@22.1.1'
 
 auditConfig:
-  ignoreGhsas:
-    - GHSA-vfj7-8cjw-p6xm
+    ignoreGhsas:
+        - GHSA-vfj7-8cjw-p6xm

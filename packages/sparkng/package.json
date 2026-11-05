@@ -1,6 +1,6 @@
 {
     "name": "@bdspark/sparkng",
-    "version": "22.1.1",
+    "version": "22.26.3",
     "author": "bdSpark",
     "description": "SparkNG is a community-maintained, MIT licensed UI library for Angular with 80+ accessible components and design-agnostic theming, including Aura, Material, Lara, Nora and Shadcn presets, maintained by bdSpark.",
     "homepage": "https://sparkng.bdspark.com/",

@@ -1,6 +1,6 @@
 {
     "name": "@bdspark/sparkng-charts",
-    "version": "22.1.1",
+    "version": "22.26.3",
     "author": "bdSpark",
     "description": "The charting engine of the SparkNG ecosystem — every chart type and component registered, bundled with zero runtime dependencies. Maintained by bdSpark.",
     "homepage": "https://bdspark.com/",

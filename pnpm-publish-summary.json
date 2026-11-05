@@ -1,14 +1,14 @@
 {
 	"publishedPackages": [
 		{
-			"id": "@bdspark/sparkng-charts@22.1.1",
+			"id": "@bdspark/sparkng-charts@22.26.3",
 			"name": "@bdspark/sparkng-charts",
-			"version": "22.1.1",
-			"size": 2457353,
-			"unpackedSize": 9715398,
-			"shasum": "16837fe1fd0f6161838af0c2362dd9ed53a37e0f",
-			"integrity": "sha512-hKbyiV5GnLvL7HBAYLGJeBmSPzrxA8m3rglZGozoak+a1ssDVZwmK9OS0oFODghKfW0DZv9xAiQ3XnU7i23Jxw==",
-			"filename": "bdspark-sparkng-charts-22.1.1.tgz",
+			"version": "22.26.3",
+			"size": 2457390,
+			"unpackedSize": 9715492,
+			"shasum": "af4331cde9bb03b2a22d99b11f4b529d8e9473c8",
+			"integrity": "sha512-4EB7vJOd4098VySVqNfx3nKtGZpjYj8OM0MQpkSB5DleeqOQ63CgoBicewtdzx+nAVEVUlX5v1yizkEkgttxLw==",
+			"filename": "bdspark-sparkng-charts-22.26.3.tgz",
 			"files": [
 				{
 					"path": "dist/index.js"
@@ -39,14 +39,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-icons@22.1.1",
+			"id": "@bdspark/sparkng-icons@22.26.3",
 			"name": "@bdspark/sparkng-icons",
-			"version": "22.1.1",
-			"size": 339745,
-			"unpackedSize": 884303,
-			"shasum": "20557023b97780998666b16f41d5d40ff5957230",
-			"integrity": "sha512-ryDuDWQm+fwpgK+7LF35EghaKa9Xo9+mgGVbuhvP4EJII0rVLYMC4ShEGM1jZrtqV6X/juHxpAfIziPTew3YuA==",
-			"filename": "bdspark-sparkng-icons-22.1.1.tgz",
+			"version": "22.26.3",
+			"size": 339750,
+			"unpackedSize": 884304,
+			"shasum": "6b675b373c3045d4297ede1d992d39b54234ea34",
+			"integrity": "sha512-vvMWpO7D6PmApdst5kvtqB6Kl20xgZUInOEAjCkyksHty09R77gj+XZgJetJg+cHFieZ5Mds7Jv0l5YtYKGMJA==",
+			"filename": "bdspark-sparkng-icons-22.26.3.tgz",
 			"files": [
 				{
 					"path": "CHANGELOG.md"
@@ -1022,14 +1022,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-locale@22.1.1",
+			"id": "@bdspark/sparkng-locale@22.26.3",
 			"name": "@bdspark/sparkng-locale",
-			"version": "22.1.1",
-			"size": 180249,
-			"unpackedSize": 1158256,
-			"shasum": "576bcae7ce55d0c125b0a6b5a89eaea1d3a5cf54",
-			"integrity": "sha512-uJj0yWw/Yu4WVAq7nUeHT8saxPxvuQhTsONGdQUYlTNHYLBMzaTiGqdMLsrag62OD8UB1FQs2bWcl02QcFk1hg==",
-			"filename": "bdspark-sparkng-locale-22.1.1.tgz",
+			"version": "22.26.3",
+			"size": 180252,
+			"unpackedSize": 1158257,
+			"shasum": "4f406bd0f6055fa9a9436aa5818a11a866e13bc5",
+			"integrity": "sha512-VnhD7K5y58iIgau9pIUqgGjh+hR4vHtpyepat/sTyQu5bFM8MBZihhR/rgPvFuAaE2L5+r70ac1kZQrWt0pZmQ==",
+			"filename": "bdspark-sparkng-locale-22.26.3.tgz",
 			"files": [
 				{
 					"path": "ar-TN.json"
@@ -1993,14 +1993,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-tailwindcss@22.1.1",
+			"id": "@bdspark/sparkng-tailwindcss@22.26.3",
 			"name": "@bdspark/sparkng-tailwindcss",
-			"version": "22.1.1",
+			"version": "22.26.3",
 			"size": 14676,
-			"unpackedSize": 142541,
-			"shasum": "cd63386d8c21009897b5906a18d0f74870642f8a",
-			"integrity": "sha512-s94VR3LVYFNXa0PAydnxE07qUFg64XH4+/va68ntKKP7tMdxy76f4BMBYqAwzTbPFDgR1pyIO8owD3Xc8+8KoA==",
-			"filename": "bdspark-sparkng-tailwindcss-22.1.1.tgz",
+			"unpackedSize": 142542,
+			"shasum": "fedb04b2f910bd55e7c555a7e37351d91083f891",
+			"integrity": "sha512-+vqCGIQa3enQCROlGEoobmSxc7v7GqKdv1knfBhAggtmxbr+JXUgEsNqrI4tj9a/27/FbTJ0BCPkp+3lsh19gg==",
+			"filename": "bdspark-sparkng-tailwindcss-22.26.3.tgz",
 			"files": [
 				{
 					"path": "LICENSE"
@@ -2082,14 +2082,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-utils@22.1.1",
+			"id": "@bdspark/sparkng-utils@22.26.3",
 			"name": "@bdspark/sparkng-utils",
-			"version": "22.1.1",
-			"size": 47098,
-			"unpackedSize": 178754,
-			"shasum": "9aff80ad6a5425680f1fe162b60c784dc3eb3ee1",
-			"integrity": "sha512-hewIw9CQNTc422LwUsyuN2NB8A5dMiCgHiuGJxm7KV598Ggn8Xlyzjur7DauFX0fpQyRsL+pd13bAK0wcdkFlg==",
-			"filename": "bdspark-sparkng-utils-22.1.1.tgz",
+			"version": "22.26.3",
+			"size": 47097,
+			"unpackedSize": 178755,
+			"shasum": "70e31c48ef72f8218f59cec4be0f2cc43ceab518",
+			"integrity": "sha512-G3OeEa3WaWuhjSwj5SmEf7FxR0OwrltxPuFFWYDvqcQz2L7XTtxZSZdlSYNVKyCDibMTqaBPVXKQarAisMICRg==",
+			"filename": "bdspark-sparkng-utils-22.26.3.tgz",
 			"files": [
 				{
 					"path": "dist/classnames/index.d.mts"
@@ -2177,14 +2177,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-motion@22.1.1",
+			"id": "@bdspark/sparkng-motion@22.26.3",
 			"name": "@bdspark/sparkng-motion",
-			"version": "22.1.1",
-			"size": 10449,
-			"unpackedSize": 34480,
-			"shasum": "0ce5f19a21e6a93319aae326c8ff1a5b44b4524d",
-			"integrity": "sha512-5kCDXM4tjR1RnE9skJjsvS7yw0LRa+3N3zZHhjk0HG3/VOnCWXJ+mQgS+9fI4P4AsGoy2caZI/6Wa3yVTAW3lw==",
-			"filename": "bdspark-sparkng-motion-22.1.1.tgz",
+			"version": "22.26.3",
+			"size": 10452,
+			"unpackedSize": 34482,
+			"shasum": "6cc21d41f214aabea86af2432f4cf724a19b0c71",
+			"integrity": "sha512-GyCivzf6f8UdVKniNqarH3PuTRvIwPFqkoCUdc9mPgwspUpemA4YyyfNhOeFBXv8mqOMoaD0EjLMaYaRE4YgAw==",
+			"filename": "bdspark-sparkng-motion-22.26.3.tgz",
 			"files": [
 				{
 					"path": "dist/index.d.mts"
@@ -2209,14 +2209,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-styled@22.1.1",
+			"id": "@bdspark/sparkng-styled@22.26.3",
 			"name": "@bdspark/sparkng-styled",
-			"version": "22.1.1",
-			"size": 27645,
-			"unpackedSize": 99115,
-			"shasum": "69f9d10540cf3ad1744eea72f94ee438f689b43c",
-			"integrity": "sha512-/7jBBwUf3M20GUzO4g6Xp/KTjeiCUARG3sWtJChH5j4V2CF4HI1Fz0VPMNCjVd0PsLn42auAFUbVO/b5meviEA==",
-			"filename": "bdspark-sparkng-styled-22.1.1.tgz",
+			"version": "22.26.3",
+			"size": 27649,
+			"unpackedSize": 99117,
+			"shasum": "ab17970820c55e6a1e5d5659036928b1e6a1ae21",
+			"integrity": "sha512-H7k6sGfjasuZk85gQ9ZwWOGPtCwW1j8kZgodsIkHSeuNkNNjst/RNOkhbFXDLCG6YZK4465wK4SsRQFXTiQUQA==",
+			"filename": "bdspark-sparkng-styled-22.26.3.tgz",
 			"files": [
 				{
 					"path": "dist/index.d.mts"
@@ -2241,14 +2241,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-styles@22.1.1",
+			"id": "@bdspark/sparkng-styles@22.26.3",
 			"name": "@bdspark/sparkng-styles",
-			"version": "22.1.1",
-			"size": 112025,
-			"unpackedSize": 920702,
-			"shasum": "da460f80096fc38b01ce3fc210e85b7f507d9228",
-			"integrity": "sha512-DD24uFXE5CIqwmR9t2S+QdSc6wMyyehP1XmbDO6OHi8hrH0EsaSPH+UJvZjg2TY83+9HfNK2Sm+l48b6rdSAew==",
-			"filename": "bdspark-sparkng-styles-22.1.1.tgz",
+			"version": "22.26.3",
+			"size": 112023,
+			"unpackedSize": 920704,
+			"shasum": "e2022ea461728859680e1988f5a08190d40fa133",
+			"integrity": "sha512-+xE3u0sJYSe12fx6VPpjkScRr7853ZCy39H60rqO6cxiFM3XefrfYm8/gwZqiqTGPGbJ8OEQ+ZzRRM3f0/KGaQ==",
+			"filename": "bdspark-sparkng-styles-22.26.3.tgz",
 			"files": [
 				{
 					"path": "dist/accordion/index.mjs"
@@ -2846,14 +2846,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng-themes@22.1.1",
+			"id": "@bdspark/sparkng-themes@22.26.3",
 			"name": "@bdspark/sparkng-themes",
-			"version": "22.1.1",
-			"size": 528185,
-			"unpackedSize": 4567929,
-			"shasum": "acfc6603e97a0f9bb8abbc350cef3d99abf872f2",
-			"integrity": "sha512-xYs7yNwpkW1bD34/r59iea20w9FaGnKsuGv+/5QPDTru9EJENLqjPeoiU+PI6iPXQkVOz3lPjwrxNERD+KopJw==",
-			"filename": "bdspark-sparkng-themes-22.1.1.tgz",
+			"version": "22.26.3",
+			"size": 528182,
+			"unpackedSize": 4567931,
+			"shasum": "33343a6160e9031fde5d8e5f49707c6aebdba429",
+			"integrity": "sha512-nr4QdeQw0DV7uWMUk9M5zV6Lf4ta7CCYgsz+rD3sIT0QaRBU9xeacxnP3sVlRfiZMffAzkVcB6fGIpXA9ILr3Q==",
+			"filename": "bdspark-sparkng-themes-22.26.3.tgz",
 			"files": [
 				{
 					"path": "dist/aura/accordion/index.d.ts"
@@ -7237,14 +7237,14 @@
 			"bundled": []
 		},
 		{
-			"id": "@bdspark/sparkng@22.1.1",
+			"id": "@bdspark/sparkng@22.26.3",
 			"name": "@bdspark/sparkng",
-			"version": "22.1.1",
-			"size": 1957019,
-			"unpackedSize": 11977681,
-			"shasum": "ee73a8c4d56fd13047b03c8fb48fb65e43e3492e",
-			"integrity": "sha512-7X2TPazMOfYXlOZolaVolaOmb4588S3FTlvlenMwRUKsSOLwAbDiAvdslwKCo6zwiZA3WESNb40us2di+A6dYg==",
-			"filename": "bdspark-sparkng-22.1.1.tgz",
+			"version": "22.26.3",
+			"size": 1957011,
+			"unpackedSize": 11977696,
+			"shasum": "ca9d0439f17f339139bd8ed4046d9b1a70517d99",
+			"integrity": "sha512-FtVptlgdOHKDDc9xWhUZXquCXPv8aMeqIn2m9VaTa4RovV9QMx4sJPACkQWLuQKtP8XjeFBFwwf1kUqxyJ6diA==",
+			"filename": "bdspark-sparkng-22.26.3.tgz",
 			"files": [
 				{
 					"path": "fesm2022/bdspark-sparkng-accordion.mjs"
