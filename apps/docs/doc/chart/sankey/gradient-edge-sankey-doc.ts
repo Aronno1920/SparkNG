@@ -1,6 +1,7 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
@@ -9,21 +10,57 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Flow bands rendered with smooth source-to-target color gradients.</p>
+            <p>Sankey Diagram of the energy dataset whose links are drawn with a gradient from the source node color to the target node color.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-chart [options]="options" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class GradientEdgeSankeyDoc {
-    options = {
-        series: {
-            type: 'sankey',
-            lineStyle: { color: 'gradient', curveness: 0.5 },
-            data: [{ name: 'Step 1' }, { name: 'Step 2' }],
-            links: [{ source: 'Step 1', target: 'Step 2', value: 15 }]
+    private platformId = inject(PLATFORM_ID);
+
+    private chart: any;
+
+    options: any = {};
+
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            this.chart.showLoading();
+            fetch('demo/chart/data/energy.json')
+                .then((response) => response.json())
+                .then((data) => {
+                    this.chart.hideLoading();
+                    this.chart.setOption(this.buildOption(data));
+                });
         }
-    };
+    }
+
+    private buildOption(data: any): any {
+        return {
+            title: {
+                text: 'Sankey Diagram'
+            },
+            tooltip: {
+                trigger: 'item',
+                triggerOn: 'mousemove'
+            },
+            series: [
+                {
+                    type: 'sankey',
+                    data: data.nodes,
+                    links: data.links,
+                    emphasis: {
+                        focus: 'adjacency'
+                    },
+                    lineStyle: {
+                        color: 'gradient',
+                        curveness: 0.5
+                    }
+                }
+            ]
+        };
+    }
 }

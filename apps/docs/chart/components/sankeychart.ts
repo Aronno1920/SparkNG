@@ -54,6 +54,19 @@ export class SankeyChart extends BaseChart<ChartPassThrough> {
     }
 
     /**
+     * Flow endpoints as `data`: an alias for `nodes`, accepting the same
+     * `{ name }` items. Ignored when `series` is provided.
+     * @group Props
+     */
+    @Input() get data(): SankeyChartNodes | undefined {
+        return this._nodes;
+    }
+    set data(val: SankeyChartNodes | undefined) {
+        this._nodes = val;
+        this.scheduleUpdate();
+    }
+
+    /**
      * Flows between the nodes: `{ source, target, value }` items referencing
      * node names. Ignored when `series` is provided.
      * @group Props

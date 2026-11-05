@@ -1,6 +1,7 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
@@ -9,21 +10,59 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Aligns stage column nodes flush along the right boundary.</p>
+            <p>Node Align Right: Sankey of the energy dataset with nodeAlign right and animation disabled, so the nodes of every depth line up flush to the right edge.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-chart [options]="options" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class NodeAlignRightSankeyDoc {
-    options = {
-        series: {
-            type: 'sankey',
-            nodeAlign: 'right',
-            data: [{ name: 'Inflow' }, { name: 'Outflow' }],
-            links: [{ source: 'Inflow', target: 'Outflow', value: 20 }]
+    private platformId = inject(PLATFORM_ID);
+
+    private chart: any;
+
+    options: any = {};
+
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            this.chart.showLoading();
+            fetch('demo/chart/data/energy.json')
+                .then((response) => response.json())
+                .then((data) => {
+                    this.chart.hideLoading();
+                    this.chart.setOption(this.buildOption(data));
+                });
         }
-    };
+    }
+
+    private buildOption(data: any): any {
+        return {
+            title: {
+                text: 'Node Align Right'
+            },
+            tooltip: {
+                trigger: 'item',
+                triggerOn: 'mousemove'
+            },
+            animation: false,
+            series: [
+                {
+                    type: 'sankey',
+                    emphasis: {
+                        focus: 'adjacency'
+                    },
+                    nodeAlign: 'right',
+                    data: data.nodes,
+                    links: data.links,
+                    lineStyle: {
+                        color: 'source',
+                        curveness: 0.5
+                    }
+                }
+            ]
+        };
+    }
 }
