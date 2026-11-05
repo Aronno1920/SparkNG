@@ -1,6 +1,7 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
@@ -9,29 +10,63 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Scatter with Jittering disperses overlapping discrete observations for clear density visibility.</p>
+            <p>7000 sleeping-hour points jittered horizontally within each weekday band, colored per data item at 0.4 opacity.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-scatterchart [data]="data" [options]="options" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class ScatterJitteringDoc {
-    data = [
-        [1 + (Math.random() - 0.5) * 0.2, 5],
-        [1 + (Math.random() - 0.5) * 0.2, 5.2],
-        [1 + (Math.random() - 0.5) * 0.2, 4.8],
-        [2 + (Math.random() - 0.5) * 0.2, 8],
-        [2 + (Math.random() - 0.5) * 0.2, 8.4],
-        [2 + (Math.random() - 0.5) * 0.2, 7.9],
-        [3 + (Math.random() - 0.5) * 0.2, 6],
-        [3 + (Math.random() - 0.5) * 0.2, 6.3],
-        [3 + (Math.random() - 0.5) * 0.2, 5.8]
-    ];
+    private platformId = inject(PLATFORM_ID);
 
-    options = {
-        xAxis: { min: 0.5, max: 3.5 },
-        yAxis: { scale: true }
-    };
+    private chart: any;
+
+    options: any = {};
+
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            const grid = {
+                left: 80,
+                right: 50
+            };
+            const width = this.chart.getWidth() - grid.left - grid.right;
+            const data = [];
+            for (let day = 0; day < 7; ++day) {
+                for (let i = 0; i < 1000; ++i) {
+                    const y = Math.tan(i) / 2 + 7;
+                    data.push([day, y, Math.random()]);
+                }
+            }
+            this.chart.setOption({
+                title: {
+                    text: 'Scatter with Jittering'
+                },
+                grid,
+                xAxis: {
+                    type: 'category',
+                    jitter: (width / 7) * 0.8,
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                },
+                yAxis: {
+                    type: 'value',
+                    max: 10,
+                    min: 0
+                },
+                series: [
+                    {
+                        name: 'Sleeping Hours',
+                        type: 'scatter',
+                        data,
+                        colorBy: 'data',
+                        itemStyle: {
+                            opacity: 0.4
+                        }
+                    }
+                ]
+            });
+        }
+    }
 }

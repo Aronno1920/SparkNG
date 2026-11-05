@@ -1,6 +1,7 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
@@ -9,26 +10,82 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Master Painter Color Choices Throughout History plots historical art palettes across time and hue.</p>
+            <p>Master painters' hue choices through history, loaded from JSON, with per-point sizes from plot.ly marker data and per-point colors.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-scatterchart [data]="data" [options]="options" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class MasterPainterChoicesDoc {
-    data = [
-        [1500, 45, 12],
-        [1600, 60, 18],
-        [1700, 52, 15],
-        [1800, 75, 24],
-        [1900, 88, 30]
-    ];
+    private platformId = inject(PLATFORM_ID);
 
-    options = {
-        xAxis: { name: 'Year' },
-        yAxis: { name: 'Hue' },
-        series: [{ type: 'scatter', symbolSize: (val: any) => val[2] }]
-    };
+    private chart: any;
+
+    options: any = {};
+
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            this.chart.showLoading();
+
+            fetch('demo/chart/data/masterPainterColorChoice.json')
+                .then((response) => response.json())
+                .then((json: any) => {
+                    this.chart.hideLoading();
+
+                    const data = json[0].x.map(function (x: number, idx: number) {
+                        return [+x, +json[0].y[idx]];
+                    });
+
+                    this.chart.setOption({
+                        title: {
+                            text: 'Master Painter Color Choices Throughout History',
+                            subtext: 'Data From Plot.ly',
+                            left: 'right'
+                        },
+                        xAxis: {
+                            type: 'value',
+                            splitLine: {
+                                show: false
+                            },
+                            scale: true,
+                            splitNumber: 5,
+                            max: 'dataMax',
+                            axisLabel: {
+                                formatter: function (val: number) {
+                                    return val + 's';
+                                }
+                            }
+                        },
+                        yAxis: {
+                            type: 'value',
+                            min: 0,
+                            max: 360,
+                            interval: 60,
+                            name: 'Hue',
+                            splitLine: {
+                                show: false
+                            }
+                        },
+                        series: [
+                            {
+                                name: 'scatter',
+                                type: 'scatter',
+                                symbolSize: function (val: number[], param: any) {
+                                    return json[0].marker.size[param.dataIndex] / json[0].marker.sizeref;
+                                },
+                                itemStyle: {
+                                    color: function (param: any) {
+                                        return json[0].marker.color[param.dataIndex] as string;
+                                    }
+                                },
+                                data: data
+                            }
+                        ]
+                    });
+                });
+        }
+    }
 }

@@ -1,6 +1,7 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
@@ -9,26 +10,72 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Visual Interaction Stream provides brush selection and real-time filtering across scatter series.</p>
+            <p>Dispersion of house price based on area, streamed from JSON and colored by a calculable visualMap gradient from yellow to blue.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-scatterchart [data]="data" [options]="options" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class VisualInteractionStreamDoc {
-    data = [
-        [10, 20],
-        [15, 35],
-        [25, 45],
-        [30, 25],
-        [40, 60],
-        [50, 55],
-        [60, 80]
-    ];
+    private platformId = inject(PLATFORM_ID);
 
-    options = {
-        brush: { toolbox: ['rect', 'polygon', 'clear'] }
-    };
+    private chart: any;
+
+    options: any = {};
+
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            fetch('demo/chart/data/house-price-area2.json')
+                .then((response) => response.json())
+                .then((data) => {
+                    this.chart.setOption({
+                        title: {
+                            text: 'Dispersion of house price based on the area',
+                            left: 'center',
+                            top: 0
+                        },
+                        visualMap: {
+                            min: 15202,
+                            max: 159980,
+                            dimension: 1,
+                            orient: 'vertical',
+                            right: 10,
+                            top: 'center',
+                            text: ['HIGH', 'LOW'],
+                            calculable: true,
+                            inRange: {
+                                color: ['#f2c31a', '#24b7f2']
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            axisPointer: {
+                                type: 'cross'
+                            }
+                        },
+                        xAxis: [
+                            {
+                                type: 'value'
+                            }
+                        ],
+                        yAxis: [
+                            {
+                                type: 'value'
+                            }
+                        ],
+                        series: [
+                            {
+                                name: 'price-area',
+                                type: 'scatter',
+                                symbolSize: 5,
+                                data: data
+                            }
+                        ]
+                    });
+                });
+        }
+    }
 }

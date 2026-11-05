@@ -1,6 +1,7 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
@@ -9,28 +10,194 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Global life expectancy plotted against per-capita GDP.</p>
+            <p>Life expectancy versus GDP per country evolving over a vertical auto-playing timeline from 1800 onward, with population-sized symbols and country-colored visual mapping.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-chart [options]="options" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class LifeExpectancyGdpDoc {
-    options = {
-        xAxis: { type: 'value', name: 'GDP ($)' },
-        yAxis: { type: 'value', name: 'Years' },
-        series: [
-            {
-                type: 'scatter',
-                data: [
-                    [12000, 72],
-                    [24000, 78],
-                    [48000, 82],
-                    [6000, 64]
-                ]
-            }
-        ]
-    };
+    private platformId = inject(PLATFORM_ID);
+
+    private chart: any;
+
+    options: any = {};
+
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            this.chart.showLoading();
+
+            fetch('demo/chart/data/life-expectancy.json')
+                .then((response) => response.json())
+                .then((data: any) => {
+                    this.chart.hideLoading();
+                    this.chart.setOption(this.buildOption(data));
+                });
+        }
+    }
+
+    private buildOption(data: any): any {
+        const itemStyle = {
+            opacity: 0.8
+        };
+
+        const sizeFunction = function (x: number) {
+            const y = Math.sqrt(x / 5e8) + 0.1;
+            return y * 80;
+        };
+        // Schema:
+        const schema = [
+            { name: 'Income', index: 0, text: '人均收入', unit: '美元' },
+            { name: 'LifeExpectancy', index: 1, text: '人均寿命', unit: '岁' },
+            { name: 'Population', index: 2, text: '总人口', unit: '' },
+            { name: 'Country', index: 3, text: '国家', unit: '' }
+        ];
+
+        const option = {
+            baseOption: {
+                timeline: {
+                    axisType: 'category',
+                    orient: 'vertical',
+                    autoPlay: true,
+                    inverse: true,
+                    playInterval: 1000,
+                    left: null,
+                    right: 0,
+                    top: 20,
+                    bottom: 20,
+                    width: 55,
+                    height: null,
+                    symbol: 'none',
+                    checkpointStyle: {
+                        borderWidth: 2
+                    },
+                    controlStyle: {
+                        showNextBtn: false,
+                        showPrevBtn: false
+                    },
+                    data: []
+                },
+                title: [
+                    {
+                        text: data.timeline[0],
+                        textAlign: 'center',
+                        left: '63%',
+                        top: '55%',
+                        textStyle: {
+                            fontSize: 100
+                        }
+                    },
+                    {
+                        text: '各国人均寿命与GDP关系演变',
+                        left: 'center',
+                        top: 10,
+                        textStyle: {
+                            fontWeight: 'normal',
+                            fontSize: 20
+                        }
+                    }
+                ],
+                tooltip: {
+                    padding: 5,
+                    borderWidth: 1,
+                    formatter: function (obj: any) {
+                        const value = obj.value;
+                        // prettier-ignore
+                        return schema[3].text + '：' + value[3] + '<br>'
+                            + schema[1].text + '：' + value[1] + schema[1].unit + '<br>'
+                            + schema[0].text + '：' + value[0] + schema[0].unit + '<br>'
+                            + schema[2].text + '：' + value[2] + '<br>';
+                    }
+                },
+                grid: {
+                    top: 100,
+                    containLabel: true,
+                    left: 30,
+                    right: '110'
+                },
+                xAxis: {
+                    type: 'log',
+                    name: '人均收入',
+                    max: 100000,
+                    min: 300,
+                    nameGap: 25,
+                    nameLocation: 'middle',
+                    nameTextStyle: {
+                        fontSize: 18
+                    },
+                    splitLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        formatter: '{value} $'
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '平均寿命',
+                    max: 100,
+                    nameTextStyle: {
+                        fontSize: 18
+                    },
+                    splitLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        formatter: '{value} 岁'
+                    }
+                },
+                visualMap: [
+                    {
+                        show: false,
+                        dimension: 3,
+                        categories: data.counties,
+                        inRange: {
+                            color: (function () {
+                                // prettier-ignore
+                                const colors = ['#51689b', '#ce5c5c', '#fbc357', '#8fbf8f', '#659d84', '#fb8e6a', '#c77288', '#786090', '#91c4c5', '#6890ba'];
+                                return colors.concat(colors);
+                            })()
+                        }
+                    }
+                ],
+                series: [
+                    {
+                        type: 'scatter',
+                        itemStyle: itemStyle,
+                        data: data.series[0],
+                        symbolSize: function (val: number[]) {
+                            return sizeFunction(val[2]);
+                        }
+                    }
+                ],
+                animationDurationUpdate: 1000,
+                animationEasingUpdate: 'quinticInOut'
+            },
+            options: []
+        };
+
+        for (let n = 0; n < data.timeline.length; n++) {
+            option.baseOption.timeline.data.push(data.timeline[n]);
+            option.options.push({
+                title: {
+                    show: true,
+                    text: data.timeline[n] + ''
+                },
+                series: {
+                    name: data.timeline[n],
+                    type: 'scatter',
+                    itemStyle: itemStyle,
+                    data: data.series[n],
+                    symbolSize: function (val: number[]) {
+                        return sizeFunction(val[2]);
+                    }
+                }
+            });
+        }
+
+        return option;
+    }
 }
