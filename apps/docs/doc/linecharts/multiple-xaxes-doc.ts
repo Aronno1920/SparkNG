@@ -9,7 +9,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Two x axes share one y axis: rainfall on the bottom axis and temperature on the top, each series bound with <i>xAxisIndex</i>.</p>
+            <p>Multiple x-axes with custom precipitation pointer formatters comparing seasonal weather across different years.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -18,18 +18,88 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     `
 })
 export class MultipleXaxesDoc {
+    colors = ['#5470C6', '#EE6666'];
+
     options = {
-        tooltip: { trigger: 'axis' },
+        color: this.colors,
+        tooltip: {
+            trigger: 'none',
+            axisPointer: {
+                type: 'cross'
+            }
+        },
         legend: {},
-        grid: { left: 64, right: 64 },
+        grid: {
+            top: 70,
+            bottom: 50
+        },
         xAxis: [
-            { type: 'category', position: 'bottom', name: 'Rainfall', nameLocation: 'center', nameGap: 32, data: ['2016-1', '2016-2', '2016-3', '2016-4', '2016-5', '2016-6', '2016-7', '2016-8', '2016-9', '2016-10', '2016-11', '2016-12'] },
-            { type: 'category', position: 'top', name: 'Temperature', nameLocation: 'center', nameGap: 32, data: ['2016-1', '2016-2', '2016-3', '2016-4', '2016-5', '2016-6', '2016-7', '2016-8', '2016-9', '2016-10', '2016-11', '2016-12'] }
+            {
+                type: 'category',
+                axisTick: {
+                    alignWithLabel: true
+                },
+                axisLine: {
+                    onZero: false,
+                    lineStyle: {
+                        color: this.colors[1]
+                    }
+                },
+                axisPointer: {
+                    label: {
+                        formatter: function (params: any) {
+                            return 'Precipitation  ' + params.value + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+                        }
+                    }
+                },
+                data: ['2016-1', '2016-2', '2016-3', '2016-4', '2016-5', '2016-6', '2016-7', '2016-8', '2016-9', '2016-10', '2016-11', '2016-12']
+            },
+            {
+                type: 'category',
+                axisTick: {
+                    alignWithLabel: true
+                },
+                axisLine: {
+                    onZero: false,
+                    lineStyle: {
+                        color: this.colors[0]
+                    }
+                },
+                axisPointer: {
+                    label: {
+                        formatter: function (params: any) {
+                            return 'Precipitation  ' + params.value + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+                        }
+                    }
+                },
+                data: ['2015-1', '2015-2', '2015-3', '2015-4', '2015-5', '2015-6', '2015-7', '2015-8', '2015-9', '2015-10', '2015-11', '2015-12']
+            }
         ],
-        yAxis: { type: 'value' },
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
         series: [
-            { name: 'Rainfall', type: 'line', xAxisIndex: 0, data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3] },
-            { name: 'Temperature', type: 'line', xAxisIndex: 1, symbol: 'triangle', symbolSize: 8, data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2] }
+            {
+                name: 'Precipitation(2015)',
+                type: 'line',
+                xAxisIndex: 1,
+                smooth: true,
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+            },
+            {
+                name: 'Precipitation(2016)',
+                type: 'line',
+                smooth: true,
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7]
+            }
         ]
     };
 }

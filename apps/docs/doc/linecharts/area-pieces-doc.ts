@@ -9,33 +9,69 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p><i>areaStyle</i> accepts an array of pieces with their own ranges and colors, highlighting segments of the series individually.</p>
+            <p>Highlighting specific segments of an area chart using a piecewise <i>visualMap</i> and vertical mark lines.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-linechart [series]="series" [xAxis]="{ type: 'category', boundaryGap: false, data: hours }" [yAxis]="{ type: 'value' }" />
+            <p-chart [options]="options" />
         </div>
         <app-code></app-code>
     `
 })
 export class AreaPiecesDoc {
-    hours = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
-
-    data = [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 650, 600, 500, 450, 400, 350];
-
-    series = [
-        {
-            type: 'line',
-            smooth: true,
-            symbol: 'none',
-            areaStyle: [
-                { opacity: 0.6, color: '#7b9ce1', offset: 0 },
-                { opacity: 0.8, color: '#91cc75', offset: 6 }, // night valley
-                { opacity: 0.6, color: '#7b9ce1', offset: 12 },
-                { opacity: 0.8, color: '#fac858', offset: 20 }, // evening peak
-                { opacity: 0.6, color: '#7b9ce1', offset: 23 }
-            ],
-            lineStyle: { color: '#5470c6' },
-            data: this.data
-        }
-    ];
+    options = {
+        xAxis: {
+            type: 'category',
+            boundaryGap: false
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '30%']
+        },
+        visualMap: {
+            type: 'piecewise',
+            show: false,
+            dimension: 0,
+            seriesIndex: 0,
+            pieces: [
+                {
+                    gt: 1,
+                    lt: 3,
+                    color: 'rgba(0, 0, 180, 0.4)'
+                },
+                {
+                    gt: 5,
+                    lt: 7,
+                    color: 'rgba(0, 0, 180, 0.4)'
+                }
+            ]
+        },
+        series: [
+            {
+                type: 'line',
+                smooth: 0.6,
+                symbol: 'none',
+                lineStyle: {
+                    color: '#5470C6',
+                    width: 5
+                },
+                markLine: {
+                    symbol: ['none', 'none'],
+                    label: { show: false },
+                    data: [{ xAxis: 1 }, { xAxis: 3 }, { xAxis: 5 }, { xAxis: 7 }]
+                },
+                areaStyle: {},
+                data: [
+                    ['2019-10-10', 200],
+                    ['2019-10-11', 560],
+                    ['2019-10-12', 750],
+                    ['2019-10-13', 580],
+                    ['2019-10-14', 250],
+                    ['2019-10-15', 300],
+                    ['2019-10-16', 450],
+                    ['2019-10-17', 300],
+                    ['2019-10-18', 100]
+                ]
+            }
+        ]
+    };
 }

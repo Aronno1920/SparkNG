@@ -1,7 +1,8 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { ChartModule, UIChart } from '@bdspark/sparkng/chart';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
     selector: 'line-race-doc',
@@ -9,49 +10,108 @@ import { ChartModule, UIChart } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>A line race reveals each point as time passes: the series animates through its data using <i>animationDuration</i> and per-point delays.</p>
+            <p>Dynamic line race ranking historical income trends across nations since 1950 with collision-shifting end labels.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-chart [options]="options" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class LineRaceDoc {
-    years: string[] = [];
+    private platformId = inject(PLATFORM_ID);
 
-    values: number[] = [];
+    private chart: any;
 
-    options: any;
+    options: any = {};
 
-    constructor() {
-        for (let year = 1990; year <= 2024; year++) {
-            this.years.push(String(year));
-            const trend = (year - 1990) * 2.2 + Math.sin((year - 1990) / 3) * 30;
-            this.values.push(Math.round(120 + trend + Math.random() * 20));
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            this.chart.showLoading();
+            fetch('demo/chart/data/life-expectancy-table.json')
+                .then((res) => res.json())
+                .then((rawData) => {
+                    this.chart.hideLoading();
+                    this.chart.setOption(this.buildOption(rawData));
+                });
         }
-        const total = this.years.length;
-        this.options = {
-            tooltip: { trigger: 'axis' },
-            grid: { left: 56, right: 24 },
-            xAxis: { type: 'category', data: this.years },
-            yAxis: { type: 'value' },
-            animationDuration: 6000,
-            animationDurationUpdate: 800,
-            animationEasing: 'linear',
-            animationEasingUpdate: 'linear',
-            series: [
-                {
-                    name: 'Revenue',
-                    type: 'line',
-                    data: this.values,
-                    smooth: true,
-                    lineStyle: { width: 3 },
-                    areaStyle: { opacity: 0.2 },
-                    animationDelay: (index: number) => (index / total) * 5000,
-                    animationDelayUpdate: (index: number) => (index / total) * 800
+    }
+
+    private buildOption(rawData: any): any {
+        const countries = ['Finland', 'France', 'Germany', 'Iceland', 'Norway', 'Poland', 'Russia', 'United Kingdom'];
+        const datasetWithFilters: any[] = [];
+        const seriesList: any[] = [];
+
+        countries.forEach((country) => {
+            const datasetId = 'dataset_' + country;
+            datasetWithFilters.push({
+                id: datasetId,
+                fromDatasetId: 'dataset_raw',
+                transform: {
+                    type: 'filter',
+                    config: {
+                        and: [
+                            { dimension: 'Year', gte: 1950 },
+                            { dimension: 'Country', '=': country }
+                        ]
+                    }
                 }
-            ]
+            });
+            seriesList.push({
+                type: 'line',
+                datasetId: datasetId,
+                showSymbol: false,
+                name: country,
+                endLabel: {
+                    show: true,
+                    formatter: function (params: any) {
+                        return params.value[3] + ': ' + params.value[0];
+                    }
+                },
+                labelLayout: {
+                    moveOverlap: 'shiftY'
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                encode: {
+                    x: 'Year',
+                    y: 'Income',
+                    label: ['Country', 'Income'],
+                    itemName: 'Year',
+                    tooltip: ['Income']
+                }
+            });
+        });
+
+        return {
+            animationDuration: 10000,
+            dataset: [
+                {
+                    id: 'dataset_raw',
+                    source: rawData
+                },
+                ...datasetWithFilters
+            ],
+            title: {
+                text: 'Income of Germany and France since 1950'
+            },
+            tooltip: {
+                order: 'valueDesc',
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: 'category',
+                nameLocation: 'middle'
+            },
+            yAxis: {
+                name: 'Income'
+            },
+            grid: {
+                right: 140
+            },
+            series: seriesList
         };
     }
 }

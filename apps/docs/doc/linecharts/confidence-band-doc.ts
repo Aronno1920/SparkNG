@@ -1,7 +1,15 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
+
+interface DataItem {
+    l: number;
+    u: number;
+    date: string;
+    value: number;
+}
 
 @Component({
     selector: 'confidence-band-doc',
@@ -9,51 +17,137 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>A confidence band is drawn with two stacked boundary lines: the band series carries the confidence width and the line series subtracts it back, leaving a shaded uncertainty range around the estimate.</p>
+            <p>A shaded uncertainty band wrapping estimated values using stacked, transparent boundary line series.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-linechart [series]="series" [xAxis]="{ type: 'category', boundaryGap: false, data: xs }" [yAxis]="yAxis" [tooltip]="{ trigger: 'axis' }" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class ConfidenceBandDoc {
-    xs = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+    private platformId = inject(PLATFORM_ID);
 
-    estimate = [26, 29, 31, 33, 34, 35, 35.5, 36, 36.5, 36.8, 37, 37.2];
+    private chart: any;
 
-    confidence = [2, 2.4, 2.6, 2.9, 3.1, 3.2, 3.2, 3.1, 3.0, 2.9, 2.8, 2.7];
+    options: any = {};
 
-    yAxis = { type: 'value', min: (value: { min: number }) => Math.floor(value.min - 5) };
-
-    lower = this.estimate.map((v, i) => +(v - this.confidence[i]).toFixed(1));
-
-    band = this.estimate.map((v, i) => +(this.confidence[i] * 2).toFixed(1));
-
-    series = [
-        {
-            name: 'L',
-            type: 'line',
-            stack: 'band',
-            data: this.lower,
-            lineStyle: { opacity: 0 },
-            symbol: 'none'
-        },
-        {
-            name: 'Confidence',
-            type: 'line',
-            stack: 'band',
-            data: this.band,
-            lineStyle: { opacity: 0 },
-            areaStyle: { color: '#ccc' },
-            symbol: 'none'
-        },
-        {
-            name: 'Estimate',
-            type: 'line',
-            data: this.estimate,
-            symbolSize: 6,
-            lineStyle: { width: 3 }
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            this.chart.showLoading();
+            fetch('demo/chart/data/confidence-band.json')
+                .then((res) => res.json())
+                .then((data: DataItem[]) => {
+                    this.chart.hideLoading();
+                    this.chart.setOption(this.buildOption(data));
+                });
         }
-    ];
+    }
+
+    private buildOption(data: DataItem[]): any {
+        const base = -data.reduce(function (min, val) {
+            return Math.floor(Math.min(min, val.l));
+        }, Infinity);
+
+        return {
+            title: {
+                text: 'Confidence Band',
+                subtext: 'Example in MetricsGraphics.js',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    animation: false,
+                    label: {
+                        backgroundColor: '#ccc',
+                        borderColor: '#aaa',
+                        borderWidth: 1,
+                        shadowBlur: 0,
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 0,
+                        color: '#222'
+                    }
+                },
+                formatter: function (params: any) {
+                    return params[2].name + '<br />' + ((params[2].value - base) * 100).toFixed(1) + '%';
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                data: data.map(function (item) {
+                    return item.date;
+                }),
+                axisLabel: {
+                    formatter: function (value: string, idx: number) {
+                        const date = new Date(value);
+                        return idx === 0 ? value : [date.getMonth() + 1, date.getDate()].join('-');
+                    }
+                },
+                boundaryGap: false
+            },
+            yAxis: {
+                axisLabel: {
+                    formatter: function (val: number) {
+                        return (val - base) * 100 + '%';
+                    }
+                },
+                axisPointer: {
+                    label: {
+                        formatter: function (params: any) {
+                            return ((params.value - base) * 100).toFixed(1) + '%';
+                        }
+                    }
+                },
+                splitNumber: 3
+            },
+            series: [
+                {
+                    name: 'L',
+                    type: 'line',
+                    data: data.map(function (item) {
+                        return item.l + base;
+                    }),
+                    lineStyle: {
+                        opacity: 0
+                    },
+                    stack: 'confidence-band',
+                    symbol: 'none'
+                },
+                {
+                    name: 'U',
+                    type: 'line',
+                    data: data.map(function (item) {
+                        return item.u - item.l;
+                    }),
+                    lineStyle: {
+                        opacity: 0
+                    },
+                    areaStyle: {
+                        color: '#ccc'
+                    },
+                    stack: 'confidence-band',
+                    symbol: 'none'
+                },
+                {
+                    type: 'line',
+                    data: data.map(function (item) {
+                        return item.value + base;
+                    }),
+                    itemStyle: {
+                        color: '#333'
+                    },
+                    showSymbol: false
+                }
+            ]
+        };
+    }
 }

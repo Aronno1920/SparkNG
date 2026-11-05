@@ -1,6 +1,7 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
@@ -9,33 +10,141 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Monthly rainfall and evaporation compared with bars, plus their difference as a line on a second axis.</p>
+            <p>Dual aligned grid coordinates linking rainfall and evaporation trends through coordinated axis pointers and <i>dataZoom</i>.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-chart [options]="options" />
+            <p-chart [options]="options" height="32rem" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class RainfallVsEvaporationDoc {
-    options = {
-        tooltip: { trigger: 'axis' },
-        legend: {},
-        xAxis: { type: 'category', data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] },
-        yAxis: [
-            { type: 'value', name: 'ml', min: 0 },
-            { type: 'value', name: 'Balance', axisLabel: { formatter: '{value} ml' } }
-        ],
-        series: [
-            { name: 'Evaporation', type: 'bar', data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3] },
-            { name: 'Rainfall', type: 'bar', data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3] },
-            {
-                name: 'Balance',
-                type: 'line',
-                yAxisIndex: 1,
-                smooth: true,
-                data: [0.6, 1.0, 2.0, 3.2, 3.1, -6.0, 40.0, 20.0, 16.1, -1.2, -0.4, -1.0]
-            }
-        ]
-    };
+    private platformId = inject(PLATFORM_ID);
+
+    private chart: any;
+
+    options: any = {};
+
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            this.chart.showLoading();
+            fetch('demo/chart/data/rainfall-flow.json')
+                .then((res) => res.json())
+                .then((dataset: { rawTimeData: string[]; evaporation: number[]; rainfall: number[] }) => {
+                    this.chart.hideLoading();
+                    const timeData = dataset.rawTimeData.map((str) => str.replace(/[0-9]{4}\//, ''));
+                    this.chart.setOption(this.buildOption(timeData, dataset.evaporation, dataset.rainfall));
+                });
+        }
+    }
+
+    private buildOption(timeData: string[], evaporation: number[], rainfall: number[]): any {
+        return {
+            title: {
+                text: 'Rainfall vs Evaporation',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    animation: false
+                }
+            },
+            legend: {
+                data: ['Evaporation', 'Rainfall'],
+                left: 10
+            },
+            toolbox: {
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            axisPointer: {
+                link: [
+                    {
+                        xAxisIndex: 'all'
+                    }
+                ]
+            },
+            dataZoom: [
+                {
+                    show: true,
+                    realtime: true,
+                    start: 30,
+                    end: 70,
+                    xAxisIndex: [0, 1]
+                },
+                {
+                    type: 'inside',
+                    realtime: true,
+                    start: 30,
+                    end: 70,
+                    xAxisIndex: [0, 1]
+                }
+            ],
+            grid: [
+                {
+                    left: 60,
+                    right: 50,
+                    height: '35%'
+                },
+                {
+                    left: 60,
+                    right: 50,
+                    top: '55%',
+                    height: '35%'
+                }
+            ],
+            xAxis: [
+                {
+                    type: 'category',
+                    boundaryGap: false,
+                    axisLine: { onZero: true },
+                    data: timeData
+                },
+                {
+                    gridIndex: 1,
+                    type: 'category',
+                    boundaryGap: false,
+                    axisLine: { onZero: true },
+                    data: timeData,
+                    position: 'top'
+                }
+            ],
+            yAxis: [
+                {
+                    name: 'Evaporation(m³/s)',
+                    type: 'value',
+                    max: 500
+                },
+                {
+                    gridIndex: 1,
+                    name: 'Rainfall(mm)',
+                    type: 'value',
+                    inverse: true
+                }
+            ],
+            series: [
+                {
+                    name: 'Evaporation',
+                    type: 'line',
+                    symbolSize: 8,
+                    data: evaporation
+                },
+                {
+                    name: 'Rainfall',
+                    type: 'line',
+                    xAxisIndex: 1,
+                    yAxisIndex: 1,
+                    symbolSize: 8,
+                    data: rainfall
+                }
+            ]
+        };
+    }
 }

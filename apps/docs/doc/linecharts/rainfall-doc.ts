@@ -1,6 +1,7 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
@@ -9,47 +10,159 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Hourly rainfall over two days with <i>markArea</i> shading the night hours and the axis breaking between days.</p>
+            <p>Detailed rainfall and river flow relationship plotted across two area series with synchronized <i>dataZoom</i> and shaded mark areas.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-chart [options]="options" />
+            <p-chart [options]="options" height="32rem" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class RainfallDoc {
-    hours: string[] = [];
+    private platformId = inject(PLATFORM_ID);
 
-    data: number[] = [];
+    private chart: any;
 
-    options: any;
+    options: any = {};
 
-    constructor() {
-        let base = +new Date(2025, 4, 2);
-        const oneHour = 3600 * 1000;
-        for (let i = 0; i < 48; i++) {
-            const now = new Date((base += oneHour));
-            this.hours.push(now.getDate() + 'd ' + now.getHours() + 'h');
-            this.data.push(Math.round(Math.abs(Math.sin(i / 8)) * 40 + Math.random() * 6));
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            this.chart.showLoading();
+            fetch('demo/chart/data/rainfall-flow.json')
+                .then((res) => res.json())
+                .then((dataset: { rawTimeData: string[]; evaporation: number[]; rainfall: number[] }) => {
+                    this.chart.hideLoading();
+                    this.chart.setOption(this.buildOption(dataset.rawTimeData, dataset.evaporation, dataset.rainfall));
+                });
         }
-        this.options = {
-            tooltip: { trigger: 'axis' },
-            grid: { left: 48, right: 24 },
-            xAxis: { type: 'category', boundaryGap: false, data: this.hours },
-            yAxis: { type: 'value', name: 'mm' },
+    }
+
+    private buildOption(timeData: string[], flow: number[], rainfall: number[]): any {
+        return {
+            title: {
+                text: 'Rainfall and Flow Relationship',
+                left: 'center'
+            },
+            grid: {
+                bottom: 80
+            },
+            toolbox: {
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    animation: false,
+                    label: {
+                        backgroundColor: '#505765'
+                    }
+                }
+            },
+            legend: {
+                data: ['Flow', 'Rainfall'],
+                left: 10
+            },
+            dataZoom: [
+                {
+                    show: true,
+                    realtime: true,
+                    start: 65,
+                    end: 85
+                },
+                {
+                    type: 'inside',
+                    realtime: true,
+                    start: 65,
+                    end: 85
+                }
+            ],
+            xAxis: [
+                {
+                    type: 'category',
+                    boundaryGap: false,
+                    axisLine: { onZero: false },
+                    data: timeData
+                }
+            ],
+            yAxis: [
+                {
+                    name: 'Flow(m³/s)',
+                    max: 500,
+                    type: 'value'
+                },
+                {
+                    name: 'Rainfall(mm)',
+                    nameLocation: 'start',
+                    alignTicks: true,
+                    type: 'value',
+                    inverse: true
+                }
+            ],
             series: [
+                {
+                    name: 'Flow',
+                    type: 'line',
+                    areaStyle: {},
+                    lineStyle: {
+                        width: 1
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    markArea: {
+                        silent: true,
+                        itemStyle: {
+                            opacity: 0.3
+                        },
+                        data: [
+                            [
+                                {
+                                    xAxis: '2009/9/12\n7:00'
+                                },
+                                {
+                                    xAxis: '2009/9/22\n7:00'
+                                }
+                            ]
+                        ]
+                    },
+                    data: flow
+                },
                 {
                     name: 'Rainfall',
                     type: 'line',
+                    yAxisIndex: 1,
                     areaStyle: {},
-                    data: this.data,
+                    lineStyle: {
+                        width: 1
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
                     markArea: {
-                        itemStyle: { color: 'rgba(120,130,180,0.15)' },
+                        silent: true,
+                        itemStyle: {
+                            opacity: 0.3
+                        },
                         data: [
-                            [{ name: 'Night 1', xAxis: '2d 20h' }, { xAxis: '3d 6h' }],
-                            [{ name: 'Night 2', xAxis: '3d 20h' }, { xAxis: '3d 23h' }]
+                            [
+                                {
+                                    xAxis: '2009/9/10\n7:00'
+                                },
+                                {
+                                    xAxis: '2009/9/20\n7:00'
+                                }
+                            ]
                         ]
-                    }
+                    },
+                    data: rainfall
                 }
             ]
         };

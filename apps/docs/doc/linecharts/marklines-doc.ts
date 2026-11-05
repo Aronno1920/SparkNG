@@ -9,36 +9,87 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p><i>markLine</i> annotates thresholds and averages while <i>markPoint</i> pins the extremes — here for the highest and lowest monthly revenue.</p>
+            <p>Comprehensive demonstration of all <i>markLine</i> label placements, offsets, and diagonal coordinate lines.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-linechart [series]="series" [xAxis]="{ type: 'category', data: months }" [yAxis]="{ type: 'value' }" [tooltip]="{ trigger: 'axis' }" />
+            <p-chart [options]="options" />
         </div>
         <app-code></app-code>
     `
 })
 export class MarklinesDoc {
-    months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    options: any;
 
-    data = [320, 332, 301, 334, 390, 330, 320, 356, 402, 387, 361, 399];
+    constructor() {
+        const markLine: any[] = [];
+        const positions = ['start', 'middle', 'end', 'insideStart', 'insideStartTop', 'insideStartBottom', 'insideMiddle', 'insideMiddleTop', 'insideMiddleBottom', 'insideEnd', 'insideEndTop', 'insideEndBottom'] as const;
 
-    series = [
-        {
-            name: 'Revenue',
-            type: 'line',
-            data: this.data,
-            markPoint: {
-                data: [
-                    { type: 'max', name: 'Max' },
-                    { type: 'min', name: 'Min' }
-                ]
-            },
-            markLine: {
-                data: [
-                    { type: 'average', name: 'Avg' },
-                    { yAxis: 400, name: 'Target', lineStyle: { color: '#9b2f2f' } }
-                ]
+        for (let i = 0; i < positions.length; ++i) {
+            markLine.push({
+                name: positions[i],
+                yAxis: 1.8 - 0.2 * Math.floor(i / 3),
+                label: {
+                    formatter: '{b}',
+                    position: positions[i]
+                }
+            });
+
+            if (positions[i] !== 'middle') {
+                const name = positions[i] === 'insideMiddle' ? 'insideMiddle / middle' : positions[i];
+
+                markLine.push([
+                    {
+                        name: 'start: ' + positions[i],
+                        coord: [0, 0.3],
+                        label: {
+                            formatter: name,
+                            position: positions[i]
+                        }
+                    },
+                    {
+                        name: 'end: ' + positions[i],
+                        coord: [3, 1]
+                    }
+                ]);
             }
         }
-    ];
+
+        this.options = {
+            animation: false,
+            textStyle: {
+                fontSize: 14
+            },
+            xAxis: {
+                data: ['A', 'B', 'C', 'D', 'E'],
+                boundaryGap: true,
+                splitArea: {
+                    show: true
+                }
+            },
+            yAxis: {
+                max: 2
+            },
+            series: [
+                {
+                    name: 'line',
+                    type: 'line',
+                    stack: 'all',
+                    symbolSize: 6,
+                    data: [0.3, 1.4, 1.2, 1, 0.6],
+                    markLine: {
+                        data: markLine,
+                        label: {
+                            distance: [20, 8]
+                        }
+                    }
+                }
+            ],
+            grid: {
+                top: 30,
+                left: 60,
+                right: 60,
+                bottom: 40
+            }
+        };
+    }
 }

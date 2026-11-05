@@ -9,49 +9,90 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Daily highs and lows with symbols offset to the hour and a rich legend covering the value range.</p>
+            <p>Temperature change over the coming week with highest and lowest mark points and average mark lines.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-linechart [series]="series" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="{ data: ['High', 'Low'] }" />
+            <p-chart [options]="options" />
         </div>
         <app-code></app-code>
     `
 })
 export class TemperatureDoc {
-    xAxis = {
-        type: 'category',
-        boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-        axisLabel: { formatter: '{value}' }
-    };
-
-    yAxis = {
-        type: 'value',
-        axisLabel: { formatter: '{value} °C' },
-        max: (value: { max: number }) => Math.ceil(value.max / 10) * 10 + 5,
-        min: (value: { min: number }) => Math.floor(value.min / 10) * 10 - 5
-    };
-
-    series = [
-        {
-            name: 'High',
-            type: 'line',
-            data: [19, 21, 22, 24, 23, 25, 26].map((v) => [v, 12]),
-            symbol: 'circle',
-            symbolSize: 8,
-            lineStyle: { width: 3 },
-            itemStyle: { borderWidth: 2, borderColor: '#fff' },
-            label: { show: true, position: 'top', formatter: (p: any) => p.value[0] + '°' }
+    options = {
+        title: {
+            text: 'Temperature Change in the Coming Week'
         },
-        {
-            name: 'Low',
-            type: 'line',
-            data: [11, 12, 13, 13, 12, 14, 15].map((v) => [v, 20]),
-            symbol: 'diamond',
-            symbolSize: 10,
-            lineStyle: { width: 3 },
-            itemStyle: { borderWidth: 2, borderColor: '#fff' },
-            label: { show: true, position: 'bottom', formatter: (p: any) => p.value[0] + '°' }
-        }
-    ];
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {},
+        toolbox: {
+            show: true,
+            feature: {
+                dataZoom: {
+                    yAxisIndex: 'none'
+                },
+                dataView: { readOnly: false },
+                magicType: { type: ['line', 'bar'] },
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            type: 'value',
+            axisLabel: {
+                formatter: '{value} °C'
+            }
+        },
+        series: [
+            {
+                name: 'Highest',
+                type: 'line',
+                data: [10, 11, 13, 11, 12, 12, 9],
+                markPoint: {
+                    data: [
+                        { type: 'max', name: 'Max' },
+                        { type: 'min', name: 'Min' }
+                    ]
+                },
+                markLine: {
+                    data: [{ type: 'average', name: 'Avg' }]
+                }
+            },
+            {
+                name: 'Lowest',
+                type: 'line',
+                data: [1, -2, 2, 5, 3, 2, 0],
+                markPoint: {
+                    data: [{ name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }]
+                },
+                markLine: {
+                    data: [
+                        { type: 'average', name: 'Avg' },
+                        [
+                            {
+                                symbol: 'none',
+                                x: '90%',
+                                yAxis: 'max'
+                            },
+                            {
+                                symbol: 'circle',
+                                label: {
+                                    position: 'start',
+                                    formatter: 'Max'
+                                },
+                                type: 'max',
+                                name: '最高点'
+                            }
+                        ]
+                    ]
+                }
+            }
+        ]
+    };
 }

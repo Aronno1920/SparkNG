@@ -9,31 +9,76 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>With a <i>time</i> axis the x values are timestamps, so irregular intervals are spaced correctly and the labels format themselves.</p>
+            <p>Time axis area chart plotting 20,000 temporal data points with timestamp values and interactive <i>dataZoom</i> sliders.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-linechart [series]="series" [xAxis]="{ type: 'time' }" [yAxis]="{ type: 'value' }" [tooltip]="{ trigger: 'axis' }" />
+            <p-chart [options]="options" />
         </div>
         <app-code></app-code>
     `
 })
 export class TimeAxisDoc {
-    base = +new Date(2025, 5, 5);
+    options: any;
 
-    series = [
-        {
-            name: 'Downloads',
-            type: 'line',
-            showSymbol: false,
-            data: [
-                [+new Date(2025, 5, 5), 300],
-                [+new Date(2025, 5, 6), 420],
-                [+new Date(2025, 5, 8), 380],
-                [+new Date(2025, 5, 9), 510],
-                [+new Date(2025, 5, 12), 470],
-                [+new Date(2025, 5, 13), 620],
-                [+new Date(2025, 5, 17), 590]
-            ]
+    constructor() {
+        let base = +new Date(1988, 9, 3);
+        const oneDay = 24 * 3600 * 1000;
+        const data: [number, number][] = [[base, Math.random() * 300]];
+
+        for (let i = 1; i < 20000; i++) {
+            const now = new Date((base += oneDay));
+            data.push([+now, Math.round((Math.random() - 0.5) * 20 + data[i - 1][1])]);
         }
-    ];
+
+        this.options = {
+            tooltip: {
+                trigger: 'axis',
+                position: function (pt: any) {
+                    return [pt[0], '10%'];
+                }
+            },
+            title: {
+                left: 'center',
+                text: 'Area Chart with Time Axis'
+            },
+            toolbox: {
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'time',
+                boundaryGap: false
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%']
+            },
+            dataZoom: [
+                {
+                    type: 'inside',
+                    start: 0,
+                    end: 20
+                },
+                {
+                    start: 0,
+                    end: 20
+                }
+            ],
+            series: [
+                {
+                    name: 'Fake Data',
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'none',
+                    areaStyle: {},
+                    data: data
+                }
+            ]
+        };
+    }
 }

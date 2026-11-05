@@ -1,7 +1,13 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { ChartModule, UIChart } from '@bdspark/sparkng/chart';
+import { Component, OnDestroy, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { ChartModule } from '@bdspark/sparkng/chart';
+
+interface DataItem {
+    name: string;
+    value: [string, number];
+}
 
 @Component({
     selector: 'dynamic-data-doc',
@@ -9,55 +15,107 @@ import { ChartModule, UIChart } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Live data on a time axis: a timer appends points and shifts the window; the chart instance is updated through the component API.</p>
+            <p>Real-time streaming time series with live rolling data updates on an interval.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-chart #chart [options]="initialOptions" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class DynamicDataDoc implements OnDestroy {
-    @ViewChild('chart') chartComponent!: UIChart;
+    private platformId = inject(PLATFORM_ID);
 
-    data: [number, number][] = [];
+    private chart: any;
 
     private timer: ReturnType<typeof setInterval> | null = null;
 
-    private readonly oneSecond = 1000;
+    private now = new Date(1997, 9, 3);
+
+    private readonly oneDay = 24 * 3600 * 1000;
+
+    private value = Math.random() * 1000;
+
+    data: DataItem[] = [];
+
+    options: any;
 
     constructor() {
-        const now = Date.now();
-        let value = 100;
-        for (let i = -60; i <= 0; i++) {
-            value += Math.random() * 8 - 4;
-            this.data.push([now + i * this.oneSecond, Math.round(value)]);
+        for (let i = 0; i < 1000; i++) {
+            this.data.push(this.randomData());
+        }
+
+        this.options = {
+            title: {
+                text: 'Dynamic Data & Time Axis'
+            },
+            tooltip: {
+                trigger: 'axis',
+                formatter: function (params: any) {
+                    const item = params[0];
+                    const date = new Date(item.name);
+                    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + item.value[1];
+                },
+                axisPointer: {
+                    animation: false
+                }
+            },
+            xAxis: {
+                type: 'time',
+                splitLine: {
+                    show: false
+                }
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%'],
+                splitLine: {
+                    show: false
+                }
+            },
+            series: [
+                {
+                    name: 'Fake Data',
+                    type: 'line',
+                    showSymbol: false,
+                    data: this.data
+                }
+            ]
+        };
+    }
+
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            this.timer = setInterval(() => {
+                for (let i = 0; i < 5; i++) {
+                    this.data.shift();
+                    this.data.push(this.randomData());
+                }
+                this.chart.setOption({
+                    series: [
+                        {
+                            data: this.data
+                        }
+                    ]
+                });
+            }, 1000);
         }
     }
 
-    ngAfterViewInit(): void {
-        this.timer = setInterval(() => {
-            const last = this.data[this.data.length - 1];
-            const nextValue = Math.round(last[1] + Math.random() * 8 - 4);
-            this.data.push([Date.now(), nextValue]);
-            this.data.shift();
-            this.chartComponent.setOption({
-                series: [{ data: this.data }]
-            });
-        }, 1000);
-    }
-
     ngOnDestroy(): void {
-        if (this.timer) clearInterval(this.timer);
+        if (this.timer) {
+            clearInterval(this.timer);
+            this.timer = null;
+        }
     }
 
-    get initialOptions() {
+    private randomData(): DataItem {
+        this.now = new Date(+this.now + this.oneDay);
+        this.value = this.value + Math.random() * 21 - 10;
         return {
-            tooltip: { trigger: 'axis' },
-            grid: { left: 48, right: 24 },
-            xAxis: { type: 'time', splitLine: { show: false } },
-            yAxis: { type: 'value', boundaryGap: [0, '100%'] },
-            series: [{ type: 'line', showSymbol: false, data: this.data }]
+            name: this.now.toString(),
+            value: [[this.now.getFullYear(), this.now.getMonth() + 1, this.now.getDate()].join('/'), Math.round(this.value)]
         };
     }
 }
