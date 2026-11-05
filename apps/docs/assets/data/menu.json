@@ -421,6 +421,10 @@
                             "routerLink": "/chart/sankey"
                         },
                         {
+                            "name": "Parallel",
+                            "routerLink": "/chart/parallel"
+                        },
+                        {
                             "name": "Funnel",
                             "routerLink": "/chart/funnel"
                         },

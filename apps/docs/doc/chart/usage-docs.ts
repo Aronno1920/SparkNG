@@ -302,6 +302,29 @@ import { ChartModule } from '@bdspark/sparkng/chart';`
 }
 
 @Component({
+    selector: 'parallel-usage-doc',
+    standalone: true,
+    imports: [AppCode],
+    template: `
+        <app-code [code]="importCode" [hideToggleCode]="true"></app-code>
+        <br />
+        <app-code [code]="usageCode" [hideToggleCode]="true"></app-code>
+    `
+})
+export class ParallelUsageDoc {
+    importCode: Code = {
+        typescript: `// Standalone Component
+import { UIChart } from '@bdspark/sparkng/chart';
+
+// Or via full module
+import { ChartModule } from '@bdspark/sparkng/chart';`
+    };
+    usageCode: Code = {
+        html: `<p-chart [options]="options" />`
+    };
+}
+
+@Component({
     selector: 'funnel-usage-doc',
     standalone: true,
     imports: [AppCode],

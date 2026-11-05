@@ -11,6 +11,7 @@ import {
     GraphUsageDoc,
     HeatmapUsageDoc,
     MapUsageDoc,
+    ParallelUsageDoc,
     PieUsageDoc,
     RadarUsageDoc,
     RichTextUsageDoc,
@@ -37,8 +38,10 @@ import { StackedColumnDoc } from '@/doc/chart/bar/stacked-column-doc';
 import { StackedBarBorderRadiusDoc } from '@/doc/chart/bar/stacked-bar-border-radius-doc';
 import { StackedBarNormalizationDoc } from '@/doc/chart/bar/stacked-bar-normalization-doc';
 import { StackedBarNormalizationVariationDoc } from '@/doc/chart/bar/stacked-bar-normalization-variation-doc';
+import { WaterfallBar2Doc } from '@/doc/chart/bar/waterfall-bar2-doc';
 import { StackedHorizontalBarDoc } from '@/doc/chart/bar/stacked-horizontal-bar-doc';
 import { BrushSelectColumnDoc } from '@/doc/chart/bar/brush-select-column-doc';
+import { BarNegativeValue2Doc } from '@/doc/chart/bar/bar-negative-value2-doc';
 import { RainfallAndEvaporationDoc } from '@/doc/chart/bar/rainfall-and-evaporation-doc';
 import { MixedLineAndBarDoc } from '@/doc/chart/bar/mixed-line-and-bar-doc';
 import { MultipleYAxesDoc } from '@/doc/chart/bar/multiple-y-axes-doc';
@@ -82,6 +85,8 @@ import { HeightWeightDistributionDoc } from '@/doc/chart/scatter/height-weight-d
 import { BubbleChartDoc } from '@/doc/chart/scatter/bubble-chart-doc';
 import { ScatterAqiColorDoc } from '@/doc/chart/scatter/scatter-aqi-color-doc';
 import { ScatterNutrientsDoc } from '@/doc/chart/scatter/scatter-nutrients-doc';
+import { ScatterNutrientsMatrixDoc } from '@/doc/chart/scatter/scatter-nutrients-matrix-doc';
+import { ScatterLabelAlignTopDoc } from '@/doc/chart/scatter/scatter-label-align-top-doc';
 import { LifeExpectancyGdpDoc } from '@/doc/chart/scatter/life-expectancy-gdp-doc';
 import { ScatterMatrixDoc } from '@/doc/chart/scatter/scatter-matrix-doc';
 import { ClusteringProcessDoc } from '@/doc/chart/scatter/clustering-process-doc';
@@ -163,6 +168,9 @@ import { SankeyLevelsSettingDoc } from '@/doc/chart/sankey/sankey-levels-setting
 import { GradientEdgeSankeyDoc } from '@/doc/chart/sankey/gradient-edge-sankey-doc';
 import { NodeAlignLeftSankeyDoc } from '@/doc/chart/sankey/node-align-left-sankey-doc';
 import { NodeAlignRightSankeyDoc } from '@/doc/chart/sankey/node-align-right-sankey-doc';
+import { BasicParallelDoc } from '@/doc/chart/parallel/basic-parallel-doc';
+import { ParallelAqiDoc } from '@/doc/chart/parallel/parallel-aqi-doc';
+import { ParallelNutrientsDoc } from '@/doc/chart/parallel/parallel-nutrients-doc';
 import { BasicFunnelDoc } from '@/doc/chart/funnel/basic-funnel-doc';
 import { FunnelCompareDoc } from '@/doc/chart/funnel/funnel-compare-doc';
 import { CustomizedFunnelDoc } from '@/doc/chart/funnel/customized-funnel-doc';
@@ -206,7 +214,7 @@ export class BarChartDemo {
         { id: 'basic-bar', label: 'Basic Bar', component: BasicBarDoc },
         { id: 'axis-align-with-tick', label: 'Axis Align with Tick', component: AxisAlignWithTickDoc },
         { id: 'bar-with-background', label: 'Bar with Background', component: BarWithBackgroundDoc },
-        { id: 'set-style-of-single-bar', label: 'Set Style of Single Bar', component: SetStyleOfSingleBarDoc },
+        { id: 'set-style-of-single-bar', label: 'Set Style of Single Bar.', component: SetStyleOfSingleBarDoc },
         { id: 'waterfall-bar', label: 'Waterfall Chart', component: WaterfallBarDoc },
         { id: 'bar-negative-value', label: 'Bar Chart with Negative Value', component: BarNegativeValueDoc },
         { id: 'radial-polar-bar-label', label: 'Radial Polar Bar Label Position', component: RadialPolarBarLabelDoc },
@@ -220,27 +228,33 @@ export class BarChartDemo {
         { id: 'stacked-bar-border-radius', label: 'Stacked Bar with borderRadius', component: StackedBarBorderRadiusDoc },
         { id: 'stacked-bar-normalization', label: 'Stacked Bar Normalization', component: StackedBarNormalizationDoc },
         { id: 'stacked-bar-normalization-variation', label: 'Stacked Bar Normalization and Variation', component: StackedBarNormalizationVariationDoc },
+        { id: 'waterfall-bar2', label: 'Waterfall Chart', component: WaterfallBar2Doc },
         { id: 'stacked-horizontal-bar', label: 'Stacked Horizontal Bar', component: StackedHorizontalBarDoc },
         { id: 'brush-select-column', label: 'Brush Select on Column Chart', component: BrushSelectColumnDoc },
+        { id: 'bar-negative-value2', label: 'Bar Chart with Negative Value', component: BarNegativeValue2Doc },
         { id: 'rainfall-and-evaporation', label: 'Rainfall and Evaporation', component: RainfallAndEvaporationDoc },
         { id: 'mixed-line-and-bar', label: 'Mixed Line and Bar', component: MixedLineAndBarDoc },
         { id: 'mix-zoom-on-value', label: 'Mix Zoom On Value', component: MixZoomOnValueDoc },
         { id: 'multiple-y-axes', label: 'Multiple Y Axes', component: MultipleYAxesDoc },
         { id: 'animation-delay', label: 'Animation Delay', component: AnimationDelayDoc },
-        { id: 'large-scale-bar', label: 'Large Scale Bar Chart', component: LargeScaleBarDoc },
         { id: 'bar-drilldown-animation', label: 'Bar Chart Drilldown Animation', component: BarDrilldownAnimationDoc },
+        { id: 'large-scale-bar', label: 'Large Scale Bar Chart', component: LargeScaleBarDoc },
         { id: 'bar-race', label: 'Bar Race', component: BarRaceDoc },
         { id: 'bar-multi-drilldown', label: 'Bar Chart Multi-level Drilldown Animation', component: BarMultiDrilldownDoc },
         { id: 'weather-statistics', label: 'Weather Statistics', component: WeatherStatisticsDoc },
         { id: 'dynamic-data', label: 'Dynamic Data', component: DynamicDataDoc },
         { id: 'finance-indices', label: 'Finance Indices 2002', component: FinanceIndicesDoc },
-        { id: 'watermark-echarts-download', label: 'Watermark - ECharts Download', component: WatermarkEchartsDownloadDoc },
+        { id: 'watermark-echarts-download', label: 'Watermark', component: WatermarkEchartsDownloadDoc },
         { id: 'bar-polar', label: 'Bar Chart on Polar', component: BarPolarDoc },
         { id: 'stacked-bar-polar', label: 'Stacked Bar Chart on Polar', component: StackedBarPolarDoc },
-        { id: 'stacked-bar-polar-radial', label: 'Stacked Bar Chart on Polar (Radial)', component: StackedBarPolarRadialDoc },
+        { id: 'stacked-bar-polar-radial', label: 'Stacked Bar Chart on Polar(Radial)', component: StackedBarPolarRadialDoc },
         { id: 'rounded-bar-polar', label: 'Rounded Bar on Polar', component: RoundedBarPolarDoc },
         { id: 'bar-axis-breaks-brush', label: 'Bar Chart with Axis Breaks (Brush-enabled)', component: BarAxisBreaksBrushDoc },
         { id: 'sort-data-bar', label: 'Sort Data in Bar Chart', component: SortDataBarDoc },
+        { id: 'simple-encode', label: 'Simple Encode', component: SimpleEncodeDoc },
+        { id: 'series-layout-column-row', label: 'Series Layout By Column or Row', component: SeriesLayoutColumnRowDoc },
+        { id: 'simple-dataset', label: 'Simple Example of Dataset', component: SimpleDatasetDoc },
+        { id: 'dataset-object-array', label: 'Dataset in Object Array', component: DatasetObjectArrayDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }
@@ -308,6 +322,8 @@ export class ScatterChartDemo {
         { id: 'bubble-chart', label: 'Bubble Chart', component: BubbleChartDoc },
         { id: 'scatter-aqi-color', label: 'Scatter Aqi Color', component: ScatterAqiColorDoc },
         { id: 'scatter-nutrients', label: 'Scatter Nutrients', component: ScatterNutrientsDoc },
+        { id: 'scatter-nutrients-matrix', label: 'Scatter Nutrients Matrix', component: ScatterNutrientsMatrixDoc },
+        { id: 'scatter-label-align-top', label: 'Align Label on the Top', component: ScatterLabelAlignTopDoc },
         { id: 'life-expectancy-gdp', label: 'Life Expectancy and GDP', component: LifeExpectancyGdpDoc },
         { id: 'master-painter-choices', label: 'Master Painter Color Choices', component: MasterPainterChoicesDoc },
         { id: 'logarithmic-regression', label: 'Logarithmic Regression', component: LogarithmicRegressionDoc },
@@ -530,6 +546,29 @@ export class SankeyChartDemo {
         { id: 'gradient-edge-sankey', label: 'Gradient Edge', component: GradientEdgeSankeyDoc },
         { id: 'node-align-left-sankey', label: 'Node Align Left in Sankey', component: NodeAlignLeftSankeyDoc },
         { id: 'node-align-right-sankey', label: 'Node Align Right in Sankey', component: NodeAlignRightSankeyDoc },
+        { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
+    ];
+}
+
+@Component({
+    standalone: true,
+    imports: [AppDoc],
+    template: `
+        <app-doc
+            docTitle="Angular Parallel Chart Component - SparkNG"
+            header="Parallel"
+            description="Parallel coordinates plot each observation as a polyline crossing every dimension axis, revealing multivariate correlations."
+            [docs]="docs"
+            [apiDocs]="['Chart']"
+        ></app-doc>
+    `
+})
+export class ParallelChartDemo {
+    docs = [
+        { id: 'usage', label: 'Usage', component: ParallelUsageDoc },
+        { id: 'basic-parallel', label: 'Basic Parallel', component: BasicParallelDoc },
+        { id: 'parallel-aqi', label: 'Parallel Aqi', component: ParallelAqiDoc },
+        { id: 'parallel-nutrients', label: 'Parallel Nutrients', component: ParallelNutrientsDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];
 }

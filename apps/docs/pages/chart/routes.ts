@@ -9,6 +9,7 @@ import {
     GraphChartDemo,
     HeatmapChartDemo,
     MapChartDemo,
+    ParallelChartDemo,
     PieChartDemo,
     RadarChartDemo,
     RichTextChartDemo,
@@ -79,6 +80,10 @@ export default [
     {
         path: 'sankey',
         component: SankeyChartDemo
+    },
+    {
+        path: 'parallel',
+        component: ParallelChartDemo
     },
     {
         path: 'funnel',
