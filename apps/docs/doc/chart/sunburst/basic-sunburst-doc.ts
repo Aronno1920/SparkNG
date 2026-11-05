@@ -9,10 +9,10 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Multi-tiered radial hierarchy rendered as concentric circular sectors.</p>
+            <p>Basic sunburst of a family tree, from Grandpa and Nancy down to cousins, with radially rotated labels.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-sunburstchart [data]="data" />
+            <p-chart [options]="options" />
         </div>
         <app-code></app-code>
     `
@@ -26,16 +26,73 @@ export class BasicSunburstDoc {
                     name: 'Uncle Leo',
                     value: 15,
                     children: [
-                        { name: 'Cousin Jack', value: 2 },
-                        { name: 'Cousin Mary', value: 5 }
+                        {
+                            name: 'Cousin Jack',
+                            value: 2
+                        },
+                        {
+                            name: 'Cousin Mary',
+                            value: 5,
+                            children: [
+                                {
+                                    name: 'Jackson',
+                                    value: 2
+                                }
+                            ]
+                        },
+                        {
+                            name: 'Cousin Ben',
+                            value: 4
+                        }
                     ]
                 },
                 {
                     name: 'Father',
                     value: 10,
-                    children: [{ name: 'Me', value: 5 }]
+                    children: [
+                        {
+                            name: 'Me',
+                            value: 5
+                        },
+                        {
+                            name: 'Brother Peter',
+                            value: 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: 'Nancy',
+            children: [
+                {
+                    name: 'Uncle Nike',
+                    children: [
+                        {
+                            name: 'Cousin Betty',
+                            value: 1
+                        },
+                        {
+                            name: 'Cousin Jenny',
+                            value: 2
+                        }
+                    ]
                 }
             ]
         }
     ];
+
+    options = {
+        series: {
+            type: 'sunburst',
+            // emphasis: {
+            //     focus: 'ancestor'
+            // },
+            data: this.data,
+            radius: [0, '90%'],
+            label: {
+                rotate: 'radial'
+            }
+        }
+    };
 }
