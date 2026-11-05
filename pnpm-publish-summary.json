@@ -7240,10 +7240,10 @@
 			"id": "@bdspark/sparkng@22.26.3",
 			"name": "@bdspark/sparkng",
 			"version": "22.26.3",
-			"size": 1957011,
+			"size": 1957008,
 			"unpackedSize": 11977696,
-			"shasum": "ca9d0439f17f339139bd8ed4046d9b1a70517d99",
-			"integrity": "sha512-FtVptlgdOHKDDc9xWhUZXquCXPv8aMeqIn2m9VaTa4RovV9QMx4sJPACkQWLuQKtP8XjeFBFwwf1kUqxyJ6diA==",
+			"shasum": "09cc4f69dfc453b11d14bd49dbf1ab8d7f59ccea",
+			"integrity": "sha512-IXO8QAf8KBYUFUYTUMY3IKpDdu00SqZLDpEDJJktZyX6UO5fkVEPrRCLiHEqpxpfVeg1GKuvn6s97PqU5QkaDw==",
 			"filename": "bdspark-sparkng-22.26.3.tgz",
 			"files": [
 				{
