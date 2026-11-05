@@ -9,7 +9,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Multiple synchronized mini-pies plotted across a multi-cell grid from a dataset.</p>
+            <p>A dataset of product sales partitioned into three pies by year through filter transforms, with media queries rearranging the pies responsively.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -19,17 +19,85 @@ import { ChartModule } from '@bdspark/sparkng/chart';
 })
 export class PartitionDataPiesDoc {
     options = {
-        dataset: {
-            source: [
-                ['Product', '2012', '2013', '2014'],
-                ['Tea', 86.5, 92.1, 85.7],
-                ['Milk', 41.1, 30.4, 65.1],
-                ['Cheese', 24.1, 67.2, 79.5]
-            ]
-        },
+        dataset: [
+            {
+                source: [
+                    ['Product', 'Sales', 'Price', 'Year'],
+                    ['Cake', 123, 32, 2011],
+                    ['Cereal', 231, 14, 2011],
+                    ['Tofu', 235, 5, 2011],
+                    ['Dumpling', 341, 25, 2011],
+                    ['Biscuit', 122, 29, 2011],
+                    ['Cake', 143, 30, 2012],
+                    ['Cereal', 201, 19, 2012],
+                    ['Tofu', 255, 7, 2012],
+                    ['Dumpling', 241, 27, 2012],
+                    ['Biscuit', 102, 34, 2012],
+                    ['Cake', 153, 28, 2013],
+                    ['Cereal', 181, 21, 2013],
+                    ['Tofu', 395, 4, 2013],
+                    ['Dumpling', 281, 31, 2013],
+                    ['Biscuit', 92, 39, 2013],
+                    ['Cake', 223, 29, 2014],
+                    ['Cereal', 211, 17, 2014],
+                    ['Tofu', 345, 3, 2014],
+                    ['Dumpling', 211, 35, 2014],
+                    ['Biscuit', 72, 24, 2014]
+                ]
+            },
+            {
+                transform: {
+                    type: 'filter',
+                    config: { dimension: 'Year', value: 2011 }
+                }
+            },
+            {
+                transform: {
+                    type: 'filter',
+                    config: { dimension: 'Year', value: 2012 }
+                }
+            },
+            {
+                transform: {
+                    type: 'filter',
+                    config: { dimension: 'Year', value: 2013 }
+                }
+            }
+        ],
         series: [
-            { type: 'pie', radius: '30%', center: ['30%', '50%'], encode: { itemName: 'Product', value: '2012' } },
-            { type: 'pie', radius: '30%', center: ['70%', '50%'], encode: { itemName: 'Product', value: '2014' } }
+            {
+                type: 'pie',
+                radius: 50,
+                center: ['50%', '25%'],
+                datasetIndex: 1
+            },
+            {
+                type: 'pie',
+                radius: 50,
+                center: ['50%', '50%'],
+                datasetIndex: 2
+            },
+            {
+                type: 'pie',
+                radius: 50,
+                center: ['50%', '75%'],
+                datasetIndex: 3
+            }
+        ],
+
+        // Optional. Only for responsive layout:
+        media: [
+            {
+                query: { minAspectRatio: 1 },
+                option: {
+                    series: [{ center: ['25%', '50%'] }, { center: ['50%', '50%'] }, { center: ['75%', '50%'] }]
+                }
+            },
+            {
+                option: {
+                    series: [{ center: ['50%', '25%'] }, { center: ['50%', '50%'] }, { center: ['50%', '75%'] }]
+                }
+            }
         ]
     };
 }

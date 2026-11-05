@@ -9,27 +9,110 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Customized curved label leader lines with tailored line lengths.</p>
+            <p>Three stacked pies of reading time with edge-aligned two-line rich labels, where a custom <i>labelLayout</i> re-anchors the end point of each label line.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-chart [options]="options" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class LabelLineAdjustDoc {
-    options = {
-        series: [
-            {
-                type: 'pie',
-                radius: '55%',
-                labelLine: { length: 20, length2: 30, smooth: true },
-                data: [
-                    { value: 335, name: 'Direct' },
-                    { value: 310, name: 'Email' },
-                    { value: 234, name: 'Affiliate' }
-                ]
-            }
+    private chart: any;
+
+    options: any = {};
+
+    datas = [
+        ////////////////////////////////////////
+        [
+            { name: '圣彼得堡来客', value: 5.6 },
+            { name: '陀思妥耶夫斯基全集', value: 1 },
+            { name: '史记精注全译（全6册）', value: 0.8 },
+            { name: '加德纳艺术通史', value: 0.5 },
+            { name: '表象与本质', value: 0.5 },
+            { name: '其它', value: 3.8 }
+        ],
+        // ////////////////////////////////////////
+        [
+            { name: '银河帝国5：迈向基地', value: 3.8 },
+            { name: '俞军产品方法论', value: 2.3 },
+            { name: '艺术的逃难', value: 2.2 },
+            { name: '第一次世界大战回忆录（全五卷）', value: 1.3 },
+            { name: 'Scrum 精髓', value: 1.2 },
+            { name: '其它', value: 5.7 }
+        ],
+
+        ////////////////////////////////////////
+        [
+            { name: '克莱因壶', value: 3.5 },
+            { name: '投资最重要的事', value: 2.8 },
+            { name: '简读中国史', value: 1.7 },
+            { name: '你当像鸟飞往你的山', value: 1.4 },
+            { name: '表象与本质', value: 0.5 },
+            { name: '其它', value: 3.8 }
         ]
-    };
+    ];
+
+    onInit(event: any): void {
+        this.chart = event.chart;
+        this.chart.setOption(this.buildOptions());
+    }
+
+    private buildOptions(): any {
+        return {
+            title: {
+                text: '阅读书籍分布',
+                left: 'center',
+                textStyle: {
+                    color: '#999',
+                    fontWeight: 'normal',
+                    fontSize: 14
+                }
+            },
+            series: this.datas.map((data: any, idx: number) => {
+                const top = idx * 33.3;
+                return {
+                    type: 'pie',
+                    radius: [20, 60],
+                    top: top + '%',
+                    height: '33.33%',
+                    left: 'center',
+                    width: 400,
+                    itemStyle: {
+                        borderColor: '#fff',
+                        borderWidth: 1
+                    },
+                    label: {
+                        alignTo: 'edge',
+                        formatter: '{name|{b}}\n{time|{c} 小时}',
+                        minMargin: 5,
+                        edgeDistance: 10,
+                        lineHeight: 15,
+                        rich: {
+                            time: {
+                                fontSize: 10,
+                                color: '#999'
+                            }
+                        }
+                    },
+                    labelLine: {
+                        length: 15,
+                        length2: 0,
+                        maxSurfaceAngle: 80
+                    },
+                    labelLayout: (params: any) => {
+                        const isLeft = params.labelRect.x < this.chart.getWidth() / 2;
+                        const points = params.labelLinePoints as number[][];
+                        // Update the end point.
+                        points[2][0] = isLeft ? params.labelRect.x : params.labelRect.x + params.labelRect.width;
+
+                        return {
+                            labelLinePoints: points
+                        };
+                    },
+                    data: data
+                };
+            })
+        };
+    }
 }

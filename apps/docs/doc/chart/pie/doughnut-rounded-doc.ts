@@ -9,7 +9,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Doughnut chart with rounded slice corner caps and outer stroke borders.</p>
+            <p>A doughnut chart with rounded corners: <i>borderRadius</i> plus white slice borders, with the focused slice name shown bold in the center.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -19,8 +19,13 @@ import { ChartModule } from '@bdspark/sparkng/chart';
 })
 export class DoughnutRoundedDoc {
     options = {
-        tooltip: { trigger: 'item' },
-        legend: { top: '5%', left: 'center' },
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            top: '5%',
+            left: 'center'
+        },
         series: [
             {
                 name: 'Access From',
@@ -32,9 +37,19 @@ export class DoughnutRoundedDoc {
                     borderColor: '#fff',
                     borderWidth: 2
                 },
-                label: { show: false, position: 'center' },
+                label: {
+                    show: false,
+                    position: 'center'
+                },
                 emphasis: {
-                    label: { show: true, fontSize: 20, fontWeight: 'bold' }
+                    label: {
+                        show: true,
+                        fontSize: 40,
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
                 },
                 data: [
                     { value: 1048, name: 'Search Engine' },

@@ -9,7 +9,7 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Semi-circular gauge-style doughnut spanning a 180-degree sweep angle.</p>
+            <p>A half doughnut chart drawn by adjusting <i>startAngle</i> and <i>endAngle</i> so only the upper half of the ring is rendered.</p>
         </app-docsectiontext>
         <div class="card">
             <p-chart [options]="options" />
@@ -19,18 +19,28 @@ import { ChartModule } from '@bdspark/sparkng/chart';
 })
 export class HalfDoughnutDoc {
     options = {
-        tooltip: { trigger: 'item' },
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            top: '5%',
+            left: 'center'
+        },
         series: [
             {
+                name: 'Access From',
                 type: 'pie',
                 radius: ['40%', '70%'],
                 center: ['50%', '70%'],
+                // adjust the start and end angle
                 startAngle: 180,
                 endAngle: 360,
                 data: [
                     { value: 1048, name: 'Search Engine' },
                     { value: 735, name: 'Direct' },
-                    { value: 580, name: 'Email' }
+                    { value: 580, name: 'Email' },
+                    { value: 484, name: 'Union Ads' },
+                    { value: 300, name: 'Video Ads' }
                 ]
             }
         ]
