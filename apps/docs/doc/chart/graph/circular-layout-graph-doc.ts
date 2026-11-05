@@ -1,6 +1,7 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
@@ -9,47 +10,74 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Circular Layout Graph positions nodes around a circle with curved connecting edges.</p>
+            <p>Circular layout graph with curved edges connecting Les Misérables characters, rotated radial labels, and color inheritance from source nodes.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-graphchart [nodes]="nodes" [links]="links" [options]="options" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class CircularLayoutGraphDoc {
-    nodes = [
-        { name: 'Alpha', symbolSize: 25 },
-        { name: 'Beta', symbolSize: 25 },
-        { name: 'Gamma', symbolSize: 25 },
-        { name: 'Delta', symbolSize: 25 },
-        { name: 'Epsilon', symbolSize: 25 },
-        { name: 'Zeta', symbolSize: 25 }
-    ];
+    private platformId = inject(PLATFORM_ID);
 
-    links = [
-        { source: 'Alpha', target: 'Beta' },
-        { source: 'Alpha', target: 'Delta' },
-        { source: 'Beta', target: 'Gamma' },
-        { source: 'Beta', target: 'Zeta' },
-        { source: 'Gamma', target: 'Delta' },
-        { source: 'Delta', target: 'Epsilon' },
-        { source: 'Epsilon', target: 'Zeta' },
-        { source: 'Zeta', target: 'Alpha' }
-    ];
+    private chart: any;
 
-    options = {
-        series: [
-            {
-                type: 'graph',
-                layout: 'circular',
-                roam: true,
-                label: { show: true, position: 'right' },
-                lineStyle: {
-                    color: 'source',
-                    curveness: 0.3
-                }
-            }
-        ]
-    };
+    options: any = {};
+
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            fetch('demo/chart/data/les-miserables.json')
+                .then((res) => res.json())
+                .then((graph) => {
+                    graph.nodes.forEach((node: any) => {
+                        node.label = {
+                            show: node.symbolSize > 30
+                        };
+                    });
+
+                    this.options = {
+                        title: {
+                            text: 'Les Miserables',
+                            subtext: 'Circular layout',
+                            top: 'bottom',
+                            left: 'right'
+                        },
+                        tooltip: {},
+                        legend: [
+                            {
+                                data: graph.categories.map((a: { name: string }) => a.name)
+                            }
+                        ],
+                        animationDurationUpdate: 1500,
+                        animationEasingUpdate: 'quinticInOut',
+                        series: [
+                            {
+                                name: 'Les Miserables',
+                                type: 'graph',
+                                layout: 'circular',
+                                circular: {
+                                    rotateLabel: true
+                                },
+                                data: graph.nodes,
+                                links: graph.links,
+                                categories: graph.categories,
+                                roam: true,
+                                label: {
+                                    position: 'right',
+                                    formatter: '{b}'
+                                },
+                                lineStyle: {
+                                    color: 'source',
+                                    curveness: 0.3
+                                }
+                            }
+                        ]
+                    };
+
+                    this.chart.setOption(this.options, true);
+                });
+        }
+    }
 }

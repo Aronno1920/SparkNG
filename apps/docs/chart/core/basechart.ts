@@ -411,7 +411,32 @@ export abstract class BaseChart<PT = any> extends BaseComponent<PT> {
         if (!overrides || Object.keys(overrides).length === 0) {
             return composed;
         }
-        return deepMerge(composed as Record<string, any>, overrides as Record<string, any>) as SparkChartsOption;
+        const merged = deepMerge(composed as Record<string, any>, overrides as Record<string, any>) as SparkChartsOption;
+        if (Array.isArray(composed.series) && Array.isArray((overrides as any).series)) {
+            const mergedSeries = (composed.series as any[]).map((compSeries: any, idx: number) => {
+                const overSeries = ((overrides as any).series as any[])[idx];
+                if (!overSeries) return compSeries;
+                const s = { ...compSeries, ...overSeries };
+                if (overSeries.data === undefined && compSeries.data !== undefined) {
+                    s.data = compSeries.data;
+                }
+                if (overSeries.links === undefined && compSeries.links !== undefined) {
+                    s.links = compSeries.links;
+                }
+                if (overSeries.edges === undefined && compSeries.edges !== undefined) {
+                    s.edges = compSeries.edges;
+                }
+                if (overSeries.categories === undefined && compSeries.categories !== undefined) {
+                    s.categories = compSeries.categories;
+                }
+                return s;
+            });
+            if (((overrides as any).series as any[]).length > composed.series.length) {
+                mergedSeries.push(...((overrides as any).series as any[]).slice(composed.series.length));
+            }
+            (merged as any).series = mergedSeries;
+        }
+        return merged;
     }
 
     /**

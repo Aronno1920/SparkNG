@@ -1,6 +1,7 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
@@ -9,49 +10,70 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>NPM Dependencies Graph visualizes complex package dependency trees with multi-tier relationship links.</p>
+            <p>Visualizing package dependency networks from the NPM registry with hundreds of interconnected package nodes and curved dependency edges.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-graphchart [nodes]="nodes" [links]="links" [categories]="categories" [options]="options" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class NpmDependenciesGraphDoc {
-    categories = [{ name: 'Root' }, { name: 'Direct' }, { name: 'Transitive' }];
+    private platformId = inject(PLATFORM_ID);
 
-    nodes = [
-        { name: '@bdspark/sparkng', category: 0, symbolSize: 36 },
-        { name: '@angular/core', category: 1, symbolSize: 26 },
-        { name: '@angular/common', category: 1, symbolSize: 24 },
-        { name: 'rxjs', category: 1, symbolSize: 24 },
-        { name: 'tslib', category: 2, symbolSize: 18 },
-        { name: 'zone.js', category: 2, symbolSize: 18 }
-    ];
+    private chart: any;
 
-    links = [
-        { source: '@bdspark/sparkng', target: '@angular/core' },
-        { source: '@bdspark/sparkng', target: '@angular/common' },
-        { source: '@bdspark/sparkng', target: 'rxjs' },
-        { source: '@angular/core', target: 'rxjs' },
-        { source: '@angular/core', target: 'tslib' },
-        { source: '@angular/core', target: 'zone.js' }
-    ];
+    options: any = {};
 
-    options = {
-        series: [
-            {
-                type: 'graph',
-                layout: 'force',
-                roam: true,
-                force: {
-                    repulsion: 150,
-                    edgeLength: [60, 120]
-                },
-                lineStyle: {
-                    curveness: 0.1
-                }
-            }
-        ]
-    };
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            fetch('demo/chart/data/npmdepgraph.min10.json')
+                .then((res) => res.json())
+                .then((json) => {
+                    this.options = {
+                        title: {
+                            text: 'NPM Dependencies'
+                        },
+                        animationDurationUpdate: 1500,
+                        animationEasingUpdate: 'quinticInOut',
+                        series: [
+                            {
+                                type: 'graph',
+                                layout: 'none',
+                                data: json.nodes.map((node: any) => ({
+                                    x: node.x,
+                                    y: node.y,
+                                    id: node.id,
+                                    name: node.label,
+                                    symbolSize: node.size,
+                                    itemStyle: {
+                                        color: node.color
+                                    }
+                                })),
+                                edges: json.edges.map((edge: any) => ({
+                                    source: edge.sourceID,
+                                    target: edge.targetID
+                                })),
+                                emphasis: {
+                                    focus: 'adjacency',
+                                    label: {
+                                        position: 'right',
+                                        show: true
+                                    }
+                                },
+                                roam: true,
+                                lineStyle: {
+                                    width: 0.5,
+                                    curveness: 0.3,
+                                    opacity: 0.7
+                                }
+                            }
+                        ]
+                    };
+
+                    this.chart.setOption(this.options, true);
+                });
+        }
+    }
 }

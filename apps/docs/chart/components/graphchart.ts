@@ -94,11 +94,11 @@ export class GraphChart extends BaseChart<ChartPassThrough> {
     }
 
     /**
-     * Layout strategy; `'force'` (default) runs the force simulation, `'none'`
-     * uses the explicit node coordinates.
+     * Layout strategy; `'force'` (default) runs the force simulation, `'circular'`
+     * positions nodes on a circle, and `'none'` uses explicit node coordinates.
      * @group Props
      */
-    @Input() layout: 'none' | 'force' = 'force';
+    @Input() layout: 'none' | 'force' | 'circular' = 'force';
 
     /**
      * Whether the graph can be panned and zoomed; `'scale'` and `'move'` enable

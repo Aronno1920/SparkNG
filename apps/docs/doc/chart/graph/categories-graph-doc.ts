@@ -1,6 +1,7 @@
 import { AppCode } from '@/components/doc/app.code';
 import { AppDocSectionText } from '@/components/doc/app.docsectiontext';
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ChartModule } from '@bdspark/sparkng/chart';
 
 @Component({
@@ -9,32 +10,78 @@ import { ChartModule } from '@bdspark/sparkng/chart';
     imports: [AppCode, AppDocSectionText, ChartModule],
     template: `
         <app-docsectiontext>
-            <p>Graph with Categories groups nodes by type, color-coding them and allowing toggling via the legend.</p>
+            <p>Les Misérables character network categorized into groups with adjacency focus highlighting connected nodes and edges on hover.</p>
         </app-docsectiontext>
         <div class="card">
-            <p-graphchart [nodes]="nodes" [links]="links" [categories]="categories" [legend]="{ bottom: 0 }" />
+            <p-chart [options]="options" (onChartInit)="onInit($event)" />
         </div>
         <app-code></app-code>
     `
 })
 export class CategoriesGraphDoc {
-    categories = [{ name: 'Framework' }, { name: 'Language' }, { name: 'Tooling' }];
+    private platformId = inject(PLATFORM_ID);
 
-    nodes = [
-        { name: 'SparkNG', category: 0, symbolSize: 32 },
-        { name: 'TypeScript', category: 1, symbolSize: 28 },
-        { name: 'Angular', category: 0, symbolSize: 30 },
-        { name: 'Tailwind CSS', category: 2, symbolSize: 22 },
-        { name: 'Vite', category: 2, symbolSize: 20 },
-        { name: 'RxJS', category: 1, symbolSize: 22 }
-    ];
+    private chart: any;
 
-    links = [
-        { source: 'SparkNG', target: 'Angular' },
-        { source: 'SparkNG', target: 'TypeScript' },
-        { source: 'SparkNG', target: 'Tailwind CSS' },
-        { source: 'Angular', target: 'TypeScript' },
-        { source: 'Angular', target: 'RxJS' },
-        { source: 'TypeScript', target: 'Vite' }
-    ];
+    options: any = {};
+
+    onInit(event: any): void {
+        this.chart = event.chart;
+        if (this.chart && isPlatformBrowser(this.platformId)) {
+            fetch('demo/chart/data/les-miserables.json')
+                .then((res) => res.json())
+                .then((graph) => {
+                    graph.nodes.forEach((node: any) => {
+                        node.label = {
+                            show: node.symbolSize > 30
+                        };
+                    });
+
+                    this.options = {
+                        title: {
+                            text: 'Les Miserables',
+                            subtext: 'Default layout',
+                            top: 'bottom',
+                            left: 'right'
+                        },
+                        tooltip: {},
+                        legend: [
+                            {
+                                data: graph.categories.map((a: { name: string }) => a.name)
+                            }
+                        ],
+                        animationDuration: 1500,
+                        animationEasingUpdate: 'quinticInOut',
+                        series: [
+                            {
+                                name: 'Les Miserables',
+                                type: 'graph',
+                                legendHoverLink: false,
+                                layout: 'none',
+                                data: graph.nodes,
+                                links: graph.links,
+                                categories: graph.categories,
+                                roam: true,
+                                label: {
+                                    position: 'right',
+                                    formatter: '{b}'
+                                },
+                                lineStyle: {
+                                    color: 'source',
+                                    curveness: 0.3
+                                },
+                                emphasis: {
+                                    focus: 'adjacency',
+                                    lineStyle: {
+                                        width: 10
+                                    }
+                                }
+                            }
+                        ]
+                    };
+
+                    this.chart.setOption(this.options, true);
+                });
+        }
+    }
 }

@@ -149,6 +149,8 @@ import { ForceDirectedGraphDoc } from '@/doc/chart/graph/force-directed-graph-do
 import { CircularLayoutGraphDoc } from '@/doc/chart/graph/circular-layout-graph-doc';
 import { CategoriesGraphDoc } from '@/doc/chart/graph/categories-graph-doc';
 import { NpmDependenciesGraphDoc } from '@/doc/chart/graph/npm-dependencies-graph-doc';
+import { GraphCartesianDoc } from '@/doc/chart/graph/graph-cartesian-doc';
+import { GraphLabelOverlapDoc } from '@/doc/chart/graph/graph-label-overlap-doc';
 import { BasicTreeDoc } from '@/doc/chart/tree/basic-tree-doc';
 import { LeftToRightTreeDoc } from '@/doc/chart/tree/left-to-right-tree-doc';
 import { TopToBottomTreeDoc } from '@/doc/chart/tree/top-to-bottom-tree-doc';
@@ -467,6 +469,8 @@ export class GraphChartDemo {
         { id: 'force-directed-graph', label: 'Force-Directed Graph', component: ForceDirectedGraphDoc },
         { id: 'circular-layout-graph', label: 'Circular Layout', component: CircularLayoutGraphDoc },
         { id: 'categories-graph', label: 'Graph with Categories', component: CategoriesGraphDoc },
+        { id: 'graph-cartesian', label: 'Graph on Cartesian', component: GraphCartesianDoc },
+        { id: 'graph-label-overlap', label: 'Hide Overlapped Label', component: GraphLabelOverlapDoc },
         { id: 'npm-dependencies-graph', label: 'NPM Dependencies Graph', component: NpmDependenciesGraphDoc },
         { id: 'accessibility', label: 'Accessibility', component: AccessibilityDoc }
     ];

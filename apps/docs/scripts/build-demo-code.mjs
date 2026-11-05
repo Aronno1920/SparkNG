@@ -584,12 +584,15 @@ function extractOtherMethods(content) {
     const methods = [];
     const seenMethods = new Set();
 
+    const classMatch = content.match(/export\s+class\s+\w+[^{]*\{/);
+    const classStartIndex = classMatch ? classMatch.index + classMatch[0].length : 0;
+
     // Look at the class definition before "code: Code" AND between code block end and extFiles
-    const codeIndex = content.indexOf('code: Code');
-    const extFilesIndex = content.indexOf('extFiles = ');
+    const codeIndex = content.indexOf('code: Code', classStartIndex);
+    const extFilesIndex = content.indexOf('extFiles = ', classStartIndex);
 
     // Content before code block
-    let beforeCode = codeIndex > -1 ? content.substring(0, codeIndex) : content;
+    let beforeCode = codeIndex > -1 ? content.substring(classStartIndex, codeIndex) : content.substring(classStartIndex);
 
     // Content between code block end and extFiles (or end of class)
     let betweenCodeAndExtFiles = '';
@@ -638,7 +641,7 @@ function extractOtherMethods(content) {
     const methodRegex = /^\s{4}((?:async\s+)?[\w]+)\s*\(([^)]*)\)\s*(?::\s*([^\{]+))?\s*\{([\s\S]*?)\n\s{4}\}/gm;
     let match;
 
-    const skipMethods = ['ngOnInit', 'loadDemoData', 'constructor', 'ngAfterViewChecked', 'ngAfterViewInit'];
+    const skipMethods = ['ngOnInit', 'loadDemoData', 'constructor', 'ngAfterViewChecked', 'ngAfterViewInit', 'for', 'if', 'while', 'switch', 'catch'];
 
     while ((match = methodRegex.exec(searchContent)) !== null) {
         const methodName = match[1].replace('async ', '');
