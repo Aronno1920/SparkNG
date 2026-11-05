@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@bdspark/sparkng-tailwindcss':
-        specifier: 22.0.5
-        version: 22.0.5(tailwindcss@3.4.19(yaml@2.9.1))
+        specifier: 22.26.3
+        version: 22.26.3(tailwindcss@3.4.19(yaml@2.9.1))
       autoprefixer:
         specifier: ^10.5.4
         version: 10.6.1(postcss@8.5.29)
@@ -52,20 +52,26 @@ importers:
         specifier: ^22.1.6
         version: 22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(@angular/platform-server@22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/compiler@22.2.2)(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(@angular/platform-browser@22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2)))(rxjs@7.8.2))(@angular/router@22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(@angular/platform-browser@22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2)))(rxjs@7.8.2))
       '@bdspark/sparkng':
-        specifier: 22.0.5
-        version: 22.0.5(3bb0858f22502b9effaebe681b91b9c9)
+        specifier: 22.26.3
+        version: 22.26.3(87d93522e881b00945de1bad3ce72405)
       '@bdspark/sparkng-charts':
-        specifier: 22.1.1
-        version: 22.1.1
+        specifier: 22.26.3
+        version: 22.26.3
       '@bdspark/sparkng-icons':
-        specifier: 22.0.5
-        version: 22.0.5
+        specifier: 22.26.3
+        version: 22.26.3
+      '@bdspark/sparkng-styled':
+        specifier: 22.26.3
+        version: 22.26.3
+      '@bdspark/sparkng-styles':
+        specifier: 22.26.3
+        version: 22.26.3
       '@bdspark/sparkng-themes':
-        specifier: 22.0.5
-        version: 22.0.5
+        specifier: 22.26.3
+        version: 22.26.3
       '@bdspark/sparkng-utils':
-        specifier: 22.0.5
-        version: 22.0.5
+        specifier: 22.26.3
+        version: 22.26.3
       '@stackblitz/sdk':
         specifier: 1.11.1
         version: 1.11.1
@@ -916,38 +922,38 @@ packages:
     resolution: {integrity: sha512-c+xgSWboV2pdwXP67BUWDVRHi2BO5Q3KwxyFVs7taVTY+fsK47/L51ZXQoV9rozHJDNHvJ4v4WEsI/IlxV2l2A==}
     engines: {node: ^22.18.0 || >=24.11.0}
 
-  '@bdspark/sparkng-charts@22.1.1':
-    resolution: {integrity: sha512-hKbyiV5GnLvL7HBAYLGJeBmSPzrxA8m3rglZGozoak+a1ssDVZwmK9OS0oFODghKfW0DZv9xAiQ3XnU7i23Jxw==}
+  '@bdspark/sparkng-charts@22.26.3':
+    resolution: {integrity: sha512-4EB7vJOd4098VySVqNfx3nKtGZpjYj8OM0MQpkSB5DleeqOQ63CgoBicewtdzx+nAVEVUlX5v1yizkEkgttxLw==}
     engines: {node: '>=20'}
 
-  '@bdspark/sparkng-icons@22.0.5':
-    resolution: {integrity: sha512-X9UL1J3Q/BgdTmZYqdwrnE1/cD5Ry4EtfyBCvR7+XilQ+U0in/ZuiyMcnGPJ2eAd3RdSRowerkKntYi2Fsps3w==}
+  '@bdspark/sparkng-icons@22.26.3':
+    resolution: {integrity: sha512-vvMWpO7D6PmApdst5kvtqB6Kl20xgZUInOEAjCkyksHty09R77gj+XZgJetJg+cHFieZ5Mds7Jv0l5YtYKGMJA==}
 
-  '@bdspark/sparkng-motion@22.0.5':
-    resolution: {integrity: sha512-3NQFDd0ty4Y3iw5LXjO60MHUQ2brt/xXOm+XAFA4KgZQ1uOEMex1qi4mTcqwJgPhxESaLsU7DE6PhJ3KwGcDAA==}
+  '@bdspark/sparkng-motion@22.26.3':
+    resolution: {integrity: sha512-GyCivzf6f8UdVKniNqarH3PuTRvIwPFqkoCUdc9mPgwspUpemA4YyyfNhOeFBXv8mqOMoaD0EjLMaYaRE4YgAw==}
     engines: {node: '>=12.11.0'}
 
-  '@bdspark/sparkng-styled@22.0.5':
-    resolution: {integrity: sha512-MKjJ4ilRy1pAEmJWsOsnU7FZTvXNd4XpMAuSWsEvlzEmV3yAj9Pf1NRxDUM7CKh1rSPqgH+W5rWpfIflBHgzAg==}
+  '@bdspark/sparkng-styled@22.26.3':
+    resolution: {integrity: sha512-H7k6sGfjasuZk85gQ9ZwWOGPtCwW1j8kZgodsIkHSeuNkNNjst/RNOkhbFXDLCG6YZK4465wK4SsRQFXTiQUQA==}
     engines: {node: '>=12.11.0'}
 
-  '@bdspark/sparkng-styles@22.0.5':
-    resolution: {integrity: sha512-gtlOgdwVrHpUW60IYNCE8HjC0SGIRRckyV0pX+5fKLKLcgVXSZiquGKu7p6b83t+tcI0MF5hb3Rssoo8nYhEIg==}
+  '@bdspark/sparkng-styles@22.26.3':
+    resolution: {integrity: sha512-+xE3u0sJYSe12fx6VPpjkScRr7853ZCy39H60rqO6cxiFM3XefrfYm8/gwZqiqTGPGbJ8OEQ+ZzRRM3f0/KGaQ==}
 
-  '@bdspark/sparkng-tailwindcss@22.0.5':
-    resolution: {integrity: sha512-0DdKzwgmBRI6Q3P6yb3v2XNy4fo95s+rTymgh1Ets1sKJfTyiL+e76cZOpQ5fa15BQE7gPJpUzengsgNQmxKOA==}
+  '@bdspark/sparkng-tailwindcss@22.26.3':
+    resolution: {integrity: sha512-+vqCGIQa3enQCROlGEoobmSxc7v7GqKdv1knfBhAggtmxbr+JXUgEsNqrI4tj9a/27/FbTJ0BCPkp+3lsh19gg==}
     peerDependencies:
       tailwindcss: '>=3.1.0'
 
-  '@bdspark/sparkng-themes@22.0.5':
-    resolution: {integrity: sha512-nM7sM+agt2Q5FCvVFlvCUxxFMH1VQ2ZmTLdvDq3i/slgFSOrkGq/CzPx8kQR0WHr/kROCSgIs0P9ch7f+YkLow==}
+  '@bdspark/sparkng-themes@22.26.3':
+    resolution: {integrity: sha512-nr4QdeQw0DV7uWMUk9M5zV6Lf4ta7CCYgsz+rD3sIT0QaRBU9xeacxnP3sVlRfiZMffAzkVcB6fGIpXA9ILr3Q==}
 
-  '@bdspark/sparkng-utils@22.0.5':
-    resolution: {integrity: sha512-BCAl46don1E9rDeZGn1+qxGdgk3h6kcMAeuADFUbqo9VnG0NqwVjrs7AyhMLhxBThwarouW/43aPuIAVGsb6Zw==}
+  '@bdspark/sparkng-utils@22.26.3':
+    resolution: {integrity: sha512-G3OeEa3WaWuhjSwj5SmEf7FxR0OwrltxPuFFWYDvqcQz2L7XTtxZSZdlSYNVKyCDibMTqaBPVXKQarAisMICRg==}
     engines: {node: '>=12.11.0'}
 
-  '@bdspark/sparkng@22.0.5':
-    resolution: {integrity: sha512-qh3CTslrYTkGxOY11OyMeq19zL1HAxq/K0uyW+KO2oUu0udghRCeD/LC0otnOV8kMeyf0KOghmiWFGa9ULguNw==}
+  '@bdspark/sparkng@22.26.3':
+    resolution: {integrity: sha512-IXO8QAf8KBYUFUYTUMY3IKpDdu00SqZLDpEDJJktZyX6UO5fkVEPrRCLiHEqpxpfVeg1GKuvn6s97PqU5QkaDw==}
     peerDependencies:
       '@angular/cdk': ^22.1.4
       '@angular/common': ^22.1.4
@@ -955,11 +961,17 @@ packages:
       '@angular/forms': ^22.1.4
       '@angular/platform-browser': ^22.1.4
       '@angular/router': ^22.1.4
-      chart.js: ^4.0.0
+      prosemirror-commands: ^1.7.0
+      prosemirror-history: ^1.5.0
+      prosemirror-inputrules: ^1.5.0
+      prosemirror-keymap: ^1.2.0
+      prosemirror-model: ^1.25.0
+      prosemirror-schema-list: ^1.5.0
+      prosemirror-state: ^1.4.0
+      prosemirror-tables: ^1.8.0
+      prosemirror-transform: ^1.12.0
+      prosemirror-view: ^1.42.0
       rxjs: ^6.0.0 || ^7.8.1
-    peerDependenciesMeta:
-      chart.js:
-        optional: true
 
   '@bufbuild/protobuf@2.16.0':
     resolution: {integrity: sha512-FWa0sPlqYGJgpTs6OxBRcL/AW4JT0OIO+W1ajerluoTVh8CV0B7XM1qsNCRgnkSCkRCgOICKHRQlY17jrsm0+Q==}
@@ -1427,9 +1439,6 @@ packages:
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
-
-  '@kurkle/color@0.3.4':
-    resolution: {integrity: sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w==}
 
   '@leichtgewicht/ip-codec@2.0.5':
     resolution: {integrity: sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==}
@@ -2348,10 +2357,6 @@ packages:
 
   chardet@2.2.0:
     resolution: {integrity: sha512-rddelWYNPRrXq6PtNEN2S3f6t9ILzvqaN5pVgi4kqt9jHQaXIial9PznB5iSPVlQSLNaaH22ItWz3EJtQ10+OA==}
-
-  chart.js@4.5.1:
-    resolution: {integrity: sha512-GIjfiT9dbmHRiYi6Nl2yFCq7kkwdkp1W/lp2J99rX0yo9tgJGn3lKQATztIjb5tVtevcBtIdICNWqlq5+E8/Pw==}
-    engines: {pnpm: '>=8'}
 
   chokidar@3.6.0:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
@@ -5388,33 +5393,33 @@ snapshots:
       '@babel/helper-string-parser': 8.0.6
       '@babel/helper-validator-identifier': 8.0.6
 
-  '@bdspark/sparkng-charts@22.1.1': {}
+  '@bdspark/sparkng-charts@22.26.3': {}
 
-  '@bdspark/sparkng-icons@22.0.5': {}
+  '@bdspark/sparkng-icons@22.26.3': {}
 
-  '@bdspark/sparkng-motion@22.0.5':
+  '@bdspark/sparkng-motion@22.26.3':
     dependencies:
-      '@bdspark/sparkng-utils': 22.0.5
+      '@bdspark/sparkng-utils': 22.26.3
 
-  '@bdspark/sparkng-styled@22.0.5':
+  '@bdspark/sparkng-styled@22.26.3':
     dependencies:
-      '@bdspark/sparkng-utils': 22.0.5
+      '@bdspark/sparkng-utils': 22.26.3
 
-  '@bdspark/sparkng-styles@22.0.5':
+  '@bdspark/sparkng-styles@22.26.3':
     dependencies:
-      '@bdspark/sparkng-styled': 22.0.5
+      '@bdspark/sparkng-styled': 22.26.3
 
-  '@bdspark/sparkng-tailwindcss@22.0.5(tailwindcss@3.4.19(yaml@2.9.1))':
+  '@bdspark/sparkng-tailwindcss@22.26.3(tailwindcss@3.4.19(yaml@2.9.1))':
     dependencies:
       tailwindcss: 3.4.19(yaml@2.9.1)
 
-  '@bdspark/sparkng-themes@22.0.5':
+  '@bdspark/sparkng-themes@22.26.3':
     dependencies:
-      '@bdspark/sparkng-styled': 22.0.5
+      '@bdspark/sparkng-styled': 22.26.3
 
-  '@bdspark/sparkng-utils@22.0.5': {}
+  '@bdspark/sparkng-utils@22.26.3': {}
 
-  '@bdspark/sparkng@22.0.5(3bb0858f22502b9effaebe681b91b9c9)':
+  '@bdspark/sparkng@22.26.3(87d93522e881b00945de1bad3ce72405)':
     dependencies:
       '@angular/cdk': 22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(@angular/forms@22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(@angular/platform-browser@22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2)))(rxjs@7.8.2))(@angular/platform-browser@22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2)))(rxjs@7.8.2)
       '@angular/common': 22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2)
@@ -5422,14 +5427,22 @@ snapshots:
       '@angular/forms': 22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(@angular/platform-browser@22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2)))(rxjs@7.8.2)
       '@angular/platform-browser': 22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))
       '@angular/router': 22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(@angular/platform-browser@22.2.2(@angular/common@22.2.2(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.2(@angular/compiler@22.2.2)(rxjs@7.8.2)))(rxjs@7.8.2)
-      '@bdspark/sparkng-motion': 22.0.5
-      '@bdspark/sparkng-styled': 22.0.5
-      '@bdspark/sparkng-styles': 22.0.5
-      '@bdspark/sparkng-utils': 22.0.5
+      '@bdspark/sparkng-motion': 22.26.3
+      '@bdspark/sparkng-styled': 22.26.3
+      '@bdspark/sparkng-styles': 22.26.3
+      '@bdspark/sparkng-utils': 22.26.3
+      prosemirror-commands: 1.7.2
+      prosemirror-history: 1.5.1
+      prosemirror-inputrules: 1.5.1
+      prosemirror-keymap: 1.2.3
+      prosemirror-model: 1.25.12
+      prosemirror-schema-list: 1.5.1
+      prosemirror-state: 1.4.4
+      prosemirror-tables: 1.8.5
+      prosemirror-transform: 1.12.2
+      prosemirror-view: 1.42.6
       rxjs: 7.8.2
       tslib: 2.8.1
-    optionalDependencies:
-      chart.js: 4.5.1
 
   '@bufbuild/protobuf@2.16.0': {}
 
@@ -5812,9 +5825,6 @@ snapshots:
       '@jsonjoy.com/buffers': 17.67.0(tslib@2.8.1)
       '@jsonjoy.com/codegen': 17.67.0(tslib@2.8.1)
       tslib: 2.8.1
-
-  '@kurkle/color@0.3.4':
-    optional: true
 
   '@leichtgewicht/ip-codec@2.0.5': {}
 
@@ -6599,11 +6609,6 @@ snapshots:
   chalk@5.6.2: {}
 
   chardet@2.2.0: {}
-
-  chart.js@4.5.1:
-    dependencies:
-      '@kurkle/color': 0.3.4
-    optional: true
 
   chokidar@3.6.0:
     dependencies:
