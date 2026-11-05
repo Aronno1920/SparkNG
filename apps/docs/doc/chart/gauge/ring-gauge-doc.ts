@@ -99,7 +99,8 @@ export class RingGaugeDoc implements OnDestroy {
                 },
                 data: this.gaugeData,
                 title: {
-                    fontSize: 14
+                    fontSize: 14,
+                    color: 'inherit'
                 },
                 detail: {
                     width: 50,
@@ -132,9 +133,9 @@ export class RingGaugeDoc implements OnDestroy {
     }
 
     private tick(): void {
-        this.gaugeData[0].value = +(Math.random() * 100).toFixed(2);
-        this.gaugeData[1].value = +(Math.random() * 100).toFixed(2);
-        this.gaugeData[2].value = +(Math.random() * 100).toFixed(2);
+        this.gaugeData[0].value = Math.round(Math.random() * 100);
+        this.gaugeData[1].value = Math.round(Math.random() * 100);
+        this.gaugeData[2].value = Math.round(Math.random() * 100);
         this.chart?.setOption({
             series: [
                 {

@@ -64,7 +64,7 @@ export class GradeGaugeDoc {
                     }
                 },
                 axisLabel: {
-                    color: '#464646',
+                    color: 'inherit',
                     fontSize: 20,
                     distance: -60,
                     rotate: 'tangential',
@@ -83,7 +83,8 @@ export class GradeGaugeDoc {
                 },
                 title: {
                     offsetCenter: [0, '-10%'],
-                    fontSize: 20
+                    fontSize: 20,
+                    color: 'inherit'
                 },
                 detail: {
                     fontSize: 30,

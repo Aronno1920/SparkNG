@@ -55,6 +55,7 @@ export class ClockGaugeDoc implements OnDestroy {
                 axisLabel: {
                     fontSize: 50,
                     distance: 25,
+                    color: 'auto',
                     formatter: function (value) {
                         if (value === 0) {
                             return '';

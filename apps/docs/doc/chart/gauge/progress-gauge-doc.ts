@@ -60,7 +60,9 @@ export class ProgressGaugeDoc {
                 detail: {
                     valueAnimation: true,
                     fontSize: 80,
-                    offsetCenter: [0, '70%']
+                    offsetCenter: [0, '70%'],
+                    formatter: '{value}',
+                    color: 'inherit'
                 },
                 data: [
                     {

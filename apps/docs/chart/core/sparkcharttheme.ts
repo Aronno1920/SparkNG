@@ -415,5 +415,20 @@ export function buildSparkChartTheme(document?: Document | null): SparkChartThem
         label: { color: mutedColor }
     };
 
+    theme.gauge = {
+        title: {
+            color: textColor,
+            ...(tokens.fontFamily ? { fontFamily: tokens.fontFamily } : {})
+        },
+        detail: {
+            color: 'auto',
+            ...(tokens.fontFamily ? { fontFamily: tokens.fontFamily } : {})
+        },
+        axisLabel: {
+            color: mutedColor,
+            ...(tokens.fontFamily ? { fontFamily: tokens.fontFamily } : {})
+        }
+    };
+
     return theme;
 }

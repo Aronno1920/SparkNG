@@ -11,8 +11,8 @@ import { ChartModule } from '@bdspark/sparkng/chart';
         <app-docsectiontext>
             <p>A car dashboard on a black background combining a speedometer, tachometer, gear indicator, fuel gauge and trip statistics.</p>
         </app-docsectiontext>
-        <div class="card">
-            <p-chart [options]="options" />
+        <div class="card p-0 overflow-hidden" style="background-color: #000; border-radius: 12px;">
+            <p-chart [options]="options" height="36rem" />
         </div>
         <app-code></app-code>
     `
@@ -236,10 +236,11 @@ export class GaugeCarDoc {
                 name: 'gauge 3',
                 type: 'gauge',
                 min: 0,
-                max: 8,
+                max: 250,
                 z: 10,
                 splitNumber: 8,
                 radius: '50%',
+                center: ['50%', '50%'],
                 axisLine: {
                     lineStyle: {
                         width: 14,
@@ -296,7 +297,7 @@ export class GaugeCarDoc {
                 name: 'gauge 4',
                 type: 'gauge',
                 min: 0,
-                max: 8,
+                max: 250,
                 startAngle: 135,
                 endAngle: -150,
                 splitNumber: 8,
