@@ -187,6 +187,8 @@ export abstract class BaseChart<PT = any> extends BaseComponent<PT> {
 
     private themeChangeHandler: (() => void) | null | undefined;
 
+    private docMutationObserver: MutationObserver | null | undefined;
+
     private updateQueued: boolean = false;
 
     onChanges(): void {
@@ -236,6 +238,23 @@ export abstract class BaseChart<PT = any> extends BaseComponent<PT> {
             };
             ThemeService.on('theme:change', this.themeChangeHandler);
         }
+
+        if (!this.docMutationObserver && typeof MutationObserver !== 'undefined' && this.document?.documentElement) {
+            this.docMutationObserver = new MutationObserver((mutations) => {
+                for (const m of mutations) {
+                    if (m.type === 'attributes' && m.attributeName === 'class') {
+                        if (this.theme === undefined && this.initialized) {
+                            this.reinit();
+                        }
+                        break;
+                    }
+                }
+            });
+            this.docMutationObserver.observe(this.document.documentElement, {
+                attributes: true,
+                attributeFilter: ['class']
+            });
+        }
     }
 
     /**
@@ -245,6 +264,8 @@ export abstract class BaseChart<PT = any> extends BaseComponent<PT> {
     destroyChart(): void {
         this.resizeObserver?.disconnect();
         this.resizeObserver = null;
+        this.docMutationObserver?.disconnect();
+        this.docMutationObserver = null;
         if (this.themeChangeHandler) {
             ThemeService.off('theme:change', this.themeChangeHandler);
             this.themeChangeHandler = null;

@@ -533,6 +533,19 @@ describe('Chart Components', () => {
             expect(typeof palette[0]).toBe('string');
         });
 
+        it('should return a vibrant palette when primary is achromatic', () => {
+            const palette = buildChartPalette('#18181b');
+            expect(palette.length).toBeGreaterThanOrEqual(10);
+            expect(palette[0]).not.toBe('#18181b');
+            expect(palette[0]).toBe('#3b82f6');
+        });
+
+        it('should support dark mode vibrant palette', () => {
+            const darkPalette = buildChartPalette(null, true);
+            expect(darkPalette.length).toBeGreaterThanOrEqual(10);
+            expect(darkPalette[0]).toBe('#60a5fa');
+        });
+
         it('should return empty tokens without a document', () => {
             expect(readChartTokens(null)).toEqual({});
         });
