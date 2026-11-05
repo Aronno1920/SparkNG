@@ -62,7 +62,6 @@ import { MixZoomOnValueDoc } from '@/doc/chart/bar/mix-zoom-on-value-doc';
 import { LargeScaleBarDoc } from '@/doc/chart/bar/large-scale-bar-doc';
 import { BarDrilldownAnimationDoc } from '@/doc/chart/bar/bar-drilldown-animation-doc';
 import { FinanceIndicesDoc } from '@/doc/chart/bar/finance-indices-doc';
-import { WatermarkEchartsDownloadDoc } from '@/doc/chart/bar/watermark-echarts-download-doc';
 import { RefererWebsiteDoc } from '@/doc/chart/pie/referer-website-doc';
 import { DoughnutRoundedDoc } from '@/doc/chart/pie/doughnut-rounded-doc';
 import { DoughnutChartDoc } from '@/doc/chart/pie/doughnut-chart-doc';
@@ -252,7 +251,6 @@ export class BarChartDemo {
         { id: 'weather-statistics', label: 'Weather Statistics', component: WeatherStatisticsDoc },
         { id: 'dynamic-data', label: 'Dynamic Data', component: DynamicDataDoc },
         { id: 'finance-indices', label: 'Finance Indices 2002', component: FinanceIndicesDoc },
-        { id: 'watermark-echarts-download', label: 'Watermark', component: WatermarkEchartsDownloadDoc },
         { id: 'bar-polar', label: 'Bar Chart on Polar', component: BarPolarDoc },
         { id: 'stacked-bar-polar', label: 'Stacked Bar Chart on Polar', component: StackedBarPolarDoc },
         { id: 'stacked-bar-polar-radial', label: 'Stacked Bar Chart on Polar(Radial)', component: StackedBarPolarRadialDoc },

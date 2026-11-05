@@ -59,7 +59,7 @@ export class ScatterNutrientsDoc {
     onInit(event: any): void {
         this.chart = event.chart;
         if (this.chart && isPlatformBrowser(this.platformId)) {
-            // zlevel 为 1 的层开启尾迹特效
+            // Enable trail effect for layer with zlevel = 1
             this.chart.getZr().configLayer(1, {
                 motionBlur: true
             });

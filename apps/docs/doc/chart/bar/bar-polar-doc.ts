@@ -26,7 +26,7 @@ export class BarPolarDoc {
         [1500, 2600, 2037.5], [1500, 2417.54, 1905.85], [1500, 2000, 1775], [1500, 1800, 1650]
     ];
     // prettier-ignore
-    cities = ['北京', '上海', '深圳', '广州', '苏州', '杭州', '南京', '福州', '青岛', '济南', '长春', '大连', '温州', '郑州', '武汉', '成都', '东莞', '沈阳', '烟台'];
+    cities = ['Beijing', 'Shanghai', 'Shenzhen', 'Guangzhou', 'Suzhou', 'Hangzhou', 'Nanjing', 'Fuzhou', 'Qingdao', 'Jinan', 'Changchun', 'Dalian', 'Wenzhou', 'Zhengzhou', 'Wuhan', 'Chengdu', 'Dongguan', 'Shenyang', 'Yantai'];
     barHeight = 50;
 
     options = {
@@ -50,7 +50,7 @@ export class BarPolarDoc {
             show: true,
             formatter: (params: any) => {
                 const id = params.dataIndex;
-                return this.cities[id] + '<br>Lowest：' + this.data[id][0] + '<br>Highest：' + this.data[id][1] + '<br>Average：' + this.data[id][2];
+                return this.cities[id] + '<br>Lowest: ' + this.data[id][0] + '<br>Highest: ' + this.data[id][1] + '<br>Average: ' + this.data[id][2];
             }
         },
         radiusAxis: {},

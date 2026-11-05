@@ -85,7 +85,7 @@ export class MultipleYAxesDoc {
             },
             {
                 type: 'value',
-                name: '温度',
+                name: 'Temperature',
                 position: 'left',
                 alignTicks: true,
                 axisLine: {

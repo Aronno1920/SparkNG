@@ -41,25 +41,25 @@ export class BookRecordsDoc {
 
         const data: any = [
             {
-                name: '虚构',
+                name: 'Fiction',
                 itemStyle: {
                     color: colors[1]
                 },
                 children: [
                     {
-                        name: '小说',
+                        name: 'Novel',
                         children: [
                             {
                                 name: '5☆',
                                 children: [
                                     {
-                                        name: '疼'
+                                        name: 'Pain'
                                     },
                                     {
-                                        name: '慈悲'
+                                        name: 'Mercy'
                                     },
                                     {
-                                        name: '楼下的房客'
+                                        name: 'The Tenants Downstairs'
                                     }
                                 ]
                             },
@@ -67,13 +67,13 @@ export class BookRecordsDoc {
                                 name: '4☆',
                                 children: [
                                     {
-                                        name: '虚无的十字架'
+                                        name: 'The Empty Cross'
                                     },
                                     {
-                                        name: '无声告白'
+                                        name: 'Everything I Never Told You'
                                     },
                                     {
-                                        name: '童年的终结'
+                                        name: "Childhood's End"
                                     }
                                 ]
                             },
@@ -81,20 +81,20 @@ export class BookRecordsDoc {
                                 name: '3☆',
                                 children: [
                                     {
-                                        name: '疯癫老人日记'
+                                        name: 'Diary of a Mad Old Man'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '其他',
+                        name: 'Other',
                         children: [
                             {
                                 name: '5☆',
                                 children: [
                                     {
-                                        name: '纳博科夫短篇小说全集'
+                                        name: 'The Stories of Vladimir Nabokov'
                                     }
                                 ]
                             },
@@ -102,10 +102,10 @@ export class BookRecordsDoc {
                                 name: '4☆',
                                 children: [
                                     {
-                                        name: '安魂曲'
+                                        name: 'Requiem'
                                     },
                                     {
-                                        name: '人生拼图版'
+                                        name: "Life: A User's Manual"
                                     }
                                 ]
                             },
@@ -113,7 +113,7 @@ export class BookRecordsDoc {
                                 name: '3☆',
                                 children: [
                                     {
-                                        name: '比起爱你，我更需要你'
+                                        name: 'More Than Love, I Need You'
                                     }
                                 ]
                             }
@@ -122,19 +122,19 @@ export class BookRecordsDoc {
                 ]
             },
             {
-                name: '非虚构',
+                name: 'Non-fiction',
                 itemStyle: {
                     color: colors[2]
                 },
                 children: [
                     {
-                        name: '设计',
+                        name: 'Design',
                         children: [
                             {
                                 name: '5☆',
                                 children: [
                                     {
-                                        name: '无界面交互'
+                                        name: 'The Best Interface Is No Interface'
                                     }
                                 ]
                             },
@@ -142,10 +142,10 @@ export class BookRecordsDoc {
                                 name: '4☆',
                                 children: [
                                     {
-                                        name: '数字绘图的光照与渲染技术'
+                                        name: 'Digital Lighting and Rendering'
                                     },
                                     {
-                                        name: '日本建筑解剖书'
+                                        name: 'Anatomy of Japanese Architecture'
                                     }
                                 ]
                             },
@@ -153,20 +153,20 @@ export class BookRecordsDoc {
                                 name: '3☆',
                                 children: [
                                     {
-                                        name: '奇幻世界艺术\n&RPG地图绘制讲座'
+                                        name: 'Fantasy World Art\n& RPG Map Drawing'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '社科',
+                        name: 'Social Sciences',
                         children: [
                             {
                                 name: '5☆',
                                 children: [
                                     {
-                                        name: '痛点'
+                                        name: 'Small Data'
                                     }
                                 ]
                             },
@@ -174,13 +174,13 @@ export class BookRecordsDoc {
                                 name: '4☆',
                                 children: [
                                     {
-                                        name: '卓有成效的管理者'
+                                        name: 'The Effective Executive'
                                     },
                                     {
-                                        name: '进化'
+                                        name: 'Evolution'
                                     },
                                     {
-                                        name: '后物欲时代的来临'
+                                        name: 'The Post-Material Age'
                                     }
                                 ]
                             },
@@ -188,20 +188,20 @@ export class BookRecordsDoc {
                                 name: '3☆',
                                 children: [
                                     {
-                                        name: '疯癫与文明'
+                                        name: 'Madness and Civilization'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '心理',
+                        name: 'Psychology',
                         children: [
                             {
                                 name: '5☆',
                                 children: [
                                     {
-                                        name: '我们时代的神经症人格'
+                                        name: 'The Neurotic Personality of Our Time'
                                     }
                                 ]
                             },
@@ -209,10 +209,10 @@ export class BookRecordsDoc {
                                 name: '4☆',
                                 children: [
                                     {
-                                        name: '皮格马利翁效应'
+                                        name: 'Pygmalion Effect'
                                     },
                                     {
-                                        name: '受伤的人'
+                                        name: 'The Wounded Mind'
                                     }
                                 ]
                             },
@@ -223,39 +223,39 @@ export class BookRecordsDoc {
                                 name: '2☆',
                                 children: [
                                     {
-                                        name: '迷恋'
+                                        name: 'Fascination'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '居家',
+                        name: 'Home Living',
                         children: [
                             {
                                 name: '4☆',
                                 children: [
                                     {
-                                        name: '把房子住成家'
+                                        name: 'Making a House a Home'
                                     },
                                     {
-                                        name: '只过必要生活'
+                                        name: 'Living with Only What You Need'
                                     },
                                     {
-                                        name: '北欧简约风格'
+                                        name: 'Nordic Minimalist Style'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '绘本',
+                        name: 'Picture Books',
                         children: [
                             {
                                 name: '5☆',
                                 children: [
                                     {
-                                        name: '设计诗'
+                                        name: 'Design Poetry'
                                     }
                                 ]
                             },
@@ -263,10 +263,10 @@ export class BookRecordsDoc {
                                 name: '4☆',
                                 children: [
                                     {
-                                        name: '假如生活糊弄了你'
+                                        name: 'If Life Fools You'
                                     },
                                     {
-                                        name: '博物学家的神秘动物图鉴'
+                                        name: "The Naturalist's Guide to Cryptids"
                                     }
                                 ]
                             },
@@ -274,33 +274,33 @@ export class BookRecordsDoc {
                                 name: '3☆',
                                 children: [
                                     {
-                                        name: '方向'
+                                        name: 'Direction'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '哲学',
+                        name: 'Philosophy',
                         children: [
                             {
                                 name: '4☆',
                                 children: [
                                     {
-                                        name: '人生的智慧'
+                                        name: 'The Wisdom of Life'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        name: '技术',
+                        name: 'Technology',
                         children: [
                             {
                                 name: '5☆',
                                 children: [
                                     {
-                                        name: '代码整洁之道'
+                                        name: 'Clean Code'
                                     }
                                 ]
                             },
@@ -308,7 +308,7 @@ export class BookRecordsDoc {
                                 name: '4☆',
                                 children: [
                                     {
-                                        name: 'Three.js 开发指南'
+                                        name: 'Learn Three.js'
                                     }
                                 ]
                             }

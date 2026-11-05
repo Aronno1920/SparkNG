@@ -69,7 +69,7 @@ export class TemperatureDoc {
                 type: 'line',
                 data: [1, -2, 2, 5, 3, 2, 0],
                 markPoint: {
-                    data: [{ name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }]
+                    data: [{ name: 'Weekly Min', value: -2, xAxis: 1, yAxis: -1.5 }]
                 },
                 markLine: {
                     data: [
@@ -87,7 +87,7 @@ export class TemperatureDoc {
                                     formatter: 'Max'
                                 },
                                 type: 'max',
-                                name: '最高点'
+                                name: 'Peak'
                             }
                         ]
                     ]

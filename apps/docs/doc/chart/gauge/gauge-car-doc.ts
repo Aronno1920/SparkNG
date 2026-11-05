@@ -147,7 +147,7 @@ export class GaugeCarDoc {
                 data: [
                     {
                         value: 0,
-                        name: '当前位置：\n \n 中科路'
+                        name: 'Location:\n \n Grand Ave'
                     }
                 ]
             },
@@ -323,7 +323,7 @@ export class GaugeCarDoc {
                 title: {},
                 detail: {
                     offsetCenter: ['-15%', 0],
-                    formatter: ['{a|                  00:00}', '{a|行驶时间       0:00}{b| h}', '{a|行驶距离        0.0}{b| km}', '{a|平均耗能        ---}{b| 1/100km}', '{a|平均速度        ---}{b| km/h}'].join('\n'),
+                    formatter: ['{a|                  00:00}', '{a|Drive Time      0:00}{b| h}', '{a|Distance        0.0}{b| km}', '{a|Avg Energy       ---}{b| 1/100km}', '{a|Avg Speed       ---}{b| km/h}'].join('\n'),
                     rich: {
                         a: {
                             fontSize: 14,

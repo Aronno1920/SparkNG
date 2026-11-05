@@ -76,8 +76,8 @@ export class WindBarbDoc {
 
         return {
             title: {
-                text: '天气 风向 风速 海浪 预报',
-                subtext: '示例数据源于 www.seabreeze.com.au',
+                text: 'Weather, Wind Direction, Wind Speed, and Wave Forecast',
+                subtext: 'Data from www.seabreeze.com.au',
                 left: 'center'
             },
             tooltip: {
@@ -85,9 +85,9 @@ export class WindBarbDoc {
                 formatter: (params: any) => {
                     return [
                         format.formatTime('yyyy-MM-dd', params[0].value[this.dims.time]) + ' ' + format.formatTime('hh:mm', params[0].value[this.dims.time]),
-                        '风速：' + params[0].value[this.dims.windSpeed],
-                        '风向：' + params[0].value[this.dims.R],
-                        '浪高：' + params[0].value[this.dims.waveHeight]
+                        'Wind Speed: ' + params[0].value[this.dims.windSpeed] + ' knots',
+                        'Wind Direction: ' + params[0].value[this.dims.R],
+                        'Wave Height: ' + params[0].value[this.dims.waveHeight] + ' m'
                     ].join('<br>');
                 }
             },
@@ -106,7 +106,7 @@ export class WindBarbDoc {
             },
             yAxis: [
                 {
-                    name: '风速（节）',
+                    name: 'Wind Speed (knots)',
                     nameLocation: 'middle',
                     nameGap: 35,
                     axisLine: {
@@ -121,7 +121,7 @@ export class WindBarbDoc {
                     }
                 },
                 {
-                    name: '浪高（米）',
+                    name: 'Wave Height (m)',
                     nameLocation: 'middle',
                     nameGap: 35,
                     max: 6,
@@ -149,18 +149,18 @@ export class WindBarbDoc {
                     {
                         gte: 17,
                         color: '#18BF12',
-                        label: '大风（>=17节）'
+                        label: 'Strong Wind (>= 17 knots)'
                     },
                     {
                         gte: 11,
                         lt: 17,
                         color: '#f4e9a3',
-                        label: '中风（11  ~ 17 节）'
+                        label: 'Moderate Wind (11 - 17 knots)'
                     },
                     {
                         lt: 11,
                         color: '#D33C3E',
-                        label: '微风（小于 11 节）'
+                        label: 'Light Breeze (< 11 knots)'
                     }
                 ],
                 seriesIndex: 1,

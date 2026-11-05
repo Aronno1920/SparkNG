@@ -50,7 +50,7 @@ export class AxisPointerLinkDoc {
             },
             legend: {
                 top: 30,
-                data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30']
+                data: ['Daily', 'MA5', 'MA10', 'MA20', 'MA30']
             },
             tooltip: {
                 triggerOn: 'none',
@@ -223,7 +223,7 @@ export class AxisPointerLinkDoc {
                 },
                 {
                     type: 'candlestick',
-                    name: '日K',
+                    name: 'Daily',
                     data: data,
                     itemStyle: {
                         color: '#ef232a',

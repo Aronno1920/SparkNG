@@ -55,7 +55,8 @@ export class MultipleRadarDoc {
                 indicator: (function () {
                     let res = [];
                     for (let i = 1; i <= 12; i++) {
-                        res.push({ text: i + '月', max: 100 });
+                        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                        res.push({ text: months[i - 1], max: 100 });
                     }
                     return res;
                 })(),

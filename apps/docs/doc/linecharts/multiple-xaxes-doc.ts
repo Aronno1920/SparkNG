@@ -48,7 +48,7 @@ export class MultipleXaxesDoc {
                 axisPointer: {
                     label: {
                         formatter: function (params: any) {
-                            return 'Precipitation  ' + params.value + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+                            return 'Precipitation  ' + params.value + (params.seriesData.length ? ': ' + params.seriesData[0].data : '');
                         }
                     }
                 },
@@ -68,7 +68,7 @@ export class MultipleXaxesDoc {
                 axisPointer: {
                     label: {
                         formatter: function (params: any) {
-                            return 'Precipitation  ' + params.value + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+                            return 'Precipitation  ' + params.value + (params.seriesData.length ? ': ' + params.seriesData[0].data : '');
                         }
                     }
                 },

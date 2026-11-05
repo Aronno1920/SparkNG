@@ -43,18 +43,18 @@ export class MorphingMapBarDoc implements OnDestroy {
 
                 registerMap('USA', usaJson, {
                     Alaska: {
-                        // 把阿拉斯加移到美国主大陆左下方
+                        // Move Alaska to bottom left of US mainland
                         left: -131,
                         top: 25,
                         width: 15
                     },
                     Hawaii: {
-                        left: -110, // 夏威夷
+                        left: -110, // Hawaii
                         top: 28,
                         width: 5
                     },
                     'Puerto Rico': {
-                        // 波多黎各
+                        // Puerto Rico
                         left: -76,
                         top: 26,
                         width: 2

@@ -47,7 +47,7 @@ export class TexturePieDoc {
                 repeat: 'repeat'
             },
             title: {
-                text: '饼图纹理',
+                text: 'Texture on Pie Chart',
                 textStyle: {
                     color: '#235894'
                 }

@@ -33,7 +33,7 @@ export class ShanghaiIndex2015Doc {
         });
         this.options = {
             legend: {
-                data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
+                data: ['Day', 'MA5', 'MA10', 'MA20', 'MA30'],
                 inactiveColor: '#777',
                 top: 20
             },

@@ -26,7 +26,7 @@ export class ShanghaiIndexDoc {
         const downColor = '#00da3c';
         const downBorderColor = '#008F28';
 
-        // Each item: open，close，lowest，highest
+        // Each item: open, close, lowest, highest
         const data0 = this.splitData([
             ['2013/1/24', 2320.26, 2320.26, 2287.3, 2362.94],
             ['2013/1/25', 2300, 2291.3, 2288.26, 2308.38],
@@ -120,7 +120,7 @@ export class ShanghaiIndexDoc {
 
         this.options = {
             title: {
-                text: '上证指数',
+                text: 'Shanghai Index',
                 left: 0
             },
             tooltip: {
@@ -130,7 +130,7 @@ export class ShanghaiIndexDoc {
                 }
             },
             legend: {
-                data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
+                data: ['Daily', 'MA5', 'MA10', 'MA20', 'MA30'],
                 top: 20
             },
             grid: {
@@ -169,7 +169,7 @@ export class ShanghaiIndexDoc {
             ],
             series: [
                 {
-                    name: '日K',
+                    name: 'Daily',
                     type: 'candlestick',
                     data: data0.values,
                     itemStyle: {

@@ -50,10 +50,10 @@ export class LifeExpectancyGdpDoc {
         };
         // Schema:
         const schema = [
-            { name: 'Income', index: 0, text: '人均收入', unit: '美元' },
-            { name: 'LifeExpectancy', index: 1, text: '人均寿命', unit: '岁' },
-            { name: 'Population', index: 2, text: '总人口', unit: '' },
-            { name: 'Country', index: 3, text: '国家', unit: '' }
+            { name: 'Income', index: 0, text: 'Income per Capita', unit: ' USD' },
+            { name: 'LifeExpectancy', index: 1, text: 'Life Expectancy', unit: ' years' },
+            { name: 'Population', index: 2, text: 'Population', unit: '' },
+            { name: 'Country', index: 3, text: 'Country', unit: '' }
         ];
 
         const option = {
@@ -91,7 +91,7 @@ export class LifeExpectancyGdpDoc {
                         }
                     },
                     {
-                        text: '各国人均寿命与GDP关系演变',
+                        text: 'Life Expectancy vs GDP by Country',
                         left: 'center',
                         top: 10,
                         textStyle: {
@@ -106,10 +106,10 @@ export class LifeExpectancyGdpDoc {
                     formatter: function (obj: any) {
                         const value = obj.value;
                         // prettier-ignore
-                        return schema[3].text + '：' + value[3] + '<br>'
-                            + schema[1].text + '：' + value[1] + schema[1].unit + '<br>'
-                            + schema[0].text + '：' + value[0] + schema[0].unit + '<br>'
-                            + schema[2].text + '：' + value[2] + '<br>';
+                        return schema[3].text + ': ' + value[3] + '<br>'
+                            + schema[1].text + ': ' + value[1] + schema[1].unit + '<br>'
+                            + schema[0].text + ': ' + value[0] + schema[0].unit + '<br>'
+                            + schema[2].text + ': ' + value[2] + '<br>';
                     }
                 },
                 grid: {
@@ -120,7 +120,7 @@ export class LifeExpectancyGdpDoc {
                 },
                 xAxis: {
                     type: 'log',
-                    name: '人均收入',
+                    name: 'Income per Capita',
                     max: 100000,
                     min: 300,
                     nameGap: 25,
@@ -137,7 +137,7 @@ export class LifeExpectancyGdpDoc {
                 },
                 yAxis: {
                     type: 'value',
-                    name: '平均寿命',
+                    name: 'Life Expectancy',
                     max: 100,
                     nameTextStyle: {
                         fontSize: 18
@@ -146,7 +146,7 @@ export class LifeExpectancyGdpDoc {
                         show: false
                     },
                     axisLabel: {
-                        formatter: '{value} 岁'
+                        formatter: '{value} yrs'
                     }
                 },
                 visualMap: [

@@ -275,7 +275,7 @@ export class FinanceIndicesDoc {
                         {
                             value: '2005-01-01',
                             tooltip: {
-                                formatter: '{b} GDP达到一个高度'
+                                formatter: '{b} GDP reached a new high'
                             },
                             symbol: 'diamond',
                             symbolSize: 16
@@ -289,7 +289,7 @@ export class FinanceIndicesDoc {
                             value: '2011-01-01',
                             tooltip: {
                                 formatter: function (params: any) {
-                                    return params.name + 'GDP达到又一个高度';
+                                    return params.name + ' GDP reached another high';
                                 }
                             },
                             symbol: 'diamond',
@@ -303,16 +303,16 @@ export class FinanceIndicesDoc {
                     }
                 },
                 title: {
-                    subtext: '数据来自国家统计局'
+                    subtext: 'Data from National Bureau of Statistics'
                 },
                 tooltip: {},
                 legend: {
                     left: 'right',
-                    data: ['第一产业', '第二产业', '第三产业', 'GDP', '金融', '房地产'],
+                    data: ['Primary Industry', 'Secondary Industry', 'Tertiary Industry', 'GDP', 'Finance', 'Real Estate'],
                     selected: {
                         GDP: false,
-                        金融: false,
-                        房地产: false
+                        Finance: false,
+                        'Real Estate': false
                     }
                 },
                 calculable: true,
@@ -337,37 +337,37 @@ export class FinanceIndicesDoc {
                         type: 'category',
                         axisLabel: { interval: 0 },
                         data: [
-                            '北京',
-                            '\n天津',
-                            '河北',
-                            '\n山西',
-                            '内蒙古',
-                            '\n辽宁',
-                            '吉林',
-                            '\n黑龙江',
-                            '上海',
-                            '\n江苏',
-                            '浙江',
-                            '\n安徽',
-                            '福建',
-                            '\n江西',
-                            '山东',
-                            '\n河南',
-                            '湖北',
-                            '\n湖南',
-                            '广东',
-                            '\n广西',
-                            '海南',
-                            '\n重庆',
-                            '四川',
-                            '\n贵州',
-                            '云南',
-                            '\n西藏',
-                            '陕西',
-                            '\n甘肃',
-                            '青海',
-                            '\n宁夏',
-                            '新疆'
+                            'Beijing',
+                            '\nTianjin',
+                            'Hebei',
+                            '\nShanxi',
+                            'Inner Mongolia',
+                            '\nLiaoning',
+                            'Jilin',
+                            '\nHeilongjiang',
+                            'Shanghai',
+                            '\nJiangsu',
+                            'Zhejiang',
+                            '\nAnhui',
+                            'Fujian',
+                            '\nJiangxi',
+                            'Shandong',
+                            '\nHenan',
+                            'Hubei',
+                            '\nHunan',
+                            'Guangdong',
+                            '\nGuangxi',
+                            'Hainan',
+                            '\nChongqing',
+                            'Sichuan',
+                            '\nGuizhou',
+                            'Yunnan',
+                            '\nTibet',
+                            'Shaanxi',
+                            '\nGansu',
+                            'Qinghai',
+                            '\nNingxia',
+                            'Xinjiang'
                         ],
                         splitLine: { show: false }
                     }
@@ -375,18 +375,18 @@ export class FinanceIndicesDoc {
                 yAxis: [
                     {
                         type: 'value',
-                        name: 'GDP（亿元）'
+                        name: 'GDP (100M RMB)'
                     }
                 ],
                 series: [
                     { name: 'GDP', type: 'bar' },
-                    { name: '金融', type: 'bar' },
-                    { name: '房地产', type: 'bar' },
-                    { name: '第一产业', type: 'bar' },
-                    { name: '第二产业', type: 'bar' },
-                    { name: '第三产业', type: 'bar' },
+                    { name: 'Finance', type: 'bar' },
+                    { name: 'Real Estate', type: 'bar' },
+                    { name: 'Primary Industry', type: 'bar' },
+                    { name: 'Secondary Industry', type: 'bar' },
+                    { name: 'Tertiary Industry', type: 'bar' },
                     {
-                        name: 'GDP占比',
+                        name: 'GDP Share',
                         type: 'pie',
                         center: ['75%', '35%'],
                         radius: '28%',
@@ -403,7 +403,7 @@ export class FinanceIndicesDoc {
     private buildTimelineOptions(): any[] {
         const years = ['2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011'];
         return years.map((year) => ({
-            title: { text: year + '全国宏观经济指标' },
+            title: { text: year + ' National Macroeconomic Indicators' },
             series: [
                 { data: this.dataMap.dataGDP[year] },
                 { data: this.dataMap.dataFinancial[year] },
@@ -413,9 +413,9 @@ export class FinanceIndicesDoc {
                 { data: this.dataMap.dataTI[year] },
                 {
                     data: [
-                        { name: '第一产业', value: this.dataMap.dataPI[year + 'sum'] },
-                        { name: '第二产业', value: this.dataMap.dataSI[year + 'sum'] },
-                        { name: '第三产业', value: this.dataMap.dataTI[year + 'sum'] }
+                        { name: 'Primary Industry', value: this.dataMap.dataPI[year + 'sum'] },
+                        { name: 'Secondary Industry', value: this.dataMap.dataSI[year + 'sum'] },
+                        { name: 'Tertiary Industry', value: this.dataMap.dataTI[year + 'sum'] }
                     ]
                 }
             ]
@@ -424,7 +424,7 @@ export class FinanceIndicesDoc {
 
     private dataFormatter(obj: any) {
         // prettier-ignore
-        const pList = ['北京','天津','河北','山西','内蒙古','辽宁','吉林','黑龙江','上海','江苏','浙江','安徽','福建','江西','山东','河南','湖北','湖南','广东','广西','海南','重庆','四川','贵州','云南','西藏','陕西','甘肃','青海','宁夏','新疆'];
+        const pList = ['Beijing', 'Tianjin', 'Hebei', 'Shanxi', 'Inner Mongolia', 'Liaoning', 'Jilin', 'Heilongjiang', 'Shanghai', 'Jiangsu', 'Zhejiang', 'Anhui', 'Fujian', 'Jiangxi', 'Shandong', 'Henan', 'Hubei', 'Hunan', 'Guangdong', 'Guangxi', 'Hainan', 'Chongqing', 'Sichuan', 'Guizhou', 'Yunnan', 'Tibet', 'Shaanxi', 'Gansu', 'Qinghai', 'Ningxia', 'Xinjiang'];
         for (let year = 2002; year <= 2011; year++) {
             let max = 0;
             let sum = 0;
